@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "PlacementUrlIdeaService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/PlacementUrlIdeaService?wsdl")
+@WebServiceClient(name = "PlacementUrlIdeaService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/PlacementUrlIdeaService?wsdl")
 public class PlacementUrlIdeaService
     extends Service
 {
@@ -30,9 +30,9 @@ public class PlacementUrlIdeaService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.PlacementUrlIdeaService.PlacementUrlIdeaService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/PlacementUrlIdeaService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/PlacementUrlIdeaService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/PlacementUrlIdeaService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/PlacementUrlIdeaService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         PLACEMENTURLIDEASERVICE_WSDL_LOCATION = url;

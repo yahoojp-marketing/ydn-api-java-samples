@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "AdGroupAdServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/AdGroupAdService?wsdl")
+@WebServiceClient(name = "AdGroupAdServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/AdGroupAdService?wsdl")
 public class AdGroupAdServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class AdGroupAdServiceService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdServiceService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/AdGroupAdService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/AdGroupAdService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/AdGroupAdService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/AdGroupAdService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         ADGROUPADSERVICESERVICE_WSDL_LOCATION = url;

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "BalanceServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/BalanceService?wsdl")
+@WebServiceClient(name = "BalanceServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/BalanceService?wsdl")
 public class BalanceServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class BalanceServiceService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.BalanceService.BalanceServiceService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/BalanceService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/BalanceService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/BalanceService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/BalanceService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         BALANCESERVICESERVICE_WSDL_LOCATION = url;

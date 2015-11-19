@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="device" type="{http://im.yahooapis.jp/V5}DeviceType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="deviceApp" type="{http://im.yahooapis.jp/V5}DeviceAppType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="deviceOs" type="{http://im.yahooapis.jp/V5}DeviceOsType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="smartDeviceCarriers" type="{http://im.yahooapis.jp/V5}SmartDeviceCarrier" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="dynamicImageExtensions" type="{http://im.yahooapis.jp/V5}DynamicImageExtensions" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -49,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
     "device",
     "deviceApp",
     "deviceOs",
+    "smartDeviceCarriers",
     "dynamicImageExtensions"
 })
 public class AdGroup {
@@ -63,6 +65,7 @@ public class AdGroup {
     protected List<DeviceType> device;
     protected List<DeviceAppType> deviceApp;
     protected List<DeviceOsType> deviceOs;
+    protected List<SmartDeviceCarrier> smartDeviceCarriers;
     protected DynamicImageExtensions dynamicImageExtensions;
 
     /**
@@ -302,6 +305,35 @@ public class AdGroup {
             deviceOs = new ArrayList<DeviceOsType>();
         }
         return this.deviceOs;
+    }
+
+    /**
+     * Gets the value of the smartDeviceCarriers property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the smartDeviceCarriers property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getSmartDeviceCarriers().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link SmartDeviceCarrier }
+     * 
+     * 
+     */
+    public List<SmartDeviceCarrier> getSmartDeviceCarriers() {
+        if (smartDeviceCarriers == null) {
+            smartDeviceCarriers = new ArrayList<SmartDeviceCarrier>();
+        }
+        return this.smartDeviceCarriers;
     }
 
     /**

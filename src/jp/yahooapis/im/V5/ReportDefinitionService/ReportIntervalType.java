@@ -6,12 +6,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ReportFrequency.
+ * <p>Java class for ReportIntervalType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="ReportFrequency">
+ * &lt;simpleType name="ReportIntervalType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="ONETIME"/>
  *     &lt;enumeration value="DAILY"/>
@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  * 
  */
-@XmlType(name = "ReportFrequency")
+@XmlType(name = "ReportIntervalType")
 @XmlEnum
-public enum ReportFrequency {
+public enum ReportIntervalType {
 
     ONETIME,
     DAILY,
@@ -47,7 +47,7 @@ public enum ReportFrequency {
         return name();
     }
 
-    public static ReportFrequency fromValue(String v) {
+    public static ReportIntervalType fromValue(String v) {
         return valueOf(v);
     }
 

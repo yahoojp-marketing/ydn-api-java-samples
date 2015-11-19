@@ -18,8 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="reportType" type="{http://im.yahooapis.jp/V5}ReportType"/>
+ *         &lt;element name="reportCategory" type="{http://im.yahooapis.jp/V5}ReportCategory"/>
  *         &lt;element name="lang" type="{http://im.yahooapis.jp/V5}ReportLang" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -31,56 +30,38 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "accountId",
-    "reportType",
+    "reportCategory",
     "lang"
 })
 @XmlRootElement(name = "getReportFields")
 public class GetReportFields {
 
-    protected long accountId;
     @XmlElement(required = true)
-    protected ReportType reportType;
+    protected ReportCategory reportCategory;
     protected ReportLang lang;
 
     /**
-     * Gets the value of the accountId property.
-     * 
-     */
-    public long getAccountId() {
-        return accountId;
-    }
-
-    /**
-     * Sets the value of the accountId property.
-     * 
-     */
-    public void setAccountId(long value) {
-        this.accountId = value;
-    }
-
-    /**
-     * Gets the value of the reportType property.
+     * Gets the value of the reportCategory property.
      * 
      * @return
      *     possible object is
-     *     {@link ReportType }
+     *     {@link ReportCategory }
      *     
      */
-    public ReportType getReportType() {
-        return reportType;
+    public ReportCategory getReportCategory() {
+        return reportCategory;
     }
 
     /**
-     * Sets the value of the reportType property.
+     * Sets the value of the reportCategory property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ReportType }
+     *     {@link ReportCategory }
      *     
      */
-    public void setReportType(ReportType value) {
-        this.reportType = value;
+    public void setReportCategory(ReportCategory value) {
+        this.reportCategory = value;
     }
 
     /**

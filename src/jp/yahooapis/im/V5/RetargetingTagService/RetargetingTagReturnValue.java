@@ -1,5 +1,5 @@
 
-package jp.yahooapis.im.V5.ReportService;
+package jp.yahooapis.im.V5.RetargetingTagService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,18 +9,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ReportClosedDateValue complex type.
+ * <p>Java class for RetargetingTagReturnValue complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ReportClosedDateValue">
+ * &lt;complexType name="RetargetingTagReturnValue">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://im.yahooapis.jp/V5}ListReturnValue">
  *       &lt;sequence>
- *         &lt;element name="values" type="{http://im.yahooapis.jp/V5}ReportClosedDateRecord" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="values" type="{http://im.yahooapis.jp/V5}RetargetingTagValues" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -28,12 +28,14 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ReportClosedDateValue", propOrder = {
+@XmlType(name = "RetargetingTagReturnValue", propOrder = {
     "values"
 })
-public class ReportClosedDateValue {
+public class RetargetingTagReturnValue
+    extends ListReturnValue
+{
 
-    protected List<ReportClosedDateRecord> values;
+    protected List<RetargetingTagValues> values;
 
     /**
      * Gets the value of the values property.
@@ -53,13 +55,13 @@ public class ReportClosedDateValue {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ReportClosedDateRecord }
+     * {@link RetargetingTagValues }
      * 
      * 
      */
-    public List<ReportClosedDateRecord> getValues() {
+    public List<RetargetingTagValues> getValues() {
         if (values == null) {
-            values = new ArrayList<ReportClosedDateRecord>();
+            values = new ArrayList<RetargetingTagValues>();
         }
         return this.values;
     }

@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="operations" type="{http://im.yahooapis.jp/V5}ReportOperation"/>
+ *         &lt;element name="operations" type="{http://im.yahooapis.jp/V5}ReportJobOperation"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,17 +35,17 @@ import javax.xml.bind.annotation.XmlType;
 public class Mutate {
 
     @XmlElement(required = true)
-    protected ReportOperation operations;
+    protected ReportJobOperation operations;
 
     /**
      * Gets the value of the operations property.
      * 
      * @return
      *     possible object is
-     *     {@link ReportOperation }
+     *     {@link ReportJobOperation }
      *     
      */
-    public ReportOperation getOperations() {
+    public ReportJobOperation getOperations() {
         return operations;
     }
 
@@ -54,10 +54,10 @@ public class Mutate {
      * 
      * @param value
      *     allowed object is
-     *     {@link ReportOperation }
+     *     {@link ReportJobOperation }
      *     
      */
-    public void setOperations(ReportOperation value) {
+    public void setOperations(ReportJobOperation value) {
         this.operations = value;
     }
 

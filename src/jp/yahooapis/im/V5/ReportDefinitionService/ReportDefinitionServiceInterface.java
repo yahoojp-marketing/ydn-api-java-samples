@@ -66,9 +66,8 @@ public interface ReportDefinitionServiceInterface {
 
     /**
      * 
+     * @param reportCategory
      * @param rval
-     * @param reportType
-     * @param accountId
      * @param error
      * @param lang
      * @throws ApiException
@@ -77,10 +76,8 @@ public interface ReportDefinitionServiceInterface {
     @RequestWrapper(localName = "getReportFields", targetNamespace = "http://im.yahooapis.jp/V5", className = "jp.yahooapis.im.V5.ReportDefinitionService.GetReportFields")
     @ResponseWrapper(localName = "getReportFieldsResponse", targetNamespace = "http://im.yahooapis.jp/V5", className = "jp.yahooapis.im.V5.ReportDefinitionService.GetReportFieldsResponse")
     public void getReportFields(
-        @WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V5")
-        long accountId,
-        @WebParam(name = "reportType", targetNamespace = "http://im.yahooapis.jp/V5")
-        ReportType reportType,
+        @WebParam(name = "reportCategory", targetNamespace = "http://im.yahooapis.jp/V5")
+        ReportCategory reportCategory,
         @WebParam(name = "lang", targetNamespace = "http://im.yahooapis.jp/V5")
         ReportLang lang,
         @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V5", mode = WebParam.Mode.OUT)

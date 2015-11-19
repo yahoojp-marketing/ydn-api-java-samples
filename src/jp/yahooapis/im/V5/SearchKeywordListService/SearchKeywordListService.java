@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "SearchKeywordListService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/SearchKeywordListService?wsdl")
+@WebServiceClient(name = "SearchKeywordListService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/SearchKeywordListService?wsdl")
 public class SearchKeywordListService
     extends Service
 {
@@ -30,9 +30,9 @@ public class SearchKeywordListService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordListService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/SearchKeywordListService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/SearchKeywordListService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/SearchKeywordListService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/SearchKeywordListService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         SEARCHKEYWORDLISTSERVICE_WSDL_LOCATION = url;

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "RetargetingTagService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/RetargetingTagService?wsdl")
+@WebServiceClient(name = "RetargetingTagService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/RetargetingTagService?wsdl")
 public class RetargetingTagService
     extends Service
 {
@@ -30,9 +30,9 @@ public class RetargetingTagService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/RetargetingTagService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/RetargetingTagService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/RetargetingTagService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/RetargetingTagService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         RETARGETINGTAGSERVICE_WSDL_LOCATION = url;

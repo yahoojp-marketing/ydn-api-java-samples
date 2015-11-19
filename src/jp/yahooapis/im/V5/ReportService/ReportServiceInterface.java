@@ -96,7 +96,7 @@ public interface ReportServiceInterface {
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V5", className = "jp.yahooapis.im.V5.ReportService.MutateResponse")
     public void mutate(
         @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V5")
-        ReportOperation operations,
+        ReportJobOperation operations,
         @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V5", mode = WebParam.Mode.OUT)
         Holder<ReportReturnValue> rval,
         @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V5", mode = WebParam.Mode.OUT)

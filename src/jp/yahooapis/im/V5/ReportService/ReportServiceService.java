@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "ReportServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/ReportService?wsdl")
+@WebServiceClient(name = "ReportServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/ReportService?wsdl")
 public class ReportServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class ReportServiceService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.ReportService.ReportServiceService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/ReportService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/ReportService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/ReportService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/ReportService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         REPORTSERVICESERVICE_WSDL_LOCATION = url;

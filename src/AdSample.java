@@ -31,6 +31,7 @@ import jp.yahooapis.im.V5.AdGroupService.DeviceOsType;
 import jp.yahooapis.im.V5.AdGroupService.DeviceType;
 import jp.yahooapis.im.V5.AdGroupService.DynamicImageExtensions;
 import jp.yahooapis.im.V5.AdGroupService.ManualCPCAdGroupBid;
+import jp.yahooapis.im.V5.AdGroupService.SmartDeviceCarrier;
 import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetList;
 import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetOperation;
 import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetPage;
@@ -304,6 +305,7 @@ public class AdSample {
       addAdGroupOperand.getDeviceOs().add(DeviceOsType.IOS);
       addAdGroupOperand.getDeviceApp().add(DeviceAppType.APP);
       addAdGroupOperand.setDynamicImageExtensions(DynamicImageExtensions.ACTIVE);
+      addAdGroupOperand.getSmartDeviceCarriers().add(SmartDeviceCarrier.DOCOMO);
 
       AdGroupOperation addAdGroupOperation = new AdGroupOperation();
       addAdGroupOperation.setOperator(jp.yahooapis.im.V5.AdGroupService.Operator.ADD);
@@ -414,6 +416,7 @@ public class AdSample {
       setAdGroupOperand.getDeviceOs().add(DeviceOsType.IOS);
       setAdGroupOperand.getDeviceApp().add(DeviceAppType.APP);
       setAdGroupOperand.setDynamicImageExtensions(DynamicImageExtensions.PAUSED);
+      setAdGroupOperand.getSmartDeviceCarriers().add(SmartDeviceCarrier.KDDI);
 
       AdGroupOperation setAdGroupOperation = new AdGroupOperation();
       setAdGroupOperation.setOperator(jp.yahooapis.im.V5.AdGroupService.Operator.SET);
@@ -1013,7 +1016,10 @@ public class AdSample {
     System.out.println("device = " + SoapUtils.arrayToLine(adGroup.getDevice().toArray()));
     System.out.println("deviceOs = " + SoapUtils.arrayToLine(adGroup.getDeviceOs().toArray()));
     System.out.println("deviceApp = " + SoapUtils.arrayToLine(adGroup.getDeviceApp().toArray()));
-    System.out.println("dynamicImageExtensions = " + adGroup.getDynamicImageExtensions().toString());
+    System.out
+        .println("dynamicImageExtensions = " + adGroup.getDynamicImageExtensions().toString());
+    System.out.println("smartDeviceCarriers = "
+        + adGroup.getSmartDeviceCarriers().get(0).toString());
     System.out.println("---------");
   }
 

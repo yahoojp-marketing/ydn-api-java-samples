@@ -1,5 +1,5 @@
 
-package jp.yahooapis.im.V5.ReportService;
+package jp.yahooapis.im.V5.RetargetingTagService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
     "operator"
 })
 @XmlSeeAlso({
-    ReportJobOperation.class
+    RetargetingTagOperation.class
 })
 public abstract class Operation {
 

@@ -36,59 +36,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CampaignSelector }
+     * Create an instance of {@link Error }
      * 
      */
-    public CampaignSelector createCampaignSelector() {
-        return new CampaignSelector();
+    public Error createError() {
+        return new Error();
     }
 
     /**
-     * Create an instance of {@link SoapHeader }
+     * Create an instance of {@link CampaignOperation }
      * 
      */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
-    }
-
-    /**
-     * Create an instance of {@link Get }
-     * 
-     */
-    public Get createGet() {
-        return new Get();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link GetResponse }
-     * 
-     */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
-    }
-
-    /**
-     * Create an instance of {@link CampaignValues }
-     * 
-     */
-    public CampaignValues createCampaignValues() {
-        return new CampaignValues();
-    }
-
-    /**
-     * Create an instance of {@link Paging }
-     * 
-     */
-    public Paging createPaging() {
-        return new Paging();
+    public CampaignOperation createCampaignOperation() {
+        return new CampaignOperation();
     }
 
     /**
@@ -116,35 +76,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Budget }
+     * Create an instance of {@link ManualCPC }
      * 
      */
-    public Budget createBudget() {
-        return new Budget();
+    public ManualCPC createManualCPC() {
+        return new ManualCPC();
     }
 
     /**
-     * Create an instance of {@link Error }
+     * Create an instance of {@link Get }
      * 
      */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link Campaign }
-     * 
-     */
-    public Campaign createCampaign() {
-        return new Campaign();
-    }
-
-    /**
-     * Create an instance of {@link Mutate }
-     * 
-     */
-    public Mutate createMutate() {
-        return new Mutate();
+    public Get createGet() {
+        return new Get();
     }
 
     /**
@@ -156,19 +100,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CampaignOperation }
-     * 
-     */
-    public CampaignOperation createCampaignOperation() {
-        return new CampaignOperation();
-    }
-
-    /**
      * Create an instance of {@link SoapResponseHeader }
      * 
      */
     public SoapResponseHeader createSoapResponseHeader() {
         return new SoapResponseHeader();
+    }
+
+    /**
+     * Create an instance of {@link Paging }
+     * 
+     */
+    public Paging createPaging() {
+        return new Paging();
+    }
+
+    /**
+     * Create an instance of {@link CampaignValues }
+     * 
+     */
+    public CampaignValues createCampaignValues() {
+        return new CampaignValues();
+    }
+
+    /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link CampaignSelector }
+     * 
+     */
+    public CampaignSelector createCampaignSelector() {
+        return new CampaignSelector();
+    }
+
+    /**
+     * Create an instance of {@link Campaign }
+     * 
+     */
+    public Campaign createCampaign() {
+        return new Campaign();
     }
 
     /**
@@ -180,11 +164,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ManualCPC }
+     * Create an instance of {@link Budget }
      * 
      */
-    public ManualCPC createManualCPC() {
-        return new ManualCPC();
+    public Budget createBudget() {
+        return new Budget();
+    }
+
+    /**
+     * Create an instance of {@link Mutate }
+     * 
+     */
+    public Mutate createMutate() {
+        return new Mutate();
+    }
+
+    /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
     }
 
     /**

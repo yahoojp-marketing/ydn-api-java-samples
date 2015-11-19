@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="retargetingTagId" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="approvalStatus" type="{http://im.yahooapis.jp/V5}RetargetingTagApprovalStatus" minOccurs="0"/>
+ *         &lt;element name="tag" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "RetargetingTag", propOrder = {
     "retargetingTagId",
     "accountId",
-    "approvalStatus"
+    "approvalStatus",
+    "tag"
 })
 public class RetargetingTag {
 
@@ -40,6 +42,7 @@ public class RetargetingTag {
     protected String retargetingTagId;
     protected long accountId;
     protected RetargetingTagApprovalStatus approvalStatus;
+    protected String tag;
 
     /**
      * Gets the value of the retargetingTagId property.
@@ -103,6 +106,30 @@ public class RetargetingTag {
      */
     public void setApprovalStatus(RetargetingTagApprovalStatus value) {
         this.approvalStatus = value;
+    }
+
+    /**
+     * Gets the value of the tag property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTag() {
+        return tag;
+    }
+
+    /**
+     * Sets the value of the tag property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTag(String value) {
+        this.tag = value;
     }
 
 }

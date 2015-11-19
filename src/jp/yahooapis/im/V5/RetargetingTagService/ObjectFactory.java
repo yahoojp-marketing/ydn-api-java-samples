@@ -36,30 +36,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Error }
-     * 
-     */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link RetargetingTagPage }
-     * 
-     */
-    public RetargetingTagPage createRetargetingTagPage() {
-        return new RetargetingTagPage();
-    }
-
-    /**
-     * Create an instance of {@link SoapHeader }
-     * 
-     */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
-    }
-
-    /**
      * Create an instance of {@link SoapResponseHeader }
      * 
      */
@@ -68,27 +44,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetResponse }
+     * Create an instance of {@link MutateResponse }
      * 
      */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
+    public MutateResponse createMutateResponse() {
+        return new MutateResponse();
     }
 
     /**
-     * Create an instance of {@link Get }
+     * Create an instance of {@link RetargetingTagOperation }
      * 
      */
-    public Get createGet() {
-        return new Get();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
+    public RetargetingTagOperation createRetargetingTagOperation() {
+        return new RetargetingTagOperation();
     }
 
     /**
@@ -100,11 +68,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RetargetingTagSelector }
+     * Create an instance of {@link RetargetingTagReturnValue }
      * 
      */
-    public RetargetingTagSelector createRetargetingTagSelector() {
-        return new RetargetingTagSelector();
+    public RetargetingTagReturnValue createRetargetingTagReturnValue() {
+        return new RetargetingTagReturnValue();
+    }
+
+    /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
+    }
+
+    /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
+     * Create an instance of {@link RetargetingTagPage }
+     * 
+     */
+    public RetargetingTagPage createRetargetingTagPage() {
+        return new RetargetingTagPage();
+    }
+
+    /**
+     * Create an instance of {@link Mutate }
+     * 
+     */
+    public Mutate createMutate() {
+        return new Mutate();
     }
 
     /**
@@ -113,6 +113,38 @@ public class ObjectFactory {
      */
     public RetargetingTag createRetargetingTag() {
         return new RetargetingTag();
+    }
+
+    /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link Get }
+     * 
+     */
+    public Get createGet() {
+        return new Get();
+    }
+
+    /**
+     * Create an instance of {@link RetargetingTagSelector }
+     * 
+     */
+    public RetargetingTagSelector createRetargetingTagSelector() {
+        return new RetargetingTagSelector();
     }
 
     /**

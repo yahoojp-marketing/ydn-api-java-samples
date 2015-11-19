@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ReportOperation complex type.
+ * <p>Java class for ReportJobOperation complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ReportOperation">
+ * &lt;complexType name="ReportJobOperation">
  *   &lt;complexContent>
  *     &lt;extension base="{http://im.yahooapis.jp/V5}Operation">
  *       &lt;sequence>
@@ -30,11 +30,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ReportOperation", propOrder = {
+@XmlType(name = "ReportJobOperation", propOrder = {
     "accountId",
     "operand"
 })
-public class ReportOperation
+public class ReportJobOperation
     extends Operation
 {
 

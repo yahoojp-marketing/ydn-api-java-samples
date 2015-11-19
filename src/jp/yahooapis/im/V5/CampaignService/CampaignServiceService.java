@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "CampaignServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/CampaignService?wsdl")
+@WebServiceClient(name = "CampaignServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/CampaignService?wsdl")
 public class CampaignServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class CampaignServiceService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.CampaignService.CampaignServiceService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/CampaignService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/CampaignService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/CampaignService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/CampaignService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         CAMPAIGNSERVICESERVICE_WSDL_LOCATION = url;
