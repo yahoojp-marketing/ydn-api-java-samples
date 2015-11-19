@@ -1,25 +1,25 @@
 
-package jp.yahooapis.im.V5.ReportService;
+package jp.yahooapis.im.V5.RetargetingTagService;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ReturnValue complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ReturnValue">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="operationSucceeded" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="rval" type="{http://im.yahooapis.jp/V5}RetargetingTagReturnValue" minOccurs="0"/>
  *         &lt;element name="error" type="{http://im.yahooapis.jp/V5}Error" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -30,42 +30,38 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ReturnValue", propOrder = {
-    "operationSucceeded",
+@XmlType(name = "", propOrder = {
+    "rval",
     "error"
 })
-@XmlSeeAlso({
-    ReportClosedDateRecord.class,
-    ReportDownloadUrlValues.class,
-    ReportValues.class
-})
-public abstract class ReturnValue {
+@XmlRootElement(name = "mutateResponse")
+public class MutateResponse {
 
-    protected Boolean operationSucceeded;
+    protected RetargetingTagReturnValue rval;
     protected List<Error> error;
 
     /**
-     * Gets the value of the operationSucceeded property.
+     * Gets the value of the rval property.
      * 
      * @return
      *     possible object is
-     *     {@link Boolean }
+     *     {@link RetargetingTagReturnValue }
      *     
      */
-    public Boolean isOperationSucceeded() {
-        return operationSucceeded;
+    public RetargetingTagReturnValue getRval() {
+        return rval;
     }
 
     /**
-     * Sets the value of the operationSucceeded property.
+     * Sets the value of the rval property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Boolean }
+     *     {@link RetargetingTagReturnValue }
      *     
      */
-    public void setOperationSucceeded(Boolean value) {
-        this.operationSucceeded = value;
+    public void setRval(RetargetingTagReturnValue value) {
+        this.rval = value;
     }
 
     /**

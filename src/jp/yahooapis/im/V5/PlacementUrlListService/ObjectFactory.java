@@ -36,35 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Mutate }
+     * Create an instance of {@link Get }
      * 
      */
-    public Mutate createMutate() {
-        return new Mutate();
-    }
-
-    /**
-     * Create an instance of {@link UrlList }
-     * 
-     */
-    public UrlList createUrlList() {
-        return new UrlList();
-    }
-
-    /**
-     * Create an instance of {@link SoapHeader }
-     * 
-     */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
-    }
-
-    /**
-     * Create an instance of {@link PlacementUrlListOperation }
-     * 
-     */
-    public PlacementUrlListOperation createPlacementUrlListOperation() {
-        return new PlacementUrlListOperation();
+    public Get createGet() {
+        return new Get();
     }
 
     /**
@@ -76,11 +52,75 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link PlacementUrlList }
+     * 
+     */
+    public PlacementUrlList createPlacementUrlList() {
+        return new PlacementUrlList();
+    }
+
+    /**
      * Create an instance of {@link Paging }
      * 
      */
     public Paging createPaging() {
         return new Paging();
+    }
+
+    /**
+     * Create an instance of {@link PlacementUrlListReturnValue }
+     * 
+     */
+    public PlacementUrlListReturnValue createPlacementUrlListReturnValue() {
+        return new PlacementUrlListReturnValue();
+    }
+
+    /**
+     * Create an instance of {@link Mutate }
+     * 
+     */
+    public Mutate createMutate() {
+        return new Mutate();
+    }
+
+    /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
+    }
+
+    /**
+     * Create an instance of {@link UrlList }
+     * 
+     */
+    public UrlList createUrlList() {
+        return new UrlList();
+    }
+
+    /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
+     * Create an instance of {@link PlacementUrlListOperation }
+     * 
+     */
+    public PlacementUrlListOperation createPlacementUrlListOperation() {
+        return new PlacementUrlListOperation();
     }
 
     /**
@@ -92,11 +132,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Error }
+     * Create an instance of {@link PlacementUrlListPage }
      * 
      */
-    public Error createError() {
-        return new Error();
+    public PlacementUrlListPage createPlacementUrlListPage() {
+        return new PlacementUrlListPage();
     }
 
     /**
@@ -116,51 +156,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ErrorDetail }
+     * Create an instance of {@link Error }
      * 
      */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link GetResponse }
-     * 
-     */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
-    }
-
-    /**
-     * Create an instance of {@link PlacementUrlListPage }
-     * 
-     */
-    public PlacementUrlListPage createPlacementUrlListPage() {
-        return new PlacementUrlListPage();
-    }
-
-    /**
-     * Create an instance of {@link PlacementUrlListReturnValue }
-     * 
-     */
-    public PlacementUrlListReturnValue createPlacementUrlListReturnValue() {
-        return new PlacementUrlListReturnValue();
-    }
-
-    /**
-     * Create an instance of {@link Get }
-     * 
-     */
-    public Get createGet() {
-        return new Get();
-    }
-
-    /**
-     * Create an instance of {@link PlacementUrlList }
-     * 
-     */
-    public PlacementUrlList createPlacementUrlList() {
-        return new PlacementUrlList();
+    public Error createError() {
+        return new Error();
     }
 
     /**

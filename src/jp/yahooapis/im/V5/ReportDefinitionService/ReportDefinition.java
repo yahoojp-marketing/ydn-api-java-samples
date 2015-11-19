@@ -20,19 +20,17 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="reportId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="campaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="reportName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="reportType" type="{http://im.yahooapis.jp/V5}ReportType" minOccurs="0"/>
  *         &lt;element name="dateRangeType" type="{http://im.yahooapis.jp/V5}ReportDateRangeType" minOccurs="0"/>
  *         &lt;element name="dateRange" type="{http://im.yahooapis.jp/V5}ReportDateRange" minOccurs="0"/>
- *         &lt;element name="sort" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="segments" type="{http://im.yahooapis.jp/V5}ReportSegment" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="frequencyRange" type="{http://im.yahooapis.jp/V5}ReportFrequencyRange" minOccurs="0"/>
+ *         &lt;element name="sortFields" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="fields" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="format" type="{http://im.yahooapis.jp/V5}ReportDownloadFormat" minOccurs="0"/>
  *         &lt;element name="encode" type="{http://im.yahooapis.jp/V5}ReportDownloadEncode" minOccurs="0"/>
  *         &lt;element name="zip" type="{http://im.yahooapis.jp/V5}ReportZip" minOccurs="0"/>
  *         &lt;element name="lang" type="{http://im.yahooapis.jp/V5}ReportLang" minOccurs="0"/>
- *         &lt;element name="frequency" type="{http://im.yahooapis.jp/V5}ReportFrequency" minOccurs="0"/>
+ *         &lt;element name="intervalType" type="{http://im.yahooapis.jp/V5}ReportIntervalType" minOccurs="0"/>
  *         &lt;element name="specifyDay" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="addTemplate" type="{http://im.yahooapis.jp/V5}ReportAddTemplate" minOccurs="0"/>
  *       &lt;/sequence>
@@ -47,19 +45,17 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ReportDefinition", propOrder = {
     "reportId",
     "accountId",
-    "campaignId",
     "reportName",
-    "reportType",
     "dateRangeType",
     "dateRange",
-    "sort",
-    "segments",
+    "frequencyRange",
+    "sortFields",
     "fields",
     "format",
     "encode",
     "zip",
     "lang",
-    "frequency",
+    "intervalType",
     "specifyDay",
     "addTemplate"
 })
@@ -67,19 +63,17 @@ public class ReportDefinition {
 
     protected Long reportId;
     protected Long accountId;
-    protected Long campaignId;
     protected String reportName;
-    protected ReportType reportType;
     protected ReportDateRangeType dateRangeType;
     protected ReportDateRange dateRange;
-    protected String sort;
-    protected List<ReportSegment> segments;
+    protected ReportFrequencyRange frequencyRange;
+    protected List<String> sortFields;
     protected List<String> fields;
     protected ReportDownloadFormat format;
     protected ReportDownloadEncode encode;
     protected ReportZip zip;
     protected ReportLang lang;
-    protected ReportFrequency frequency;
+    protected ReportIntervalType intervalType;
     protected Integer specifyDay;
     protected ReportAddTemplate addTemplate;
 
@@ -132,30 +126,6 @@ public class ReportDefinition {
     }
 
     /**
-     * Gets the value of the campaignId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getCampaignId() {
-        return campaignId;
-    }
-
-    /**
-     * Sets the value of the campaignId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setCampaignId(Long value) {
-        this.campaignId = value;
-    }
-
-    /**
      * Gets the value of the reportName property.
      * 
      * @return
@@ -177,30 +147,6 @@ public class ReportDefinition {
      */
     public void setReportName(String value) {
         this.reportName = value;
-    }
-
-    /**
-     * Gets the value of the reportType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ReportType }
-     *     
-     */
-    public ReportType getReportType() {
-        return reportType;
-    }
-
-    /**
-     * Sets the value of the reportType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ReportType }
-     *     
-     */
-    public void setReportType(ReportType value) {
-        this.reportType = value;
     }
 
     /**
@@ -252,56 +198,56 @@ public class ReportDefinition {
     }
 
     /**
-     * Gets the value of the sort property.
+     * Gets the value of the frequencyRange property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ReportFrequencyRange }
      *     
      */
-    public String getSort() {
-        return sort;
+    public ReportFrequencyRange getFrequencyRange() {
+        return frequencyRange;
     }
 
     /**
-     * Sets the value of the sort property.
+     * Sets the value of the frequencyRange property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ReportFrequencyRange }
      *     
      */
-    public void setSort(String value) {
-        this.sort = value;
+    public void setFrequencyRange(ReportFrequencyRange value) {
+        this.frequencyRange = value;
     }
 
     /**
-     * Gets the value of the segments property.
+     * Gets the value of the sortFields property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the segments property.
+     * This is why there is not a <CODE>set</CODE> method for the sortFields property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSegments().add(newItem);
+     *    getSortFields().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ReportSegment }
+     * {@link String }
      * 
      * 
      */
-    public List<ReportSegment> getSegments() {
-        if (segments == null) {
-            segments = new ArrayList<ReportSegment>();
+    public List<String> getSortFields() {
+        if (sortFields == null) {
+            sortFields = new ArrayList<String>();
         }
-        return this.segments;
+        return this.sortFields;
     }
 
     /**
@@ -430,27 +376,27 @@ public class ReportDefinition {
     }
 
     /**
-     * Gets the value of the frequency property.
+     * Gets the value of the intervalType property.
      * 
      * @return
      *     possible object is
-     *     {@link ReportFrequency }
+     *     {@link ReportIntervalType }
      *     
      */
-    public ReportFrequency getFrequency() {
-        return frequency;
+    public ReportIntervalType getIntervalType() {
+        return intervalType;
     }
 
     /**
-     * Sets the value of the frequency property.
+     * Sets the value of the intervalType property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ReportFrequency }
+     *     {@link ReportIntervalType }
      *     
      */
-    public void setFrequency(ReportFrequency value) {
-        this.frequency = value;
+    public void setIntervalType(ReportIntervalType value) {
+        this.intervalType = value;
     }
 
     /**

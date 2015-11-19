@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "MediaServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/MediaService?wsdl")
+@WebServiceClient(name = "MediaServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/MediaService?wsdl")
 public class MediaServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class MediaServiceService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.MediaService.MediaServiceService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/MediaService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/MediaService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/MediaService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/MediaService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         MEDIASERVICESERVICE_WSDL_LOCATION = url;

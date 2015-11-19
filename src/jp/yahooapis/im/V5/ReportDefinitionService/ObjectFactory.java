@@ -44,27 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportDefinitionFieldValue }
+     * Create an instance of {@link ReportDefinition }
      * 
      */
-    public ReportDefinitionFieldValue createReportDefinitionFieldValue() {
-        return new ReportDefinitionFieldValue();
-    }
-
-    /**
-     * Create an instance of {@link ReportDefinitionSelector }
-     * 
-     */
-    public ReportDefinitionSelector createReportDefinitionSelector() {
-        return new ReportDefinitionSelector();
-    }
-
-    /**
-     * Create an instance of {@link GetReportFields }
-     * 
-     */
-    public GetReportFields createGetReportFields() {
-        return new GetReportFields();
+    public ReportDefinition createReportDefinition() {
+        return new ReportDefinition();
     }
 
     /**
@@ -76,11 +60,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportDateRange }
+     * Create an instance of {@link GetReportFieldsResponse }
      * 
      */
-    public ReportDateRange createReportDateRange() {
-        return new ReportDateRange();
+    public GetReportFieldsResponse createGetReportFieldsResponse() {
+        return new GetReportFieldsResponse();
     }
 
     /**
@@ -92,11 +76,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MutateResponse }
+     * Create an instance of {@link ReportDefinitionOperation }
      * 
      */
-    public MutateResponse createMutateResponse() {
-        return new MutateResponse();
+    public ReportDefinitionOperation createReportDefinitionOperation() {
+        return new ReportDefinitionOperation();
+    }
+
+    /**
+     * Create an instance of {@link ReportDefinitionReturnValue }
+     * 
+     */
+    public ReportDefinitionReturnValue createReportDefinitionReturnValue() {
+        return new ReportDefinitionReturnValue();
+    }
+
+    /**
+     * Create an instance of {@link GetReportFields }
+     * 
+     */
+    public GetReportFields createGetReportFields() {
+        return new GetReportFields();
     }
 
     /**
@@ -108,11 +108,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SoapHeader }
+     * Create an instance of {@link ReportDefinitionPage }
      * 
      */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
+    public ReportDefinitionPage createReportDefinitionPage() {
+        return new ReportDefinitionPage();
+    }
+
+    /**
+     * Create an instance of {@link ReportDateRange }
+     * 
+     */
+    public ReportDateRange createReportDateRange() {
+        return new ReportDateRange();
+    }
+
+    /**
+     * Create an instance of {@link SoapResponseHeader }
+     * 
+     */
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
     }
 
     /**
@@ -124,19 +140,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Get }
+     * Create an instance of {@link MutateResponse }
      * 
      */
-    public Get createGet() {
-        return new Get();
+    public MutateResponse createMutateResponse() {
+        return new MutateResponse();
     }
 
     /**
-     * Create an instance of {@link ReportDefinitionPage }
+     * Create an instance of {@link ReportDefinitionSelector }
      * 
      */
-    public ReportDefinitionPage createReportDefinitionPage() {
-        return new ReportDefinitionPage();
+    public ReportDefinitionSelector createReportDefinitionSelector() {
+        return new ReportDefinitionSelector();
+    }
+
+    /**
+     * Create an instance of {@link ReportDefinitionFieldValue }
+     * 
+     */
+    public ReportDefinitionFieldValue createReportDefinitionFieldValue() {
+        return new ReportDefinitionFieldValue();
+    }
+
+    /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
     }
 
     /**
@@ -156,43 +188,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportDefinitionReturnValue }
+     * Create an instance of {@link Get }
      * 
      */
-    public ReportDefinitionReturnValue createReportDefinitionReturnValue() {
-        return new ReportDefinitionReturnValue();
-    }
-
-    /**
-     * Create an instance of {@link ReportDefinitionOperation }
-     * 
-     */
-    public ReportDefinitionOperation createReportDefinitionOperation() {
-        return new ReportDefinitionOperation();
-    }
-
-    /**
-     * Create an instance of {@link ReportDefinition }
-     * 
-     */
-    public ReportDefinition createReportDefinition() {
-        return new ReportDefinition();
-    }
-
-    /**
-     * Create an instance of {@link GetReportFieldsResponse }
-     * 
-     */
-    public GetReportFieldsResponse createGetReportFieldsResponse() {
-        return new GetReportFieldsResponse();
-    }
-
-    /**
-     * Create an instance of {@link SoapResponseHeader }
-     * 
-     */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
+    public Get createGet() {
+        return new Get();
     }
 
     /**

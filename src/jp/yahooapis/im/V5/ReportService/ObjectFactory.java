@@ -36,51 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SoapResponseHeader }
+     * Create an instance of {@link ReportClosedDateRecord }
      * 
      */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
-    }
-
-    /**
-     * Create an instance of {@link ReportReturnValue }
-     * 
-     */
-    public ReportReturnValue createReportReturnValue() {
-        return new ReportReturnValue();
-    }
-
-    /**
-     * Create an instance of {@link ReportPage }
-     * 
-     */
-    public ReportPage createReportPage() {
-        return new ReportPage();
-    }
-
-    /**
-     * Create an instance of {@link ReportDateRange }
-     * 
-     */
-    public ReportDateRange createReportDateRange() {
-        return new ReportDateRange();
-    }
-
-    /**
-     * Create an instance of {@link ReportDownloadUrlPage }
-     * 
-     */
-    public ReportDownloadUrlPage createReportDownloadUrlPage() {
-        return new ReportDownloadUrlPage();
-    }
-
-    /**
-     * Create an instance of {@link GetDownloadUrl }
-     * 
-     */
-    public GetDownloadUrl createGetDownloadUrl() {
-        return new GetDownloadUrl();
+    public ReportClosedDateRecord createReportClosedDateRecord() {
+        return new ReportClosedDateRecord();
     }
 
     /**
@@ -92,51 +52,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportClosedDateSelector }
-     * 
-     */
-    public ReportClosedDateSelector createReportClosedDateSelector() {
-        return new ReportClosedDateSelector();
-    }
-
-    /**
-     * Create an instance of {@link GetDownloadUrlResponse }
-     * 
-     */
-    public GetDownloadUrlResponse createGetDownloadUrlResponse() {
-        return new GetDownloadUrlResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetClosedDate }
-     * 
-     */
-    public GetClosedDate createGetClosedDate() {
-        return new GetClosedDate();
-    }
-
-    /**
-     * Create an instance of {@link ReportDownloadUrlValues }
-     * 
-     */
-    public ReportDownloadUrlValues createReportDownloadUrlValues() {
-        return new ReportDownloadUrlValues();
-    }
-
-    /**
      * Create an instance of {@link GetResponse }
      * 
      */
     public GetResponse createGetResponse() {
         return new GetResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetClosedDateResponse }
-     * 
-     */
-    public GetClosedDateResponse createGetClosedDateResponse() {
-        return new GetClosedDateResponse();
     }
 
     /**
@@ -148,11 +68,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportOperation }
+     * Create an instance of {@link ReportDateRange }
      * 
      */
-    public ReportOperation createReportOperation() {
-        return new ReportOperation();
+    public ReportDateRange createReportDateRange() {
+        return new ReportDateRange();
     }
 
     /**
@@ -164,19 +84,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ErrorDetail }
+     * Create an instance of {@link Mutate }
      * 
      */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link ReportRecord }
-     * 
-     */
-    public ReportRecord createReportRecord() {
-        return new ReportRecord();
+    public Mutate createMutate() {
+        return new Mutate();
     }
 
     /**
@@ -188,6 +100,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetClosedDate }
+     * 
+     */
+    public GetClosedDate createGetClosedDate() {
+        return new GetClosedDate();
+    }
+
+    /**
+     * Create an instance of {@link ReportReturnValue }
+     * 
+     */
+    public ReportReturnValue createReportReturnValue() {
+        return new ReportReturnValue();
+    }
+
+    /**
      * Create an instance of {@link ReportValues }
      * 
      */
@@ -196,27 +124,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Mutate }
+     * Create an instance of {@link ReportClosedDateSelector }
      * 
      */
-    public Mutate createMutate() {
-        return new Mutate();
+    public ReportClosedDateSelector createReportClosedDateSelector() {
+        return new ReportClosedDateSelector();
     }
 
     /**
-     * Create an instance of {@link ReportDownloadUrl }
+     * Create an instance of {@link Error }
      * 
      */
-    public ReportDownloadUrl createReportDownloadUrl() {
-        return new ReportDownloadUrl();
+    public Error createError() {
+        return new Error();
     }
 
     /**
-     * Create an instance of {@link ReportSelector }
+     * Create an instance of {@link ReportDownloadUrlValues }
      * 
      */
-    public ReportSelector createReportSelector() {
-        return new ReportSelector();
+    public ReportDownloadUrlValues createReportDownloadUrlValues() {
+        return new ReportDownloadUrlValues();
+    }
+
+    /**
+     * Create an instance of {@link GetClosedDateResponse }
+     * 
+     */
+    public GetClosedDateResponse createGetClosedDateResponse() {
+        return new GetClosedDateResponse();
     }
 
     /**
@@ -228,6 +164,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SoapResponseHeader }
+     * 
+     */
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
+    }
+
+    /**
      * Create an instance of {@link ReportDownloadUrlSelector }
      * 
      */
@@ -236,11 +180,75 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Error }
+     * Create an instance of {@link ErrorDetail }
      * 
      */
-    public Error createError() {
-        return new Error();
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link ReportJobOperation }
+     * 
+     */
+    public ReportJobOperation createReportJobOperation() {
+        return new ReportJobOperation();
+    }
+
+    /**
+     * Create an instance of {@link ReportSelector }
+     * 
+     */
+    public ReportSelector createReportSelector() {
+        return new ReportSelector();
+    }
+
+    /**
+     * Create an instance of {@link GetDownloadUrl }
+     * 
+     */
+    public GetDownloadUrl createGetDownloadUrl() {
+        return new GetDownloadUrl();
+    }
+
+    /**
+     * Create an instance of {@link ReportRecord }
+     * 
+     */
+    public ReportRecord createReportRecord() {
+        return new ReportRecord();
+    }
+
+    /**
+     * Create an instance of {@link ReportDownloadUrl }
+     * 
+     */
+    public ReportDownloadUrl createReportDownloadUrl() {
+        return new ReportDownloadUrl();
+    }
+
+    /**
+     * Create an instance of {@link ReportDownloadUrlPage }
+     * 
+     */
+    public ReportDownloadUrlPage createReportDownloadUrlPage() {
+        return new ReportDownloadUrlPage();
+    }
+
+    /**
+     * Create an instance of {@link GetDownloadUrlResponse }
+     * 
+     */
+    public GetDownloadUrlResponse createGetDownloadUrlResponse() {
+        return new GetDownloadUrlResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReportPage }
+     * 
+     */
+    public ReportPage createReportPage() {
+        return new ReportPage();
     }
 
     /**

@@ -6,6 +6,7 @@ import javax.xml.ws.Holder;
 import jp.yahooapis.im.V5.ReportDefinitionService.Error;
 import jp.yahooapis.im.V5.ReportDefinitionService.Operator;
 import jp.yahooapis.im.V5.ReportDefinitionService.ReportAddTemplate;
+import jp.yahooapis.im.V5.ReportDefinitionService.ReportCategory;
 import jp.yahooapis.im.V5.ReportDefinitionService.ReportDateRangeType;
 import jp.yahooapis.im.V5.ReportDefinitionService.ReportDefinition;
 import jp.yahooapis.im.V5.ReportDefinitionService.ReportDefinitionField;
@@ -17,17 +18,17 @@ import jp.yahooapis.im.V5.ReportDefinitionService.ReportDefinitionServiceService
 import jp.yahooapis.im.V5.ReportDefinitionService.ReportDefinitionValues;
 import jp.yahooapis.im.V5.ReportDefinitionService.ReportDownloadEncode;
 import jp.yahooapis.im.V5.ReportDefinitionService.ReportDownloadFormat;
+import jp.yahooapis.im.V5.ReportDefinitionService.ReportFrequencyRange;
 import jp.yahooapis.im.V5.ReportDefinitionService.ReportLang;
-import jp.yahooapis.im.V5.ReportDefinitionService.ReportSegment;
-import jp.yahooapis.im.V5.ReportDefinitionService.ReportType;
+import jp.yahooapis.im.V5.ReportService.ReportClosedDateRecord;
 import jp.yahooapis.im.V5.ReportService.ReportClosedDateSelector;
 import jp.yahooapis.im.V5.ReportService.ReportClosedDateValue;
 import jp.yahooapis.im.V5.ReportService.ReportDownloadUrl;
 import jp.yahooapis.im.V5.ReportService.ReportDownloadUrlPage;
 import jp.yahooapis.im.V5.ReportService.ReportDownloadUrlSelector;
 import jp.yahooapis.im.V5.ReportService.ReportDownloadUrlValues;
+import jp.yahooapis.im.V5.ReportService.ReportJobOperation;
 import jp.yahooapis.im.V5.ReportService.ReportJobStatus;
-import jp.yahooapis.im.V5.ReportService.ReportOperation;
 import jp.yahooapis.im.V5.ReportService.ReportPage;
 import jp.yahooapis.im.V5.ReportService.ReportRecord;
 import jp.yahooapis.im.V5.ReportService.ReportReturnValue;
@@ -68,8 +69,8 @@ public class ReportDownloadSample {
       Holder<ReportDefinitionFieldValue> fieldsValueHolder =
           new Holder<ReportDefinitionFieldValue>();
       Holder<List<Error>> fieldsErrorHolder = new Holder<List<Error>>();
-      reportDefinitionService.getReportFields(SoapUtils.getAccountId(), ReportType.ACCOUNT,
-          ReportLang.EN, fieldsValueHolder, fieldsErrorHolder);
+      reportDefinitionService.getReportFields(ReportCategory.AD, ReportLang.EN, fieldsValueHolder,
+          fieldsErrorHolder);
 
       // if error
       if (fieldsErrorHolder.value != null && fieldsErrorHolder.value.size() > 0) {
@@ -98,22 +99,20 @@ public class ReportDownloadSample {
 
       ReportDefinition reportDefinition = new ReportDefinition();
       reportDefinition.setAccountId(SoapUtils.getAccountId());
-      reportDefinition.setReportType(ReportType.ACCOUNT);
       reportDefinition.setReportName("TEST_ACCOUNT_REPORT");
       reportDefinition.setDateRangeType(ReportDateRangeType.YESTERDAY);
       // fileds
       reportDefinition.getFields().addAll(
-          Arrays.asList("ACCOUNTNAME", "ACCOUNTID", "DAY", "DEVICE", "IMPRESSIONS", "CLICKS",
-              "CTR", "AVERAGEPOSITION", "COST", "AVERAGECPC", "TOTALCONVERSIONS",
-              "TOTALCONVERSIONRATE", "COSTTOTALCONVERSIONS"));
+          Arrays.asList("ACCOUNT_NAME", "ACCOUNT_ID", "DAY", "DEVICE", "IMPS", "CLICK",
+              "CLICK_RATE", "AVG_DELIVER_RANK", "COST", "AVG_CPC", "CONVERSION", "CONVERSION_RATE",
+              "CPA"));
+      // reportDefinition.getFields().addAll(Arrays.asList("ACCOUNT_ID", "AD_ID"));
 
-      // segments
-      reportDefinition.getSegments().addAll(Arrays.asList(ReportSegment.DAY, ReportSegment.DEVICE));
       reportDefinition.setFormat(ReportDownloadFormat.CSV);
       reportDefinition.setEncode(ReportDownloadEncode.SJIS);
       reportDefinition.setLang(ReportLang.JA);
 
-      reportDefinitionOperation.setOperand(reportDefinition);
+      reportDefinitionOperation.getOperand().add(reportDefinition);
 
       // call API
       System.out.println("############################################");
@@ -143,7 +142,7 @@ public class ReportDownloadSample {
             reportId = addReportDefinition.getReportId();
             // filename
             downloadFileName =
-                "Report_" + addReportDefinition.getReportType() + "_" + reportId + "."
+                "Report_" + reportId + "."
                     + addReportDefinition.getFormat().toString().toLowerCase();
 
             displayReportDefintion(addReportDefinition);
@@ -166,19 +165,22 @@ public class ReportDownloadSample {
 
       ReportDefinition addFrequencyReportDefinition = new ReportDefinition();
       addFrequencyReportDefinition.setAccountId(SoapUtils.getAccountId());
-      addFrequencyReportDefinition.setReportType(ReportType.REACH_FREQUENCY);
       addFrequencyReportDefinition.setReportName("TEST_REACH_FREQUENCY_REPORT");
       addFrequencyReportDefinition.setDateRangeType(ReportDateRangeType.YESTERDAY);
+      // fields
+      addFrequencyReportDefinition.getFields()
+          .addAll(
+              Arrays.asList("ACCOUNT_ID", "ACCOUNT_NAME", "FREQUENCY", "IMPS", "CLICK",
+                  "UNIQUE_USERS"));
 
-      // segments
-      addFrequencyReportDefinition.getSegments().add(ReportSegment.WEEK);
-      addFrequencyReportDefinition.setSort("+FREQUENCYCOUNT");
+      addFrequencyReportDefinition.getSortFields().add("+FREQUENCY");
+      addFrequencyReportDefinition.setFrequencyRange(ReportFrequencyRange.DAILY);
       addFrequencyReportDefinition.setFormat(ReportDownloadFormat.CSV);
       addFrequencyReportDefinition.setEncode(ReportDownloadEncode.SJIS);
       addFrequencyReportDefinition.setLang(ReportLang.EN);
       addFrequencyReportDefinition.setAddTemplate(ReportAddTemplate.YES);
 
-      addFrequencyReportDefinitionOperation.setOperand(addFrequencyReportDefinition);
+      addFrequencyReportDefinitionOperation.getOperand().add(addFrequencyReportDefinition);
 
       // call API
       System.out.println("############################################");
@@ -199,6 +201,7 @@ public class ReportDownloadSample {
 
       // response
       long frequencyReportId = 0;
+      String downloadFrequencyFileName = null;
       if (addFrequencyReportDefinitinonReturnValue.value != null) {
         ReportDefinitionReturnValue returnValue = addFrequencyReportDefinitinonReturnValue.value;
         for (ReportDefinitionValues values : returnValue.getValues()) {
@@ -206,6 +209,10 @@ public class ReportDownloadSample {
             ReportDefinition addReportDefinition = values.getReportDefinition();
             // reportId
             frequencyReportId = addReportDefinition.getReportId();
+            // filename
+            downloadFrequencyFileName =
+                "Report_" + frequencyReportId + "."
+                    + addReportDefinition.getFormat().toString().toLowerCase();
             displayReportDefintion(addReportDefinition);
           } else {
             SoapUtils.displayErrors(
@@ -245,12 +252,14 @@ public class ReportDownloadSample {
       // response
       if (getClosedDateValueHolder.value != null) {
         ReportClosedDateValue getReportClosedDateValue = getClosedDateValueHolder.value;
-        if (getReportClosedDateValue.isOperationSucceeded()) {
-          System.out.println("closedDate = " + getReportClosedDateValue.getClosedDate());
-          System.out.println("-----------------");
-        } else {
-          SoapUtils.displayErrors(
-              new ReportServiceErrorEntityFactory(getReportClosedDateValue.getError()), true);
+        for (ReportClosedDateRecord values : getReportClosedDateValue.getValues()) {
+          if (values.isOperationSucceeded()) {
+            System.out.println("key = " + values.getKey());
+            System.out.println("closedDate = " + values.getClosedDate());
+            System.out.println("-----------------");
+          } else {
+            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+          }
         }
       }
 
@@ -261,7 +270,7 @@ public class ReportDownloadSample {
       ReportRecord addReportRecord = new ReportRecord();
       addReportRecord.setAccountId(SoapUtils.getAccountId());
       addReportRecord.setReportId(reportId);
-      ReportOperation addReportOperation = new ReportOperation();
+      ReportJobOperation addReportOperation = new ReportJobOperation();
       addReportOperation.setOperator(jp.yahooapis.im.V5.ReportService.Operator.ADD);
       addReportOperation.setAccountId(SoapUtils.getAccountId());
       addReportOperation.getOperand().add(addReportRecord);
@@ -396,13 +405,159 @@ public class ReportDownloadSample {
       SoapUtils.download(downloadURLStr, downloadFileName);
 
       // -----------------------------------------------
+      // call ReportService::mutate(ADD) REACH_FREQUENCY
+      // -----------------------------------------------
+      // request
+      ReportRecord addFrequencyReportRecord = new ReportRecord();
+      addFrequencyReportRecord.setAccountId(SoapUtils.getAccountId());
+      addFrequencyReportRecord.setReportId(frequencyReportId);
+      ReportJobOperation addFrequencyReportOperation = new ReportJobOperation();
+      addFrequencyReportOperation.setOperator(jp.yahooapis.im.V5.ReportService.Operator.ADD);
+      addFrequencyReportOperation.setAccountId(SoapUtils.getAccountId());
+      addFrequencyReportOperation.getOperand().add(addFrequencyReportRecord);
+
+      // call API
+      System.out.println("############################################");
+      System.out.println("ReportService::mutate(ADD) REACH_FREQUENCY");
+      System.out.println("############################################");
+      Holder<ReportReturnValue> addFrequencyReportReturnValueHolder =
+          new Holder<ReportReturnValue>();
+      Holder<List<jp.yahooapis.im.V5.ReportService.Error>> addFrequencyReportError =
+          new Holder<List<jp.yahooapis.im.V5.ReportService.Error>>();
+      reportService.mutate(addFrequencyReportOperation, addFrequencyReportReturnValueHolder,
+          addFrequencyReportError);
+
+      // if error
+      if (addFrequencyReportError.value != null && addFrequencyReportError.value.size() > 0) {
+        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(addFrequencyReportError.value),
+            true);
+      }
+
+      // response
+      long frequencyReportJobId = 0;
+      if (addFrequencyReportReturnValueHolder.value != null) {
+        ReportReturnValue returnValue = addFrequencyReportReturnValueHolder.value;
+        for (ReportValues values : returnValue.getValues()) {
+          if (values.isOperationSucceeded()) {
+            frequencyReportJobId = values.getReportRecord().getReportJobId();
+            displayReportRecord(values.getReportRecord());
+          } else {
+            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+          }
+        }
+      }
+
+      // -----------------------------------------------
+      // call ReportService::get REACH_FREQUENCY
+      // -----------------------------------------------
+      // request
+      ReportSelector frequencyReportSelector = new ReportSelector();
+      frequencyReportSelector.setAccountId(SoapUtils.getAccountId());
+      frequencyReportSelector.getReportJobIds().add(frequencyReportJobId);
+
+      // call 30sec sleep * 30 = 15minute
+      for (int i = 0; i < 30; i++) {
+        // sleep 30 second.
+        System.out.println("\n***** sleep 30 seconds for Report Download Job *****\n");
+        Thread.sleep(30000);
+
+        // call API
+        System.out.println("############################################");
+        System.out.println("ReportService::get REACH_FREQUENCY REACH_FREQUENCY");
+        System.out.println("############################################");
+        Holder<ReportPage> getReportPageHolder = new Holder<ReportPage>();
+        Holder<List<jp.yahooapis.im.V5.ReportService.Error>> getReportError =
+            new Holder<List<jp.yahooapis.im.V5.ReportService.Error>>();
+        reportService.get(frequencyReportSelector, getReportPageHolder, getReportError);
+
+        // if error
+        if (getReportError.value != null && getReportError.value.size() > 0) {
+          SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(getReportError.value), true);
+        }
+
+        // response
+        if (getReportPageHolder.value != null) {
+          ReportPage reportPage = getReportPageHolder.value;
+          if (reportPage.getValues().size() > 0) {
+            ReportValues values = reportPage.getValues().get(0);
+            if (values.isOperationSucceeded()) {
+              displayReportRecord(values.getReportRecord());
+            } else {
+              SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+              System.exit(0);
+            }
+
+            if (values.getReportRecord().getStatus() == ReportJobStatus.COMPLETED) {
+              break;
+            } else {
+              if (values.getReportRecord().getStatus() == ReportJobStatus.ACCEPTED
+                  || values.getReportRecord().getStatus() == ReportJobStatus.IN_PROGRESS) {
+                continue;
+              } else {
+                System.out.println("Error : Job Status failed.");
+                System.exit(0);
+
+              }
+            }
+          } else {
+            System.out.println("Report job in process on long time. please wait.");
+            System.exit(0);
+          }
+
+        }
+      }
+
+      // -----------------------------------------------
+      // call ReportService::getDownloadUrl REACH_FREQUENCY
+      // -----------------------------------------------
+      // request
+      ReportDownloadUrlSelector frequencyUrlSelector = new ReportDownloadUrlSelector();
+      frequencyUrlSelector.setAccountId(SoapUtils.getAccountId());
+      frequencyUrlSelector.getReportJobIds().add(frequencyReportJobId);
+
+      // call API
+      System.out.println("############################################");
+      System.out.println("ReportService::getDownloadUrl REACH_FREQUENCY");
+      System.out.println("############################################");
+      Holder<ReportDownloadUrlPage> getFrequencyUrlPageHolder = new Holder<ReportDownloadUrlPage>();
+      Holder<List<jp.yahooapis.im.V5.ReportService.Error>> getFrequencyUrlError =
+          new Holder<List<jp.yahooapis.im.V5.ReportService.Error>>();
+      reportService.getDownloadUrl(frequencyUrlSelector, getFrequencyUrlPageHolder,
+          getFrequencyUrlError);
+
+      // if error
+      if (getFrequencyUrlError.value != null && getFrequencyUrlError.value.size() > 0) {
+        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(getFrequencyUrlError.value),
+            true);
+      }
+
+      // response
+      String downloadFrequencyURLStr = null;
+      if (getFrequencyUrlPageHolder.value != null) {
+        ReportDownloadUrlPage downloadUrlPage = getFrequencyUrlPageHolder.value;
+        for (ReportDownloadUrlValues values : downloadUrlPage.getValues()) {
+          if (values.isOperationSucceeded()) {
+            downloadFrequencyURLStr = values.getReportDownloadUrl().getDownloadUrl();
+            displayReportDownloadUrl(values.getReportDownloadUrl());
+          } else {
+            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+          }
+        }
+      }
+
+      // -----------------------------------------------
+      // download report
+      // -----------------------------------------------
+      SoapUtils.download(downloadFrequencyURLStr, downloadFrequencyFileName);
+
+      // -----------------------------------------------
       // call ReportService::mutate(REMOVE)
       // -----------------------------------------------
       // request
       ReportRecord removeReportRecord = new ReportRecord();
       removeReportRecord.setAccountId(SoapUtils.getAccountId());
       removeReportRecord.setReportJobId(reportJobId);
-      ReportOperation removeReportOperation = new ReportOperation();
+      ReportJobOperation removeReportOperation = new ReportJobOperation();
       removeReportOperation.setOperator(jp.yahooapis.im.V5.ReportService.Operator.REMOVE);
       removeReportOperation.setAccountId(SoapUtils.getAccountId());
       removeReportOperation.getOperand().add(removeReportRecord);
@@ -444,7 +599,7 @@ public class ReportDownloadSample {
       ReportDefinitionOperation removeReportDefinitionOperation = new ReportDefinitionOperation();
       removeReportDefinitionOperation.setAccountId(SoapUtils.getAccountId());
       removeReportDefinitionOperation.setOperator(Operator.REMOVE);
-      removeReportDefinitionOperation.setOperand(removeReportDefinition);
+      removeReportDefinitionOperation.getOperand().add(removeReportDefinition);
 
       // call API
       System.out.println("############################################");
@@ -476,6 +631,47 @@ public class ReportDownloadSample {
       }
 
       // -----------------------------------------------
+      // call ReportService::mutate(REMOVE) REACH_FREQUENCY
+      // -----------------------------------------------
+      // request
+      ReportRecord removeFrequencyReportRecord = new ReportRecord();
+      removeFrequencyReportRecord.setAccountId(SoapUtils.getAccountId());
+      removeFrequencyReportRecord.setReportJobId(frequencyReportJobId);
+      ReportJobOperation removeFrequencyReportOperation = new ReportJobOperation();
+      removeFrequencyReportOperation.setOperator(jp.yahooapis.im.V5.ReportService.Operator.REMOVE);
+      removeFrequencyReportOperation.setAccountId(SoapUtils.getAccountId());
+      removeFrequencyReportOperation.getOperand().add(removeFrequencyReportRecord);
+
+      // call API
+      System.out.println("############################################");
+      System.out.println("ReportService::mutate(REMOVE) REACH_FREQUENCY");
+      System.out.println("############################################");
+      Holder<ReportReturnValue> removeFrequencyReportReturnValueHolder =
+          new Holder<ReportReturnValue>();
+      Holder<List<jp.yahooapis.im.V5.ReportService.Error>> removeFrequencyReportError =
+          new Holder<List<jp.yahooapis.im.V5.ReportService.Error>>();
+      reportService.mutate(removeFrequencyReportOperation, removeFrequencyReportReturnValueHolder,
+          removeFrequencyReportError);
+
+      // if error
+      if (removeFrequencyReportError.value != null && removeFrequencyReportError.value.size() > 0) {
+        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(
+            removeFrequencyReportError.value), true);
+      }
+
+      // response
+      if (removeFrequencyReportReturnValueHolder.value != null) {
+        ReportReturnValue returnValue = removeFrequencyReportReturnValueHolder.value;
+        for (ReportValues values : returnValue.getValues()) {
+          if (values.isOperationSucceeded()) {
+            displayReportRecord(values.getReportRecord());
+          } else {
+            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+          }
+        }
+      }
+
+      // -----------------------------------------------
       // call ReportDefinitionService::mutate(REMOVE) REACH_FREQUENCY
       // -----------------------------------------------
       // request
@@ -487,7 +683,7 @@ public class ReportDownloadSample {
           new ReportDefinitionOperation();
       removeFrequencyReportDefinitionOperation.setAccountId(SoapUtils.getAccountId());
       removeFrequencyReportDefinitionOperation.setOperator(Operator.REMOVE);
-      removeFrequencyReportDefinitionOperation.setOperand(removeFrequencyReportDefinition);
+      removeFrequencyReportDefinitionOperation.getOperand().add(removeFrequencyReportDefinition);
 
       // call API
       System.out.println("############################################");
@@ -570,12 +766,10 @@ public class ReportDownloadSample {
     System.out.println("accountId = " + reportDefinition.getAccountId());
     System.out.println("reportId = " + reportDefinition.getReportId());
     System.out.println("reportName = " + reportDefinition.getReportName());
-    System.out.println("reportType = " + reportDefinition.getReportType());
     System.out.println("dateRangeType = " + reportDefinition.getDateRangeType());
     System.out.println("fields = " + SoapUtils.arrayToLine(reportDefinition.getFields().toArray()));
-    System.out.println("segments = "
-        + SoapUtils.arrayToLine(reportDefinition.getSegments().toArray()));
-    System.out.println("sort = " + reportDefinition.getSort());
+    System.out.println("sort = "
+        + SoapUtils.arrayToLine(reportDefinition.getSortFields().toArray()));
     System.out.println("format = " + reportDefinition.getFormat());
     System.out.println("encode = " + reportDefinition.getEncode());
     System.out.println("lang = " + reportDefinition.getLang());

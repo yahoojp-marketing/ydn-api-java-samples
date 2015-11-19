@@ -1,24 +1,24 @@
 
-package jp.yahooapis.im.V5.ReportService;
+package jp.yahooapis.im.V5.RetargetingTagService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Operation complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Operation">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="operator" type="{http://im.yahooapis.jp/V5}Operator"/>
+ *         &lt;element name="operations" type="{http://im.yahooapis.jp/V5}RetargetingTagOperation"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,39 +28,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Operation", propOrder = {
-    "operator"
+@XmlType(name = "", propOrder = {
+    "operations"
 })
-@XmlSeeAlso({
-    ReportJobOperation.class
-})
-public abstract class Operation {
+@XmlRootElement(name = "mutate")
+public class Mutate {
 
     @XmlElement(required = true)
-    protected Operator operator;
+    protected RetargetingTagOperation operations;
 
     /**
-     * Gets the value of the operator property.
+     * Gets the value of the operations property.
      * 
      * @return
      *     possible object is
-     *     {@link Operator }
+     *     {@link RetargetingTagOperation }
      *     
      */
-    public Operator getOperator() {
-        return operator;
+    public RetargetingTagOperation getOperations() {
+        return operations;
     }
 
     /**
-     * Sets the value of the operator property.
+     * Sets the value of the operations property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Operator }
+     *     {@link RetargetingTagOperation }
      *     
      */
-    public void setOperator(Operator value) {
-        this.operator = value;
+    public void setOperations(RetargetingTagOperation value) {
+        this.operations = value;
     }
 
 }

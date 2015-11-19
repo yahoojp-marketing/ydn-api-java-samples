@@ -28,7 +28,9 @@ import jp.yahooapis.im.V5.RetargetingListService.TargetListData;
 import jp.yahooapis.im.V5.RetargetingListService.TargetListType;
 import jp.yahooapis.im.V5.RetargetingTagService.Error;
 import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTag;
+import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagOperation;
 import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagPage;
+import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagReturnValue;
 import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagSelector;
 import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagService;
 import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagServiceInterface;
@@ -59,6 +61,45 @@ public class RetargetingSample {
           SoapUtils.createServiceInterface(RetargetingTagServiceInterface.class,
               RetargetingTagService.class);
 
+      // -----------------------------------------------
+      // RetargetingTagService::mutate(ADD)
+      // -----------------------------------------------
+      RetargetingTagOperation addRetargetingTagOperation = new RetargetingTagOperation();
+      addRetargetingTagOperation.setOperator(jp.yahooapis.im.V5.RetargetingTagService.Operator.ADD);
+      addRetargetingTagOperation.setAccountId(accountId);
+
+      // call API
+      System.out.println("############################################");
+      System.out.println("RetargetingTagService::mutate(ADD)");
+      System.out.println("############################################");
+      Holder<RetargetingTagReturnValue> addRetargetingTagReturnValueHolder =
+          new Holder<RetargetingTagReturnValue>();
+      Holder<List<jp.yahooapis.im.V5.RetargetingTagService.Error>> addRetargetingTagErrorHolder =
+          new Holder<List<jp.yahooapis.im.V5.RetargetingTagService.Error>>();
+      retargetingTagService.mutate(addRetargetingTagOperation, addRetargetingTagReturnValueHolder,
+          addRetargetingTagErrorHolder);
+
+      // if error
+      if (addRetargetingTagErrorHolder.value != null
+          && addRetargetingTagErrorHolder.value.size() > 0) {
+        SoapUtils.displayErrors(new RetargetingTagServiceErrorEntityFactory(
+            addRetargetingTagErrorHolder.value), false);
+      }
+
+      if (addRetargetingTagReturnValueHolder.value != null) {
+        RetargetingTagReturnValue returnValue = addRetargetingTagReturnValueHolder.value;
+        if (returnValue.getValues() != null) {
+          for (RetargetingTagValues values : returnValue.getValues()) {
+            if (values.isOperationSucceeded()) {
+              displayRetargetingTag(values.getRetargetingTag());
+            } else {
+              // if error
+              SoapUtils.displayErrors(
+                  new RetargetingTagServiceErrorEntityFactory(values.getError()), false);
+            }
+          }
+        }
+      }
 
       // -----------------------------------------------
       // RetargetingTagService::get

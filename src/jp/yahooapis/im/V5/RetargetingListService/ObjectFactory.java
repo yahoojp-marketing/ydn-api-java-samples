@@ -36,27 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RetargetingListPage }
+     * Create an instance of {@link Get }
      * 
      */
-    public RetargetingListPage createRetargetingListPage() {
-        return new RetargetingListPage();
-    }
-
-    /**
-     * Create an instance of {@link Error }
-     * 
-     */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link Paging }
-     * 
-     */
-    public Paging createPaging() {
-        return new Paging();
+    public Get createGet() {
+        return new Get();
     }
 
     /**
@@ -68,19 +52,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SoapHeader }
-     * 
-     */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
-    }
-
-    /**
      * Create an instance of {@link RetargetingListValues }
      * 
      */
     public RetargetingListValues createRetargetingListValues() {
         return new RetargetingListValues();
+    }
+
+    /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link TargetListData }
+     * 
+     */
+    public TargetListData createTargetListData() {
+        return new TargetListData();
+    }
+
+    /**
+     * Create an instance of {@link RuleTargetList }
+     * 
+     */
+    public RuleTargetList createRuleTargetList() {
+        return new RuleTargetList();
+    }
+
+    /**
+     * Create an instance of {@link CombinationTargetList }
+     * 
+     */
+    public CombinationTargetList createCombinationTargetList() {
+        return new CombinationTargetList();
     }
 
     /**
@@ -92,11 +108,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RetargetingListOperation }
+     * Create an instance of {@link RetargetingList }
      * 
      */
-    public RetargetingListOperation createRetargetingListOperation() {
-        return new RetargetingListOperation();
+    public RetargetingList createRetargetingList() {
+        return new RetargetingList();
     }
 
     /**
@@ -116,43 +132,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SimilarityTargetList }
-     * 
-     */
-    public SimilarityTargetList createSimilarityTargetList() {
-        return new SimilarityTargetList();
-    }
-
-    /**
-     * Create an instance of {@link Get }
-     * 
-     */
-    public Get createGet() {
-        return new Get();
-    }
-
-    /**
      * Create an instance of {@link MutateResponse }
      * 
      */
     public MutateResponse createMutateResponse() {
         return new MutateResponse();
-    }
-
-    /**
-     * Create an instance of {@link RuleCondition }
-     * 
-     */
-    public RuleCondition createRuleCondition() {
-        return new RuleCondition();
-    }
-
-    /**
-     * Create an instance of {@link GetResponse }
-     * 
-     */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
     }
 
     /**
@@ -164,35 +148,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ErrorDetail }
+     * Create an instance of {@link RuleCondition }
      * 
      */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link RetargetingList }
-     * 
-     */
-    public RetargetingList createRetargetingList() {
-        return new RetargetingList();
-    }
-
-    /**
-     * Create an instance of {@link RuleTargetList }
-     * 
-     */
-    public RuleTargetList createRuleTargetList() {
-        return new RuleTargetList();
-    }
-
-    /**
-     * Create an instance of {@link TargetListData }
-     * 
-     */
-    public TargetListData createTargetListData() {
-        return new TargetListData();
+    public RuleCondition createRuleCondition() {
+        return new RuleCondition();
     }
 
     /**
@@ -204,11 +164,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CombinationTargetList }
+     * Create an instance of {@link Paging }
      * 
      */
-    public CombinationTargetList createCombinationTargetList() {
-        return new CombinationTargetList();
+    public Paging createPaging() {
+        return new Paging();
+    }
+
+    /**
+     * Create an instance of {@link SimilarityTargetList }
+     * 
+     */
+    public SimilarityTargetList createSimilarityTargetList() {
+        return new SimilarityTargetList();
+    }
+
+    /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
+    }
+
+    /**
+     * Create an instance of {@link RetargetingListPage }
+     * 
+     */
+    public RetargetingListPage createRetargetingListPage() {
+        return new RetargetingListPage();
+    }
+
+    /**
+     * Create an instance of {@link RetargetingListOperation }
+     * 
+     */
+    public RetargetingListOperation createRetargetingListOperation() {
+        return new RetargetingListOperation();
     }
 
     /**

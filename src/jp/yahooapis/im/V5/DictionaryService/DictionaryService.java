@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "DictionaryService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/DictionaryService?wsdl")
+@WebServiceClient(name = "DictionaryService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/DictionaryService?wsdl")
 public class DictionaryService
     extends Service
 {
@@ -30,9 +30,9 @@ public class DictionaryService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.DictionaryService.DictionaryService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/DictionaryService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/DictionaryService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/DictionaryService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/DictionaryService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         DICTIONARYSERVICE_WSDL_LOCATION = url;

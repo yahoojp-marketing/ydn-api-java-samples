@@ -44,4 +44,24 @@ public interface RetargetingTagServiceInterface {
         throws ApiException
     ;
 
+    /**
+     * 
+     * @param rval
+     * @param error
+     * @param operations
+     * @throws ApiException
+     */
+    @WebMethod
+    @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V5", className = "jp.yahooapis.im.V5.RetargetingTagService.Mutate")
+    @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V5", className = "jp.yahooapis.im.V5.RetargetingTagService.MutateResponse")
+    public void mutate(
+        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V5")
+        RetargetingTagOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V5", mode = WebParam.Mode.OUT)
+        Holder<RetargetingTagReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V5", mode = WebParam.Mode.OUT)
+        Holder<List<Error>> error)
+        throws ApiException
+    ;
+
 }

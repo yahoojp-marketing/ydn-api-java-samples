@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "ConversionTrackerService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/ConversionTrackerService?wsdl")
+@WebServiceClient(name = "ConversionTrackerService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/ConversionTrackerService?wsdl")
 public class ConversionTrackerService
     extends Service
 {
@@ -30,9 +30,9 @@ public class ConversionTrackerService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/ConversionTrackerService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/ConversionTrackerService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/ConversionTrackerService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/ConversionTrackerService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         CONVERSIONTRACKERSERVICE_WSDL_LOCATION = url;

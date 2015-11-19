@@ -36,110 +36,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DownloadBulkJob }
-     * 
-     */
-    public DownloadBulkJob createDownloadBulkJob() {
-        return new DownloadBulkJob();
-    }
-
-    /**
-     * Create an instance of {@link SoapResponseHeader }
-     * 
-     */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
-    }
-
-    /**
-     * Create an instance of {@link UploadUrlValue }
-     * 
-     */
-    public UploadUrlValue createUploadUrlValue() {
-        return new UploadUrlValue();
-    }
-
-    /**
-     * Create an instance of {@link GetBulkDownloadStatusResponse }
-     * 
-     */
-    public GetBulkDownloadStatusResponse createGetBulkDownloadStatusResponse() {
-        return new GetBulkDownloadStatusResponse();
-    }
-
-    /**
-     * Create an instance of {@link Error }
-     * 
-     */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link UploadBulkJob }
-     * 
-     */
-    public UploadBulkJob createUploadBulkJob() {
-        return new UploadBulkJob();
-    }
-
-    /**
-     * Create an instance of {@link GetBulkUploadStatusResponse }
-     * 
-     */
-    public GetBulkUploadStatusResponse createGetBulkUploadStatusResponse() {
-        return new GetBulkUploadStatusResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetUploadUrlResponse }
-     * 
-     */
-    public GetUploadUrlResponse createGetUploadUrlResponse() {
-        return new GetUploadUrlResponse();
-    }
-
-    /**
-     * Create an instance of {@link BulkUploadStatusSelector }
-     * 
-     */
-    public BulkUploadStatusSelector createBulkUploadStatusSelector() {
-        return new BulkUploadStatusSelector();
-    }
-
-    /**
-     * Create an instance of {@link BulkUploadStatusPage }
-     * 
-     */
-    public BulkUploadStatusPage createBulkUploadStatusPage() {
-        return new BulkUploadStatusPage();
-    }
-
-    /**
-     * Create an instance of {@link BulkDownloadSelector }
-     * 
-     */
-    public BulkDownloadSelector createBulkDownloadSelector() {
-        return new BulkDownloadSelector();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link GetUploadUrl }
-     * 
-     */
-    public GetUploadUrl createGetUploadUrl() {
-        return new GetUploadUrl();
-    }
-
-    /**
      * Create an instance of {@link ProcessingItemsCount }
      * 
      */
@@ -156,11 +52,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetBulkUploadStatus }
+     * Create an instance of {@link BulkUploadStatusPage }
      * 
      */
-    public GetBulkUploadStatus createGetBulkUploadStatus() {
-        return new GetBulkUploadStatus();
+    public BulkUploadStatusPage createBulkUploadStatusPage() {
+        return new BulkUploadStatusPage();
     }
 
     /**
@@ -172,35 +68,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BulkDownloadReturnValue }
+     * Create an instance of {@link BulkDownloadSelector }
      * 
      */
-    public BulkDownloadReturnValue createBulkDownloadReturnValue() {
-        return new BulkDownloadReturnValue();
+    public BulkDownloadSelector createBulkDownloadSelector() {
+        return new BulkDownloadSelector();
     }
 
     /**
-     * Create an instance of {@link GetBulkDownloadResponse }
+     * Create an instance of {@link GetUploadUrlResponse }
      * 
      */
-    public GetBulkDownloadResponse createGetBulkDownloadResponse() {
-        return new GetBulkDownloadResponse();
+    public GetUploadUrlResponse createGetUploadUrlResponse() {
+        return new GetUploadUrlResponse();
     }
 
     /**
-     * Create an instance of {@link BulkUploadValues }
+     * Create an instance of {@link Error }
      * 
      */
-    public BulkUploadValues createBulkUploadValues() {
-        return new BulkUploadValues();
+    public Error createError() {
+        return new Error();
     }
 
     /**
-     * Create an instance of {@link BulkDownloadStatusSelector }
+     * Create an instance of {@link GetBulkUploadStatusResponse }
      * 
      */
-    public BulkDownloadStatusSelector createBulkDownloadStatusSelector() {
-        return new BulkDownloadStatusSelector();
+    public GetBulkUploadStatusResponse createGetBulkUploadStatusResponse() {
+        return new GetBulkUploadStatusResponse();
+    }
+
+    /**
+     * Create an instance of {@link Paging }
+     * 
+     */
+    public Paging createPaging() {
+        return new Paging();
     }
 
     /**
@@ -212,11 +116,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetBulkDownload }
+     * Create an instance of {@link UploadBulkJob }
      * 
      */
-    public GetBulkDownload createGetBulkDownload() {
-        return new GetBulkDownload();
+    public UploadBulkJob createUploadBulkJob() {
+        return new UploadBulkJob();
+    }
+
+    /**
+     * Create an instance of {@link BulkDownloadReturnValue }
+     * 
+     */
+    public BulkDownloadReturnValue createBulkDownloadReturnValue() {
+        return new BulkDownloadReturnValue();
+    }
+
+    /**
+     * Create an instance of {@link GetUploadUrl }
+     * 
+     */
+    public GetUploadUrl createGetUploadUrl() {
+        return new GetUploadUrl();
+    }
+
+    /**
+     * Create an instance of {@link SoapResponseHeader }
+     * 
+     */
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
+    }
+
+    /**
+     * Create an instance of {@link GetBulkDownloadResponse }
+     * 
+     */
+    public GetBulkDownloadResponse createGetBulkDownloadResponse() {
+        return new GetBulkDownloadResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetBulkDownloadStatusResponse }
+     * 
+     */
+    public GetBulkDownloadStatusResponse createGetBulkDownloadStatusResponse() {
+        return new GetBulkDownloadStatusResponse();
     }
 
     /**
@@ -228,11 +172,67 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Paging }
+     * Create an instance of {@link ErrorDetail }
      * 
      */
-    public Paging createPaging() {
-        return new Paging();
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link GetBulkDownload }
+     * 
+     */
+    public GetBulkDownload createGetBulkDownload() {
+        return new GetBulkDownload();
+    }
+
+    /**
+     * Create an instance of {@link UploadUrlValue }
+     * 
+     */
+    public UploadUrlValue createUploadUrlValue() {
+        return new UploadUrlValue();
+    }
+
+    /**
+     * Create an instance of {@link BulkUploadStatusSelector }
+     * 
+     */
+    public BulkUploadStatusSelector createBulkUploadStatusSelector() {
+        return new BulkUploadStatusSelector();
+    }
+
+    /**
+     * Create an instance of {@link BulkDownloadStatusSelector }
+     * 
+     */
+    public BulkDownloadStatusSelector createBulkDownloadStatusSelector() {
+        return new BulkDownloadStatusSelector();
+    }
+
+    /**
+     * Create an instance of {@link GetBulkUploadStatus }
+     * 
+     */
+    public GetBulkUploadStatus createGetBulkUploadStatus() {
+        return new GetBulkUploadStatus();
+    }
+
+    /**
+     * Create an instance of {@link DownloadBulkJob }
+     * 
+     */
+    public DownloadBulkJob createDownloadBulkJob() {
+        return new DownloadBulkJob();
+    }
+
+    /**
+     * Create an instance of {@link BulkUploadValues }
+     * 
+     */
+    public BulkUploadValues createBulkUploadValues() {
+        return new BulkUploadValues();
     }
 
     /**

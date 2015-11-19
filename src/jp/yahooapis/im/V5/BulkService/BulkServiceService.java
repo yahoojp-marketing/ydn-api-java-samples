@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "BulkServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.0/BulkService?wsdl")
+@WebServiceClient(name = "BulkServiceService", targetNamespace = "http://im.yahooapis.jp/V5", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V5.2/BulkService?wsdl")
 public class BulkServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class BulkServiceService
         try {
             URL baseUrl;
             baseUrl = jp.yahooapis.im.V5.BulkService.BulkServiceService.class.getResource(".");
-            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.0/BulkService?wsdl");
+            url = new URL(baseUrl, "https://sandbox.im.yahooapis.jp/services/V5.2/BulkService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.0/BulkService?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://sandbox.im.yahooapis.jp/services/V5.2/BulkService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         BULKSERVICESERVICE_WSDL_LOCATION = url;

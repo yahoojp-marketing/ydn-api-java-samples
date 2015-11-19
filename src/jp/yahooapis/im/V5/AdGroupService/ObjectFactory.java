@@ -36,11 +36,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Get }
+     * Create an instance of {@link AdGroup }
      * 
      */
-    public Get createGet() {
-        return new Get();
+    public AdGroup createAdGroup() {
+        return new AdGroup();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupOperation }
+     * 
+     */
+    public AdGroupOperation createAdGroupOperation() {
+        return new AdGroupOperation();
+    }
+
+    /**
+     * Create an instance of {@link Paging }
+     * 
+     */
+    public Paging createPaging() {
+        return new Paging();
     }
 
     /**
@@ -52,6 +68,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
      * Create an instance of {@link Mutate }
      * 
      */
@@ -60,19 +84,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdGroupReturnValue }
+     * Create an instance of {@link MutateResponse }
      * 
      */
-    public AdGroupReturnValue createAdGroupReturnValue() {
-        return new AdGroupReturnValue();
-    }
-
-    /**
-     * Create an instance of {@link ManualCPCAdGroupBid }
-     * 
-     */
-    public ManualCPCAdGroupBid createManualCPCAdGroupBid() {
-        return new ManualCPCAdGroupBid();
+    public MutateResponse createMutateResponse() {
+        return new MutateResponse();
     }
 
     /**
@@ -92,43 +108,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MutateResponse }
+     * Create an instance of {@link AdGroupReturnValue }
      * 
      */
-    public MutateResponse createMutateResponse() {
-        return new MutateResponse();
+    public AdGroupReturnValue createAdGroupReturnValue() {
+        return new AdGroupReturnValue();
     }
 
     /**
-     * Create an instance of {@link AdGroupValues }
+     * Create an instance of {@link Get }
      * 
      */
-    public AdGroupValues createAdGroupValues() {
-        return new AdGroupValues();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupOperation }
-     * 
-     */
-    public AdGroupOperation createAdGroupOperation() {
-        return new AdGroupOperation();
-    }
-
-    /**
-     * Create an instance of {@link SoapResponseHeader }
-     * 
-     */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
-    }
-
-    /**
-     * Create an instance of {@link Error }
-     * 
-     */
-    public Error createError() {
-        return new Error();
+    public Get createGet() {
+        return new Get();
     }
 
     /**
@@ -140,27 +132,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Paging }
+     * Create an instance of {@link Error }
      * 
      */
-    public Paging createPaging() {
-        return new Paging();
+    public Error createError() {
+        return new Error();
     }
 
     /**
-     * Create an instance of {@link AdGroup }
+     * Create an instance of {@link SoapResponseHeader }
      * 
      */
-    public AdGroup createAdGroup() {
-        return new AdGroup();
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
     }
 
     /**
-     * Create an instance of {@link GetResponse }
+     * Create an instance of {@link AdGroupValues }
      * 
      */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
+    public AdGroupValues createAdGroupValues() {
+        return new AdGroupValues();
+    }
+
+    /**
+     * Create an instance of {@link ManualCPCAdGroupBid }
+     * 
+     */
+    public ManualCPCAdGroupBid createManualCPCAdGroupBid() {
+        return new ManualCPCAdGroupBid();
     }
 
     /**
