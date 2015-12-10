@@ -16,8 +16,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="DOCOMO"/>
  *     &lt;enumeration value="KDDI"/>
  *     &lt;enumeration value="SOFTBANK"/>
- *     &lt;enumeration value="EMOBILE"/>
- *     &lt;enumeration value="WILLCOM"/>
  *     &lt;enumeration value="NONE"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
@@ -31,8 +29,6 @@ public enum CarrierName {
     DOCOMO,
     KDDI,
     SOFTBANK,
-    EMOBILE,
-    WILLCOM,
     NONE;
 
     public String value() {

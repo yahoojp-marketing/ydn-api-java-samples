@@ -36,11 +36,115 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
+    }
+
+    /**
+     * Create an instance of {@link Media }
+     * 
+     */
+    public Media createMedia() {
+        return new Media();
+    }
+
+    /**
      * Create an instance of {@link Get }
      * 
      */
     public Get createGet() {
         return new Get();
+    }
+
+    /**
+     * Create an instance of {@link SoapResponseHeader }
+     * 
+     */
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
+    }
+
+    /**
+     * Create an instance of {@link MediaOperation }
+     * 
+     */
+    public MediaOperation createMediaOperation() {
+        return new MediaOperation();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link MediaValues }
+     * 
+     */
+    public MediaValues createMediaValues() {
+        return new MediaValues();
+    }
+
+    /**
+     * Create an instance of {@link MutateResponse }
+     * 
+     */
+    public MutateResponse createMutateResponse() {
+        return new MutateResponse();
+    }
+
+    /**
+     * Create an instance of {@link ImageMedia }
+     * 
+     */
+    public ImageMedia createImageMedia() {
+        return new ImageMedia();
+    }
+
+    /**
+     * Create an instance of {@link Mutate }
+     * 
+     */
+    public Mutate createMutate() {
+        return new Mutate();
+    }
+
+    /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
+     * Create an instance of {@link Paging }
+     * 
+     */
+    public Paging createPaging() {
+        return new Paging();
+    }
+
+    /**
+     * Create an instance of {@link MediaPage }
+     * 
+     */
+    public MediaPage createMediaPage() {
+        return new MediaPage();
+    }
+
+    /**
+     * Create an instance of {@link MediaSelector }
+     * 
+     */
+    public MediaSelector createMediaSelector() {
+        return new MediaSelector();
     }
 
     /**
@@ -60,115 +164,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Paging }
-     * 
-     */
-    public Paging createPaging() {
-        return new Paging();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link MediaSelector }
-     * 
-     */
-    public MediaSelector createMediaSelector() {
-        return new MediaSelector();
-    }
-
-    /**
-     * Create an instance of {@link Media }
-     * 
-     */
-    public Media createMedia() {
-        return new Media();
-    }
-
-    /**
-     * Create an instance of {@link MediaOperation }
-     * 
-     */
-    public MediaOperation createMediaOperation() {
-        return new MediaOperation();
-    }
-
-    /**
-     * Create an instance of {@link MediaPage }
-     * 
-     */
-    public MediaPage createMediaPage() {
-        return new MediaPage();
-    }
-
-    /**
      * Create an instance of {@link MediaRecord }
      * 
      */
     public MediaRecord createMediaRecord() {
         return new MediaRecord();
-    }
-
-    /**
-     * Create an instance of {@link GetResponse }
-     * 
-     */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
-    }
-
-    /**
-     * Create an instance of {@link SoapResponseHeader }
-     * 
-     */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
-    }
-
-    /**
-     * Create an instance of {@link Error }
-     * 
-     */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link Mutate }
-     * 
-     */
-    public Mutate createMutate() {
-        return new Mutate();
-    }
-
-    /**
-     * Create an instance of {@link MutateResponse }
-     * 
-     */
-    public MutateResponse createMutateResponse() {
-        return new MutateResponse();
-    }
-
-    /**
-     * Create an instance of {@link MediaValues }
-     * 
-     */
-    public MediaValues createMediaValues() {
-        return new MediaValues();
-    }
-
-    /**
-     * Create an instance of {@link ImageMedia }
-     * 
-     */
-    public ImageMedia createImageMedia() {
-        return new ImageMedia();
     }
 
     /**

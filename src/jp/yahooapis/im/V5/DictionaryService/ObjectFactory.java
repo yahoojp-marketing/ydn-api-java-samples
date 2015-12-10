@@ -36,142 +36,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Category }
-     * 
-     */
-    public Category createCategory() {
-        return new Category();
-    }
-
-    /**
-     * Create an instance of {@link GetDisapprovalReasonResponse }
-     * 
-     */
-    public GetDisapprovalReasonResponse createGetDisapprovalReasonResponse() {
-        return new GetDisapprovalReasonResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetColorSet }
-     * 
-     */
-    public GetColorSet createGetColorSet() {
-        return new GetColorSet();
-    }
-
-    /**
-     * Create an instance of {@link Error }
-     * 
-     */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link GeographicLocationValues }
-     * 
-     */
-    public GeographicLocationValues createGeographicLocationValues() {
-        return new GeographicLocationValues();
-    }
-
-    /**
-     * Create an instance of {@link DisapprovalReasonValues }
-     * 
-     */
-    public DisapprovalReasonValues createDisapprovalReasonValues() {
-        return new DisapprovalReasonValues();
-    }
-
-    /**
-     * Create an instance of {@link CategoryValues }
-     * 
-     */
-    public CategoryValues createCategoryValues() {
-        return new CategoryValues();
-    }
-
-    /**
-     * Create an instance of {@link GetDisapprovalReason }
-     * 
-     */
-    public GetDisapprovalReason createGetDisapprovalReason() {
-        return new GetDisapprovalReason();
-    }
-
-    /**
-     * Create an instance of {@link SoapResponseHeader }
-     * 
-     */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
-    }
-
-    /**
-     * Create an instance of {@link ColorSetSelector }
-     * 
-     */
-    public ColorSetSelector createColorSetSelector() {
-        return new ColorSetSelector();
-    }
-
-    /**
-     * Create an instance of {@link GetInterestCategoryResponse }
-     * 
-     */
-    public GetInterestCategoryResponse createGetInterestCategoryResponse() {
-        return new GetInterestCategoryResponse();
-    }
-
-    /**
-     * Create an instance of {@link CategoryChildValues }
-     * 
-     */
-    public CategoryChildValues createCategoryChildValues() {
-        return new CategoryChildValues();
-    }
-
-    /**
-     * Create an instance of {@link CategorySelector }
-     * 
-     */
-    public CategorySelector createCategorySelector() {
-        return new CategorySelector();
-    }
-
-    /**
-     * Create an instance of {@link GeographicLocationSelector }
-     * 
-     */
-    public GeographicLocationSelector createGeographicLocationSelector() {
-        return new GeographicLocationSelector();
-    }
-
-    /**
-     * Create an instance of {@link GetGeographicLocationResponse }
-     * 
-     */
-    public GetGeographicLocationResponse createGetGeographicLocationResponse() {
-        return new GetGeographicLocationResponse();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link GetGeographicLocation }
-     * 
-     */
-    public GetGeographicLocation createGetGeographicLocation() {
-        return new GetGeographicLocation();
-    }
-
-    /**
      * Create an instance of {@link ColorSetValues }
      * 
      */
@@ -188,43 +52,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DisapprovalReasonSelector }
+     * Create an instance of {@link Category }
      * 
      */
-    public DisapprovalReasonSelector createDisapprovalReasonSelector() {
-        return new DisapprovalReasonSelector();
+    public Category createCategory() {
+        return new Category();
     }
 
     /**
-     * Create an instance of {@link CategoryPage }
+     * Create an instance of {@link ColorSetSelector }
      * 
      */
-    public CategoryPage createCategoryPage() {
-        return new CategoryPage();
-    }
-
-    /**
-     * Create an instance of {@link DisapprovalReasonPage }
-     * 
-     */
-    public DisapprovalReasonPage createDisapprovalReasonPage() {
-        return new DisapprovalReasonPage();
-    }
-
-    /**
-     * Create an instance of {@link GetInterestCategory }
-     * 
-     */
-    public GetInterestCategory createGetInterestCategory() {
-        return new GetInterestCategory();
-    }
-
-    /**
-     * Create an instance of {@link GetColorSetResponse }
-     * 
-     */
-    public GetColorSetResponse createGetColorSetResponse() {
-        return new GetColorSetResponse();
+    public ColorSetSelector createColorSetSelector() {
+        return new ColorSetSelector();
     }
 
     /**
@@ -236,35 +76,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetSiteCategoryResponse }
+     * Create an instance of {@link CategoryPage }
      * 
      */
-    public GetSiteCategoryResponse createGetSiteCategoryResponse() {
-        return new GetSiteCategoryResponse();
+    public CategoryPage createCategoryPage() {
+        return new CategoryPage();
     }
 
     /**
-     * Create an instance of {@link GetSiteCategory }
+     * Create an instance of {@link CategoryChildValues }
      * 
      */
-    public GetSiteCategory createGetSiteCategory() {
-        return new GetSiteCategory();
+    public CategoryChildValues createCategoryChildValues() {
+        return new CategoryChildValues();
     }
 
     /**
-     * Create an instance of {@link ColorSetPage }
+     * Create an instance of {@link GetInterestCategoryResponse }
      * 
      */
-    public ColorSetPage createColorSetPage() {
-        return new ColorSetPage();
-    }
-
-    /**
-     * Create an instance of {@link GeographicLocationPage }
-     * 
-     */
-    public GeographicLocationPage createGeographicLocationPage() {
-        return new GeographicLocationPage();
+    public GetInterestCategoryResponse createGetInterestCategoryResponse() {
+        return new GetInterestCategoryResponse();
     }
 
     /**
@@ -276,11 +108,179 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetSiteCategory }
+     * 
+     */
+    public GetSiteCategory createGetSiteCategory() {
+        return new GetSiteCategory();
+    }
+
+    /**
+     * Create an instance of {@link GetSiteCategoryResponse }
+     * 
+     */
+    public GetSiteCategoryResponse createGetSiteCategoryResponse() {
+        return new GetSiteCategoryResponse();
+    }
+
+    /**
+     * Create an instance of {@link ColorSetPage }
+     * 
+     */
+    public ColorSetPage createColorSetPage() {
+        return new ColorSetPage();
+    }
+
+    /**
+     * Create an instance of {@link GetColorSetResponse }
+     * 
+     */
+    public GetColorSetResponse createGetColorSetResponse() {
+        return new GetColorSetResponse();
+    }
+
+    /**
+     * Create an instance of {@link GeographicLocationSelector }
+     * 
+     */
+    public GeographicLocationSelector createGeographicLocationSelector() {
+        return new GeographicLocationSelector();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link DisapprovalReasonValues }
+     * 
+     */
+    public DisapprovalReasonValues createDisapprovalReasonValues() {
+        return new DisapprovalReasonValues();
+    }
+
+    /**
+     * Create an instance of {@link CategorySelector }
+     * 
+     */
+    public CategorySelector createCategorySelector() {
+        return new CategorySelector();
+    }
+
+    /**
+     * Create an instance of {@link CategoryValues }
+     * 
+     */
+    public CategoryValues createCategoryValues() {
+        return new CategoryValues();
+    }
+
+    /**
+     * Create an instance of {@link GetDisapprovalReasonResponse }
+     * 
+     */
+    public GetDisapprovalReasonResponse createGetDisapprovalReasonResponse() {
+        return new GetDisapprovalReasonResponse();
+    }
+
+    /**
+     * Create an instance of {@link DisapprovalReasonPage }
+     * 
+     */
+    public DisapprovalReasonPage createDisapprovalReasonPage() {
+        return new DisapprovalReasonPage();
+    }
+
+    /**
+     * Create an instance of {@link GeographicLocationValues }
+     * 
+     */
+    public GeographicLocationValues createGeographicLocationValues() {
+        return new GeographicLocationValues();
+    }
+
+    /**
+     * Create an instance of {@link GetColorSet }
+     * 
+     */
+    public GetColorSet createGetColorSet() {
+        return new GetColorSet();
+    }
+
+    /**
+     * Create an instance of {@link GetInterestCategory }
+     * 
+     */
+    public GetInterestCategory createGetInterestCategory() {
+        return new GetInterestCategory();
+    }
+
+    /**
+     * Create an instance of {@link GetGeographicLocationResponse }
+     * 
+     */
+    public GetGeographicLocationResponse createGetGeographicLocationResponse() {
+        return new GetGeographicLocationResponse();
+    }
+
+    /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
+    }
+
+    /**
      * Create an instance of {@link ColorSet }
      * 
      */
     public ColorSet createColorSet() {
         return new ColorSet();
+    }
+
+    /**
+     * Create an instance of {@link SoapResponseHeader }
+     * 
+     */
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
+    }
+
+    /**
+     * Create an instance of {@link GetDisapprovalReason }
+     * 
+     */
+    public GetDisapprovalReason createGetDisapprovalReason() {
+        return new GetDisapprovalReason();
+    }
+
+    /**
+     * Create an instance of {@link DisapprovalReasonSelector }
+     * 
+     */
+    public DisapprovalReasonSelector createDisapprovalReasonSelector() {
+        return new DisapprovalReasonSelector();
+    }
+
+    /**
+     * Create an instance of {@link GeographicLocationPage }
+     * 
+     */
+    public GeographicLocationPage createGeographicLocationPage() {
+        return new GeographicLocationPage();
+    }
+
+    /**
+     * Create an instance of {@link GetGeographicLocation }
+     * 
+     */
+    public GetGeographicLocation createGetGeographicLocation() {
+        return new GetGeographicLocation();
     }
 
     /**

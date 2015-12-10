@@ -36,27 +36,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Get }
+     * Create an instance of {@link GetResponse }
      * 
      */
-    public Get createGet() {
-        return new Get();
+    public GetResponse createGetResponse() {
+        return new GetResponse();
     }
 
     /**
-     * Create an instance of {@link ErrorDetail }
+     * Create an instance of {@link PlacementUrlIdeaValues }
      * 
      */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
+    public PlacementUrlIdeaValues createPlacementUrlIdeaValues() {
+        return new PlacementUrlIdeaValues();
     }
 
     /**
-     * Create an instance of {@link Paging }
+     * Create an instance of {@link PlacementUrlIdea }
      * 
      */
-    public Paging createPaging() {
-        return new Paging();
+    public PlacementUrlIdea createPlacementUrlIdea() {
+        return new PlacementUrlIdea();
+    }
+
+    /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
     }
 
     /**
@@ -84,19 +92,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SoapHeader }
+     * Create an instance of {@link SoapResponseHeader }
      * 
      */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
-    }
-
-    /**
-     * Create an instance of {@link GetResponse }
-     * 
-     */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
     }
 
     /**
@@ -108,6 +108,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Get }
+     * 
+     */
+    public Get createGet() {
+        return new Get();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
      * Create an instance of {@link AdFormatConditions }
      * 
      */
@@ -116,27 +132,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SoapResponseHeader }
+     * Create an instance of {@link Paging }
      * 
      */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
-    }
-
-    /**
-     * Create an instance of {@link PlacementUrlIdea }
-     * 
-     */
-    public PlacementUrlIdea createPlacementUrlIdea() {
-        return new PlacementUrlIdea();
-    }
-
-    /**
-     * Create an instance of {@link PlacementUrlIdeaValues }
-     * 
-     */
-    public PlacementUrlIdeaValues createPlacementUrlIdeaValues() {
-        return new PlacementUrlIdeaValues();
+    public Paging createPaging() {
+        return new Paging();
     }
 
     /**

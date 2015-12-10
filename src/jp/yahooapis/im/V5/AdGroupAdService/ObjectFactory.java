@@ -36,59 +36,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdGroupAdOperation }
+     * Create an instance of {@link Paging }
      * 
      */
-    public AdGroupAdOperation createAdGroupAdOperation() {
-        return new AdGroupAdOperation();
+    public Paging createPaging() {
+        return new Paging();
     }
 
     /**
-     * Create an instance of {@link AdGroupAdPage }
+     * Create an instance of {@link Get }
      * 
      */
-    public AdGroupAdPage createAdGroupAdPage() {
-        return new AdGroupAdPage();
+    public Get createGet() {
+        return new Get();
     }
 
     /**
-     * Create an instance of {@link AdGroupAdValues }
+     * Create an instance of {@link None }
      * 
      */
-    public AdGroupAdValues createAdGroupAdValues() {
-        return new AdGroupAdValues();
-    }
-
-    /**
-     * Create an instance of {@link MobileAd }
-     * 
-     */
-    public MobileAd createMobileAd() {
-        return new MobileAd();
-    }
-
-    /**
-     * Create an instance of {@link TextAd }
-     * 
-     */
-    public TextAd createTextAd() {
-        return new TextAd();
-    }
-
-    /**
-     * Create an instance of {@link PosAd }
-     * 
-     */
-    public PosAd createPosAd() {
-        return new PosAd();
-    }
-
-    /**
-     * Create an instance of {@link SoapResponseHeader }
-     * 
-     */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
+    public None createNone() {
+        return new None();
     }
 
     /**
@@ -108,11 +76,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
+    }
+
+    /**
      * Create an instance of {@link Mutate }
      * 
      */
     public Mutate createMutate() {
         return new Mutate();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
     }
 
     /**
@@ -124,11 +108,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link None }
+     * Create an instance of {@link AdGroupAdReturnValue }
      * 
      */
-    public None createNone() {
-        return new None();
+    public AdGroupAdReturnValue createAdGroupAdReturnValue() {
+        return new AdGroupAdReturnValue();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupAdValues }
+     * 
+     */
+    public AdGroupAdValues createAdGroupAdValues() {
+        return new AdGroupAdValues();
     }
 
     /**
@@ -140,59 +132,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdGroupAdReturnValue }
+     * Create an instance of {@link MobileAd }
      * 
      */
-    public AdGroupAdReturnValue createAdGroupAdReturnValue() {
-        return new AdGroupAdReturnValue();
-    }
-
-    /**
-     * Create an instance of {@link Paging }
-     * 
-     */
-    public Paging createPaging() {
-        return new Paging();
-    }
-
-    /**
-     * Create an instance of {@link Get }
-     * 
-     */
-    public Get createGet() {
-        return new Get();
-    }
-
-    /**
-     * Create an instance of {@link MutateResponse }
-     * 
-     */
-    public MutateResponse createMutateResponse() {
-        return new MutateResponse();
-    }
-
-    /**
-     * Create an instance of {@link SoapHeader }
-     * 
-     */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
-    }
-
-    /**
-     * Create an instance of {@link StaticFrameAd }
-     * 
-     */
-    public StaticFrameAd createStaticFrameAd() {
-        return new StaticFrameAd();
-    }
-
-    /**
-     * Create an instance of {@link ManualCPCAdGroupAdBid }
-     * 
-     */
-    public ManualCPCAdGroupAdBid createManualCPCAdGroupAdBid() {
-        return new ManualCPCAdGroupAdBid();
+    public MobileAd createMobileAd() {
+        return new MobileAd();
     }
 
     /**
@@ -204,11 +148,67 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ErrorDetail }
+     * Create an instance of {@link ManualCPCAdGroupAdBid }
      * 
      */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
+    public ManualCPCAdGroupAdBid createManualCPCAdGroupAdBid() {
+        return new ManualCPCAdGroupAdBid();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupAdOperation }
+     * 
+     */
+    public AdGroupAdOperation createAdGroupAdOperation() {
+        return new AdGroupAdOperation();
+    }
+
+    /**
+     * Create an instance of {@link SoapResponseHeader }
+     * 
+     */
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
+    }
+
+    /**
+     * Create an instance of {@link TextAd }
+     * 
+     */
+    public TextAd createTextAd() {
+        return new TextAd();
+    }
+
+    /**
+     * Create an instance of {@link PosAd }
+     * 
+     */
+    public PosAd createPosAd() {
+        return new PosAd();
+    }
+
+    /**
+     * Create an instance of {@link StaticFrameAd }
+     * 
+     */
+    public StaticFrameAd createStaticFrameAd() {
+        return new StaticFrameAd();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupAdPage }
+     * 
+     */
+    public AdGroupAdPage createAdGroupAdPage() {
+        return new AdGroupAdPage();
+    }
+
+    /**
+     * Create an instance of {@link MutateResponse }
+     * 
+     */
+    public MutateResponse createMutateResponse() {
+        return new MutateResponse();
     }
 
     /**

@@ -36,83 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdGroup }
+     * Create an instance of {@link SoapResponseHeader }
      * 
      */
-    public AdGroup createAdGroup() {
-        return new AdGroup();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupOperation }
-     * 
-     */
-    public AdGroupOperation createAdGroupOperation() {
-        return new AdGroupOperation();
-    }
-
-    /**
-     * Create an instance of {@link Paging }
-     * 
-     */
-    public Paging createPaging() {
-        return new Paging();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link GetResponse }
-     * 
-     */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
-    }
-
-    /**
-     * Create an instance of {@link Mutate }
-     * 
-     */
-    public Mutate createMutate() {
-        return new Mutate();
-    }
-
-    /**
-     * Create an instance of {@link MutateResponse }
-     * 
-     */
-    public MutateResponse createMutateResponse() {
-        return new MutateResponse();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupPage }
-     * 
-     */
-    public AdGroupPage createAdGroupPage() {
-        return new AdGroupPage();
-    }
-
-    /**
-     * Create an instance of {@link SoapHeader }
-     * 
-     */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupReturnValue }
-     * 
-     */
-    public AdGroupReturnValue createAdGroupReturnValue() {
-        return new AdGroupReturnValue();
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
     }
 
     /**
@@ -124,27 +52,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdGroupSelector }
+     * Create an instance of {@link AdGroupPage }
      * 
      */
-    public AdGroupSelector createAdGroupSelector() {
-        return new AdGroupSelector();
+    public AdGroupPage createAdGroupPage() {
+        return new AdGroupPage();
     }
 
     /**
-     * Create an instance of {@link Error }
+     * Create an instance of {@link Paging }
      * 
      */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link SoapResponseHeader }
-     * 
-     */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
+    public Paging createPaging() {
+        return new Paging();
     }
 
     /**
@@ -161,6 +81,86 @@ public class ObjectFactory {
      */
     public ManualCPCAdGroupBid createManualCPCAdGroupBid() {
         return new ManualCPCAdGroupBid();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupSelector }
+     * 
+     */
+    public AdGroupSelector createAdGroupSelector() {
+        return new AdGroupSelector();
+    }
+
+    /**
+     * Create an instance of {@link Mutate }
+     * 
+     */
+    public Mutate createMutate() {
+        return new Mutate();
+    }
+
+    /**
+     * Create an instance of {@link AdGroup }
+     * 
+     */
+    public AdGroup createAdGroup() {
+        return new AdGroup();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupOperation }
+     * 
+     */
+    public AdGroupOperation createAdGroupOperation() {
+        return new AdGroupOperation();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
+    }
+
+    /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
+     * Create an instance of {@link MutateResponse }
+     * 
+     */
+    public MutateResponse createMutateResponse() {
+        return new MutateResponse();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupReturnValue }
+     * 
+     */
+    public AdGroupReturnValue createAdGroupReturnValue() {
+        return new AdGroupReturnValue();
+    }
+
+    /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
     }
 
     /**

@@ -36,11 +36,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetResponse }
+     * Create an instance of {@link ErrorDetail }
      * 
      */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link SearchKeywordIdeaPage }
+     * 
+     */
+    public SearchKeywordIdeaPage createSearchKeywordIdeaPage() {
+        return new SearchKeywordIdeaPage();
+    }
+
+    /**
+     * Create an instance of {@link SoapHeader }
+     * 
+     */
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
     }
 
     /**
@@ -49,6 +65,14 @@ public class ObjectFactory {
      */
     public SoapResponseHeader createSoapResponseHeader() {
         return new SoapResponseHeader();
+    }
+
+    /**
+     * Create an instance of {@link SearchKeywordIdeaSelector }
+     * 
+     */
+    public SearchKeywordIdeaSelector createSearchKeywordIdeaSelector() {
+        return new SearchKeywordIdeaSelector();
     }
 
     /**
@@ -68,19 +92,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SearchKeywordIdea }
+     * Create an instance of {@link GetResponse }
      * 
      */
-    public SearchKeywordIdea createSearchKeywordIdea() {
-        return new SearchKeywordIdea();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
+    public GetResponse createGetResponse() {
+        return new GetResponse();
     }
 
     /**
@@ -92,27 +108,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SearchKeywordIdeaSelector }
+     * Create an instance of {@link SearchKeywordIdea }
      * 
      */
-    public SearchKeywordIdeaSelector createSearchKeywordIdeaSelector() {
-        return new SearchKeywordIdeaSelector();
-    }
-
-    /**
-     * Create an instance of {@link SoapHeader }
-     * 
-     */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
-    }
-
-    /**
-     * Create an instance of {@link SearchKeywordIdeaPage }
-     * 
-     */
-    public SearchKeywordIdeaPage createSearchKeywordIdeaPage() {
-        return new SearchKeywordIdeaPage();
+    public SearchKeywordIdea createSearchKeywordIdea() {
+        return new SearchKeywordIdea();
     }
 
     /**
