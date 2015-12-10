@@ -36,19 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Get }
+     * Create an instance of {@link PlacementUrlList }
      * 
      */
-    public Get createGet() {
-        return new Get();
-    }
-
-    /**
-     * Create an instance of {@link PlacementUrlListSelector }
-     * 
-     */
-    public PlacementUrlListSelector createPlacementUrlListSelector() {
-        return new PlacementUrlListSelector();
+    public PlacementUrlList createPlacementUrlList() {
+        return new PlacementUrlList();
     }
 
     /**
@@ -60,14 +52,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PlacementUrlList }
-     * 
-     */
-    public PlacementUrlList createPlacementUrlList() {
-        return new PlacementUrlList();
-    }
-
-    /**
      * Create an instance of {@link Paging }
      * 
      */
@@ -76,11 +60,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PlacementUrlListReturnValue }
+     * Create an instance of {@link PlacementUrlListValues }
      * 
      */
-    public PlacementUrlListReturnValue createPlacementUrlListReturnValue() {
-        return new PlacementUrlListReturnValue();
+    public PlacementUrlListValues createPlacementUrlListValues() {
+        return new PlacementUrlListValues();
+    }
+
+    /**
+     * Create an instance of {@link SoapResponseHeader }
+     * 
+     */
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
     }
 
     /**
@@ -89,14 +81,6 @@ public class ObjectFactory {
      */
     public Mutate createMutate() {
         return new Mutate();
-    }
-
-    /**
-     * Create an instance of {@link SoapHeader }
-     * 
-     */
-    public SoapHeader createSoapHeader() {
-        return new SoapHeader();
     }
 
     /**
@@ -116,19 +100,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PlacementUrlListOperation }
+     * Create an instance of {@link SoapHeader }
      * 
      */
-    public PlacementUrlListOperation createPlacementUrlListOperation() {
-        return new PlacementUrlListOperation();
+    public SoapHeader createSoapHeader() {
+        return new SoapHeader();
     }
 
     /**
-     * Create an instance of {@link SoapResponseHeader }
+     * Create an instance of {@link PlacementUrlListSelector }
      * 
      */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
+    public PlacementUrlListSelector createPlacementUrlListSelector() {
+        return new PlacementUrlListSelector();
     }
 
     /**
@@ -140,6 +124,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PlacementUrlListOperation }
+     * 
+     */
+    public PlacementUrlListOperation createPlacementUrlListOperation() {
+        return new PlacementUrlListOperation();
+    }
+
+    /**
      * Create an instance of {@link MutateResponse }
      * 
      */
@@ -148,11 +140,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PlacementUrlListValues }
+     * Create an instance of {@link Get }
      * 
      */
-    public PlacementUrlListValues createPlacementUrlListValues() {
-        return new PlacementUrlListValues();
+    public Get createGet() {
+        return new Get();
     }
 
     /**
@@ -161,6 +153,14 @@ public class ObjectFactory {
      */
     public Error createError() {
         return new Error();
+    }
+
+    /**
+     * Create an instance of {@link PlacementUrlListReturnValue }
+     * 
+     */
+    public PlacementUrlListReturnValue createPlacementUrlListReturnValue() {
+        return new PlacementUrlListReturnValue();
     }
 
     /**

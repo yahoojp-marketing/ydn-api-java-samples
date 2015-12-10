@@ -44,14 +44,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Error }
-     * 
-     */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
      * Create an instance of {@link AdGroupTargetOperation }
      * 
      */
@@ -92,19 +84,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Mutate }
+     * Create an instance of {@link AdGroupTargetSelector }
      * 
      */
-    public Mutate createMutate() {
-        return new Mutate();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupTargetReturnValue }
-     * 
-     */
-    public AdGroupTargetReturnValue createAdGroupTargetReturnValue() {
-        return new AdGroupTargetReturnValue();
+    public AdGroupTargetSelector createAdGroupTargetSelector() {
+        return new AdGroupTargetSelector();
     }
 
     /**
@@ -140,11 +124,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
      * Create an instance of {@link SoapHeader }
      * 
      */
     public SoapHeader createSoapHeader() {
         return new SoapHeader();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupTargetReturnValue }
+     * 
+     */
+    public AdGroupTargetReturnValue createAdGroupTargetReturnValue() {
+        return new AdGroupTargetReturnValue();
     }
 
     /**
@@ -169,6 +169,14 @@ public class ObjectFactory {
      */
     public GeoTargetList createGeoTargetList() {
         return new GeoTargetList();
+    }
+
+    /**
+     * Create an instance of {@link Get }
+     * 
+     */
+    public Get createGet() {
+        return new Get();
     }
 
     /**
@@ -204,19 +212,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Get }
-     * 
-     */
-    public Get createGet() {
-        return new Get();
-    }
-
-    /**
      * Create an instance of {@link Paging }
      * 
      */
     public Paging createPaging() {
         return new Paging();
+    }
+
+    /**
+     * Create an instance of {@link Mutate }
+     * 
+     */
+    public Mutate createMutate() {
+        return new Mutate();
     }
 
     /**
@@ -252,6 +260,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
+    }
+
+    /**
      * Create an instance of {@link SearchTarget }
      * 
      */
@@ -281,22 +297,6 @@ public class ObjectFactory {
      */
     public GenderTargetList createGenderTargetList() {
         return new GenderTargetList();
-    }
-
-    /**
-     * Create an instance of {@link GetResponse }
-     * 
-     */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupTargetSelector }
-     * 
-     */
-    public AdGroupTargetSelector createAdGroupTargetSelector() {
-        return new AdGroupTargetSelector();
     }
 
     /**

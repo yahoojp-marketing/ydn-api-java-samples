@@ -22,6 +22,14 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="REQUEST_INFO"/>
  *     &lt;enumeration value="DOWNLOAD"/>
  *     &lt;enumeration value="INSTALL"/>
+ *     &lt;enumeration value="MORE_DETAIL"/>
+ *     &lt;enumeration value="RESERVE_HERE"/>
+ *     &lt;enumeration value="REGISTER"/>
+ *     &lt;enumeration value="APPLY_NOW"/>
+ *     &lt;enumeration value="PURCHASE_NOW"/>
+ *     &lt;enumeration value="RESERVE_NOW"/>
+ *     &lt;enumeration value="REGISTER_NOW"/>
+ *     &lt;enumeration value="CONTACT_US"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -39,7 +47,15 @@ public enum ButtonText {
     CONFIRM_PROPERTY,
     REQUEST_INFO,
     DOWNLOAD,
-    INSTALL;
+    INSTALL,
+    MORE_DETAIL,
+    RESERVE_HERE,
+    REGISTER,
+    APPLY_NOW,
+    PURCHASE_NOW,
+    RESERVE_NOW,
+    REGISTER_NOW,
+    CONTACT_US;
 
     public String value() {
         return name();

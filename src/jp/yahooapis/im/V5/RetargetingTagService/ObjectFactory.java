@@ -36,75 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SoapResponseHeader }
-     * 
-     */
-    public SoapResponseHeader createSoapResponseHeader() {
-        return new SoapResponseHeader();
-    }
-
-    /**
-     * Create an instance of {@link MutateResponse }
-     * 
-     */
-    public MutateResponse createMutateResponse() {
-        return new MutateResponse();
-    }
-
-    /**
-     * Create an instance of {@link RetargetingTagOperation }
-     * 
-     */
-    public RetargetingTagOperation createRetargetingTagOperation() {
-        return new RetargetingTagOperation();
-    }
-
-    /**
-     * Create an instance of {@link RetargetingTagValues }
-     * 
-     */
-    public RetargetingTagValues createRetargetingTagValues() {
-        return new RetargetingTagValues();
-    }
-
-    /**
-     * Create an instance of {@link RetargetingTagReturnValue }
-     * 
-     */
-    public RetargetingTagReturnValue createRetargetingTagReturnValue() {
-        return new RetargetingTagReturnValue();
-    }
-
-    /**
      * Create an instance of {@link SoapHeader }
      * 
      */
     public SoapHeader createSoapHeader() {
         return new SoapHeader();
-    }
-
-    /**
-     * Create an instance of {@link GetResponse }
-     * 
-     */
-    public GetResponse createGetResponse() {
-        return new GetResponse();
-    }
-
-    /**
-     * Create an instance of {@link RetargetingTagPage }
-     * 
-     */
-    public RetargetingTagPage createRetargetingTagPage() {
-        return new RetargetingTagPage();
-    }
-
-    /**
-     * Create an instance of {@link Mutate }
-     * 
-     */
-    public Mutate createMutate() {
-        return new Mutate();
     }
 
     /**
@@ -116,19 +52,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Error }
+     * Create an instance of {@link Mutate }
      * 
      */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
+    public Mutate createMutate() {
+        return new Mutate();
     }
 
     /**
@@ -140,11 +68,83 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RetargetingTagValues }
+     * 
+     */
+    public RetargetingTagValues createRetargetingTagValues() {
+        return new RetargetingTagValues();
+    }
+
+    /**
+     * Create an instance of {@link RetargetingTagOperation }
+     * 
+     */
+    public RetargetingTagOperation createRetargetingTagOperation() {
+        return new RetargetingTagOperation();
+    }
+
+    /**
+     * Create an instance of {@link MutateResponse }
+     * 
+     */
+    public MutateResponse createMutateResponse() {
+        return new MutateResponse();
+    }
+
+    /**
      * Create an instance of {@link RetargetingTagSelector }
      * 
      */
     public RetargetingTagSelector createRetargetingTagSelector() {
         return new RetargetingTagSelector();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link RetargetingTagPage }
+     * 
+     */
+    public RetargetingTagPage createRetargetingTagPage() {
+        return new RetargetingTagPage();
+    }
+
+    /**
+     * Create an instance of {@link GetResponse }
+     * 
+     */
+    public GetResponse createGetResponse() {
+        return new GetResponse();
+    }
+
+    /**
+     * Create an instance of {@link SoapResponseHeader }
+     * 
+     */
+    public SoapResponseHeader createSoapResponseHeader() {
+        return new SoapResponseHeader();
+    }
+
+    /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
+    }
+
+    /**
+     * Create an instance of {@link RetargetingTagReturnValue }
+     * 
+     */
+    public RetargetingTagReturnValue createRetargetingTagReturnValue() {
+        return new RetargetingTagReturnValue();
     }
 
     /**
