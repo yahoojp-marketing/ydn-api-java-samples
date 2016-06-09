@@ -1,8 +1,8 @@
-set JAVA_HOME={path to java home dir.}
+set JAVA_HOME=c:\PROGRA~1\Java\jdk1.8.0_74
 set SAMPLE_HOME={path to sample program home dir}
 
 set CLASS_PATH=%SAMPLE_HOME%\conf
-set CLASS_PATH=%SAMPLE_HOME%\bin\sample.jar;%CLASS_PATH%
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V5.3.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 cd %SAMPLE_HOME%
 %JAVA_HOME%\bin\java -classpath %CLASS_PATH% %1

@@ -1,10 +1,13 @@
 --------------------------------
 【バージョン】
 --------------------------------
-Ver.5.2.0
+Ver.5.3.0
 
 ■変更履歴
 -----------
+2016/04/20:
+- V5.3 AuditLogDownloadSample、StatsSampleを追加しました。
+
 2015/11/18:
 - V5.2 キャリアターゲティングに対応しました。
 - V5.2 RetargetingSampleを追加しました。
@@ -56,59 +59,84 @@ Ver.5.2.0
 2012/04/17:
 - conf/api_config.propertiesファイルのproduction環境用LOCATIONの設定値をlocation.im.yahooapis.jpに変更しました。
 
+
 --------------------------------
 【概要】
 --------------------------------
 このサンプルプログラムは、Javaを使用して各APIを呼び出す処理サンプルです。
 JAX-WSを使用してAPIを呼び出す形になっています。
 
+
 --------------------------------
 【内容物】
 --------------------------------
 ■binディレクトリ
-コンパイルされたサンプルプログラムの実行ファイルと、
-Windows上で実行するためのバッチファイルが格納されています。
+コンパイルされたサンプルプログラムの実行ファイルと、Windows上で実行するためのバッチファイルが格納されています。
 
-- run_sample.bat：Windows上でサンプルプログラムを実行するためのバッチファイルです。
-- sample.jar    ：コンパイルされたサンプルプログラムがまとめたjarファイルです。
+- run_sample.bat                   ：Windows上でサンプルプログラムを実行するためのバッチファイルです。
+- ad-api-sample-IM-API-V5.3.jar    ：コンパイルされたサンプルプログラムがまとめたjarファイルです。
 
-
-
-■confディレクトリ
-サンプルプログラム実行時の各種設定を記述するプロパティファイルが格納されています。
-
-- api_config.properties：各種IDを記述する設定ファイルです。
-
-
-■srcディレクトリ
+■src/main/javaディレクトリ
 以下の各プログラムが格納されています。
 
 ・以下は直接実行できるサンプルプログラムです。
 
-- AccountAdProductSample.java  ：AccountAdProductServiceによるアカウント商品一覧の参照処理のサンプルです。
-- AccountSample.java           ：AccountServiceによるアカウント参照、更新処理のサンプルです。
-- AdSample.java                ：CampaignService/AdGroupService/AdGroupAdService/AdGroupTargetServiceによる入稿処理のサンプルです。
-- BalanceSample.java           ：BalanceServiceによるアカウント残高参照処理のサンプルです。
-- BulkDownloadSample.java      ：BulkServiceによるダウンロード処理のサンプルです。
-- BulkUploadSample.java        ：BulkServiceによるアップロード処理のサンプルです。
-- ConversionTrackerSample.java ：ConversionTrackerServiceによるコンバージョン情報の登録、更新処理のサンプルです。
-- DictionarySample.java        ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ参照処理のサンプルです。
-- DomainBlockSample.java       ：DomainBlockServiceによるブロックドメイン設定、参照処理のサンプルです。
-- MediaSample.java             ：AdSample.javaにMediaServiceを加えた画像広告の入稿処理のサンプルです。
-- ReportDownloadSample.java    ：ReportDefinitionService, ReportServiceを使用したレポートダウンロード処理のサンプルです。
-- RetargetingSample.java       ：RetargetingTagService, RetargetingListServiceを使用したリターゲティング処理のサンプルです。
-- SearchKeywordSample.java     ：SearchKeywordIdeaService,SearchKeywordListServiceを使用したサーチターゲティング処理のサンプルです。
-- PlacementUrlSample.java      ：PlacementUrlIdeaService,PlacementUrlListServiceを使用したプレイスメントターゲティング処理のサンプルです。
+- jp/co/yahoo/ad_api_sample配下
+- accountAdProductSample/AccountAdProductSample.java   ：AccountAdProductServiceによるアカウント商品一覧の参照処理のサンプルです。
+- accountSample/AccountSample.java                     ：AccountServiceによるアカウント参照、更新処理のサンプルです。
+- adSample/AdGroupAdServiceSample.java                 ：AdGroupAdServiceによる広告の登録、参照、更新、削除処理のサンプルです。
+- adSample/AdGroupServiceSample.java                   ：AdGroupServiceによる広告グループの登録、参照、更新、削除処理のサンプルです。
+- adSample/AdSample.java                               ：CampaignService/AdGroupService/AdGroupAdService/AdGroupTargetServiceによる入稿処理のサンプルです。
+- adSample/CampaignServiceSample.java                  ：CampaignServiceによるキャンペーンの登録、参照、更新、削除処理のサンプルです。
+- auditLogDownloadSample/AuditLogDownloadSample.java   ：AuditLogServiceを使用した操作履歴ログダウンロード処理のサンプルです。
+- balanceSample/BalanceSample.java                     ：BalanceServiceによるアカウント残高参照処理のサンプルです。
+- bulkDownloadSample/BulkDownloadSample.java           ：BulkServiceによるダウンロード処理のサンプルです。
+- bulkUploadSample/BulkUploadSample.java               ：BulkServiceによるアップロード処理のサンプルです。
+- conversionTrackerSample/ConversionTrackerSample.java ：ConversionTrackerServiceによるコンバージョン情報の登録、更新処理のサンプルです。
+- dictionarySample.DictionarySample.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ参照処理のサンプルです。
+- mediaSample/MediaSample.java                         ：AdSample.javaにMediaServiceを加えた画像広告の入稿処理のサンプルです。
+- placementUrlSample/PlacementUrlSample.java           ：PlacementUrlIdeaService,PlacementUrlListServiceを使用したプレイスメントターゲティング処理のサンプルです。
+- reportDownloadSample/ReportDownloadSample.java       ：ReportDefinitionService, ReportServiceを使用したレポートダウンロード処理のサンプルです。
+- retargetingSample/RetargetingSample.java             ：RetargetingTagService, RetargetingListServiceを使用したリターゲティング処理のサンプルです。
+- searchKeywordSample/SearchKeywordSample.java         ：SearchKeywordIdeaService,SearchKeywordListServiceを使用したサーチターゲティング処理のサンプルです。
+- statsSample/StatsSample.java                         ：StatsServiceを使用した統計情報処理のサンプルです。
 
 ・以下は各サンプルプログラムから利用されるクラスです。
 
-- SoapUtils.java           ：LocationServiceを使用したリクエスト先の取得処理のサンプル及びその他共通処理です。
+- SoapUtils.java                 ：LocationServiceを使用したリクエスト先の取得処理のサンプル及びその他共通処理です。
 - jp/yahooapis/im/V5配下         ：JAX-WSを使用してWSDLから生成したスタブ、スケルトンクラス群です。
 
+■src/main/resourceディレクトリ
+以下の内容物が格納されています。
+- api_config.properties：各種IDを記述する設定ファイルです。
+
+■src/test/javaディレクトリ
+以下の各プログラムが格納されています。
+
+・以下は直接実行できるサンプルプログラムです。
+
+- jp/co/yahoo/ad_api_sample配下
+- accountAdProductSample/AccountAdProductSampleTest.java   ：AccountAdProductServiceによるアカウント商品一覧の参照処理のテストケースです。
+- accountSample/AccountSampleTest.java                     ：AccountServiceによるアカウント参照、更新処理のテストケースです。
+- adSample/AdGroupAdServiceSampleTest.java                 ：AdGroupAdServiceによる広告の登録、参照、更新、削除処理のテストケースです。
+- adSample/AdGroupServiceSampleTest.java                   ：AdGroupServiceによる広告グループの登録、参照、更新、削除処理のテストケースです。
+- adSample/AdSampleTest.java                               ：CampaignService/AdGroupService/AdGroupAdService/AdGroupTargetServiceによる入稿処理のテストケースです。
+- adSample/CampaignServiceSampleTest.java                  ：CampaignServiceによるキャンペーンの登録、参照、更新、削除処理のテストケースです。
+- auditLogDownloadSample/AuditLogDownloadSampleTest.java   ：AuditLogServiceを使用した操作履歴ログダウンロード処理のテストケースです。
+- balanceSample/BalanceSampleTest.java                     ：BalanceServiceによるアカウント残高参照処理のテストケースです。
+- bulkDownloadSample/BulkDownloadSampleTest.java           ：BulkServiceによるダウンロード処理のテストケースです。
+- bulkUploadSample/BulkUploadSampleTest.java               ：BulkServiceによるアップロード処理のテストケースです。
+- conversionTrackerSample/ConversionTrackerSampleTest.java ：ConversionTrackerServiceによるコンバージョン情報の登録、更新処理のテストケースです。
+- dictionarySample.DictionarySampleTest.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ参照処理のテストケースです。
+- mediaSample/MediaSampleTest.java                         ：AdSampleTest.javaにMediaServiceを加えた画像広告の入稿処理のテストケースです。
+- placementUrlSample/PlacementUrlSampleTest.java           ：PlacementUrlIdeaService,PlacementUrlListServiceを使用したプレイスメントターゲティング処理のテストケースです。
+- reportDownloadSample/ReportDownloadSampleTest.java       ：ReportDefinitionService, ReportServiceを使用したレポートダウンロード処理のテストケースです。
+- retargetingSample/RetargetingSampleTest.java             ：RetargetingTagService, RetargetingListServiceを使用したリターゲティング処理のテストケースです。
+- searchKeywordSample/SearchKeywordSampleTest.java         ：SearchKeywordIdeaService,SearchKeywordListServiceを使用したサーチターゲティング処理のテストケースです。
+- statsSample/StatsSampleTest.java                         ：StatsServiceを使用した統計情報処理のテストケースです。
 
 ■downloadディレクトリ
-ReportDownloadSample、BulkDownloadSample、BulkUploadSampleを実行した際に、
-ダウンロードしたデータがファイルとして格納されるディレクトリです。
+ReportDownloadSample、BulkDownloadSample、BulkUploadSample、AuditLogDownloadSampleを実行した際に、ダウンロードしたデータがファイルとして格納されるディレクトリです。
 
 ■uploadディレクトリ
 MediaSampleやBulkUploadSampleでアップロードするファイルをあらかじめ格納しておくディレクトリです。
@@ -119,12 +147,16 @@ MediaSampleやBulkUploadSampleでアップロードするファイルをあら�
 --------------------------------
 Java環境を構築するために、以下をインストールしてください。
 
-[Java (J2SE) 1.6]
+[Java 1.8(Java SE Development Kit 8)]
 http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+Maven環境を構築するために、以下をインストールしてください。
+
+[Apache Maven 3.1.1]
+https://maven.apache.org/download.cgi
 
 
 confディレクトリ配下にあるapi_config.propertiesに各IDを記述します。
-
 LOCATION            : リクエスト先毎にコメントアウトを外してください。
 LICENSE             : APIライセンスを記述(必須)
 APIACCOUNTID        : APIアカウントIDを記述(必須)
@@ -133,46 +165,48 @@ ONBEHALFOFACCOUNTID : 代行アカウントを記述(任意)
 ONBEHALFOFPASSWORD  : 代行アカウントパスワードを記述(任意)
 ACCOUNTID           : アカウントIDを記述(必須)
 
+以下、IDはAdGroupAdSample、StatsSampleを動作させる際に必要となります。
+CAMPAIGNID          : キャンペーンIDを記述（必須）
+ADGROUPID           : 広告グループIDを記述（必須）
 
-binディレクトリ配下にあるrun_sample.batの先頭に各パスを記述します。
-
-■例：
-set JAVA_HOME=C:\Java\jdk1.6.0
-set SAMPLE_HOME=C:\Java\java_sample
+以下、IDはStatsSampleを動作させる際に必要となります。
+ADID                : 広告IDを記述（必須）
+MEDIAID             : 画像IDを記述（必須）
 
 
 --------------------------------
 【実行】
 --------------------------------
-binディレクトリ配下のrun_sample.batファイルを実行します。
-引数として、実行したいサンプルプログラムのクラス名を指定します。
+set SAMPLE_HOME={ad-api-sample}
+set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V5.3.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
-■例：
+■実行例：
 ---------------------------------------
-cd C:\Java\java_sample
-bin\run_sample.bat AccountAdProductSample
-bin\run_sample.bat AccountSample
-bin\run_sample.bat AdSample
-bin\run_sample.bat BalanceSample
-bin\run_sample.bat BulkDownloadSample
-bin\run_sample.bat BulkUploadSample
-bin\run_sample.bat ConversionTrackerSample
-bin\run_sample.bat DictionarySample
-bin\run_sample.bat DomainBlockSample
-bin\run_sample.bat MediaSample
-bin\run_sample.bat ReportDownloadSample
-bin\run_sample.bat RetargetingSample
-bin\run_sample.bat SearchKeywordSample
-bin\run_sample.bat PlacementUrlSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.accountAdProductSample/AccountAdProductSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.accountSample/AccountSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.adSample/AdGroupAdServiceSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.adSample/AdGroupServiceSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.adSample/AdSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.adSample/CampaignServiceSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.auditLogDownloadSample/AuditLogDownloadSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.balanceSample/BalanceSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.bulkDownloadSample/BulkDownloadSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.bulkUploadSample/BulkUploadSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.conversionTrackerSample/ConversionTrackerSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.dictionarySample.DictionarySample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.mediaSample/MediaSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.placementUrlSample/PlacementUrlSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.reportDownloadSample/ReportDownloadSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.retargetingSample/RetargetingSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.searchKeywordSample/SearchKeywordSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.statsSample/StatsSample
 ---------------------------------------
 
-データをダウンロードする処理を実行した場合には、
-downloadディレクトリにファイルが格納されます。
+データをダウンロードする処理を実行した場合には、downloadディレクトリにファイルが格納されます。
 
-データをアップロードする処理を実行する場合には
-実行前にあらかじめuploadディレクトリ配下にアップロードしたい
-ファイルをuploadディレクトリ配下に格納しておく必要があります。
+データをアップロードする処理を実行する場合には、あらかじめuploadディレクトリ配下にアップロードしたいファイルを格納しておく必要があります。
 サンプルプログラムごとにファイル名は固定です。
 
-・MediaSampleの場合：SampleMedia.jpg
-・BulkUploadSampleの場合：SampleBulkUpload.csv
+・MediaSampleの場合　　　　：SampleMedia.jpg
+・BulkUploadSampleの場合　 ：SampleBulkUpload.csv

@@ -1,10 +1,13 @@
 --------------------------------
 <<Version>>
 --------------------------------
-Ver.5.2.0
+Ver.5.3.0
 
 [Update history]
 -----------
+2016/04/20:
+- Added V5.3 AuditLogDownloadSample and StatsSample.
+
 2015/11/18:
 - V5.2 Correspond to Carrier Targeting.
 - V5.2 Added RetargetingSample.
@@ -22,27 +25,27 @@ Ver.5.2.0
 2014/03/26:
 - V4.6 Correspond to Placement Targeting.
 
-2014/02/07Ôºö
+2014/02/07ÅF
 - V4.6 Added Similar User Targeting.
 - V4.6 Added Segment Targeting.
 - V4.6 Added Frequency Control.
 - V4.6 Added Frequency Report.
 
-2013/09/04Ôºö
+2013/09/04ÅF
 - V4 Added AccountAdProductSample, DictionarySample, SearchKeywordSample.
-- Changed to JAX-WS for Soap API library.
+- Changed to JAX-WS for Soap api library.
 
 2013/05/28:
 - V4 Correspond to Site Retargeting.
 
 2013/02/27:
 - V4 Added bid to AdSample / MediaSample of AdGroupAdService.
-- V4 Added image condition to getBulkDownload of BulkDownloadSample.
-- V4 Added image transactions to response of getBulkUploadStatus of BulkUploadSample.
-- V4 Correspond to ReportDownloadSample as scheduled report.
+- V4 Added Image condition to getBulkDownload of BulkDownloadSample.
+- V4 Added Image transactions to response of getBulkUploadStatus of BulkUploadSample.
+- V4 Correspond to ReportDownloadSample as scheduled Report.
 
 2012/12/03:
-- V4 Correspond to image (media) display.
+- V4 Correspond to Image (media) display.
 
 2012/10/09:
 - V4 Correspond to BulkService upload.
@@ -56,11 +59,13 @@ Ver.5.2.0
 2012/04/17:
 - Changed the Production LOCATION setting of conf/api_config.php as: "location.im.yahooapis.jp".
 
+
 --------------------------------
 <<Overview>>
 --------------------------------
 This sample program uses Java to call each services in API. 
 API is called by using JAX-WS.
+
 
 --------------------------------
 <<Contents>>
@@ -68,53 +73,90 @@ API is called by using JAX-WS.
 [bin directory]
 The compiled execute file of sample program and the batch file to excecute on Windows are stored.
 
-- run_sample.bat: It is the batch file in order to execute the sample program on Windows.
-- sample.jar    : It is the jar files that compiled sample program packed. 
+- run_sample.bat                 : It is the batch file in order to execute the Sample program on Windows.
+- ad-api-Sample-IM-api-V5.3.jar  : It is the jar files that packed the compiled Sample program.
 
-[conf directory]
-Property file is stored in order to describe the each setting used in the sample program execution.
-
-- api_config.properties: Setting file to describe each ID.
-
-[src directory]
+[src/main/java directory]
 The following programs are stored.
 
 * Sample programs can be executed directly. 
-- AccountAdProductSample.java  : Sample of Get operation for account ad product via AccountAdProductService.
-- AccountSample.java           : Sample of Get and Mutate operation for account information via AccountService.
-- AdSample.java                : Sample of ad creation via CampaignService/AdGroupService/AdGroupAdService/AdGroupTargetService.
-- BalanceSample.java           : Sample of Get operation for account balance via BalanceService.
-- BulkDownloadSample.java      : Sample of download process via BulkService.
-- BulkUploadSample.java        : Sample of upload process via BulkService.
-- ConversionTrackerSample.java : Sample of Mutate operation for conversion information via ConversionTrackerService.
-- DictionarySample.java        : Sample of Get operation for location data, rejected reasons, target setting data via DictionaryService.
-- DomainBlockSample.java       : Sample of Get and Mutate operation for block domain settings via DomainBlockService.
-- MediaSample.java             : Sample of ad creation of image ads, which MediaService added to AdSample.php.
-- ReportDownloadSample.java    : Sample of report download via ReportDefinitionService and ReportService.
-- RetargetingSample.java       : Sample of Retargeting via RetargetingTagService and RetargetingListService.
-- SearchKeywordSample.java     : Sample of Search Targeting via SearchKeywordIdeaService and SearchKeywordListService.
-- PlacementUrlSample.java      : Sample of Placement Targeting via PlacementUrlIdeaService and PlacementUrlListService.
+
+- Under jp/co/yahoo/ad_api_sample directory
+- AccountAdProductSample/AccountAdProductSample.java   : Sample of Get operation for account ad product via AccountAdProductService.
+- accountSample/AccountSample.java                     : Sample of account browse and update via AccountService.
+- AdSample/AdGroupAdServiceSample.java                 : Sample of Get and Mutate operation for account information via AdGroupAdService.
+- AdSample/AdGroupServiceSample.java                   : Sample of Get and Mutate operation for account information via AdGroupService.
+- AdSample/AdSample.java                               : Sample of ad creation via CampaignService/AdGroupService/AdGroupAdService/AdGroupTargetService.
+- AdSample/CampaignServiceSample.java                  : Sample of Get and Mutate operation via CampaignService.
+- AuditLogDownloadSample/AuditLogDownloadSample.java   : Sample of download operation history log via AuditLogService.
+- balanceSample/BalanceSample.java                     : Sample of Get operation for account balance via BalanceService.
+- bulkDownloadSample/BulkDownloadSample.java           : Sample of download process via BulkService.
+- bulkUploadSample/BulkUploadSample.java               : Sample of upload process via BulkService.
+- conversionTrackerSample/ConversionTrackerSample.java : Sample of Get and Mutate operation for conversion information via ConversionTrackerService.
+- dictionarySample.DictionarySample.java               : Sample of Get operation for LOCATION data, rejected reasons, target setting data via DictionaryService.
+- MediaSample/MediaSample.java                         : Sample of ad creation of Image ads, which MediaService Added to AdSample.java
+- placementUrlSample/PlacementUrlSample.java           : Sample of Placement Targeting via PlacementUrlIdeaService and PlacementUrlListService.
+- ReportDownloadSample/ReportDownloadSample.java       : Sample of Report download via ReportDefinitionService and ReportService.
+- retargetingSample/RetargetingSample.java             : Sample of Retargeting via RetargetingTagService and RetargetingListService.
+- searchKeywordSample/SearchKeywordSample.java         : Sample of Search Targeting via SearchKeywordIdeaService and SearchKeywordListService.
+- statsSample/StatsSample.java                         : Sample of Get operation for Analytics data via StatsService.
 
 * Class is called from sample programs.
-- SoapUtils.java           : Sample and other common process of Get operation request via LocationService.
-- Under jp/yahooapis/im/V5   : Stubs and the skelton classes generated by WSDL using JAX-WS
+
+- SoapUtils.java              : Sample and other common process of Get operation request via LocationService.
+- Under jp/yahooapis/IM/V5    : Stubs and the skelton classes generated by WSDL using JAX-WS.
+
+[src/main/resource directory]
+The following contents are stored.
+- api_config.properties: Config file describes each ID.
+
+[src/test/java directory]
+The following programs are stored.
+
+* Sample programs can be executed directly. 
+
+- Under jp/co/yahoo/ad_api_sample
+- AccountAdProductSample/AccountAdProductSampleTest.java   : Test case of Get operation for account ad product via AccountAdProductService.
+- accountSample/AccountSampleTest.java                     : Test case of account browse and update via AccountService.
+- AdSample/AdGroupAdServiceSampleTest.java                 : Test case of Get and Mutate operation for account information via AdGroupAdService.
+- AdSample/AdGroupServiceSampleTest.java                   : Test case of Get and Mutate operation for account information via AdGroupService.
+- AdSample/AdSampleTest.java                               : Test case of ad creation via CampaignService/AdGroupService/AdGroupAdService/AdGroupTargetService.
+- AdSample/CampaignServiceSampleTest.java                  : Test case of Get and Mutate operation for campaign information via CampaignService.
+- AuditLogDownloadSample/AuditLogDownloadSampleTest.java   : Test case of download operation history log via AuditLogService.
+- balanceSample/BalanceSampleTest.java                     : Test case of Get operation for account balance via BalanceService.
+- bulkDownloadSample/BulkDownloadSampleTest.java           : Test case of download process via BulkService.
+- bulkUploadSample/BulkUploadSampleTest.java               : Test case of upload process via BulkService.
+- conversionTrackerSample/ConversionTrackerSampleTest.java : Test case of Get and Mutate operation for conversion information via ConversionTrackerService.
+- dictionarySample.DictionarySampleTest.java               : Test case of Get operation for LOCATION data, rejected reasons, target setting data via DictionaryService.
+- MediaSample/MediaSampleTest.java                         : Test case of ad creation of Image ads, which MediaService Added to AdSample.java.
+- placementUrlSample/PlacementUrlSampleTest.java           : Test case of Placement Targeting via PlacementUrlIdeaService and PlacementUrlListService.
+- ReportDownloadSample/ReportDownloadSampleTest.java       : Test case of Report download via ReportDefinitionService and ReportService.
+- retargetingSample/RetargetingSampleTest.java             : Test case of Retargeting via RetargetingTagService and RetargetingListService.
+- searchKeywordSample/SearchKeywordSampleTest.java         : Test case of Search Targeting via SearchKeywordIdeaService and SearchKeywordListService.
+- statsSample/StatsSampleTest.java                         : Test case of Get operation for Analytics data via StatsService.
 
 [download directory]
-It stores the downloded file when you execute ReportDownloadSample, BulkDownloadSample, or BulkUploadSample.
+It stores the downloded file when you execute ReportDownloadSample, BulkDownloadSample, BulkUploadSample or AuditLogDownloadSample.
 
 [upload directory]
 It stores the upload file when you execute MediaSample or BulkUploadSample.
 
+
 --------------------------------
 <<Preparation>>
 --------------------------------
-Please install the following to build operation environment for Java
+Please install the following to build operation environment for Java.
 
-[Java (J2SE) 1.6]
+[Java 1.8(Java SE Development Kit 8)]
 http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
-Change authentication information of api_config.properties under the conf directory.
+Please install the following to build operation environment for Maven.
 
+[Apache Maven 3.1.1]
+https://maven.apache.org/download.cgi
+
+
+Describe the authentication information of api_config.properties under the conf directory.
 LOCATION            : Comment out the unnecessary line.
 LICENSE             : Enter API license (Required)
 APIACCOUNTID        : Enter API Account ID (Required)
@@ -123,41 +165,48 @@ ONBEHALFOFACCOUNTID : Enter Application Account ID (Optional)
 ONBEHALFOFPASSWORD  : Enter Application Account password (Optional)
 ACCOUNTID           : Enter Account ID (Required)
 
-Enter each pass on the head of run_sample.bat, under the bin directory.
+The following IDs are required for AdGroupAdSample and StatsSample.
+CAMPAIGNID          : Enter Campaign ID (Required)
+ADGROUPID           : Enter Ad Group ID (Required)
 
-[e.g.]
-set JAVA_HOME=C:\Java\jdk1.6.0
-set SAMPLE_HOME=C:\Java\java_sample
+The following IDs are required for StatsSample.
+ADID                : Enter Ad ID (Required)
+MEDIAID             : Enter Media ID (Required)
+
 
 --------------------------------
 <<Execution>>
 --------------------------------
-Execute run_sample.bat file, under the bin directory.
-Designate the class name of sample program that want to be executed as a parameter.
+set SAMPLE_HOME={ad-api-sample}
+set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V5.3.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 [e.g.]
 ---------------------------------------
-cd C:\Java\java_sample
-bin\run_sample.bat AccountAdProductSample
-bin\run_sample.bat AccountSample
-bin\run_sample.bat AdSample
-bin\run_sample.bat BalanceSample
-bin\run_sample.bat BulkDownloadSample
-bin\run_sample.bat BulkUploadSample
-bin\run_sample.bat ConversionTrackerSample
-bin\run_sample.bat DictionarySample
-bin\run_sample.bat DomainBlockSample
-bin\run_sample.bat MediaSample
-bin\run_sample.bat ReportDownloadSample
-bin\run_sample.bat RetargetingSample
-bin\run_sample.bat SearchKeywordSample
-bin\run_sample.bat PlacementUrlSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.accountAdProductSample/AccountAdProductSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.accountSample/AccountSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.adSample/AdGroupAdServiceSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.adSample/AdGroupServiceSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.adSample/AdSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.adSample/CampaignServiceSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.auditLogDownloadSample/AuditLogDownloadSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.balanceSample/BalanceSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.bulkDownloadSample/BulkDownloadSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.bulkUploadSample/BulkUploadSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.conversionTrackerSample/ConversionTrackerSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.dictionarySample.DictionarySample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.mediaSample/MediaSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.placementUrlSample/PlacementUrlSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.reportDownloadSample/ReportDownloadSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.retargetingSample/RetargetingSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.searchKeywordSample/SearchKeywordSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.statsSample/StatsSample
 ---------------------------------------
 
 When data download is executed, the file will be stored to the download directory.
 
-When the data upload process is executed, 
-It is necessary to store the file under upload directory to upload the data.
+When uploading the data is executed, please store the file you want to upload under the upload directory.
 File name is fixed in each sample program. 
- - In case of MediaSample.php: SampleMedia.jpg
- - In case of BulkUploadSample.php: SampleBulkUpload.csv
+
+ - In case of MediaSample       : SampleMedia.jpg
+ - In case of BulkUploadSample  : SampleBulkUpload.csv
