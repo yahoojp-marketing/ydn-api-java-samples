@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="disapprovalReasonCodes" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="bid" type="{http://im.yahooapis.jp/V5}AdGroupAdBid" minOccurs="0"/>
  *         &lt;element name="ad" type="{http://im.yahooapis.jp/V5}Ad" minOccurs="0"/>
+ *         &lt;element name="impressionBeaconUrls" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="isRemoveBeaconUrls" type="{http://im.yahooapis.jp/V5}isRemoveFlg" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -56,7 +58,9 @@ import javax.xml.bind.annotation.XmlType;
     "approvalStatus",
     "disapprovalReasonCodes",
     "bid",
-    "ad"
+    "ad",
+    "impressionBeaconUrls",
+    "isRemoveBeaconUrls"
 })
 public class AdGroupAd {
 
@@ -77,6 +81,9 @@ public class AdGroupAd {
     protected List<String> disapprovalReasonCodes;
     protected AdGroupAdBid bid;
     protected Ad ad;
+    protected List<String> impressionBeaconUrls;
+    @XmlSchemaType(name = "string")
+    protected IsRemoveFlg isRemoveBeaconUrls;
 
     /**
      * Gets the value of the accountId property.
@@ -393,6 +400,59 @@ public class AdGroupAd {
      */
     public void setAd(Ad value) {
         this.ad = value;
+    }
+
+    /**
+     * Gets the value of the impressionBeaconUrls property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the impressionBeaconUrls property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getImpressionBeaconUrls().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
+    public List<String> getImpressionBeaconUrls() {
+        if (impressionBeaconUrls == null) {
+            impressionBeaconUrls = new ArrayList<String>();
+        }
+        return this.impressionBeaconUrls;
+    }
+
+    /**
+     * Gets the value of the isRemoveBeaconUrls property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link IsRemoveFlg }
+     *     
+     */
+    public IsRemoveFlg getIsRemoveBeaconUrls() {
+        return isRemoveBeaconUrls;
+    }
+
+    /**
+     * Sets the value of the isRemoveBeaconUrls property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link IsRemoveFlg }
+     *     
+     */
+    public void setIsRemoveBeaconUrls(IsRemoveFlg value) {
+        this.isRemoveBeaconUrls = value;
     }
 
 }

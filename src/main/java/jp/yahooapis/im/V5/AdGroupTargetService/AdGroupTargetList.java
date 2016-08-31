@@ -1,10 +1,11 @@
 
 package jp.yahooapis.im.V5.AdGroupTargetService;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -21,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="campaignId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="adGroupId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="targets" type="{http://im.yahooapis.jp/V5}TargetList" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="type" type="{http://im.yahooapis.jp/V5}TargetType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,14 +36,27 @@ import javax.xml.bind.annotation.XmlType;
     "accountId",
     "campaignId",
     "adGroupId",
-    "targets"
+    "type"
 })
-public class AdGroupTargetList {
+@XmlSeeAlso({
+    SiteRetargetingTargetList.class,
+    GeoTargetList.class,
+    InterestCategoryTargetList.class,
+    AgeTargetList.class,
+    SiteCategoryTargetList.class,
+    AdScheduleTargetList.class,
+    SearchTargetList.class,
+    GenderTargetList.class,
+    PlacementTargetList.class
+})
+public abstract class AdGroupTargetList {
 
     protected long accountId;
     protected long campaignId;
     protected long adGroupId;
-    protected List<TargetList> targets;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
+    protected TargetType type;
 
     /**
      * Gets the value of the accountId property.
@@ -93,32 +107,27 @@ public class AdGroupTargetList {
     }
 
     /**
-     * Gets the value of the targets property.
+     * Gets the value of the type property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the targets property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTargets().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link TargetList }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link TargetType }
+     *     
      */
-    public List<TargetList> getTargets() {
-        if (targets == null) {
-            targets = new ArrayList<TargetList>();
-        }
-        return this.targets;
+    public TargetType getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TargetType }
+     *     
+     */
+    public void setType(TargetType value) {
+        this.type = value;
     }
 
 }

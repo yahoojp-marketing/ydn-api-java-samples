@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="CombinationTargetList">
  *   &lt;complexContent>
- *     &lt;extension base="{http://im.yahooapis.jp/V5}TargetList">
+ *     &lt;extension base="{http://im.yahooapis.jp/V5}RetargetingTargetList">
  *       &lt;sequence>
  *         &lt;element name="combinations" type="{http://im.yahooapis.jp/V5}Combination" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
     "combinations"
 })
 public class CombinationTargetList
-    extends TargetList
+    extends RetargetingTargetList
 {
 
     protected List<Combination> combinations;

@@ -18,6 +18,7 @@ import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdServiceService;
 import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdValues;
 import jp.yahooapis.im.V5.AdGroupAdService.AdStyle;
 import jp.yahooapis.im.V5.AdGroupAdService.AdType;
+import jp.yahooapis.im.V5.AdGroupAdService.IsRemoveFlg;
 import jp.yahooapis.im.V5.AdGroupAdService.ManualCPCAdGroupAdBid;
 import jp.yahooapis.im.V5.AdGroupAdService.MobileAd;
 import jp.yahooapis.im.V5.AdGroupAdService.PosAd;
@@ -317,8 +318,6 @@ public class AdGroupAdServiceSample {
     AdGroupAdOperation addAdGroupAdOperation = new AdGroupAdOperation();
     addAdGroupAdOperation.setOperator(jp.yahooapis.im.V5.AdGroupAdService.Operator.ADD);
     addAdGroupAdOperation.setAccountId(accountId);
-    addAdGroupAdOperation.setCampaignId(campaignId);
-    addAdGroupAdOperation.setAdGroupId(adGroupId);
     addAdGroupAdOperation.getOperand().add(addAdGroupAdOperand);
 
     return addAdGroupAdOperation;
@@ -349,8 +348,6 @@ public class AdGroupAdServiceSample {
 
     // Set Operand
     for (AdGroupAdValues adGroupAdValue : adGroupAdValues) {
-      setAdGroupAdOperation.setCampaignId(adGroupAdValue.getAdGroupAd().getCampaignId());
-      setAdGroupAdOperation.setAdGroupId(adGroupAdValue.getAdGroupAd().getAdGroupId());
       AdGroupAd setAdGroupAdOperand = new AdGroupAd();
       setAdGroupAdOperand.setAccountId(accountId);
       setAdGroupAdOperand.setCampaignId(adGroupAdValue.getAdGroupAd().getCampaignId());
@@ -366,6 +363,7 @@ public class AdGroupAdServiceSample {
       setAdGroupAdOperand.setBid(setAdBid);
 
       setAdGroupAdOperation.getOperand().add(setAdGroupAdOperand);
+
     }
 
     return setAdGroupAdOperation;
@@ -387,8 +385,6 @@ public class AdGroupAdServiceSample {
 
     // Set Operand
     for (AdGroupAdValues adGroupAdValue : adGroupAdValues) {
-      removeAdGroupAdOperation.setCampaignId(adGroupAdValue.getAdGroupAd().getCampaignId());
-      removeAdGroupAdOperation.setAdGroupId(adGroupAdValue.getAdGroupAd().getAdGroupId());
 
       AdGroupAd removeAdGroupAdOperand = new AdGroupAd();
       removeAdGroupAdOperand.setAccountId(adGroupAdValue.getAdGroupAd().getAccountId());
@@ -476,6 +472,8 @@ public class AdGroupAdServiceSample {
         System.out.println("ad/description = " + posAd.getDescription());
       }
     }
+    System.out.println("ad/impressionBeaconUrls = " + adGroupAd.getImpressionBeaconUrls());
+    System.out.println("ad/isRemoveBeaconUrls = " + adGroupAd.getIsRemoveBeaconUrls());
     System.out.println("---------");
   }
 }

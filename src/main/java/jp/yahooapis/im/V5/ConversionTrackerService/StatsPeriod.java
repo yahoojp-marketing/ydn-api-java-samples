@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="DEFINITE_VALUE_WEEK"/>
  *     &lt;enumeration value="DEFINITE_VALUE_TWOWEEK"/>
  *     &lt;enumeration value="DEFINITE_VALUE_THIRTYDAY"/>
- *     &lt;enumeration value="DEFINITE_VALUE_THISMONTH"/>
  *     &lt;enumeration value="DEFINITE_VALUE_LASTMONTH"/>
  *     &lt;enumeration value="REALTIME_TODAY"/>
  *     &lt;enumeration value="REALTIME_MONTH"/>
@@ -38,7 +37,6 @@ public enum StatsPeriod {
     DEFINITE_VALUE_WEEK,
     DEFINITE_VALUE_TWOWEEK,
     DEFINITE_VALUE_THIRTYDAY,
-    DEFINITE_VALUE_THISMONTH,
     DEFINITE_VALUE_LASTMONTH,
     REALTIME_TODAY,
     REALTIME_MONTH;

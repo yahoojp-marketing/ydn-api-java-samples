@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="RuleTargetList">
  *   &lt;complexContent>
- *     &lt;extension base="{http://im.yahooapis.jp/V5}TargetList">
+ *     &lt;extension base="{http://im.yahooapis.jp/V5}RetargetingTargetList">
  *       &lt;sequence>
  *         &lt;element name="retargetingTagId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="isPreset" type="{http://im.yahooapis.jp/V5}IsPreset" minOccurs="0"/>
@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     "rules"
 })
 public class RuleTargetList
-    extends TargetList
+    extends RetargetingTargetList
 {
 
     protected String retargetingTagId;

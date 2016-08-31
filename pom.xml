@@ -4,7 +4,7 @@
 
   <groupId>jp.co.yahoo</groupId>
   <artifactId>ad-api-sample</artifactId>
-  <version>IM-API-V5.3</version>
+  <version>IM-API-V5.4</version>
   <packaging>jar</packaging>
 
   <name>ad-api-sample</name>
@@ -44,9 +44,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <encoding>UTF-8</encoding>
-          <source>1.8</source>
-          <target>1.8</target>
           <excludes>
             <exclude>**/*.properties</exclude>
             <exclude>**/.gitkeep</exclude>

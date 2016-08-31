@@ -418,10 +418,18 @@ public class AdGroupServiceSample {
       System.out.println("bid/type = " + ((ManualCPCAdGroupBid) adGroup.getBid()).getType().toString());
       System.out.println("bid/maxCpc = " + ((ManualCPCAdGroupBid) adGroup.getBid()).getMaxCpc().toString());
     }
-    System.out.println("device = " + SoapUtils.arrayToLine(adGroup.getDevice().toArray()));
-    System.out.println("deviceOs = " + SoapUtils.arrayToLine(adGroup.getDeviceOs().toArray()));
-    System.out.println("deviceApp = " + SoapUtils.arrayToLine(adGroup.getDeviceApp().toArray()));
-    System.out.println("dynamicImageExtensions = " + adGroup.getDynamicImageExtensions().toString());
+    if (adGroup.getDevice() != null) {
+      System.out.println("device = " + SoapUtils.arrayToLine(adGroup.getDevice().toArray()));
+    }
+    if (adGroup.getDeviceOs() != null) {
+      System.out.println("deviceOs = " + SoapUtils.arrayToLine(adGroup.getDeviceOs().toArray()));
+    }
+    if (adGroup.getDeviceApp() != null) {
+      System.out.println("deviceApp = " + SoapUtils.arrayToLine(adGroup.getDeviceApp().toArray()));
+    }
+    if (adGroup.getDynamicImageExtensions() != null) {
+      System.out.println("dynamicImageExtensions = " + adGroup.getDynamicImageExtensions().toString());
+    }
     if(null != adGroup.getSmartDeviceCarriers() && !adGroup.getSmartDeviceCarriers().isEmpty()){
       System.out.println("smartDeviceCarriers = " + adGroup.getSmartDeviceCarriers().get(0).toString());
     }

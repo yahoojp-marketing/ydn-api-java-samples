@@ -1,10 +1,14 @@
 --------------------------------
 【バージョン】
 --------------------------------
-Ver.5.3.0
+Ver.5.4.0
 
 ■変更履歴
 -----------
+2016/08/31:
+- V5.4 検索リーセンシー・フリークエンシー(サーチターゲティング)に対応しました。
+- V5.4 AdSampleにてAdGroupAdServiceのキャンペーン、広告グループ複数指定に対応しました。
+
 2016/04/20:
 - V5.3 AuditLogDownloadSample、StatsSampleを追加しました。
 
@@ -74,7 +78,7 @@ JAX-WSを使用してAPIを呼び出す形になっています。
 コンパイルされたサンプルプログラムの実行ファイルと、Windows上で実行するためのバッチファイルが格納されています。
 
 - run_sample.bat                   ：Windows上でサンプルプログラムを実行するためのバッチファイルです。
-- ad-api-sample-IM-API-V5.3.jar    ：コンパイルされたサンプルプログラムがまとめたjarファイルです。
+- ad-api-sample-IM-API-V5.4.jar    ：コンパイルされたサンプルプログラムがまとめたjarファイルです。
 
 ■src/main/javaディレクトリ
 以下の各プログラムが格納されています。
@@ -179,7 +183,7 @@ MEDIAID             : 画像IDを記述（必須）
 --------------------------------
 set SAMPLE_HOME={ad-api-sample}
 set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
-set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V5.3.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V5.4.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 ■実行例：
 ---------------------------------------

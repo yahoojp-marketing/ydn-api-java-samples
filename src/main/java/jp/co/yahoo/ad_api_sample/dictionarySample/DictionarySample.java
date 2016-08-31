@@ -347,11 +347,21 @@ public class DictionarySample {
    * @param disapprovalReason disapproval reason entity for display.
    */
   private static void displayDisapprovalReason(DisapprovalReason disapprovalReason) {
-    System.out.println("disapprovalReasonCode = " + disapprovalReason.getDisapprovalReasonCode());
-    System.out.println("lang = " + disapprovalReason.getLang());
-    System.out.println("title = " + disapprovalReason.getTitle().toString());
-    System.out.println("description = " + disapprovalReason.getDescription().toString());
-    System.out.println("recommendation = " + disapprovalReason.getRecommendation().toString());
+    if (null != disapprovalReason.getDisapprovalReasonCode()) {
+      System.out.println("disapprovalReasonCode = " + disapprovalReason.getDisapprovalReasonCode());
+    }
+    if (null != disapprovalReason.getLang()) {
+      System.out.println("lang = " + disapprovalReason.getLang());
+    }
+    if (null != disapprovalReason.getTitle()) {
+      System.out.println("title = " + disapprovalReason.getTitle().toString());
+    }
+    if (null != disapprovalReason.getDescription()) {
+      System.out.println("description = " + disapprovalReason.getDescription().toString());
+    }
+    if (null != disapprovalReason.getRecommendation()) {
+      System.out.println("recommendation = " + disapprovalReason.getRecommendation().toString());
+    }
     System.out.println("---------");
   }
 

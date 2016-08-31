@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="SimilarityTargetList">
  *   &lt;complexContent>
- *     &lt;extension base="{http://im.yahooapis.jp/V5}TargetList">
+ *     &lt;extension base="{http://im.yahooapis.jp/V5}RetargetingTargetList">
  *       &lt;sequence>
  *         &lt;element name="targetListId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
     "targetListId"
 })
 public class SimilarityTargetList
-    extends TargetList
+    extends RetargetingTargetList
 {
 
     protected Long targetListId;
