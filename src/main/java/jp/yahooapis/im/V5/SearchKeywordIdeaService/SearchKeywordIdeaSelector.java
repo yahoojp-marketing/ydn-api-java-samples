@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -21,6 +22,9 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="keywords" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="keywordIds" type="{http://www.w3.org/2001/XMLSchema}long" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="searchKeywordRecency" type="{http://im.yahooapis.jp/V5}KeywordRecency" minOccurs="0"/>
+ *         &lt;element name="searchKeywordFrequency" type="{http://im.yahooapis.jp/V5}KeywordFrequency" minOccurs="0"/>
+ *         &lt;element name="paging" type="{http://im.yahooapis.jp/V5}Paging" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,13 +36,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SearchKeywordIdeaSelector", propOrder = {
     "keywords",
-    "keywordIds"
+    "keywordIds",
+    "searchKeywordRecency",
+    "searchKeywordFrequency",
+    "paging"
 })
 public class SearchKeywordIdeaSelector {
 
     protected List<String> keywords;
     @XmlElement(type = Long.class)
     protected List<Long> keywordIds;
+    @XmlSchemaType(name = "string")
+    protected KeywordRecency searchKeywordRecency;
+    @XmlSchemaType(name = "string")
+    protected KeywordFrequency searchKeywordFrequency;
+    protected Paging paging;
 
     /**
      * Gets the value of the keywords property.
@@ -96,6 +108,78 @@ public class SearchKeywordIdeaSelector {
             keywordIds = new ArrayList<Long>();
         }
         return this.keywordIds;
+    }
+
+    /**
+     * Gets the value of the searchKeywordRecency property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link KeywordRecency }
+     *     
+     */
+    public KeywordRecency getSearchKeywordRecency() {
+        return searchKeywordRecency;
+    }
+
+    /**
+     * Sets the value of the searchKeywordRecency property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link KeywordRecency }
+     *     
+     */
+    public void setSearchKeywordRecency(KeywordRecency value) {
+        this.searchKeywordRecency = value;
+    }
+
+    /**
+     * Gets the value of the searchKeywordFrequency property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link KeywordFrequency }
+     *     
+     */
+    public KeywordFrequency getSearchKeywordFrequency() {
+        return searchKeywordFrequency;
+    }
+
+    /**
+     * Sets the value of the searchKeywordFrequency property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link KeywordFrequency }
+     *     
+     */
+    public void setSearchKeywordFrequency(KeywordFrequency value) {
+        this.searchKeywordFrequency = value;
+    }
+
+    /**
+     * Gets the value of the paging property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Paging }
+     *     
+     */
+    public Paging getPaging() {
+        return paging;
+    }
+
+    /**
+     * Sets the value of the paging property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Paging }
+     *     
+     */
+    public void setPaging(Paging value) {
+        this.paging = value;
     }
 
 }

@@ -10,6 +10,8 @@ import jp.co.yahoo.ad_api_sample.error.impl.SearchKeywordIdeaServiceErrorEntityF
 import jp.co.yahoo.ad_api_sample.error.impl.SearchKeywordListServiceErrorEntityFactory;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
 import jp.yahooapis.im.V5.SearchKeywordIdeaService.Error;
+import jp.yahooapis.im.V5.SearchKeywordIdeaService.KeywordFrequency;
+import jp.yahooapis.im.V5.SearchKeywordIdeaService.KeywordRecency;
 import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdea;
 import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdeaPage;
 import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdeaSelector;
@@ -308,6 +310,12 @@ public class SearchKeywordSample {
     // Set Selector
     SearchKeywordIdeaSelector selector = new SearchKeywordIdeaSelector();
     selector.getKeywords().addAll(Arrays.asList("gizmo", "vlookup"));
+    selector.setSearchKeywordRecency(KeywordRecency.WITHIN_30_DAYS);
+    selector.setSearchKeywordFrequency(KeywordFrequency.ONCE_OR_MORE);
+    jp.yahooapis.im.V5.SearchKeywordIdeaService.Paging paging = new jp.yahooapis.im.V5.SearchKeywordIdeaService.Paging();
+    paging.setStartIndex(1);
+    paging.setNumberResults(1000);
+    selector.setPaging(paging);
 
     return selector;
   }
@@ -436,13 +444,13 @@ public class SearchKeywordSample {
     System.out.println("searchKeywordListId = " + searchKeywordList.getSearchKeywordListId());
     System.out.println("searchKeywordListName = " + searchKeywordList.getSearchKeywordListName());
     System.out.println("searchKeywordListDescription = " + searchKeywordList.getSearchKeywordListDescription());
+    System.out.println("searchKeywordRecency = " + searchKeywordList.getSearchKeywordRecency());
+    System.out.println("searchKeywordFrequency = " + searchKeywordList.getSearchKeywordFrequency());
+
     System.out.println("deliveryStatus = " + searchKeywordList.getDeliveryStatus());
     for (SearchKeyword searchKeyword : searchKeywordList.getSearchKeyword()) {
       System.out.println("searchKeyword / searchKeywordId = " + searchKeyword.getSearchKeywordId());
-      System.out.println("searchKeyword / searchKeyword = " + searchKeyword.getSearchKeyword());
-      System.out.println("searchKeyword / desktopSearchVolume" + searchKeyword.getDesktopSearchVolume());
-      System.out.println("searchKeyword / smartPhoneSearchVolume" + searchKeyword.getSmartPhoneSearchVolume());
-      System.out.println("searchKeyword / tabletSearchVolume" + searchKeyword.getTabletSearchVolume());
+
     }
 
     System.out.println("---------");

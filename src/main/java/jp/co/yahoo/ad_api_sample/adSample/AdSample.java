@@ -42,7 +42,7 @@ import jp.yahooapis.im.V5.AdGroupTargetService.SiteCategoryTarget;
 import jp.yahooapis.im.V5.AdGroupTargetService.SiteCategoryTargetList;
 import jp.yahooapis.im.V5.AdGroupTargetService.SiteRetargetingTarget;
 import jp.yahooapis.im.V5.AdGroupTargetService.SiteRetargetingTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.TargetList;
+import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargets;
 import jp.yahooapis.im.V5.AdGroupTargetService.TargetType;
 import jp.yahooapis.im.V5.CampaignService.Campaign;
 import jp.yahooapis.im.V5.CampaignService.CampaignOperation;
@@ -56,7 +56,7 @@ import jp.yahooapis.im.V5.CampaignService.CampaignValues;
 public class AdSample {
   /**
    * main method for AdSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -384,7 +384,7 @@ public class AdSample {
     setAgeTargetList.setType(TargetType.AGE_TARGET);
     setAgeTargetList.getTargets().add(setAgeTarget1);
 
-    AdGroupTargetList setAdGroupTargetOperand = new AdGroupTargetList();
+    AdGroupTargets setAdGroupTargetOperand = new AdGroupTargets();
     setAdGroupTargetOperand.setAccountId(accountId);
     setAdGroupTargetOperand.setCampaignId(campaignId);
     setAdGroupTargetOperand.setAdGroupId(adGroupId);
@@ -402,15 +402,15 @@ public class AdSample {
 
   /**
    * display AdGroupTargetList entity to stdout.
-   * 
-   * @param adGroupTargetList AdGroupTargetList entity for display.
+   *
+   * @param adGroupTargets AdGroupTargets entity for display.
    */
-  private static void displayAdGroupTargetList(AdGroupTargetList adGroupTargetList) {
-    System.out.println("accountId = " + adGroupTargetList.getAccountId());
-    System.out.println("campaignId = " + adGroupTargetList.getCampaignId());
-    System.out.println("adGroupId = " + adGroupTargetList.getAdGroupId());
-    if (adGroupTargetList.getTargets() != null && adGroupTargetList.getTargets().size() > 0) {
-      List<TargetList> targetList = adGroupTargetList.getTargets();
+  private static void displayAdGroupTargetList(AdGroupTargets adGroupTargets) {
+    System.out.println("accountId = " + adGroupTargets.getAccountId());
+    System.out.println("campaignId = " + adGroupTargets.getCampaignId());
+    System.out.println("adGroupId = " + adGroupTargets.getAdGroupId());
+    if (adGroupTargets.getTargets() != null && adGroupTargets.getTargets().size() > 0) {
+      List<AdGroupTargetList> targetList = adGroupTargets.getTargets();
       for (int j = 0; j < targetList.size(); j++) {
         System.out.println("targets---------");
         System.out.println("targets/accountId = " + targetList.get(j).getAccountId());

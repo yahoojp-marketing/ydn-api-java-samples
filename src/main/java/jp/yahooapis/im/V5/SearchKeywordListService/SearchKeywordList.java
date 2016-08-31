@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="searchKeywordListId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="searchKeywordListName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="searchKeywordListDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="searchKeywordRecency" type="{http://im.yahooapis.jp/V5}KeywordRecency" minOccurs="0"/>
+ *         &lt;element name="searchKeywordFrequency" type="{http://im.yahooapis.jp/V5}KeywordFrequency" minOccurs="0"/>
  *         &lt;element name="deliveryStatus" type="{http://im.yahooapis.jp/V5}DeliveryStatus" minOccurs="0"/>
  *         &lt;element name="searchKeyword" type="{http://im.yahooapis.jp/V5}SearchKeyword" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -39,6 +41,8 @@ import javax.xml.bind.annotation.XmlType;
     "searchKeywordListId",
     "searchKeywordListName",
     "searchKeywordListDescription",
+    "searchKeywordRecency",
+    "searchKeywordFrequency",
     "deliveryStatus",
     "searchKeyword"
 })
@@ -48,6 +52,10 @@ public class SearchKeywordList {
     protected Long searchKeywordListId;
     protected String searchKeywordListName;
     protected String searchKeywordListDescription;
+    @XmlSchemaType(name = "string")
+    protected KeywordRecency searchKeywordRecency;
+    @XmlSchemaType(name = "string")
+    protected KeywordFrequency searchKeywordFrequency;
     @XmlSchemaType(name = "string")
     protected DeliveryStatus deliveryStatus;
     protected List<SearchKeyword> searchKeyword;
@@ -138,6 +146,54 @@ public class SearchKeywordList {
      */
     public void setSearchKeywordListDescription(String value) {
         this.searchKeywordListDescription = value;
+    }
+
+    /**
+     * Gets the value of the searchKeywordRecency property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link KeywordRecency }
+     *     
+     */
+    public KeywordRecency getSearchKeywordRecency() {
+        return searchKeywordRecency;
+    }
+
+    /**
+     * Sets the value of the searchKeywordRecency property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link KeywordRecency }
+     *     
+     */
+    public void setSearchKeywordRecency(KeywordRecency value) {
+        this.searchKeywordRecency = value;
+    }
+
+    /**
+     * Gets the value of the searchKeywordFrequency property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link KeywordFrequency }
+     *     
+     */
+    public KeywordFrequency getSearchKeywordFrequency() {
+        return searchKeywordFrequency;
+    }
+
+    /**
+     * Sets the value of the searchKeywordFrequency property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link KeywordFrequency }
+     *     
+     */
+    public void setSearchKeywordFrequency(KeywordFrequency value) {
+        this.searchKeywordFrequency = value;
     }
 
     /**

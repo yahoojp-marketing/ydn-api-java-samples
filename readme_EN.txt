@@ -1,10 +1,14 @@
 --------------------------------
 <<Version>>
 --------------------------------
-Ver.5.3.0
+Ver.5.4.0
 
 [Update history]
 -----------
+2016/08/31:
+- V5.4 Correspond to Search Targeting (Search Recency/Frequency).
+- V5.4 Correspond to specification of multiple campaigns/ad groups of AdGroupAdService on AdSample.
+
 2016/04/20:
 - Added V5.3 AuditLogDownloadSample and StatsSample.
 
@@ -25,13 +29,13 @@ Ver.5.3.0
 2014/03/26:
 - V4.6 Correspond to Placement Targeting.
 
-2014/02/07ÅF
+2014/02/07
 - V4.6 Added Similar User Targeting.
 - V4.6 Added Segment Targeting.
 - V4.6 Added Frequency Control.
 - V4.6 Added Frequency Report.
 
-2013/09/04ÅF
+2013/09/04
 - V4 Added AccountAdProductSample, DictionarySample, SearchKeywordSample.
 - Changed to JAX-WS for Soap api library.
 
@@ -74,7 +78,7 @@ API is called by using JAX-WS.
 The compiled execute file of sample program and the batch file to excecute on Windows are stored.
 
 - run_sample.bat                 : It is the batch file in order to execute the Sample program on Windows.
-- ad-api-Sample-IM-api-V5.3.jar  : It is the jar files that packed the compiled Sample program.
+- ad-api-Sample-IM-api-V5.4.jar  : It is the jar files that packed the compiled Sample program.
 
 [src/main/java directory]
 The following programs are stored.
@@ -179,7 +183,7 @@ MEDIAID             : Enter Media ID (Required)
 --------------------------------
 set SAMPLE_HOME={ad-api-sample}
 set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
-set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V5.3.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V5.4.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 [e.g.]
 ---------------------------------------

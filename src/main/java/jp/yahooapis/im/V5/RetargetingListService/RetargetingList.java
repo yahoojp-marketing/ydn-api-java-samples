@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="deliveryStatus" type="{http://im.yahooapis.jp/V5}DeliveryStatus" minOccurs="0"/>
  *         &lt;element name="reach" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="targetList" type="{http://im.yahooapis.jp/V5}TargetList" minOccurs="0"/>
+ *         &lt;element name="targetList" type="{http://im.yahooapis.jp/V5}RetargetingTargetList" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -51,7 +51,7 @@ public class RetargetingList {
     @XmlSchemaType(name = "string")
     protected DeliveryStatus deliveryStatus;
     protected Long reach;
-    protected TargetList targetList;
+    protected RetargetingTargetList targetList;
 
     /**
      * Gets the value of the accountId property.
@@ -194,10 +194,10 @@ public class RetargetingList {
      * 
      * @return
      *     possible object is
-     *     {@link TargetList }
+     *     {@link RetargetingTargetList }
      *     
      */
-    public TargetList getTargetList() {
+    public RetargetingTargetList getTargetList() {
         return targetList;
     }
 
@@ -206,10 +206,10 @@ public class RetargetingList {
      * 
      * @param value
      *     allowed object is
-     *     {@link TargetList }
+     *     {@link RetargetingTargetList }
      *     
      */
-    public void setTargetList(TargetList value) {
+    public void setTargetList(RetargetingTargetList value) {
         this.targetList = value;
     }
 

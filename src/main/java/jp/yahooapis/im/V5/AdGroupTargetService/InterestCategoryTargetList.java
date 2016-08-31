@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="InterestCategoryTargetList">
  *   &lt;complexContent>
- *     &lt;extension base="{http://im.yahooapis.jp/V5}TargetList">
+ *     &lt;extension base="{http://im.yahooapis.jp/V5}AdGroupTargetList">
  *       &lt;sequence>
  *         &lt;element name="targets" type="{http://im.yahooapis.jp/V5}InterestCategoryTarget" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
     "targets"
 })
 public class InterestCategoryTargetList
-    extends TargetList
+    extends AdGroupTargetList
 {
 
     protected List<InterestCategoryTarget> targets;

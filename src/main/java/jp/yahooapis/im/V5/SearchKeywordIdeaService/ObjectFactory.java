@@ -92,19 +92,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
      * Create an instance of {@link SearchKeywordIdea }
      * 
      */
     public SearchKeywordIdea createSearchKeywordIdea() {
         return new SearchKeywordIdea();
+    }
+
+    /**
+     * Create an instance of {@link Paging }
+     * 
+     */
+    public Paging createPaging() {
+        return new Paging();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
     }
 
     /**

@@ -14,8 +14,8 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;simpleType name="AccountStatus">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="INPROGRESS"/>
- *     &lt;enumeration value="PENDING"/>
  *     &lt;enumeration value="WAIT_DECIDE"/>
+ *     &lt;enumeration value="SUSPENDED"/>
  *     &lt;enumeration value="SERVING"/>
  *     &lt;enumeration value="ENDED"/>
  *   &lt;/restriction>
@@ -28,8 +28,8 @@ import javax.xml.bind.annotation.XmlType;
 public enum AccountStatus {
 
     INPROGRESS,
-    PENDING,
     WAIT_DECIDE,
+    SUSPENDED,
     SERVING,
     ENDED;
 

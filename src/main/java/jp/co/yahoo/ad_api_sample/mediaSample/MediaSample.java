@@ -1,4 +1,4 @@
-package jp.co.yahoo.ad_api_sample.mediaSample;
+  package jp.co.yahoo.ad_api_sample.mediaSample;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,6 +35,7 @@ import jp.yahooapis.im.V5.AdGroupService.ManualCPCAdGroupBid;
 import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetList;
 import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetOperation;
 import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetSelector;
+import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargets;
 import jp.yahooapis.im.V5.AdGroupTargetService.AdScheduleTarget;
 import jp.yahooapis.im.V5.AdGroupTargetService.AdScheduleTargetList;
 import jp.yahooapis.im.V5.AdGroupTargetService.DayOfWeek;
@@ -470,8 +471,6 @@ public class MediaSample {
    * create AdGroupTarget ADD sample request.
    *
    * @param accountId long
-   * @param campaignId long
-   * @param campaignId long
    * @return MediaOperation
    */
   public static MediaOperation createMediaSampleAddRequest(long accountId) throws Exception {
@@ -742,8 +741,6 @@ public class MediaSample {
     AdGroupAdOperation addAdGroupAdOperation = new AdGroupAdOperation();
     addAdGroupAdOperation.setOperator(jp.yahooapis.im.V5.AdGroupAdService.Operator.ADD);
     addAdGroupAdOperation.setAccountId(accountId);
-    addAdGroupAdOperation.setCampaignId(campaignId);
-    addAdGroupAdOperation.setAdGroupId(adGroupId);
     addAdGroupAdOperation.getOperand().add(addAdGroupAdOperand);
 
     return addAdGroupAdOperation;
@@ -773,9 +770,6 @@ public class MediaSample {
 
     // Set Operand
     for (AdGroupAdValues adGroupAdValue : adGroupAdValues) {
-      setAdGroupAdOperation.setCampaignId(adGroupAdValue.getAdGroupAd().getCampaignId());
-      setAdGroupAdOperation.setAdGroupId(adGroupAdValue.getAdGroupAd().getAdGroupId());
-
       AdGroupAd setAdGroupAdOperand = new AdGroupAd();
       setAdGroupAdOperand.setAccountId(accountId);
       setAdGroupAdOperand.setCampaignId(adGroupAdValue.getAdGroupAd().getCampaignId());
@@ -835,7 +829,7 @@ public class MediaSample {
     setGenderTargetList.setType(TargetType.GENDER_TARGET);
     setGenderTargetList.getTargets().add(setGenderTarget1);
 
-    AdGroupTargetList setAdGroupTargetOperand = new AdGroupTargetList();
+    AdGroupTargets setAdGroupTargetOperand = new AdGroupTargets();
     setAdGroupTargetOperand.setAccountId(accountId);
     setAdGroupTargetOperand.setCampaignId(campaignId);
     setAdGroupTargetOperand.setAdGroupId(adGroupId);
@@ -852,7 +846,7 @@ public class MediaSample {
   /**
    * get upload data.
    * 
-   * @param media Media entity for display.
+   * @param filename Media entity for display.
    */
   private static byte[] getMediaData(String filename) throws FileNotFoundException {
     File uploadDir = new File(new File(".").getAbsolutePath() + "/upload");
@@ -883,7 +877,7 @@ public class MediaSample {
   /**
    * display Media entity to stdout.
    * 
-   * @param media Media entity for display.
+   * @param mediaRecord Media entity for display.
    */
   private static void displayMedia(MediaRecord mediaRecord) {
     System.out.println("accountId = " + mediaRecord.getAccountId());

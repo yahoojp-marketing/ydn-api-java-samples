@@ -96,6 +96,7 @@ public class SoapUtils {
    */
   static {
     try {
+
       /*
        * read setting
        */

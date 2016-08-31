@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://im.yahooapis.jp/V5}ReturnValue">
  *       &lt;sequence>
- *         &lt;element name="targetList" type="{http://im.yahooapis.jp/V5}AdGroupTargetList" minOccurs="0"/>
+ *         &lt;element name="targetList" type="{http://im.yahooapis.jp/V5}AdGroupTargets" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -33,17 +33,17 @@ public class AdGroupTargetValues
     extends ReturnValue
 {
 
-    protected AdGroupTargetList targetList;
+    protected AdGroupTargets targetList;
 
     /**
      * Gets the value of the targetList property.
      * 
      * @return
      *     possible object is
-     *     {@link AdGroupTargetList }
+     *     {@link AdGroupTargets }
      *     
      */
-    public AdGroupTargetList getTargetList() {
+    public AdGroupTargets getTargetList() {
         return targetList;
     }
 
@@ -52,10 +52,10 @@ public class AdGroupTargetValues
      * 
      * @param value
      *     allowed object is
-     *     {@link AdGroupTargetList }
+     *     {@link AdGroupTargets }
      *     
      */
-    public void setTargetList(AdGroupTargetList value) {
+    public void setTargetList(AdGroupTargets value) {
         this.targetList = value;
     }
 

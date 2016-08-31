@@ -228,6 +228,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AdGroupTargets }
+     * 
+     */
+    public AdGroupTargets createAdGroupTargets() {
+        return new AdGroupTargets();
+    }
+
+    /**
      * Create an instance of {@link Paging }
      * 
      */
@@ -273,14 +281,6 @@ public class ObjectFactory {
      */
     public PlacementTargetList createPlacementTargetList() {
         return new PlacementTargetList();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupTargetList }
-     * 
-     */
-    public AdGroupTargetList createAdGroupTargetList() {
-        return new AdGroupTargetList();
     }
 
     /**

@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="campaignId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="operand" type="{http://im.yahooapis.jp/V5}AdGroupTargetList" maxOccurs="unbounded"/>
+ *         &lt;element name="operand" type="{http://im.yahooapis.jp/V5}AdGroupTargets" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -43,7 +43,7 @@ public class AdGroupTargetOperation
     protected long accountId;
     protected long campaignId;
     @XmlElement(required = true)
-    protected List<AdGroupTargetList> operand;
+    protected List<AdGroupTargets> operand;
 
     /**
      * Gets the value of the accountId property.
@@ -95,13 +95,13 @@ public class AdGroupTargetOperation
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AdGroupTargetList }
+     * {@link AdGroupTargets }
      * 
      * 
      */
-    public List<AdGroupTargetList> getOperand() {
+    public List<AdGroupTargets> getOperand() {
         if (operand == null) {
-            operand = new ArrayList<AdGroupTargetList>();
+            operand = new ArrayList<AdGroupTargets>();
         }
         return this.operand;
     }
