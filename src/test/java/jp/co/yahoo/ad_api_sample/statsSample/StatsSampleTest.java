@@ -1,19 +1,19 @@
 package jp.co.yahoo.ad_api_sample.statsSample;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.List;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.StatsService.Paging;
+import jp.yahooapis.im.V6.StatsService.StatsSelector;
+import jp.yahooapis.im.V6.StatsService.StatsType;
+import jp.yahooapis.im.V6.StatsService.StatsValues;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.StatsService.Paging;
-import jp.yahooapis.im.V5.StatsService.StatsSelector;
-import jp.yahooapis.im.V5.StatsService.StatsType;
-import jp.yahooapis.im.V5.StatsService.StatsValues;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for StatsSampleTest.<br>
@@ -63,7 +63,7 @@ public class StatsSampleTest {
     selector.setAccountId(accountId);
     selector.getCampaignIds().add(campaignId);
     selector.setStatsType(StatsType.CAMPAIGN);
-    
+
     Paging paging = new Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(20);
@@ -72,7 +72,7 @@ public class StatsSampleTest {
     System.out.println("############################################");
     System.out.println("StatsService::get CampaignStats");
     System.out.println("############################################");
-    
+
     // Run
     List<StatsValues> statsValues = null;
     try {
@@ -98,7 +98,7 @@ public class StatsSampleTest {
     selector.getCampaignIds().add(campaignId);
     selector.getAdGroupIds().add(adGroupId);
     selector.setStatsType(StatsType.ADGROUP);
-    
+
     Paging paging = new Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(20);
@@ -107,7 +107,7 @@ public class StatsSampleTest {
     System.out.println("############################################");
     System.out.println("StatsService::get AdGroupStats");
     System.out.println("############################################");
-    
+
     // Run
     List<StatsValues> statsValues = null;
     try {
@@ -134,7 +134,7 @@ public class StatsSampleTest {
     selector.getAdGroupIds().add(adGroupId);
     selector.getAdIds().add(adId);
     selector.setStatsType(StatsType.AD);
-    
+
     Paging paging = new Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(20);
@@ -143,7 +143,7 @@ public class StatsSampleTest {
     System.out.println("############################################");
     System.out.println("StatsService::get AdGroupAdStats");
     System.out.println("############################################");
-    
+
     // Run
     List<StatsValues> statsValues = null;
     try {
@@ -157,12 +157,13 @@ public class StatsSampleTest {
       assertThat(statsValue.isOperationSucceeded(), is(true));
     }
   }
-  
+
+
   /**
-   * Sample TestCase of get method for MediaStatsSample .
+   * Sample TestCase of get method for ImageStatsSample .
    */
   @Test
-  public void testGetMediaStats() throws Exception {
+  public void testGetImageStats() throws Exception {
     // Set Selector
     StatsSelector selector = new StatsSelector();
     selector.setAccountId(accountId);
@@ -170,7 +171,7 @@ public class StatsSampleTest {
     selector.getAdGroupIds().add(adGroupId);
     selector.getAdIds().add(adId);
     selector.getMediaIds().add(mediaId);
-    selector.setStatsType(StatsType.MEDIA);
+    selector.setStatsType(StatsType.IMAGE);
 
     Paging paging = new Paging();
     paging.setStartIndex(1);
@@ -178,10 +179,46 @@ public class StatsSampleTest {
     selector.setPaging(paging);
 
     System.out.println("############################################");
-    System.out.println("StatsService::get MediaStats");
+    System.out.println("StatsService::get ImageStats");
     System.out.println("############################################");
-    
-    
+
+    // Run
+    List<StatsValues> statsValues = null;
+    try {
+      statsValues = StatsSample.get(selector);
+    } catch (Exception e) {
+      fail();
+    }
+
+    // Assert
+    for (StatsValues statsValue : statsValues) {
+      assertThat(statsValue.isOperationSucceeded(), is(true));
+    }
+  }
+
+  /**
+   * Sample TestCase of get method for VideoStatsSample .
+   */
+  @Test
+  public void testGetVideoStats() throws Exception {
+    // Set Selector
+    StatsSelector selector = new StatsSelector();
+    selector.setAccountId(accountId);
+    selector.getCampaignIds().add(campaignId);
+    selector.getAdGroupIds().add(adGroupId);
+    selector.getAdIds().add(adId);
+    selector.getMediaIds().add(mediaId);
+    selector.setStatsType(StatsType.VIDEO);
+
+    Paging paging = new Paging();
+    paging.setStartIndex(1);
+    paging.setNumberResults(20);
+    selector.setPaging(paging);
+
+    System.out.println("############################################");
+    System.out.println("StatsService::get VideoStats");
+    System.out.println("############################################");
+
     // Run
     List<StatsValues> statsValues = null;
     try {

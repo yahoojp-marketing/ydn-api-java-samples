@@ -1,18 +1,18 @@
 package jp.co.yahoo.ad_api_sample.accountAdProductSample;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.List;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductSelector;
+import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductValues;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AccountAdProductService.AccountAdProductSelector;
-import jp.yahooapis.im.V5.AccountAdProductService.AccountAdProductValues;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for AccountAdProductServiceSampleTest.<br>
@@ -51,7 +51,6 @@ public class AccountAdProductSampleTest {
     // Set Selector
     AccountAdProductSelector selector = new AccountAdProductSelector();
     selector.getAccountIds().add(new Long(accountId));
-
 
     // Run
     List<AccountAdProductValues> accountValues = null;

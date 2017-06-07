@@ -1,24 +1,24 @@
 package jp.co.yahoo.ad_api_sample.bulkUploadSample;
 
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.BulkService.BulkEncoding;
+import jp.yahooapis.im.V6.BulkService.BulkLang;
+import jp.yahooapis.im.V6.BulkService.BulkOutput;
+import jp.yahooapis.im.V6.BulkService.BulkUploadStatusSelector;
+import jp.yahooapis.im.V6.BulkService.BulkUploadValues;
+import jp.yahooapis.im.V6.BulkService.Paging;
+import jp.yahooapis.im.V6.BulkService.UploadUrlValue;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
-
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.BulkService.BulkEncoding;
-import jp.yahooapis.im.V5.BulkService.BulkLang;
-import jp.yahooapis.im.V5.BulkService.BulkOutput;
-import jp.yahooapis.im.V5.BulkService.BulkUploadStatusSelector;
-import jp.yahooapis.im.V5.BulkService.BulkUploadValues;
-import jp.yahooapis.im.V5.BulkService.Paging;
-import jp.yahooapis.im.V5.BulkService.UploadUrlValue;
 
 /**
  * Sample TestCase for BulkUploadSampleTest.<br>

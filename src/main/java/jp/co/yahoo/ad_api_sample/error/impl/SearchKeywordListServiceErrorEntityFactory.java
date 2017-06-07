@@ -1,24 +1,21 @@
 package jp.co.yahoo.ad_api_sample.error.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jp.co.yahoo.ad_api_sample.error.ErrorDetailEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntityFactory;
-import jp.yahooapis.im.V5.SearchKeywordListService.Error;
-import jp.yahooapis.im.V5.SearchKeywordListService.ErrorDetail;
+import jp.yahooapis.im.V6.SearchKeywordListService.Error;
+import jp.yahooapis.im.V6.SearchKeywordListService.ErrorDetail;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchKeywordListServiceErrorEntityFactory implements ErrorEntityFactory {
 
   private final List<Error> errors;
 
-
   public SearchKeywordListServiceErrorEntityFactory(List<Error> errors) {
     this.errors = errors;
   }
-
-
 
   @Override
   public List<ErrorEntity> create() {

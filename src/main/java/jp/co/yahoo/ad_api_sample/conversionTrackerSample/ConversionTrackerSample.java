@@ -1,24 +1,24 @@
 package jp.co.yahoo.ad_api_sample.conversionTrackerSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.ConversionTrackerServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTracker;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerCategory;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerOperation;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerPage;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerReturnValue;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerSelector;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerService;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerServiceInterface;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerStatus;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerType;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerValues;
+import jp.yahooapis.im.V6.ConversionTrackerService.Operator;
+import jp.yahooapis.im.V6.ConversionTrackerService.Paging;
+
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.ConversionTrackerServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTracker;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerCategory;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerOperation;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerPage;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerReturnValue;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerSelector;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerService;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerServiceInterface;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerStatus;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerType;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerValues;
-import jp.yahooapis.im.V5.ConversionTrackerService.Operator;
-import jp.yahooapis.im.V5.ConversionTrackerService.Paging;
 
 
 /**
@@ -29,7 +29,7 @@ public class ConversionTrackerSample {
 
   /**
    * main method for ConversionTracker
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -72,7 +72,6 @@ public class ConversionTrackerSample {
    *
    * @param operation ConversionTrackerOperation
    * @return ConversionTrackerValues
-   * @throws Exception
    */
   public static List<ConversionTrackerValues> add(ConversionTrackerOperation operation) throws Exception {
     // =================================================================
@@ -84,7 +83,7 @@ public class ConversionTrackerSample {
     System.out.println("ConversionTrackerService::mutate(ADD)");
     System.out.println("############################################");
     Holder<ConversionTrackerReturnValue> addConversionTrackerReturnValueHolder = new Holder<ConversionTrackerReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.ConversionTrackerService.Error>> addConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V5.ConversionTrackerService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>> addConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>>();
     conversionTrackerService.mutate(operation, addConversionTrackerReturnValueHolder, addConversionTrackerErrorHolder);
 
     // if error
@@ -105,7 +104,6 @@ public class ConversionTrackerSample {
       }
     }
 
-
     // Response
     return addConversionTrackerReturnValueHolder.value.getValues();
   }
@@ -115,7 +113,6 @@ public class ConversionTrackerSample {
    *
    * @param selector ConversionTrackerSelector
    * @return ConversionTrackerValues
-   * @throws Exception
    */
   public static List<ConversionTrackerValues> get(ConversionTrackerSelector selector) throws Exception {
     // =================================================================
@@ -128,7 +125,7 @@ public class ConversionTrackerSample {
     System.out.println("ConversionTrackerService::get");
     System.out.println("############################################");
     Holder<ConversionTrackerPage> getConversionTrackerPageHolder = new Holder<ConversionTrackerPage>();
-    Holder<List<jp.yahooapis.im.V5.ConversionTrackerService.Error>> getConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V5.ConversionTrackerService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>> getConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>>();
     conversionTrackerService.get(selector, getConversionTrackerPageHolder, getConversionTrackerErrorHolder);
 
     // if error
@@ -156,7 +153,6 @@ public class ConversionTrackerSample {
    *
    * @param operation ConversionTrackerOperation
    * @return ConversionTrackerValues
-   * @throws Exception
    */
   public static List<ConversionTrackerValues> set(ConversionTrackerOperation operation) throws Exception {
     // =================================================================
@@ -169,7 +165,7 @@ public class ConversionTrackerSample {
     System.out.println("ConversionTrackerService::mutate(SET)");
     System.out.println("############################################");
     Holder<ConversionTrackerReturnValue> setConversionTrackerReturnValueHolder = new Holder<ConversionTrackerReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.ConversionTrackerService.Error>> setConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V5.ConversionTrackerService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>> setConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>>();
     conversionTrackerService.mutate(operation, setConversionTrackerReturnValueHolder, setConversionTrackerErrorHolder);
 
     // if error
@@ -216,7 +212,7 @@ public class ConversionTrackerSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId               long
    * @param conversionTrackerValues ConversionTrackerValues
    * @return ConversionTrackerSelector
    */
@@ -240,8 +236,8 @@ public class ConversionTrackerSample {
   /**
    * create sample request.
    *
-   * @param accountId long
-   * @param campaignValues CampaignValues
+   * @param accountId               long
+   * @param conversionTrackerValues CampaignValues
    * @return ConversionTrackerOperation
    */
   public static ConversionTrackerOperation createSampleSetRequest(long accountId, List<ConversionTrackerValues> conversionTrackerValues) {
@@ -266,7 +262,7 @@ public class ConversionTrackerSample {
 
   /**
    * display ConversionTracker entity to stdout.
-   * 
+   *
    * @param conversionTracker ConversionTracker entity for display.
    */
   private static void displayConversionTracker(ConversionTracker conversionTracker) {

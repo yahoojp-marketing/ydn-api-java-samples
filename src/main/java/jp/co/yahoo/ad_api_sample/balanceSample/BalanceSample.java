@@ -1,29 +1,28 @@
 package jp.co.yahoo.ad_api_sample.balanceSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.BalanceServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.BalanceService.Balance;
+import jp.yahooapis.im.V6.BalanceService.BalancePage;
+import jp.yahooapis.im.V6.BalanceService.BalanceSelector;
+import jp.yahooapis.im.V6.BalanceService.BalanceServiceInterface;
+import jp.yahooapis.im.V6.BalanceService.BalanceServiceService;
+import jp.yahooapis.im.V6.BalanceService.BalanceValues;
+import jp.yahooapis.im.V6.BalanceService.Error;
+
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.BalanceServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.BalanceService.Balance;
-import jp.yahooapis.im.V5.BalanceService.BalancePage;
-import jp.yahooapis.im.V5.BalanceService.BalanceSelector;
-import jp.yahooapis.im.V5.BalanceService.BalanceServiceInterface;
-import jp.yahooapis.im.V5.BalanceService.BalanceServiceService;
-import jp.yahooapis.im.V5.BalanceService.BalanceValues;
-import jp.yahooapis.im.V5.BalanceService.Error;
-
-
 
 /**
  * Sample Program for BalanceService.<br>
  * Copyright (C) 2012 Yahoo Japan Corporation. All Rights Reserved.
  */
 public class BalanceSample {
+
   /**
    * main method for BalanceSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {

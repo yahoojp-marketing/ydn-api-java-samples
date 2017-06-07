@@ -1,30 +1,30 @@
 package jp.co.yahoo.ad_api_sample.bulkUploadSample;
 
-import java.io.StringReader;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.ws.Holder;
+import jp.co.yahoo.ad_api_sample.error.impl.BulkServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.BulkService.BulkEncoding;
+import jp.yahooapis.im.V6.BulkService.BulkLang;
+import jp.yahooapis.im.V6.BulkService.BulkOutput;
+import jp.yahooapis.im.V6.BulkService.BulkServiceInterface;
+import jp.yahooapis.im.V6.BulkService.BulkServiceService;
+import jp.yahooapis.im.V6.BulkService.BulkUploadStatusPage;
+import jp.yahooapis.im.V6.BulkService.BulkUploadStatusSelector;
+import jp.yahooapis.im.V6.BulkService.BulkUploadValues;
+import jp.yahooapis.im.V6.BulkService.Error;
+import jp.yahooapis.im.V6.BulkService.Paging;
+import jp.yahooapis.im.V6.BulkService.UploadBulkJob;
+import jp.yahooapis.im.V6.BulkService.UploadBulkJobStatus;
+import jp.yahooapis.im.V6.BulkService.UploadUrlValue;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-import jp.co.yahoo.ad_api_sample.error.impl.BulkServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.BulkService.BulkEncoding;
-import jp.yahooapis.im.V5.BulkService.BulkLang;
-import jp.yahooapis.im.V5.BulkService.BulkOutput;
-import jp.yahooapis.im.V5.BulkService.BulkServiceInterface;
-import jp.yahooapis.im.V5.BulkService.BulkServiceService;
-import jp.yahooapis.im.V5.BulkService.BulkUploadStatusPage;
-import jp.yahooapis.im.V5.BulkService.BulkUploadStatusSelector;
-import jp.yahooapis.im.V5.BulkService.BulkUploadValues;
-import jp.yahooapis.im.V5.BulkService.Error;
-import jp.yahooapis.im.V5.BulkService.Paging;
-import jp.yahooapis.im.V5.BulkService.UploadBulkJob;
-import jp.yahooapis.im.V5.BulkService.UploadBulkJobStatus;
-import jp.yahooapis.im.V5.BulkService.UploadUrlValue;
+import java.io.StringReader;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.ws.Holder;
 
 
 /**
@@ -279,7 +279,7 @@ public class BulkUploadSample {
   /**
    * display uploadUrlValue entity to stdout.
    *
-   * @param values UploadUrlValue entity for display.
+   * @param uploadUrlValue UploadUrlValue entity for display.
    */
   private static void displayGetUploadUrlResponse(UploadUrlValue uploadUrlValue) {
     System.out.println("accountId = " + uploadUrlValue.getAccountId());
@@ -295,7 +295,7 @@ public class BulkUploadSample {
   /**
    * display uploadBulkJob entity to stdout.
    *
-   * @param values UploadBulkJob entity for display.
+   * @param uploadBulkJob UploadBulkJob entity for display.
    */
   private static void display(UploadBulkJob uploadBulkJob) {
     System.out.println("----------");

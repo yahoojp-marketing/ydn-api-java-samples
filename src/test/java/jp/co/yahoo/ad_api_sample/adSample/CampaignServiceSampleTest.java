@@ -1,22 +1,22 @@
 package jp.co.yahoo.ad_api_sample.adSample;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.Arrays;
-import java.util.List;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.CampaignService.CampaignOperation;
+import jp.yahooapis.im.V6.CampaignService.CampaignSelector;
+import jp.yahooapis.im.V6.CampaignService.CampaignValues;
+import jp.yahooapis.im.V6.CampaignService.Paging;
+import jp.yahooapis.im.V6.CampaignService.UserStatus;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.CampaignService.CampaignOperation;
-import jp.yahooapis.im.V5.CampaignService.CampaignSelector;
-import jp.yahooapis.im.V5.CampaignService.CampaignValues;
-import jp.yahooapis.im.V5.CampaignService.Paging;
-import jp.yahooapis.im.V5.CampaignService.UserStatus;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for CampaignServiceSampleTest.<br>

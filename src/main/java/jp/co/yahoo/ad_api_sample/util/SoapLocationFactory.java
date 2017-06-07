@@ -1,5 +1,10 @@
 package jp.co.yahoo.ad_api_sample.util;
 
+import jp.yahooapis.im.V6.LocationService.Error;
+import jp.yahooapis.im.V6.LocationService.LocationReturnValue;
+import jp.yahooapis.im.V6.LocationService.LocationServiceInterface;
+import jp.yahooapis.im.V6.LocationService.LocationServiceService;
+
 import java.net.URL;
 import java.util.List;
 
@@ -7,11 +12,6 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Holder;
 import javax.xml.ws.Service;
 import javax.xml.ws.wsaddressing.W3CEndpointReferenceBuilder;
-
-import jp.yahooapis.im.V5.LocationService.LocationReturnValue;
-import jp.yahooapis.im.V5.LocationService.LocationServiceInterface;
-import jp.yahooapis.im.V5.LocationService.Error;
-import jp.yahooapis.im.V5.LocationService.LocationServiceService;
 
 public class SoapLocationFactory {
 

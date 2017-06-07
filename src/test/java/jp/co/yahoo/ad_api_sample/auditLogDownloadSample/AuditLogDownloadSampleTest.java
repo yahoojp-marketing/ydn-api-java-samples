@@ -1,9 +1,14 @@
 package jp.co.yahoo.ad_api_sample.auditLogDownloadSample;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDateRange;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadSelector;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadStatusSelector;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadValues;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogUpdateSource;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,15 +16,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDateRange;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadSelector;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadStatusSelector;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadValues;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogUpdateSource;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for AuditLogDownloadSampleTest.<br>

@@ -1,18 +1,18 @@
 package jp.co.yahoo.ad_api_sample.dictionarySample;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.List;
+import jp.yahooapis.im.V6.DictionaryService.DictionaryLang;
+import jp.yahooapis.im.V6.DictionaryService.DisapprovalReasonSelector;
+import jp.yahooapis.im.V6.DictionaryService.DisapprovalReasonValues;
+import jp.yahooapis.im.V6.DictionaryService.GeographicLocationSelector;
+import jp.yahooapis.im.V6.DictionaryService.GeographicLocationValues;
 
 import org.junit.Test;
 
-import jp.yahooapis.im.V5.DictionaryService.DictionaryLang;
-import jp.yahooapis.im.V5.DictionaryService.DisapprovalReasonSelector;
-import jp.yahooapis.im.V5.DictionaryService.DisapprovalReasonValues;
-import jp.yahooapis.im.V5.DictionaryService.GeographicLocationSelector;
-import jp.yahooapis.im.V5.DictionaryService.GeographicLocationValues;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for DictionarySampleTest.<br>

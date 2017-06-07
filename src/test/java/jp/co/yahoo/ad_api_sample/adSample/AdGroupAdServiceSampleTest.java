@@ -1,23 +1,23 @@
 package jp.co.yahoo.ad_api_sample.adSample;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.Arrays;
-import java.util.List;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdOperation;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdSelector;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdValues;
+import jp.yahooapis.im.V6.AdGroupAdService.ApprovalStatus;
+import jp.yahooapis.im.V6.AdGroupAdService.Paging;
+import jp.yahooapis.im.V6.AdGroupAdService.UserStatus;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdOperation;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdSelector;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdValues;
-import jp.yahooapis.im.V5.AdGroupAdService.ApprovalStatus;
-import jp.yahooapis.im.V5.AdGroupAdService.Paging;
-import jp.yahooapis.im.V5.AdGroupAdService.UserStatus;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for AdGroupAdServiceSampleTest.<br>

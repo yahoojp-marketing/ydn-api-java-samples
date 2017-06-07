@@ -1,25 +1,25 @@
 package jp.co.yahoo.ad_api_sample.conversionTrackerSample;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.List;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTracker;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerCategory;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerOperation;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerSelector;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerStatus;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerType;
+import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerValues;
+import jp.yahooapis.im.V6.ConversionTrackerService.Operator;
+import jp.yahooapis.im.V6.ConversionTrackerService.Paging;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTracker;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerCategory;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerOperation;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerSelector;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerStatus;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerType;
-import jp.yahooapis.im.V5.ConversionTrackerService.ConversionTrackerValues;
-import jp.yahooapis.im.V5.ConversionTrackerService.Operator;
-import jp.yahooapis.im.V5.ConversionTrackerService.Paging;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for ConversionTrackerSampleTest.<br>
