@@ -1,9 +1,9 @@
 package jp.co.yahoo.ad_api_sample.mediaSample;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for MediaSampleTest.<br>

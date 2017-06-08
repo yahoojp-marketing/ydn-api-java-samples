@@ -1,8 +1,8 @@
 package jp.co.yahoo.ad_api_sample.reportDownloadSample;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for ReportDownloadSampleTest.<br>

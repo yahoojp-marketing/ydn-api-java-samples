@@ -8,8 +8,8 @@
     <property name="src.dir"   value="${basedir}/src/main/java"/>
     <property name="dest.dir"  value="${basedir}/build"/>
     <property name="wsdl.dir"  value="${basedir}/wsdl"/>
-    <property name="wsdl.location"  value="https://sandbox.im.yahooapis.jp/services/V5.3"/>
-    <property name="pakcage.base" value="jp.yahooapis.im.V5"/>
+    <property name="wsdl.location"  value="https://sandbox.im.yahooapis.jp/services/V6.0"/>
+    <property name="pakcage.base" value="jp.yahooapis.im.V6"/>
     <!--==================================
       classpath for build
     ===================================-->
@@ -358,6 +358,21 @@
             <arg value="-J-Duser.language=en"/>
             <arg value="-wsdllocation"/>
             <arg value="${wsdl.location}/LocationService?wsdl"/>
+        </exec>
+
+        <echo message="start wsimport VideoService.wsdl...."/>
+        <exec executable="${env.JAVA_HOME}/bin/wsimport">
+            <arg value="${wsdl.dir}/VideoService/VideoService.wsdl"/>
+            <arg value="-p"/>
+            <arg value="${pakcage.base}.VideoService"/>
+            <arg value="-s"/>
+            <arg value="${src.dir}"/>
+            <arg value="-Xnocompile"/>
+            <arg value="-encoding"/>
+            <arg value="UTF-8"/>
+            <arg value="-J-Duser.language=en"/>
+            <arg value="-wsdllocation"/>
+            <arg value="${wsdl.location}/VideoService?wsdl"/>
         </exec>
 
     </target>

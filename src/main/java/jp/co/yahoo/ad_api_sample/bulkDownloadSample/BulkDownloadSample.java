@@ -1,29 +1,29 @@
 package jp.co.yahoo.ad_api_sample.bulkDownloadSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.BulkServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.BulkService.ApprovalStatus;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadReturnValue;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadSelector;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadStatusPage;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadStatusSelector;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadType;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadValues;
+import jp.yahooapis.im.V6.BulkService.BulkEncoding;
+import jp.yahooapis.im.V6.BulkService.BulkLang;
+import jp.yahooapis.im.V6.BulkService.BulkOutput;
+import jp.yahooapis.im.V6.BulkService.BulkServiceInterface;
+import jp.yahooapis.im.V6.BulkService.BulkServiceService;
+import jp.yahooapis.im.V6.BulkService.DownloadBulkJob;
+import jp.yahooapis.im.V6.BulkService.DownloadBulkJobStatus;
+import jp.yahooapis.im.V6.BulkService.EntityType;
+import jp.yahooapis.im.V6.BulkService.Error;
+import jp.yahooapis.im.V6.BulkService.MediaApprovalStatus;
+import jp.yahooapis.im.V6.BulkService.UserStatus;
+
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.BulkServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.BulkService.ApprovalStatus;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadReturnValue;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadSelector;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadStatusPage;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadStatusSelector;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadType;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadValues;
-import jp.yahooapis.im.V5.BulkService.BulkEncoding;
-import jp.yahooapis.im.V5.BulkService.BulkLang;
-import jp.yahooapis.im.V5.BulkService.BulkOutput;
-import jp.yahooapis.im.V5.BulkService.BulkServiceInterface;
-import jp.yahooapis.im.V5.BulkService.BulkServiceService;
-import jp.yahooapis.im.V5.BulkService.DownloadBulkJob;
-import jp.yahooapis.im.V5.BulkService.DownloadBulkJobStatus;
-import jp.yahooapis.im.V5.BulkService.EntityType;
-import jp.yahooapis.im.V5.BulkService.Error;
-import jp.yahooapis.im.V5.BulkService.MediaApprovalStatus;
-import jp.yahooapis.im.V5.BulkService.UserStatus;
 
 /**
  * Sample Program for Bulk Download.<br>
@@ -33,7 +33,7 @@ public class BulkDownloadSample {
 
   /**
    * main method for BulkDownloadSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -41,7 +41,6 @@ public class BulkDownloadSample {
     try {
 
       long accountId = SoapUtils.getAccountId();
-
 
       // -----------------------------------------------
       // BulkService::getBulkDownload
@@ -97,10 +96,9 @@ public class BulkDownloadSample {
 
   /**
    * download bulk.
-   * 
+   *
    * @param getBulkDownloadStatusResponse BulkDownloadValues
-   * @param bulkDownloadFileName String
-   * @throws Exception
+   * @param bulkDownloadFileName          String
    */
   public static void downloadBulk(BulkDownloadValues getBulkDownloadStatusResponse, String bulkDownloadFileName) throws Exception {
 
@@ -114,10 +112,9 @@ public class BulkDownloadSample {
 
   /**
    * Sample Program for BulkDownloadService GetBulkDownload.
-   * 
+   *
    * @param selector BulkDownloadSelector
    * @return BulkDownloadValues
-   * @throws Exception
    */
   public static List<BulkDownloadValues> getBulkDownload(BulkDownloadSelector selector) throws Exception {
 
@@ -158,10 +155,9 @@ public class BulkDownloadSample {
 
   /**
    * Sample Program for BulkDownloadService GetBulkDownloadStatus.
-   * 
+   *
    * @param selector BulkDownloadStatusSelector
    * @return BulkDownloadValues
-   * @throws Exception
    */
   public static List<BulkDownloadValues> getBulkDownloadStatus(BulkDownloadStatusSelector selector) throws Exception {
 
@@ -223,7 +219,7 @@ public class BulkDownloadSample {
   /**
    * display downloadBulkJob entity to stdout.
    *
-   * @param values DownloadBulkJob entity for display.
+   * @param downloadBulkJob DownloadBulkJob entity for display.
    */
   private static void display(DownloadBulkJob downloadBulkJob) {
     System.out.println("accountId = " + downloadBulkJob.getAccountId());
@@ -235,5 +231,4 @@ public class BulkDownloadSample {
     System.out.println("progress = " + downloadBulkJob.getProgress());
     System.out.println("---------");
   }
-
 }

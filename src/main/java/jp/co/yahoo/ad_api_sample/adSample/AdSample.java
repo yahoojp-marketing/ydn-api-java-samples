@@ -1,53 +1,53 @@
 package jp.co.yahoo.ad_api_sample.adSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.AdGroupTargetServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdOperation;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdSelector;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdValues;
+import jp.yahooapis.im.V6.AdGroupService.AdGroup;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupOperation;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupSelector;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupValues;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetOperation;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetPage;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetReturnValue;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetSelector;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetServiceInterface;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetServiceService;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetValues;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargets;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdScheduleTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdScheduleTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.Age;
+import jp.yahooapis.im.V6.AdGroupTargetService.AgeTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.AgeTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.DayOfWeek;
+import jp.yahooapis.im.V6.AdGroupTargetService.EstimateFlg;
+import jp.yahooapis.im.V6.AdGroupTargetService.Gender;
+import jp.yahooapis.im.V6.AdGroupTargetService.GenderTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.GenderTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.GeoTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.GeoTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.InterestCategoryTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.InterestCategoryTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.SearchTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.SearchTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.SiteCategoryTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.SiteCategoryTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.SiteRetargetingTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.SiteRetargetingTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.TargetType;
+import jp.yahooapis.im.V6.CampaignService.Campaign;
+import jp.yahooapis.im.V6.CampaignService.CampaignOperation;
+import jp.yahooapis.im.V6.CampaignService.CampaignSelector;
+import jp.yahooapis.im.V6.CampaignService.CampaignValues;
+
 import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.AdGroupTargetServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdOperation;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdSelector;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdValues;
-import jp.yahooapis.im.V5.AdGroupService.AdGroup;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupOperation;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupSelector;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupValues;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetOperation;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetPage;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetReturnValue;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetSelector;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetServiceInterface;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetServiceService;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetValues;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdScheduleTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdScheduleTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.Age;
-import jp.yahooapis.im.V5.AdGroupTargetService.AgeTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.AgeTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.DayOfWeek;
-import jp.yahooapis.im.V5.AdGroupTargetService.EstimateFlg;
-import jp.yahooapis.im.V5.AdGroupTargetService.Gender;
-import jp.yahooapis.im.V5.AdGroupTargetService.GenderTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.GenderTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.GeoTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.GeoTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.InterestCategoryTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.InterestCategoryTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.SearchTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.SearchTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.SiteCategoryTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.SiteCategoryTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.SiteRetargetingTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.SiteRetargetingTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargets;
-import jp.yahooapis.im.V5.AdGroupTargetService.TargetType;
-import jp.yahooapis.im.V5.CampaignService.Campaign;
-import jp.yahooapis.im.V5.CampaignService.CampaignOperation;
-import jp.yahooapis.im.V5.CampaignService.CampaignSelector;
-import jp.yahooapis.im.V5.CampaignService.CampaignValues;
 
 /**
  * Sample Program for CampaignService,AdGroupService,AdGroupAdService,AdGroupTargetService.
@@ -235,7 +235,7 @@ public class AdSample {
     System.out.println("AdGroupTargetService::mutate(SET)");
     System.out.println("############################################");
     Holder<AdGroupTargetReturnValue> setAdGroupTargetReturnValueHolder = new Holder<AdGroupTargetReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.AdGroupTargetService.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.V5.AdGroupTargetService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>>();
     adGroupTargetService.mutate(operation, setAdGroupTargetReturnValueHolder, setAdGroupTargetErrorHolder);
 
     // if error
@@ -281,7 +281,7 @@ public class AdSample {
     System.out.println("AdGroupTargetService::get");
     System.out.println("############################################");
     Holder<AdGroupTargetPage> adGroupTargetPageHolder = new Holder<AdGroupTargetPage>();
-    Holder<List<jp.yahooapis.im.V5.AdGroupTargetService.Error>> getAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.V5.AdGroupTargetService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>> getAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>>();
     adGroupTargetService.get(selector, adGroupTargetPageHolder, getAdGroupTargetErrorHolder);
 
     // if error
@@ -391,7 +391,7 @@ public class AdSample {
     setAdGroupTargetOperand.getTargets().addAll(Arrays.asList(setAdScheduleTargetList, setGenderTargetList, setAgeTargetList));
 
     AdGroupTargetOperation setAdGroupTargetOperation = new AdGroupTargetOperation();
-    setAdGroupTargetOperation.setOperator(jp.yahooapis.im.V5.AdGroupTargetService.Operator.SET);
+    setAdGroupTargetOperation.setOperator(jp.yahooapis.im.V6.AdGroupTargetService.Operator.SET);
     setAdGroupTargetOperation.setAccountId(accountId);
     setAdGroupTargetOperation.setCampaignId(campaignId);
     setAdGroupTargetOperation.getOperand().add(setAdGroupTargetOperand);
@@ -477,7 +477,6 @@ public class AdSample {
             System.out.println("targets/targets/type = " + siteRetargetingTarget.get(k).getType().toString());
             System.out.println("targets/targets/targetListId = " + siteRetargetingTarget.get(k).getTargetListId());
             System.out.println("targets/targets/targetListName = " + siteRetargetingTarget.get(k).getTargetListName().toString());
-            System.out.println("targets/targets/targetListStatus = " + siteRetargetingTarget.get(k).getTargetListStatus().toString());
           }
         } else if (targetList.get(j) instanceof SearchTargetList) {
           SearchTargetList searchTargetList = (SearchTargetList) targetList.get(j);
@@ -487,7 +486,6 @@ public class AdSample {
             System.out.println("targets/targets/type = " + searchTarget.get(k).getType());
             System.out.println("targets/targets/searchKeywordListId = " + searchTarget.get(k).getSearchKeywordListId());
             System.out.println("targets/targets/searchKeywordListName = " + searchTarget.get(k).getSearchKeywordListName());
-            System.out.println("targets/targets/searchKeywordListStatus = " + searchTarget.get(k).getSearchKeywordListStatus());
           }
         }
       }

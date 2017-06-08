@@ -1,27 +1,27 @@
 package jp.co.yahoo.ad_api_sample.bulkDownloadSample;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.List;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.BulkService.ApprovalStatus;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadSelector;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadStatusSelector;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadType;
+import jp.yahooapis.im.V6.BulkService.BulkDownloadValues;
+import jp.yahooapis.im.V6.BulkService.BulkEncoding;
+import jp.yahooapis.im.V6.BulkService.BulkLang;
+import jp.yahooapis.im.V6.BulkService.BulkOutput;
+import jp.yahooapis.im.V6.BulkService.EntityType;
+import jp.yahooapis.im.V6.BulkService.MediaApprovalStatus;
+import jp.yahooapis.im.V6.BulkService.UserStatus;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.BulkService.ApprovalStatus;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadSelector;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadStatusSelector;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadType;
-import jp.yahooapis.im.V5.BulkService.BulkDownloadValues;
-import jp.yahooapis.im.V5.BulkService.BulkEncoding;
-import jp.yahooapis.im.V5.BulkService.BulkLang;
-import jp.yahooapis.im.V5.BulkService.BulkOutput;
-import jp.yahooapis.im.V5.BulkService.EntityType;
-import jp.yahooapis.im.V5.BulkService.MediaApprovalStatus;
-import jp.yahooapis.im.V5.BulkService.UserStatus;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for BulkDownloadSampleTest.<br>

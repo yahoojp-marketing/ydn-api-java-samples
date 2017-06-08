@@ -1,19 +1,19 @@
 package jp.co.yahoo.ad_api_sample.accountAdProductSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.AccountAdProductServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProduct;
+import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductPage;
+import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductSelector;
+import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductService;
+import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductServiceInterface;
+import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductValues;
+import jp.yahooapis.im.V6.AccountAdProductService.AdProduct;
+import jp.yahooapis.im.V6.AccountAdProductService.Error;
+
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.AccountAdProductServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AccountAdProductService.AccountAdProduct;
-import jp.yahooapis.im.V5.AccountAdProductService.AccountAdProductPage;
-import jp.yahooapis.im.V5.AccountAdProductService.AccountAdProductSelector;
-import jp.yahooapis.im.V5.AccountAdProductService.AccountAdProductService;
-import jp.yahooapis.im.V5.AccountAdProductService.AccountAdProductServiceInterface;
-import jp.yahooapis.im.V5.AccountAdProductService.AccountAdProductValues;
-import jp.yahooapis.im.V5.AccountAdProductService.AdProduct;
-import jp.yahooapis.im.V5.AccountAdProductService.Error;
 
 
 /**
@@ -103,7 +103,6 @@ public class AccountAdProductSample {
     List<AdProduct> adProducts = accountAdProduct.getAdProduct();
     for (AdProduct adProduct : adProducts) {
       System.out.println("  adProduct code = " + adProduct.getAdProductType());
-      System.out.println("  adProduct status = " + adProduct.getStatus());
       System.out.println("  =========");
     }
     System.out.println("---------");

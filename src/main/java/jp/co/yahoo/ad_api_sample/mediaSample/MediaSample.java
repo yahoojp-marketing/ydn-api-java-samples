@@ -1,4 +1,59 @@
-  package jp.co.yahoo.ad_api_sample.mediaSample;
+package jp.co.yahoo.ad_api_sample.mediaSample;
+
+import jp.co.yahoo.ad_api_sample.adSample.AdGroupAdServiceSample;
+import jp.co.yahoo.ad_api_sample.adSample.AdGroupServiceSample;
+import jp.co.yahoo.ad_api_sample.adSample.AdSample;
+import jp.co.yahoo.ad_api_sample.adSample.CampaignServiceSample;
+import jp.co.yahoo.ad_api_sample.error.impl.MediaServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAd;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdOperation;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdSelector;
+import jp.yahooapis.im.V6.AdGroupAdService.AdGroupAdValues;
+import jp.yahooapis.im.V6.AdGroupAdService.AdStyle;
+import jp.yahooapis.im.V6.AdGroupAdService.AdType;
+import jp.yahooapis.im.V6.AdGroupAdService.ManualCPCAdGroupAdBid;
+import jp.yahooapis.im.V6.AdGroupAdService.TextAd;
+import jp.yahooapis.im.V6.AdGroupService.AdGroup;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupOperation;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupSelector;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupValues;
+import jp.yahooapis.im.V6.AdGroupService.DeviceAppType;
+import jp.yahooapis.im.V6.AdGroupService.DeviceOsType;
+import jp.yahooapis.im.V6.AdGroupService.DeviceType;
+import jp.yahooapis.im.V6.AdGroupService.ManualCPCAdGroupBid;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetOperation;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetSelector;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargets;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdScheduleTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdScheduleTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.DayOfWeek;
+import jp.yahooapis.im.V6.AdGroupTargetService.Gender;
+import jp.yahooapis.im.V6.AdGroupTargetService.GenderTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.GenderTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.TargetType;
+import jp.yahooapis.im.V6.CampaignService.BiddingStrategyType;
+import jp.yahooapis.im.V6.CampaignService.Budget;
+import jp.yahooapis.im.V6.CampaignService.BudgetDeliveryMethod;
+import jp.yahooapis.im.V6.CampaignService.Campaign;
+import jp.yahooapis.im.V6.CampaignService.CampaignOperation;
+import jp.yahooapis.im.V6.CampaignService.CampaignSelector;
+import jp.yahooapis.im.V6.CampaignService.CampaignValues;
+import jp.yahooapis.im.V6.CampaignService.ManualCPC;
+import jp.yahooapis.im.V6.MediaService.Error;
+import jp.yahooapis.im.V6.MediaService.ImageMedia;
+import jp.yahooapis.im.V6.MediaService.Media;
+import jp.yahooapis.im.V6.MediaService.MediaOperation;
+import jp.yahooapis.im.V6.MediaService.MediaPage;
+import jp.yahooapis.im.V6.MediaService.MediaRecord;
+import jp.yahooapis.im.V6.MediaService.MediaReturnValue;
+import jp.yahooapis.im.V6.MediaService.MediaSelector;
+import jp.yahooapis.im.V6.MediaService.MediaServiceInterface;
+import jp.yahooapis.im.V6.MediaService.MediaServiceService;
+import jp.yahooapis.im.V6.MediaService.MediaValues;
+import jp.yahooapis.im.V6.MediaService.Operator;
+import jp.yahooapis.im.V6.MediaService.Paging;
+import jp.yahooapis.im.V6.MediaService.UserStatus;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,70 +65,15 @@ import java.util.List;
 
 import javax.xml.ws.Holder;
 
-import jp.co.yahoo.ad_api_sample.adSample.AdGroupAdServiceSample;
-import jp.co.yahoo.ad_api_sample.adSample.AdGroupServiceSample;
-import jp.co.yahoo.ad_api_sample.adSample.AdSample;
-import jp.co.yahoo.ad_api_sample.adSample.CampaignServiceSample;
-import jp.co.yahoo.ad_api_sample.error.impl.MediaServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAd;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdOperation;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdSelector;
-import jp.yahooapis.im.V5.AdGroupAdService.AdGroupAdValues;
-import jp.yahooapis.im.V5.AdGroupAdService.AdStyle;
-import jp.yahooapis.im.V5.AdGroupAdService.AdType;
-import jp.yahooapis.im.V5.AdGroupAdService.ManualCPCAdGroupAdBid;
-import jp.yahooapis.im.V5.AdGroupAdService.TextAd;
-import jp.yahooapis.im.V5.AdGroupService.AdGroup;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupOperation;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupSelector;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupValues;
-import jp.yahooapis.im.V5.AdGroupService.DeviceAppType;
-import jp.yahooapis.im.V5.AdGroupService.DeviceOsType;
-import jp.yahooapis.im.V5.AdGroupService.DeviceType;
-import jp.yahooapis.im.V5.AdGroupService.ManualCPCAdGroupBid;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetOperation;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargetSelector;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdGroupTargets;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdScheduleTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.AdScheduleTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.DayOfWeek;
-import jp.yahooapis.im.V5.AdGroupTargetService.Gender;
-import jp.yahooapis.im.V5.AdGroupTargetService.GenderTarget;
-import jp.yahooapis.im.V5.AdGroupTargetService.GenderTargetList;
-import jp.yahooapis.im.V5.AdGroupTargetService.TargetType;
-import jp.yahooapis.im.V5.CampaignService.BiddingStrategyType;
-import jp.yahooapis.im.V5.CampaignService.Budget;
-import jp.yahooapis.im.V5.CampaignService.BudgetDeliveryMethod;
-import jp.yahooapis.im.V5.CampaignService.Campaign;
-import jp.yahooapis.im.V5.CampaignService.CampaignOperation;
-import jp.yahooapis.im.V5.CampaignService.CampaignSelector;
-import jp.yahooapis.im.V5.CampaignService.CampaignValues;
-import jp.yahooapis.im.V5.CampaignService.ManualCPC;
-import jp.yahooapis.im.V5.MediaService.Error;
-import jp.yahooapis.im.V5.MediaService.ImageMedia;
-import jp.yahooapis.im.V5.MediaService.Media;
-import jp.yahooapis.im.V5.MediaService.MediaOperation;
-import jp.yahooapis.im.V5.MediaService.MediaPage;
-import jp.yahooapis.im.V5.MediaService.MediaRecord;
-import jp.yahooapis.im.V5.MediaService.MediaReturnValue;
-import jp.yahooapis.im.V5.MediaService.MediaSelector;
-import jp.yahooapis.im.V5.MediaService.MediaServiceInterface;
-import jp.yahooapis.im.V5.MediaService.MediaServiceService;
-import jp.yahooapis.im.V5.MediaService.MediaValues;
-import jp.yahooapis.im.V5.MediaService.Operator;
-import jp.yahooapis.im.V5.MediaService.Paging;
-import jp.yahooapis.im.V5.MediaService.UserStatus;
-
 /**
  * Sample Program for CampaignService,AdGroupService,AdGroupAdService,AdGroupTargetService.
  * Copyright (C) 2012 Yahoo Japan Corporation. All Rights Reserved.
  */
 public class MediaSample {
+
   /**
    * main method for AdSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -148,7 +148,6 @@ public class MediaSample {
 
       // call API
       CampaignServiceSample.set(setCampaignOperation);
-
 
       // -----------------------------------------------
       // AdGroupService::mutate(ADD)
@@ -226,7 +225,6 @@ public class MediaSample {
       // call API
       AdSample.setAdGroupTarget(setAdGroupTargetOperation);
 
-
       // -----------------------------------------------
       // AdGroupTargetService::get
       // -----------------------------------------------
@@ -285,7 +283,6 @@ public class MediaSample {
    *
    * @param operation MediaOperation
    * @return MediaValues
-   * @throws Exception
    */
   public static List<MediaValues> addMedia(MediaOperation operation) throws Exception {
     // =================================================================
@@ -323,6 +320,7 @@ public class MediaSample {
         }
       }
     }
+
     // Response
     return addMediaReturnValueHolder.value.getValues();
   }
@@ -332,7 +330,6 @@ public class MediaSample {
    *
    * @param selector MediaSelector
    * @return MediaValues
-   * @throws Exception
    */
   public static List<MediaValues> getMedia(MediaSelector selector) throws Exception {
     // =================================================================
@@ -379,7 +376,6 @@ public class MediaSample {
    *
    * @param operation MediaOperation
    * @return MediaValues
-   * @throws Exception
    */
   public static List<MediaValues> setMedia(MediaOperation operation) throws Exception {
     // =================================================================
@@ -425,7 +421,6 @@ public class MediaSample {
    *
    * @param operation MediaOperation
    * @return MediaValues
-   * @throws Exception
    */
   public static List<MediaValues> removeMedia(MediaOperation operation) throws Exception {
     // =================================================================
@@ -489,14 +484,13 @@ public class MediaSample {
     addMediaOperation.setAccountId(accountId);
     addMediaOperation.getOperand().add(addMediaOperand);
 
-
     return addMediaOperation;
   }
 
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId   long
    * @param mediaValues MediaValues
    * @return MediaSelector
    */
@@ -522,7 +516,7 @@ public class MediaSample {
   /**
    * create Media SET sample request.
    *
-   * @param accountId long
+   * @param accountId   long
    * @param mediaValues MediaValues
    * @return MediaOperation
    */
@@ -547,7 +541,7 @@ public class MediaSample {
   /**
    * create Media SET sample request.
    *
-   * @param accountId long
+   * @param accountId   long
    * @param mediaValues MediaValues
    * @return MediaOperation
    */
@@ -578,7 +572,7 @@ public class MediaSample {
     Campaign addCampaignOperand = new Campaign();
     addCampaignOperand.setAccountId(accountId);
     addCampaignOperand.setCampaignName("SampleCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    addCampaignOperand.setUserStatus(jp.yahooapis.im.V5.CampaignService.UserStatus.ACTIVE);
+    addCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
     addCampaignOperand.setStartDate("20300101");
     addCampaignOperand.setEndDate("20301231");
 
@@ -593,7 +587,7 @@ public class MediaSample {
     addCampaignOperand.setAdProductType("INTEREST_MATCH");
 
     CampaignOperation addCampaignOperation = new CampaignOperation();
-    addCampaignOperation.setOperator(jp.yahooapis.im.V5.CampaignService.Operator.ADD);
+    addCampaignOperation.setOperator(jp.yahooapis.im.V6.CampaignService.Operator.ADD);
     addCampaignOperation.setAccountId(accountId);
     addCampaignOperation.getOperand().add(addCampaignOperand);
 
@@ -603,22 +597,21 @@ public class MediaSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId      long
    * @param campaignValues CampaignValues
    * @return CampaignOperation
    */
   public static CampaignOperation createCampaignSampleSetRequest(long accountId, List<CampaignValues> campaignValues) {
     CampaignOperation setCampaignOperation = new CampaignOperation();
-    setCampaignOperation.setOperator(jp.yahooapis.im.V5.CampaignService.Operator.SET);
+    setCampaignOperation.setOperator(jp.yahooapis.im.V6.CampaignService.Operator.SET);
     setCampaignOperation.setAccountId(accountId);
-
 
     for (CampaignValues campaignValue : campaignValues) {
       Campaign setCampaignOperand = new Campaign();
       setCampaignOperand.setAccountId(accountId);
       setCampaignOperand.setCampaignId(campaignValue.getCampaign().getCampaignId());
       setCampaignOperand.setCampaignName("SampleCampaign_UpdateOn_" + SoapUtils.getCurrentTimestamp());
-      setCampaignOperand.setUserStatus(jp.yahooapis.im.V5.CampaignService.UserStatus.PAUSED);
+      setCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.PAUSED);
       setCampaignOperand.setStartDate("20300101");
       setCampaignOperand.setEndDate("20301231");
 
@@ -633,14 +626,13 @@ public class MediaSample {
       setCampaignOperation.getOperand().add(setCampaignOperand);
     }
 
-
     return setCampaignOperation;
   }
 
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId  long
    * @param campaignId long
    * @return AdGroupOperation
    */
@@ -649,9 +641,9 @@ public class MediaSample {
     addAdGroupOperand.setAccountId(accountId);
     addAdGroupOperand.setCampaignId(campaignId);
     addAdGroupOperand.setAdGroupName("SampleAdGroup_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    addAdGroupOperand.setUserStatus(jp.yahooapis.im.V5.AdGroupService.UserStatus.ACTIVE);
+    addAdGroupOperand.setUserStatus(jp.yahooapis.im.V6.AdGroupService.UserStatus.ACTIVE);
     ManualCPCAdGroupBid addAdGroupManualCpc = new ManualCPCAdGroupBid();
-    addAdGroupManualCpc.setType(jp.yahooapis.im.V5.AdGroupService.BiddingStrategyType.MANUAL_CPC);
+    addAdGroupManualCpc.setType(jp.yahooapis.im.V6.AdGroupService.BiddingStrategyType.MANUAL_CPC);
     addAdGroupManualCpc.setMaxCpc((long) 120);
     addAdGroupOperand.setBid(addAdGroupManualCpc);
     addAdGroupOperand.getDevice().add(DeviceType.SMARTPHONE);
@@ -659,7 +651,7 @@ public class MediaSample {
     addAdGroupOperand.getDeviceApp().add(DeviceAppType.APP);
 
     AdGroupOperation addAdGroupOperation = new AdGroupOperation();
-    addAdGroupOperation.setOperator(jp.yahooapis.im.V5.AdGroupService.Operator.ADD);
+    addAdGroupOperation.setOperator(jp.yahooapis.im.V6.AdGroupService.Operator.ADD);
     addAdGroupOperation.setAccountId(accountId);
     addAdGroupOperation.setCampaignId(campaignId);
     addAdGroupOperation.getOperand().add(addAdGroupOperand);
@@ -670,16 +662,15 @@ public class MediaSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId     long
    * @param adGroupValues AdGroupValues
    * @return AdGroupOperation
    */
   public static AdGroupOperation createAdGroupSampleSetRequest(long accountId, List<AdGroupValues> adGroupValues) {
     // Set Operation
     AdGroupOperation setAdGroupOperation = new AdGroupOperation();
-    setAdGroupOperation.setOperator(jp.yahooapis.im.V5.AdGroupService.Operator.SET);
+    setAdGroupOperation.setOperator(jp.yahooapis.im.V6.AdGroupService.Operator.SET);
     setAdGroupOperation.setAccountId(accountId);
-
 
     // Set Operand
     for (AdGroupValues adGroupValue : adGroupValues) {
@@ -689,10 +680,10 @@ public class MediaSample {
       setAdGroupOperand.setCampaignId(adGroupValue.getAdGroup().getCampaignId());
       setAdGroupOperand.setAdGroupId(adGroupValue.getAdGroup().getAdGroupId());
       setAdGroupOperand.setAdGroupName("SampleAdGroup_UpdateOn_" + SoapUtils.getCurrentTimestamp());
-      setAdGroupOperand.setUserStatus(jp.yahooapis.im.V5.AdGroupService.UserStatus.PAUSED);
+      setAdGroupOperand.setUserStatus(jp.yahooapis.im.V6.AdGroupService.UserStatus.PAUSED);
       ManualCPCAdGroupBid setAdGroupManualCpc = new ManualCPCAdGroupBid();
       setAdGroupManualCpc.setMaxCpc((long) 120);
-      setAdGroupManualCpc.setType(jp.yahooapis.im.V5.AdGroupService.BiddingStrategyType.MANUAL_CPC);
+      setAdGroupManualCpc.setType(jp.yahooapis.im.V6.AdGroupService.BiddingStrategyType.MANUAL_CPC);
       setAdGroupOperand.setBid(setAdGroupManualCpc);
       setAdGroupOperand.getDevice().add(DeviceType.SMARTPHONE);
       setAdGroupOperand.getDeviceOs().add(DeviceOsType.IOS);
@@ -708,10 +699,10 @@ public class MediaSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId  long
    * @param campaignId long
-   * @param adGroupId long
-   * @param mediaId long
+   * @param adGroupId  long
+   * @param mediaId    long
    * @return AdGroupAdOperation
    */
   public static AdGroupAdOperation createAdGroupAdSampleAddRequest(long accountId, long campaignId, long adGroupId, long mediaId) {
@@ -732,14 +723,14 @@ public class MediaSample {
     addAdGroupAdOperand.setAdName("SampleAdGroupAd_CreateOn_" + SoapUtils.getCurrentTimestamp());
     addAdGroupAdOperand.setAdStyle(AdStyle.IMAGE);
     addAdGroupAdOperand.setMediaId(mediaId);
-    addAdGroupAdOperand.setUserStatus(jp.yahooapis.im.V5.AdGroupAdService.UserStatus.ACTIVE);
+    addAdGroupAdOperand.setUserStatus(jp.yahooapis.im.V6.AdGroupAdService.UserStatus.ACTIVE);
     ManualCPCAdGroupAdBid addAdGroupAd = new ManualCPCAdGroupAdBid();
     addAdGroupAd.setMaxCpc((long) 50);
-    addAdGroupAd.setType(jp.yahooapis.im.V5.AdGroupAdService.BiddingStrategyType.MANUAL_CPC);
+    addAdGroupAd.setType(jp.yahooapis.im.V6.AdGroupAdService.BiddingStrategyType.MANUAL_CPC);
     addAdGroupAdOperand.setAd(addTextAd);
 
     AdGroupAdOperation addAdGroupAdOperation = new AdGroupAdOperation();
-    addAdGroupAdOperation.setOperator(jp.yahooapis.im.V5.AdGroupAdService.Operator.ADD);
+    addAdGroupAdOperation.setOperator(jp.yahooapis.im.V6.AdGroupAdService.Operator.ADD);
     addAdGroupAdOperation.setAccountId(accountId);
     addAdGroupAdOperation.getOperand().add(addAdGroupAdOperand);
 
@@ -749,14 +740,14 @@ public class MediaSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId       long
    * @param adGroupAdValues AdGroupAdValues
    * @return AdGroupAdOperation
    */
   public static AdGroupAdOperation createAdGroupAdSampleSetRequest(long accountId, List<AdGroupAdValues> adGroupAdValues) {
     // Set Operation
     AdGroupAdOperation setAdGroupAdOperation = new AdGroupAdOperation();
-    setAdGroupAdOperation.setOperator(jp.yahooapis.im.V5.AdGroupAdService.Operator.SET);
+    setAdGroupAdOperation.setOperator(jp.yahooapis.im.V6.AdGroupAdService.Operator.SET);
     setAdGroupAdOperation.setAccountId(accountId);
 
     TextAd setTextAd = new TextAd();
@@ -767,7 +758,6 @@ public class MediaSample {
     setTextAd.setDescription("sample ad desc");
     setTextAd.setDescription2("sample ad desc2");
 
-
     // Set Operand
     for (AdGroupAdValues adGroupAdValue : adGroupAdValues) {
       AdGroupAd setAdGroupAdOperand = new AdGroupAd();
@@ -776,12 +766,11 @@ public class MediaSample {
       setAdGroupAdOperand.setAdGroupId(adGroupAdValue.getAdGroupAd().getAdGroupId());
       setAdGroupAdOperand.setAdId(adGroupAdValue.getAdGroupAd().getAdId());
       setAdGroupAdOperand.setAdName("SampleAdGroupAd_UpdateOn_" + SoapUtils.getCurrentTimestamp());
-      setAdGroupAdOperand.setUserStatus(jp.yahooapis.im.V5.AdGroupAdService.UserStatus.PAUSED);
+      setAdGroupAdOperand.setUserStatus(jp.yahooapis.im.V6.AdGroupAdService.UserStatus.PAUSED);
       ManualCPCAdGroupAdBid setAdGroupAdManualCpc = new ManualCPCAdGroupAdBid();
-      setAdGroupAdManualCpc.setType(jp.yahooapis.im.V5.AdGroupAdService.BiddingStrategyType.MANUAL_CPC);
+      setAdGroupAdManualCpc.setType(jp.yahooapis.im.V6.AdGroupAdService.BiddingStrategyType.MANUAL_CPC);
       setAdGroupAdManualCpc.setMaxCpc((long) 60);
       setAdGroupAdOperand.setAd(setTextAd);
-
 
       setAdGroupAdOperation.getOperand().add(setAdGroupAdOperand);
     }
@@ -793,9 +782,9 @@ public class MediaSample {
   /**
    * create AdGroupTarget SET sample request.
    *
-   * @param accountId long
+   * @param accountId  long
    * @param campaignId long
-   * @param adGroupId long
+   * @param adGroupId  long
    * @return AdGroupTargetOperation
    */
   public static AdGroupTargetOperation createAdGroupTargetSampleSetRequest(long accountId, long campaignId, long adGroupId) {
@@ -836,7 +825,7 @@ public class MediaSample {
     setAdGroupTargetOperand.getTargets().addAll(Arrays.asList(setAdScheduleTargetList, setGenderTargetList));
 
     AdGroupTargetOperation setAdGroupTargetOperation = new AdGroupTargetOperation();
-    setAdGroupTargetOperation.setOperator(jp.yahooapis.im.V5.AdGroupTargetService.Operator.SET);
+    setAdGroupTargetOperation.setOperator(jp.yahooapis.im.V6.AdGroupTargetService.Operator.SET);
     setAdGroupTargetOperation.setAccountId(accountId);
     setAdGroupTargetOperation.setCampaignId(campaignId);
     setAdGroupTargetOperation.getOperand().add(setAdGroupTargetOperand);
@@ -845,10 +834,10 @@ public class MediaSample {
 
   /**
    * get upload data.
-   * 
+   *
    * @param filename Media entity for display.
    */
-  private static byte[] getMediaData(String filename) throws FileNotFoundException {
+  public static byte[] getMediaData(String filename) throws FileNotFoundException {
     File uploadDir = new File(new File(".").getAbsolutePath() + "/upload");
     File uploadFile = new File(uploadDir, filename);
     if (!uploadFile.exists()) {
@@ -864,19 +853,20 @@ public class MediaSample {
     } catch (Exception ex) {
       throw new RuntimeException(ex);
     } finally {
-      if (is != null)
+      if (is != null) {
         try {
           is.close();
         } catch (IOException ex) {
           ex.printStackTrace();
         }
+      }
     }
     return buf;
   }
 
   /**
    * display Media entity to stdout.
-   * 
+   *
    * @param mediaRecord Media entity for display.
    */
   private static void displayMedia(MediaRecord mediaRecord) {

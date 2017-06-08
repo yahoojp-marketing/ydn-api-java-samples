@@ -1,5 +1,20 @@
 package jp.co.yahoo.ad_api_sample.auditLogDownloadSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.AuditLogServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDateRange;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadJobStatus;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadReturnValue;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadSelector;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadStatusPage;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadStatusSelector;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadValues;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogJob;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogServiceInterface;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogServiceService;
+import jp.yahooapis.im.V6.AuditLogService.AuditLogUpdateSource;
+import jp.yahooapis.im.V6.AuditLogService.Error;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -7,21 +22,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.AuditLogServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDateRange;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadJobStatus;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadReturnValue;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadSelector;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadStatusPage;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadStatusSelector;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogDownloadValues;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogJob;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogServiceInterface;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogServiceService;
-import jp.yahooapis.im.V5.AuditLogService.AuditLogUpdateSource;
-import jp.yahooapis.im.V5.AuditLogService.Error;
 
 /**
  * Sample Program for AuditLog Download.<br>
@@ -223,7 +223,7 @@ public class AuditLogDownloadSample {
   /**
    * display AuditLogJob entity to stdout.
    *
-   * @param values AuditLogJob entity for display.
+   * @param auditLogJob AuditLogJob entity for display.
    */
   private static void display(AuditLogJob auditLogJob) {
     System.out.println("accountId = " + auditLogJob.getAccountId());

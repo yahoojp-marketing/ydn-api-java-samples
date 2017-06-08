@@ -1,13 +1,13 @@
 package jp.co.yahoo.ad_api_sample.error.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jp.co.yahoo.ad_api_sample.error.ErrorDetailEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntityFactory;
-import jp.yahooapis.im.V5.RetargetingListService.Error;
-import jp.yahooapis.im.V5.RetargetingListService.ErrorDetail;
+import jp.yahooapis.im.V6.RetargetingListService.Error;
+import jp.yahooapis.im.V6.RetargetingListService.ErrorDetail;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RetargetingListServiceErrorEntityFactory implements ErrorEntityFactory {
 

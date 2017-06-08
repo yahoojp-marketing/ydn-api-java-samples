@@ -1,13 +1,13 @@
 package jp.co.yahoo.ad_api_sample.error.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jp.co.yahoo.ad_api_sample.error.ErrorDetailEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntityFactory;
-import jp.yahooapis.im.V5.CampaignService.Error;
-import jp.yahooapis.im.V5.CampaignService.ErrorDetail;
+import jp.yahooapis.im.V6.CampaignService.Error;
+import jp.yahooapis.im.V6.CampaignService.ErrorDetail;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CampaignServiceErrorEntityFactory implements ErrorEntityFactory {
 

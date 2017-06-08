@@ -1,46 +1,47 @@
 package jp.co.yahoo.ad_api_sample.retargetingSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.RetargetingListServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.RetargetingTagServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.RetargetingListService.Combination;
+import jp.yahooapis.im.V6.RetargetingListService.CombinationTargetList;
+import jp.yahooapis.im.V6.RetargetingListService.CompareOperator;
+import jp.yahooapis.im.V6.RetargetingListService.CustomAudienceTargetList;
+import jp.yahooapis.im.V6.RetargetingListService.IsOpen;
+import jp.yahooapis.im.V6.RetargetingListService.IsPreset;
+import jp.yahooapis.im.V6.RetargetingListService.LogicalOperator;
+import jp.yahooapis.im.V6.RetargetingListService.Operator;
+import jp.yahooapis.im.V6.RetargetingListService.Paging;
+import jp.yahooapis.im.V6.RetargetingListService.RetargetingList;
+import jp.yahooapis.im.V6.RetargetingListService.RetargetingListOperation;
+import jp.yahooapis.im.V6.RetargetingListService.RetargetingListPage;
+import jp.yahooapis.im.V6.RetargetingListService.RetargetingListReturnValue;
+import jp.yahooapis.im.V6.RetargetingListService.RetargetingListSelector;
+import jp.yahooapis.im.V6.RetargetingListService.RetargetingListServiceInterface;
+import jp.yahooapis.im.V6.RetargetingListService.RetargetingListServiceService;
+import jp.yahooapis.im.V6.RetargetingListService.RetargetingListValues;
+import jp.yahooapis.im.V6.RetargetingListService.Rule;
+import jp.yahooapis.im.V6.RetargetingListService.RuleCondition;
+import jp.yahooapis.im.V6.RetargetingListService.RuleTargetList;
+import jp.yahooapis.im.V6.RetargetingListService.RuleType;
+import jp.yahooapis.im.V6.RetargetingListService.SimilarityTargetList;
+import jp.yahooapis.im.V6.RetargetingListService.TargetListData;
+import jp.yahooapis.im.V6.RetargetingListService.TargetListType;
+import jp.yahooapis.im.V6.RetargetingTagService.Error;
+import jp.yahooapis.im.V6.RetargetingTagService.RetargetingTag;
+import jp.yahooapis.im.V6.RetargetingTagService.RetargetingTagOperation;
+import jp.yahooapis.im.V6.RetargetingTagService.RetargetingTagPage;
+import jp.yahooapis.im.V6.RetargetingTagService.RetargetingTagReturnValue;
+import jp.yahooapis.im.V6.RetargetingTagService.RetargetingTagSelector;
+import jp.yahooapis.im.V6.RetargetingTagService.RetargetingTagService;
+import jp.yahooapis.im.V6.RetargetingTagService.RetargetingTagServiceInterface;
+import jp.yahooapis.im.V6.RetargetingTagService.RetargetingTagValues;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.RetargetingListServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.error.impl.RetargetingTagServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.RetargetingListService.Combination;
-import jp.yahooapis.im.V5.RetargetingListService.CombinationTargetList;
-import jp.yahooapis.im.V5.RetargetingListService.CompareOperator;
-import jp.yahooapis.im.V5.RetargetingListService.IsOpen;
-import jp.yahooapis.im.V5.RetargetingListService.IsPreset;
-import jp.yahooapis.im.V5.RetargetingListService.LogicalOperator;
-import jp.yahooapis.im.V5.RetargetingListService.Operator;
-import jp.yahooapis.im.V5.RetargetingListService.Paging;
-import jp.yahooapis.im.V5.RetargetingListService.RetargetingList;
-import jp.yahooapis.im.V5.RetargetingListService.RetargetingListOperation;
-import jp.yahooapis.im.V5.RetargetingListService.RetargetingListPage;
-import jp.yahooapis.im.V5.RetargetingListService.RetargetingListReturnValue;
-import jp.yahooapis.im.V5.RetargetingListService.RetargetingListSelector;
-import jp.yahooapis.im.V5.RetargetingListService.RetargetingListServiceInterface;
-import jp.yahooapis.im.V5.RetargetingListService.RetargetingListServiceService;
-import jp.yahooapis.im.V5.RetargetingListService.RetargetingListValues;
-import jp.yahooapis.im.V5.RetargetingListService.Rule;
-import jp.yahooapis.im.V5.RetargetingListService.RuleCondition;
-import jp.yahooapis.im.V5.RetargetingListService.RuleTargetList;
-import jp.yahooapis.im.V5.RetargetingListService.RuleType;
-import jp.yahooapis.im.V5.RetargetingListService.SimilarityTargetList;
-import jp.yahooapis.im.V5.RetargetingListService.TargetListData;
-import jp.yahooapis.im.V5.RetargetingListService.TargetListType;
-import jp.yahooapis.im.V5.RetargetingTagService.Error;
-import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTag;
-import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagOperation;
-import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagPage;
-import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagReturnValue;
-import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagSelector;
-import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagService;
-import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagServiceInterface;
-import jp.yahooapis.im.V5.RetargetingTagService.RetargetingTagValues;
 
 /**
  * Sample Program for RetargetingTagService,RetargetingListService.<br>
@@ -50,14 +51,13 @@ public class RetargetingSample {
 
   /**
    * main method for RetargetingSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
     try {
       long accountId = SoapUtils.getAccountId();
       String retargetingTagId = null;
-
 
       // -----------------------------------------------
       // RetargetingTagService::mutate(ADD)
@@ -129,10 +129,23 @@ public class RetargetingSample {
       List<RetargetingListValues> addRetargetingListSimilarityValues = addRetargetingList(addSimilarityRetargetingListOperation);
 
       // -----------------------------------------------
+      // RetargetingListService::mutate(ADD) - Custom Audience
+      // -----------------------------------------------
+      // request
+      RetargetingListOperation addCustomAudienceRetargetingListOperation = createRetargetingListSampleAddCustomAudienceRequest(accountId, addRetargetingListRuleValues);
+
+      // call API
+      System.out.println("############################################");
+      System.out.println("RetargetingListService::mutate(ADD) - Custom Audience");
+      System.out.println("############################################");
+      List<RetargetingListValues> addRetargetingListCustomAudienceValues = addRetargetingList(addCustomAudienceRetargetingListOperation);
+
+      // -----------------------------------------------
       // RetargetingListService::get
       // -----------------------------------------------
       // request
-      RetargetingListSelector retargetingListSelector =
+      RetargetingListSelector
+          retargetingListSelector =
           createRetargetingListSampleGetRequest(accountId, addRetargetingListRuleValues, addRetargetingListCombinationValues, addRetargetingListSimilarityValues);
 
       // call API
@@ -178,9 +191,22 @@ public class RetargetingSample {
       setRetargetingList(setSimilaritRetargetingListOperation);
 
       // -----------------------------------------------
+      // RetargetingListService::mutate(SET) - Custom Audience
+      // -----------------------------------------------
+      // request
+      RetargetingListOperation setCustomAudienceRetargetingListOperation = createRetargetingListSampleSetCustomAudienceRequest(accountId, addRetargetingListCustomAudienceValues);
+
+      // call API
+      System.out.println("############################################");
+      System.out.println("RetargetingListService::mutate(SET) - Custom Audience");
+      System.out.println("############################################");
+      setRetargetingList(setCustomAudienceRetargetingListOperation);
+
+      // -----------------------------------------------
       // RetargetingListService::mutate(REMOVE)
       // -----------------------------------------------
-      RetargetingListOperation removeRetargetingListOperation =
+      RetargetingListOperation
+          removeRetargetingListOperation =
           createRetargetingListSampleRemoveRequest(accountId, addRetargetingListRuleValues, addRetargetingListCombinationValues, addRetargetingListSimilarityValues);
 
       // call API
@@ -197,7 +223,6 @@ public class RetargetingSample {
    *
    * @param operation RetargetingTagOperation
    * @return RetargetingTagValues
-   * @throws Exception
    */
   public static List<RetargetingTagValues> addRetargetingTag(RetargetingTagOperation operation) throws Exception {
     // =================================================================
@@ -207,7 +232,7 @@ public class RetargetingSample {
 
     // call API
     Holder<RetargetingTagReturnValue> addRetargetingTagReturnValueHolder = new Holder<RetargetingTagReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.RetargetingTagService.Error>> addRetargetingTagErrorHolder = new Holder<List<jp.yahooapis.im.V5.RetargetingTagService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.RetargetingTagService.Error>> addRetargetingTagErrorHolder = new Holder<List<jp.yahooapis.im.V6.RetargetingTagService.Error>>();
     retargetingTagService.mutate(operation, addRetargetingTagReturnValueHolder, addRetargetingTagErrorHolder);
 
     // if error
@@ -238,7 +263,6 @@ public class RetargetingSample {
    *
    * @param selector RetargetingTagSelector
    * @return RetargetingTagValues
-   * @throws Exception
    */
   public static List<RetargetingTagValues> getRetargetingTag(RetargetingTagSelector selector) throws Exception {
     // =================================================================
@@ -281,7 +305,6 @@ public class RetargetingSample {
    *
    * @param operation RetargetingListOperation
    * @return RetargetingListValues
-   * @throws Exception
    */
   public static List<RetargetingListValues> addRetargetingList(RetargetingListOperation operation) throws Exception {
 
@@ -290,9 +313,8 @@ public class RetargetingSample {
     // =================================================================
     RetargetingListServiceInterface retargetingListService = SoapUtils.createServiceInterface(RetargetingListServiceInterface.class, RetargetingListServiceService.class);
 
-
     Holder<RetargetingListReturnValue> addRuleRetargetingListReturnValueHolder = new Holder<RetargetingListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.RetargetingListService.Error>> addRuleRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.V5.RetargetingListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.RetargetingListService.Error>> addRuleRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.V6.RetargetingListService.Error>>();
     retargetingListService.mutate(operation, addRuleRetargetingListReturnValueHolder, addRuleRetargetingListErrorHolder);
 
     // if error
@@ -322,7 +344,6 @@ public class RetargetingSample {
    *
    * @param selector RetargetingListSelector
    * @return RetargetingListValues
-   * @throws Exception
    */
   public static List<RetargetingListValues> getRetargetingList(RetargetingListSelector selector) throws Exception {
 
@@ -331,9 +352,8 @@ public class RetargetingSample {
     // =================================================================
     RetargetingListServiceInterface retargetingListService = SoapUtils.createServiceInterface(RetargetingListServiceInterface.class, RetargetingListServiceService.class);
 
-
     Holder<RetargetingListPage> getDefaultRetargetingListPageHolder = new Holder<RetargetingListPage>();
-    Holder<List<jp.yahooapis.im.V5.RetargetingListService.Error>> getDefaultRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.V5.RetargetingListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.RetargetingListService.Error>> getDefaultRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.V6.RetargetingListService.Error>>();
     retargetingListService.get(selector, getDefaultRetargetingListPageHolder, getDefaultRetargetingListErrorHolder);
 
     // if error
@@ -356,7 +376,6 @@ public class RetargetingSample {
       }
     }
 
-
     // Response
     return getDefaultRetargetingListPageHolder.value.getValues();
   }
@@ -366,7 +385,6 @@ public class RetargetingSample {
    *
    * @param operation RetargetingListOperation
    * @return RetargetingListValues
-   * @throws Exception
    */
   public static List<RetargetingListValues> setRetargetingList(RetargetingListOperation operation) throws Exception {
 
@@ -376,7 +394,7 @@ public class RetargetingSample {
     RetargetingListServiceInterface retargetingListService = SoapUtils.createServiceInterface(RetargetingListServiceInterface.class, RetargetingListServiceService.class);
 
     Holder<RetargetingListReturnValue> setRuleRetargetingListReturnValueHolder = new Holder<RetargetingListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.RetargetingListService.Error>> setRuleRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.V5.RetargetingListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.RetargetingListService.Error>> setRuleRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.V6.RetargetingListService.Error>>();
     retargetingListService.mutate(operation, setRuleRetargetingListReturnValueHolder, setRuleRetargetingListErrorHolder);
 
     // if error
@@ -407,7 +425,6 @@ public class RetargetingSample {
    *
    * @param operation RetargetingListOperation
    * @return RetargetingListValues
-   * @throws Exception
    */
   public static List<RetargetingListValues> removeRetargetingList(RetargetingListOperation operation) throws Exception {
 
@@ -420,7 +437,7 @@ public class RetargetingSample {
     System.out.println("RetargetingListService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<RetargetingListReturnValue> removeRetargetingListReturnValueHolder = new Holder<RetargetingListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.RetargetingListService.Error>> removeRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.V5.RetargetingListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.RetargetingListService.Error>> removeRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.V6.RetargetingListService.Error>>();
     retargetingListService.mutate(operation, removeRetargetingListReturnValueHolder, removeRetargetingListErrorHolder);
 
     // if error
@@ -456,7 +473,7 @@ public class RetargetingSample {
    */
   public static RetargetingTagOperation createRetargetingTagSampleAddRequest(long accountId) {
     RetargetingTagOperation addRetargetingTagOperation = new RetargetingTagOperation();
-    addRetargetingTagOperation.setOperator(jp.yahooapis.im.V5.RetargetingTagService.Operator.ADD);
+    addRetargetingTagOperation.setOperator(jp.yahooapis.im.V6.RetargetingTagService.Operator.ADD);
     addRetargetingTagOperation.setAccountId(accountId);
 
     return addRetargetingTagOperation;
@@ -478,7 +495,7 @@ public class RetargetingSample {
   /**
    * create RetargetingList sample request.
    *
-   * @param accountId long
+   * @param accountId        long
    * @param retargetingTagId String
    * @return RetargetingListOperation
    */
@@ -530,14 +547,14 @@ public class RetargetingSample {
 
     Rule addRule = new Rule();
     addRule.getRuleConditions().addAll(Arrays.asList(addRuleCondition1_1, addRuleCondition1_2, addRuleCondition1_3, addRuleCondition1_4, addRuleCondition1_5, addRuleCondition1_6, addRuleCondition1_7,
-        addRuleCondition1_8, addRuleCondition1_9));
+                                                     addRuleCondition1_8, addRuleCondition1_9));
 
     RuleTargetList addRuleTargetList = new RuleTargetList();
     addRuleTargetList.setTargetListType(TargetListType.RULE);
     addRuleTargetList.setRetargetingTagId(retargetingTagId);
     addRuleTargetList.setIsPreset(IsPreset.TRUE);
     addRuleTargetList.setIsOpen(IsOpen.TRUE);
-    addRuleTargetList.setReachPeriod((long) 7);
+    addRuleTargetList.setReachPeriod(7);
     addRuleTargetList.getRules().add(addRule);
 
     RetargetingList addRuleRetargetingListOperand = new RetargetingList();
@@ -549,10 +566,8 @@ public class RetargetingSample {
     RetargetingListOperation addRuleRetargetingListOperation = new RetargetingListOperation();
     addRuleRetargetingListOperation.setOperator(Operator.ADD);
     addRuleRetargetingListOperation.setAccountId(accountId);
-    addRuleRetargetingListOperation.setTargetListType(TargetListType.RULE);
     List<RetargetingList> ruleTargetListOperand = addRuleRetargetingListOperation.getOperand();
     ruleTargetListOperand.add(addRuleRetargetingListOperand);
-
 
     return addRuleRetargetingListOperation;
   }
@@ -560,7 +575,7 @@ public class RetargetingSample {
   /**
    * create RetargetingList Combination sample request.
    *
-   * @param accountId long
+   * @param accountId             long
    * @param retargetingListValues RetargetingListValues
    * @return RetargetingListOperation
    */
@@ -569,7 +584,6 @@ public class RetargetingSample {
     RetargetingListOperation addCombinationRetargetingListOperation = new RetargetingListOperation();
     addCombinationRetargetingListOperation.setOperator(Operator.ADD);
     addCombinationRetargetingListOperation.setAccountId(accountId);
-    addCombinationRetargetingListOperation.setTargetListType(TargetListType.COMBINATION);
 
     for (RetargetingListValues retargetingListValue : retargetingListValues) {
       Combination addCombination = new Combination();
@@ -611,14 +625,13 @@ public class RetargetingSample {
     getDefaultRetargetingListPaging.setNumberResults(20);
     getDefaultRetargetingListSelector.setPaging(getDefaultRetargetingListPaging);
 
-
     return getDefaultRetargetingListSelector;
   }
 
   /**
    * create RetargetingList Similarity sample request.
    *
-   * @param accountId long
+   * @param accountId             long
    * @param retargetingListValues RetargetingListValues
    * @return RetargetingListOperation
    */
@@ -626,7 +639,6 @@ public class RetargetingSample {
     RetargetingListOperation addSimilarityRetargetingListOperation = new RetargetingListOperation();
     addSimilarityRetargetingListOperation.setOperator(Operator.ADD);
     addSimilarityRetargetingListOperation.setAccountId(accountId);
-    addSimilarityRetargetingListOperation.setTargetListType(TargetListType.SIMILARITY);
 
     for (RetargetingListValues retargetingListValue : retargetingListValues) {
       SimilarityTargetList addSimilarityTargetList = new SimilarityTargetList();
@@ -644,18 +656,46 @@ public class RetargetingSample {
     return addSimilarityRetargetingListOperation;
   }
 
+  /**
+   * create RetargetingList Custom Audience sample request.
+   *
+   * @param accountId             long
+   * @param retargetingListValues RetargetingListValues
+   * @return RetargetingListOperation
+   */
+  public static RetargetingListOperation createRetargetingListSampleAddCustomAudienceRequest(long accountId, List<RetargetingListValues> retargetingListValues) {
+    RetargetingListOperation addSimilarityRetargetingListOperation = new RetargetingListOperation();
+    addSimilarityRetargetingListOperation.setOperator(Operator.ADD);
+    addSimilarityRetargetingListOperation.setAccountId(accountId);
+
+    for (RetargetingListValues retargetingListValue : retargetingListValues) {
+      CustomAudienceTargetList addCustomAudienceTargetList = new CustomAudienceTargetList();
+      addCustomAudienceTargetList.setTargetListType(TargetListType.CUSTOM_AUDIENCE);
+      addCustomAudienceTargetList.setReachPeriod(60);
+
+      RetargetingList addSimilarityRetargetingListOperand = new RetargetingList();
+      addSimilarityRetargetingListOperand.setAccountId(accountId);
+      addSimilarityRetargetingListOperand.setTargetListName("SampleCustomAudience_CreateOn_" + SoapUtils.getCurrentTimestamp());
+      addSimilarityRetargetingListOperand.setDescription("SampleCustomAudience_CreateOn_" + SoapUtils.getCurrentTimestamp());
+      addSimilarityRetargetingListOperand.setTargetList(addCustomAudienceTargetList);
+      addSimilarityRetargetingListOperation.getOperand().add(addSimilarityRetargetingListOperand);
+    }
+
+    return addSimilarityRetargetingListOperation;
+  }
 
   /**
    * create RetargetingList request.
    *
-   * @param accountId long
-   * @param addRetargetingListRuleValues RetargetingListRuleValues ForRules
+   * @param accountId                           long
+   * @param addRetargetingListRuleValues        RetargetingListRuleValues ForRules
    * @param addRetargetingListCombinationValues RetargetingListRuleValues ForCombination
-   * @param addRetargetingListSimilarityValues RetargetingListRuleValues ForSimilarity
+   * @param addRetargetingListSimilarityValues  RetargetingListRuleValues ForSimilarity
    * @return RetargetingListSelector
    */
   public static RetargetingListSelector createRetargetingListSampleGetRequest(long accountId, List<RetargetingListValues> addRetargetingListRuleValues,
-      List<RetargetingListValues> addRetargetingListCombinationValues, List<RetargetingListValues> addRetargetingListSimilarityValues) {
+                                                                              List<RetargetingListValues> addRetargetingListCombinationValues,
+                                                                              List<RetargetingListValues> addRetargetingListSimilarityValues) {
     // Set Selector
     RetargetingListSelector retargetingListSelector = new RetargetingListSelector();
     retargetingListSelector.setAccountId(accountId);
@@ -685,7 +725,7 @@ public class RetargetingSample {
   /**
    * create RetargetingList Rule sample request.
    *
-   * @param accountId long
+   * @param accountId             long
    * @param retargetingListValues RetargetingListValues
    * @return RetargetingListOperation
    */
@@ -694,7 +734,6 @@ public class RetargetingSample {
     RetargetingListOperation setRuleRetargetingListOperation = new RetargetingListOperation();
     setRuleRetargetingListOperation.setOperator(Operator.SET);
     setRuleRetargetingListOperation.setAccountId(accountId);
-    setRuleRetargetingListOperation.setTargetListType(TargetListType.RULE);
 
     for (RetargetingListValues retargetingListValue : retargetingListValues) {
       RuleCondition setRuleCondition1_1 = new RuleCondition();
@@ -743,8 +782,9 @@ public class RetargetingSample {
       setRuleCondition1_9.setValue("category002");
 
       Rule setRule = new Rule();
-      setRule.getRuleConditions().addAll(Arrays.asList(setRuleCondition1_1, setRuleCondition1_2, setRuleCondition1_3, setRuleCondition1_4, setRuleCondition1_5, setRuleCondition1_6,
-          setRuleCondition1_7, setRuleCondition1_8, setRuleCondition1_9));
+      setRule.getRuleConditions().addAll(Arrays
+                                             .asList(setRuleCondition1_1, setRuleCondition1_2, setRuleCondition1_3, setRuleCondition1_4, setRuleCondition1_5, setRuleCondition1_6, setRuleCondition1_7,
+                                                     setRuleCondition1_8, setRuleCondition1_9));
 
       RuleTargetList setRuleTargetList = new RuleTargetList();
       setRuleTargetList.setTargetListType(TargetListType.RULE);
@@ -766,19 +806,17 @@ public class RetargetingSample {
   /**
    * create RetargetingList Combination sample request.
    *
-   * @param accountId long
-   * @param retargetingListRuleValues RetargetingListValues for Rule
+   * @param accountId                        long
+   * @param retargetingListRuleValues        RetargetingListValues for Rule
    * @param retargetingListCombinationValues RetargetingListValues for Combination
    * @return RetargetingListOperation
    */
   public static RetargetingListOperation createRetargetingListSampleSetCombinationRequest(long accountId, List<RetargetingListValues> retargetingListRuleValues,
-      List<RetargetingListValues> retargetingListCombinationValues) {
-
+                                                                                          List<RetargetingListValues> retargetingListCombinationValues) {
 
     RetargetingListOperation setCombinationRetargetingListOperation = new RetargetingListOperation();
     setCombinationRetargetingListOperation.setOperator(Operator.SET);
     setCombinationRetargetingListOperation.setAccountId(accountId);
-    setCombinationRetargetingListOperation.setTargetListType(TargetListType.COMBINATION);
 
     for (RetargetingListValues retargetingListRuleValue : retargetingListRuleValues) {
       TargetListData setTargetListData = new TargetListData();
@@ -810,7 +848,7 @@ public class RetargetingSample {
   /**
    * create RetargetingList Similarity sample request.
    *
-   * @param accountId long
+   * @param accountId             long
    * @param retargetingListValues RetargetingListValues
    * @return RetargetingListOperation
    */
@@ -819,7 +857,6 @@ public class RetargetingSample {
     RetargetingListOperation setSimilaritRetargetingListOperation = new RetargetingListOperation();
     setSimilaritRetargetingListOperation.setOperator(Operator.SET);
     setSimilaritRetargetingListOperation.setAccountId(accountId);
-    setSimilaritRetargetingListOperation.setTargetListType(TargetListType.SIMILARITY);
 
     for (RetargetingListValues retargetingListValue : retargetingListValues) {
       RetargetingList setSimilarityRetargetingListOperand = new RetargetingList();
@@ -834,16 +871,42 @@ public class RetargetingSample {
   }
 
   /**
+   * create RetargetingList Custom Audience sample request.
+   *
+   * @param accountId             long
+   * @param retargetingListValues RetargetingListValues
+   * @return RetargetingListOperation
+   */
+  public static RetargetingListOperation createRetargetingListSampleSetCustomAudienceRequest(long accountId, List<RetargetingListValues> retargetingListValues) {
+
+    RetargetingListOperation setCustomAudienceRetargetingListOperation = new RetargetingListOperation();
+    setCustomAudienceRetargetingListOperation.setOperator(Operator.SET);
+    setCustomAudienceRetargetingListOperation.setAccountId(accountId);
+
+    for (RetargetingListValues retargetingListValue : retargetingListValues) {
+      RetargetingList setCustomAudienceRetargetingListOperand = new RetargetingList();
+      setCustomAudienceRetargetingListOperand.setAccountId(accountId);
+      setCustomAudienceRetargetingListOperand.setTargetListId(retargetingListValue.getRetargetingList().getTargetListId());
+      setCustomAudienceRetargetingListOperand.setTargetListName("SampleCustomAudience_UpdateOn_" + SoapUtils.getCurrentTimestamp());
+      setCustomAudienceRetargetingListOperand.setDescription("SampleCustomAudience" + SoapUtils.getCurrentTimestamp());
+
+      setCustomAudienceRetargetingListOperation.getOperand().add(setCustomAudienceRetargetingListOperand);
+    }
+    return setCustomAudienceRetargetingListOperation;
+  }
+
+  /**
    * create RetargetingList sample request.
    *
-   * @param accountId long
-   * @param addRetargetingListRuleValues RetargetingListRuleValues ForRules
+   * @param accountId                           long
+   * @param addRetargetingListRuleValues        RetargetingListRuleValues ForRules
    * @param addRetargetingListCombinationValues RetargetingListRuleValues ForCombination
-   * @param addRetargetingListSimilarityValues RetargetingListRuleValues ForSimilarity
+   * @param addRetargetingListSimilarityValues  RetargetingListRuleValues ForSimilarity
    * @return RetargetingListOperation
    */
   public static RetargetingListOperation createRetargetingListSampleRemoveRequest(long accountId, List<RetargetingListValues> addRetargetingListRuleValues,
-      List<RetargetingListValues> addRetargetingListCombinationValues, List<RetargetingListValues> addRetargetingListSimilarityValues) {
+                                                                                  List<RetargetingListValues> addRetargetingListCombinationValues,
+                                                                                  List<RetargetingListValues> addRetargetingListSimilarityValues) {
     RetargetingListOperation removeRetargetingListOperation = new RetargetingListOperation();
     removeRetargetingListOperation.setOperator(Operator.REMOVE);
     removeRetargetingListOperation.setAccountId(accountId);
@@ -854,7 +917,7 @@ public class RetargetingSample {
       removeRetargetingListOperand.setTargetListId(retargetingListValue.getRetargetingList().getTargetListId());
       removeRetargetingListOperation.getOperand().add(removeRetargetingListOperand);
     }
-    
+
     for (RetargetingListValues retargetingListValue : addRetargetingListRuleValues) {
       RetargetingList removeRetargetingListOperand = new RetargetingList();
       removeRetargetingListOperand.setAccountId(accountId);
@@ -874,7 +937,7 @@ public class RetargetingSample {
 
   /**
    * display RetargetingList entity to stdout.
-   * 
+   *
    * @param retargetingList RetargetingList entity for display.
    */
   private static void displayRetargetingList(RetargetingList retargetingList) {
@@ -926,7 +989,7 @@ public class RetargetingSample {
 
   /**
    * display RetargetingTag entity to stdout.
-   * 
+   *
    * @param retargetingTag RetargetingTag entity for display.
    */
   private static void displayRetargetingTag(RetargetingTag retargetingTag) {

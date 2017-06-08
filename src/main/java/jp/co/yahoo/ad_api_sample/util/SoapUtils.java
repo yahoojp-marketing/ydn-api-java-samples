@@ -1,5 +1,9 @@
 package jp.co.yahoo.ad_api_sample.util;
 
+import jp.co.yahoo.ad_api_sample.error.ErrorDetailEntity;
+import jp.co.yahoo.ad_api_sample.error.ErrorEntity;
+import jp.co.yahoo.ad_api_sample.error.ErrorEntityFactory;
+
 import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -21,11 +25,8 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.wsaddressing.W3CEndpointReferenceBuilder;
 
-import jp.co.yahoo.ad_api_sample.error.ErrorDetailEntity;
-import jp.co.yahoo.ad_api_sample.error.ErrorEntity;
-import jp.co.yahoo.ad_api_sample.error.ErrorEntityFactory;
-
 public class SoapUtils {
+
   /**
    * API Version
    */
@@ -76,7 +77,7 @@ public class SoapUtils {
    * Campaign ID
    */
   private static long CAMPAIGN_ID = -1;
-  
+
   /**
    * AdGroup ID
    */
@@ -86,11 +87,12 @@ public class SoapUtils {
    * Ad ID
    */
   private static long AD_ID = -1;
-  
+
   /**
    * Media ID
    */
   private static long MEDIA_ID = -1;
+
   /*
    * static initializer
    */
@@ -156,25 +158,25 @@ public class SoapUtils {
       } else {
         System.out.println("Warn : CAMPAIGNID does not exist in the api_config.properties.");
       }
-      
+
       if (bundle.containsKey("ADGROUPID")) {
         ADGROUP_ID = Long.parseLong(bundle.getString("ADGROUPID"));
       } else {
         System.out.println("Warn : ADGROUPID does not exist in the api_config.properties.");
       }
-      
+
       if (bundle.containsKey("ADID")) {
         AD_ID = Long.parseLong(bundle.getString("ADID"));
       } else {
         System.out.println("Warn : ADID does not exist in the api_config.properties.");
       }
-      
+
       if (bundle.containsKey("MEDIAID")) {
         MEDIA_ID = Long.parseLong(bundle.getString("MEDIAID"));
       } else {
         System.out.println("Warn : MEDIAID does not exist in the api_config.properties.");
       }
-      
+
       if (failed) {
         System.exit(0);
       }
@@ -197,7 +199,7 @@ public class SoapUtils {
 
   /**
    * get Account ID from config file.
-   * 
+   *
    * @return account ID.
    */
   public static long getAccountId() {
@@ -207,7 +209,7 @@ public class SoapUtils {
 
   /**
    * get API VERSION from config file.
-   * 
+   *
    * @return API VERSION.
    */
   public static String getAPI_VERSION() {
@@ -216,7 +218,7 @@ public class SoapUtils {
 
   /**
    * get API XML NAMESPACE from config file.
-   * 
+   *
    * @return API XML NAMESPACE.
    */
   public static String getAPI_NAMESPACE() {
@@ -225,7 +227,7 @@ public class SoapUtils {
 
   /**
    * get API LICENSE from config file.
-   * 
+   *
    * @return API LICENSE.
    */
   public static String getAPI_LICENSE() {
@@ -234,7 +236,7 @@ public class SoapUtils {
 
   /**
    * get API ACCOUNT from config file.
-   * 
+   *
    * @return API ACCOUNT.
    */
   public static String getAPI_ACCOUNT() {
@@ -243,7 +245,7 @@ public class SoapUtils {
 
   /**
    * get API PASSWORD from config file.
-   * 
+   *
    * @return API PASSWORD.
    */
   public static String getAPI_PASSWORD() {
@@ -252,7 +254,7 @@ public class SoapUtils {
 
   /**
    * get ONBEHALF_ACCOUNT ID from config file.
-   * 
+   *
    * @return ONBEHALF ACCOUNT ID.
    */
   public static String getONBEHALF_ACCOUNT() {
@@ -261,7 +263,7 @@ public class SoapUtils {
 
   /**
    * get ONBEHALF_ACCOUNT PASSWORD from config file.
-   * 
+   *
    * @return ONBEHALF ACCOUNT PASSWORD.
    */
   public static String getONBEHALF_PASSWORD() {
@@ -294,7 +296,7 @@ public class SoapUtils {
   public static long getAdId() {
     return AD_ID;
   }
-  
+
   /**
    * get Media ID from config file.
    *
@@ -303,12 +305,12 @@ public class SoapUtils {
   public static long getMediaId() {
     return MEDIA_ID;
   }
+
   /**
    * get service endpoint URL.
-   * 
+   *
    * @param serviceName SOAP API service name
    * @return endpoint URL
-   * @throws Exception
    */
   public static URL getServiceEndPointURL(String serviceName) throws Exception {
     URL url = new URL("https://" + getLocation(getAccountId()) + "/services/" + getAPI_VERSION() + "/" + serviceName);
@@ -318,9 +320,8 @@ public class SoapUtils {
 
   /**
    * get location for accountId.
-   * 
+   *
    * @return colocation server name for accountId.
-   * @throws Exception
    */
   public static String getLocation(long accountId) throws Exception {
     String cachedLocation = locationCacheProp.getProperty(Long.toString(accountId));
@@ -340,8 +341,7 @@ public class SoapUtils {
 
   /**
    * get location server url
-   * 
-   * @param serviceName
+   *
    * @return https://LOCATION/services/API_VERSION/serviceName
    * @see LOCATION
    * @see API_VERSION
@@ -352,8 +352,7 @@ public class SoapUtils {
 
   /**
    * get wsdl url
-   * 
-   * @param serviceName
+   *
    * @return https://LOCATION/services/API_VERSION/serviceName?wsdl
    * @see LOCATION
    * @see API_VERSION
@@ -365,10 +364,9 @@ public class SoapUtils {
 
   /**
    * ServiceInterface object create
-   * 
+   *
    * @param <T> *ServiceInterface.class
-   * @param <? extends Service> *Service.class
-   * @param serviceInterface
+   * @param <?  extends Service> *Service.class
    * @return ServiceInterface object
    * @throws Exception class type is invalid.
    */
@@ -400,9 +398,9 @@ public class SoapUtils {
 
   /**
    * display error infomation.
-   * 
+   *
    * @param errors error infomation object array.
-   * @param exit if true, exit program execution.
+   * @param exit   if true, exit program execution.
    * @see displayErrorDetails
    */
   public static void displayErrors(ErrorEntityFactory factory, boolean exit) {
@@ -423,8 +421,6 @@ public class SoapUtils {
 
   /**
    * display error detail infomation.
-   * 
-   * @param details
    */
   private static void displayErrorDetails(List<ErrorDetailEntity> details) {
     System.out.println(" ******* Error Detail *******");
@@ -440,7 +436,7 @@ public class SoapUtils {
 
   /**
    * from array to string.
-   * 
+   *
    * @param source array
    * @return result of toString
    */
@@ -460,7 +456,7 @@ public class SoapUtils {
 
   /**
    * get current timestamp value.(yyyyMMddHHmmss)
-   * 
+   *
    * @return current timestamp string.
    */
   public static String getCurrentTimestamp() {
@@ -470,9 +466,9 @@ public class SoapUtils {
 
   /**
    * download data from url.
-   * 
+   *
    * @param downloadUrlStr download url
-   * @param filename save file name(not path, file name only).
+   * @param filename       save file name(not path, file name only).
    */
   public static void download(String downloadUrlStr, String filename) throws Exception {
     File downloadDir = new File(new File(".").getAbsolutePath() + "/download");
@@ -514,10 +510,10 @@ public class SoapUtils {
 
   /**
    * upload data to url.
-   * 
+   *
    * @param uploadUrlStr upload url
-   * @param filename save file name(not path, file name only).
-   * @param contentType upload file Content-Type for set HTTP Header.
+   * @param filename     save file name(not path, file name only).
+   * @param contentType  upload file Content-Type for set HTTP Header.
    * @return upload BulkJob Id.
    */
   public static String upload(String uploadUrlStr, String filename, String contentType) throws Exception {

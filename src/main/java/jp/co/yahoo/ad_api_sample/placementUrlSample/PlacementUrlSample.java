@@ -1,34 +1,34 @@
 package jp.co.yahoo.ad_api_sample.placementUrlSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.PlacementUrlIdeaServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.PlacementUrlListServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.AdFormat;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.AdFormatConditions;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.Error;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdea;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaPage;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaSelector;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaService;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaServiceInterface;
+import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaValues;
+import jp.yahooapis.im.V6.PlacementUrlListService.Operator;
+import jp.yahooapis.im.V6.PlacementUrlListService.Paging;
+import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlList;
+import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListOperation;
+import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListPage;
+import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListReturnValue;
+import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListSelector;
+import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListService;
+import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListServiceInterface;
+import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListValues;
+import jp.yahooapis.im.V6.PlacementUrlListService.UrlActiveFlg;
+import jp.yahooapis.im.V6.PlacementUrlListService.UrlList;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.PlacementUrlIdeaServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.error.impl.PlacementUrlListServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.AdFormat;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.AdFormatConditions;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.Error;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.PlacementUrlIdea;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.PlacementUrlIdeaPage;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.PlacementUrlIdeaSelector;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.PlacementUrlIdeaService;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.PlacementUrlIdeaServiceInterface;
-import jp.yahooapis.im.V5.PlacementUrlIdeaService.PlacementUrlIdeaValues;
-import jp.yahooapis.im.V5.PlacementUrlListService.Operator;
-import jp.yahooapis.im.V5.PlacementUrlListService.Paging;
-import jp.yahooapis.im.V5.PlacementUrlListService.PlacementUrlList;
-import jp.yahooapis.im.V5.PlacementUrlListService.PlacementUrlListOperation;
-import jp.yahooapis.im.V5.PlacementUrlListService.PlacementUrlListPage;
-import jp.yahooapis.im.V5.PlacementUrlListService.PlacementUrlListReturnValue;
-import jp.yahooapis.im.V5.PlacementUrlListService.PlacementUrlListSelector;
-import jp.yahooapis.im.V5.PlacementUrlListService.PlacementUrlListService;
-import jp.yahooapis.im.V5.PlacementUrlListService.PlacementUrlListServiceInterface;
-import jp.yahooapis.im.V5.PlacementUrlListService.PlacementUrlListValues;
-import jp.yahooapis.im.V5.PlacementUrlListService.UrlActiveFlg;
-import jp.yahooapis.im.V5.PlacementUrlListService.UrlList;
 
 
 /**
@@ -125,7 +125,7 @@ public class PlacementUrlSample {
     System.out.println("PlacementUrlListService::mutate(ADD)");
     System.out.println("############################################");
     Holder<PlacementUrlListReturnValue> addPlacementUrlListReturnValueHolder = new Holder<PlacementUrlListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.PlacementUrlListService.Error>> addPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V5.PlacementUrlListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>> addPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>>();
     placementUrlListService.mutate(operation, addPlacementUrlListReturnValueHolder, addPlacementUrlListErrorHolder);
 
     // if error
@@ -171,7 +171,7 @@ public class PlacementUrlSample {
     System.out.println("PlacementUrlListService::get");
     System.out.println("############################################");
     Holder<PlacementUrlListPage> getPlacementUrlListPageHolder = new Holder<PlacementUrlListPage>();
-    Holder<List<jp.yahooapis.im.V5.PlacementUrlListService.Error>> getPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V5.PlacementUrlListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>> getPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>>();
     placementUrlListService.get(selector, getPlacementUrlListPageHolder, getPlacementUrlListErrorHolder);
 
     // if error
@@ -212,7 +212,7 @@ public class PlacementUrlSample {
     System.out.println("PlacementUrlListService::mutate(SET)");
     System.out.println("############################################");
     Holder<PlacementUrlListReturnValue> setPlacementUrlListReturnValueHolder = new Holder<PlacementUrlListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.PlacementUrlListService.Error>> setPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V5.PlacementUrlListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>> setPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>>();
     placementUrlListService.mutate(operation, setPlacementUrlListReturnValueHolder, setPlacementUrlListErrorHolder);
 
     // if error
@@ -252,7 +252,7 @@ public class PlacementUrlSample {
     System.out.println("PlacementUrlListService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<PlacementUrlListReturnValue> removePlacementUrlListReturnValueHolder = new Holder<PlacementUrlListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.PlacementUrlListService.Error>> removePlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V5.PlacementUrlListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>> removePlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>>();
     placementUrlListService.mutate(operation, removePlacementUrlListReturnValueHolder, removePlacementUrlListErrorHolder);
 
     // if error

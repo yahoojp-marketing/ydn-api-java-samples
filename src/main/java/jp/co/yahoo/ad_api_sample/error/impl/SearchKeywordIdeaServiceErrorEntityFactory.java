@@ -1,13 +1,13 @@
 package jp.co.yahoo.ad_api_sample.error.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jp.co.yahoo.ad_api_sample.error.ErrorDetailEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntityFactory;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.Error;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.ErrorDetail;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.Error;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.ErrorDetail;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchKeywordIdeaServiceErrorEntityFactory implements ErrorEntityFactory {
 
@@ -17,7 +17,6 @@ public class SearchKeywordIdeaServiceErrorEntityFactory implements ErrorEntityFa
   public SearchKeywordIdeaServiceErrorEntityFactory(List<Error> errors) {
     this.errors = errors;
   }
-
 
 
   @Override

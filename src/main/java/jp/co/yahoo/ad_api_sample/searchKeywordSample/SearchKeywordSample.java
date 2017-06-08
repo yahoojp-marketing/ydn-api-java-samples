@@ -1,34 +1,34 @@
 package jp.co.yahoo.ad_api_sample.searchKeywordSample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.SearchKeywordIdeaServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.SearchKeywordListServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.Error;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.KeywordFrequency;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.KeywordRecency;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdea;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaPage;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaSelector;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaService;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaServiceInterface;
+import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaValues;
+import jp.yahooapis.im.V6.SearchKeywordListService.Operator;
+import jp.yahooapis.im.V6.SearchKeywordListService.Paging;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeyword;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordList;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListOperation;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListPage;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListReturnValue;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListSelector;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListService;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListServiceInterface;
+import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListValues;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.SearchKeywordIdeaServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.error.impl.SearchKeywordListServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.Error;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.KeywordFrequency;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.KeywordRecency;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdea;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdeaPage;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdeaSelector;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdeaService;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdeaServiceInterface;
-import jp.yahooapis.im.V5.SearchKeywordIdeaService.SearchKeywordIdeaValues;
-import jp.yahooapis.im.V5.SearchKeywordListService.Operator;
-import jp.yahooapis.im.V5.SearchKeywordListService.Paging;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeyword;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordList;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordListOperation;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordListPage;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordListReturnValue;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordListSelector;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordListService;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordListServiceInterface;
-import jp.yahooapis.im.V5.SearchKeywordListService.SearchKeywordListValues;
 
 /**
  * Sample Program for SearchKeywordIdeaService,SearchKeywordListService.<br>
@@ -38,13 +38,12 @@ public class SearchKeywordSample {
 
   /**
    * main method for SearchKeywordSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
     try {
       long accountId = SoapUtils.getAccountId();
-
 
       // -----------------------------------------------
       // SearchKeywordIdeaService::get
@@ -54,7 +53,6 @@ public class SearchKeywordSample {
 
       // call API
       List<SearchKeywordIdeaValues> searchKeywordIdeaValues = getSearchKeywordIdea(selector);
-
 
       // -----------------------------------------------
       // SearchKeywordListService::mutate(ADD)
@@ -100,7 +98,6 @@ public class SearchKeywordSample {
    *
    * @param selector SearchKeywordIdeaSelector
    * @return SearchKeywordIdeaValues
-   * @throws Exception
    */
   public static List<SearchKeywordIdeaValues> getSearchKeywordIdea(SearchKeywordIdeaSelector selector) throws Exception {
 
@@ -144,7 +141,6 @@ public class SearchKeywordSample {
    *
    * @param operation SearchKeywordListOperation
    * @return SearchKeywordListValues
-   * @throws Exception
    */
   public static List<SearchKeywordListValues> addSearchKeywordList(SearchKeywordListOperation operation) throws Exception {
     // =================================================================
@@ -156,7 +152,7 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(ADD)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> addSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.SearchKeywordListService.Error>> addSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V5.SearchKeywordListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>> addSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>>();
     searchKeywordListService.mutate(operation, addSearchKeywordListReturnValueHolder, addSearchKeywordListErrorHolder);
 
     // if error
@@ -185,7 +181,6 @@ public class SearchKeywordSample {
    *
    * @param selector SearchKeywordListSelector
    * @return SearchKeywordListValues
-   * @throws Exception
    */
   public static List<SearchKeywordListValues> getSearchKeywordList(SearchKeywordListSelector selector) throws Exception {
 
@@ -198,7 +193,7 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::get");
     System.out.println("############################################");
     Holder<SearchKeywordListPage> getSearchKeywordListPageHolder = new Holder<SearchKeywordListPage>();
-    Holder<List<jp.yahooapis.im.V5.SearchKeywordListService.Error>> getSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V5.SearchKeywordListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>> getSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>>();
     searchKeywordListService.get(selector, getSearchKeywordListPageHolder, getSearchKeywordListErrorHolder);
 
     // if error
@@ -226,7 +221,6 @@ public class SearchKeywordSample {
    *
    * @param operation SearchKeywordListOperation
    * @return SearchKeywordListValues
-   * @throws Exception
    */
   public static List<SearchKeywordListValues> setSearchKeywordList(SearchKeywordListOperation operation) throws Exception {
     // =================================================================
@@ -238,7 +232,7 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(SET)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> setSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.SearchKeywordListService.Error>> setSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V5.SearchKeywordListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>> setSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>>();
     searchKeywordListService.mutate(operation, setSearchKeywordListReturnValueHolder, setSearchKeywordListErrorHolder);
 
     // if error
@@ -257,7 +251,6 @@ public class SearchKeywordSample {
       }
     }
 
-
     // Response
     return setSearchKeywordListReturnValueHolder.value.getValues();
   }
@@ -267,7 +260,6 @@ public class SearchKeywordSample {
    *
    * @param operation SearchKeywordListOperation
    * @return SearchKeywordListValues
-   * @throws Exception
    */
   public static List<SearchKeywordListValues> removeSearchKeywordList(SearchKeywordListOperation operation) throws Exception {
     // =================================================================
@@ -279,7 +271,7 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> removeSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.SearchKeywordListService.Error>> removeSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V5.SearchKeywordListService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>> removeSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>>();
     searchKeywordListService.mutate(operation, removeSearchKeywordListReturnValueHolder, removeSearchKeywordListErrorHolder);
 
     // if error
@@ -312,7 +304,7 @@ public class SearchKeywordSample {
     selector.getKeywords().addAll(Arrays.asList("gizmo", "vlookup"));
     selector.setSearchKeywordRecency(KeywordRecency.WITHIN_30_DAYS);
     selector.setSearchKeywordFrequency(KeywordFrequency.ONCE_OR_MORE);
-    jp.yahooapis.im.V5.SearchKeywordIdeaService.Paging paging = new jp.yahooapis.im.V5.SearchKeywordIdeaService.Paging();
+    jp.yahooapis.im.V6.SearchKeywordIdeaService.Paging paging = new jp.yahooapis.im.V6.SearchKeywordIdeaService.Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(1000);
     selector.setPaging(paging);
@@ -323,7 +315,7 @@ public class SearchKeywordSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId               long
    * @param searchKeywordIdeaValues SearchKeywordIdeaValues
    * @return SearchKeywordListOperation
    */
@@ -353,7 +345,7 @@ public class SearchKeywordSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId               long
    * @param searchKeywordListValues SearchKeywordListValues
    * @return SearchKeywordListSelector
    */
@@ -379,18 +371,17 @@ public class SearchKeywordSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId               long
    * @param searchKeywordIdeaValues SearchKeywordIdeaValues
    * @param searchKeywordListValues SearchKeywordListValues
    * @return SearchKeywordListOperation
    */
   public static SearchKeywordListOperation createSearchKeywordListSampleSetRequest(long accountId, List<SearchKeywordIdeaValues> searchKeywordIdeaValues,
-      List<SearchKeywordListValues> searchKeywordListValues) {
+                                                                                   List<SearchKeywordListValues> searchKeywordListValues) {
 
     SearchKeywordListOperation setSearchKeywordListOperation = new SearchKeywordListOperation();
     setSearchKeywordListOperation.setAccountId(accountId);
     setSearchKeywordListOperation.setOperator(Operator.SET);
-
 
     for (SearchKeywordListValues searchKeywordListValue : searchKeywordListValues) {
       SearchKeywordList setSearchKeywordList = new SearchKeywordList();
@@ -407,14 +398,13 @@ public class SearchKeywordSample {
       setSearchKeywordListOperation.getOperand().add(setSearchKeywordList);
     }
 
-
     return setSearchKeywordListOperation;
   }
 
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId               long
    * @param searchKeywordListValues SearchKeywordListValues
    * @return SearchKeywordListOperation
    */
@@ -436,7 +426,7 @@ public class SearchKeywordSample {
 
   /**
    * display SearchKeywordList entity to stdout.
-   * 
+   *
    * @param searchKeywordList SearchKeywordList entity for display.
    */
   private static void displaySearchKeywordList(SearchKeywordList searchKeywordList) {
@@ -458,7 +448,7 @@ public class SearchKeywordSample {
 
   /**
    * display SearchKeywordIdea entity to stdout.
-   * 
+   *
    * @param searchKeywordIdea SearchKeywordIdea entity for display.
    */
   private static void displaySearchKeywordIdea(SearchKeywordIdea searchKeywordIdea) {

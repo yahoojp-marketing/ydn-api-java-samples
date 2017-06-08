@@ -1,30 +1,32 @@
 package jp.co.yahoo.ad_api_sample.adSample;
 
-import java.util.Arrays;
-import java.util.List;
-
-import javax.xml.ws.Holder;
-
 import jp.co.yahoo.ad_api_sample.error.impl.AdGroupServiceErrorEntityFactory;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AdGroupService.AdGroup;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupOperation;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupPage;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupReturnValue;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupSelector;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupServiceInterface;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupServiceService;
-import jp.yahooapis.im.V5.AdGroupService.AdGroupValues;
-import jp.yahooapis.im.V5.AdGroupService.BiddingStrategyType;
-import jp.yahooapis.im.V5.AdGroupService.DeviceAppType;
-import jp.yahooapis.im.V5.AdGroupService.DeviceOsType;
-import jp.yahooapis.im.V5.AdGroupService.DeviceType;
-import jp.yahooapis.im.V5.AdGroupService.DynamicImageExtensions;
-import jp.yahooapis.im.V5.AdGroupService.ManualCPCAdGroupBid;
-import jp.yahooapis.im.V5.AdGroupService.Operator;
-import jp.yahooapis.im.V5.AdGroupService.Paging;
-import jp.yahooapis.im.V5.AdGroupService.SmartDeviceCarrier;
-import jp.yahooapis.im.V5.AdGroupService.UserStatus;
+import jp.yahooapis.im.V6.AdGroupService.AdGroup;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupOperation;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupPage;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupReturnValue;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupSelector;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupServiceInterface;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupServiceService;
+import jp.yahooapis.im.V6.AdGroupService.AdGroupValues;
+import jp.yahooapis.im.V6.AdGroupService.BiddingStrategyType;
+import jp.yahooapis.im.V6.AdGroupService.DeviceAppType;
+import jp.yahooapis.im.V6.AdGroupService.DeviceOsType;
+import jp.yahooapis.im.V6.AdGroupService.DeviceType;
+import jp.yahooapis.im.V6.AdGroupService.DynamicImageExtensions;
+import jp.yahooapis.im.V6.AdGroupService.ManualCPCAdGroupBid;
+import jp.yahooapis.im.V6.AdGroupService.ManualCPVAdGroupBid;
+import jp.yahooapis.im.V6.AdGroupService.Operator;
+import jp.yahooapis.im.V6.AdGroupService.Paging;
+import jp.yahooapis.im.V6.AdGroupService.SmartDeviceCarrier;
+import jp.yahooapis.im.V6.AdGroupService.UserStatus;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+import javax.xml.ws.Holder;
 
 /**
  * Sample Program for AdGroupService.<br>
@@ -44,7 +46,6 @@ public class AdGroupServiceSample {
       // =================================================================
       long accountId = SoapUtils.getAccountId();
       long campaignId = SoapUtils.getCampaignId();
-
 
       // =================================================================
       // AdGroupService ADD
@@ -93,7 +94,6 @@ public class AdGroupServiceSample {
    *
    * @param operation AdGroupOperation
    * @return AdGroupValues
-   * @throws Exception
    */
   public static List<AdGroupValues> add(AdGroupOperation operation) throws Exception {
     // =================================================================
@@ -106,14 +106,13 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(ADD)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> addAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.AdGroupService.Error>> addAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V5.AdGroupService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>> addAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>>();
     adGroupService.mutate(operation, addAdgroupReturnValueHolder, addAdGroupErrorHolder);
 
     // if error
     if (addAdGroupErrorHolder.value != null && addAdGroupErrorHolder.value.size() > 0) {
       SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(addAdGroupErrorHolder.value), true);
     }
-
 
     // response
     if (addAdgroupReturnValueHolder.value != null) {
@@ -142,7 +141,6 @@ public class AdGroupServiceSample {
    *
    * @param adGroupOperation AdGroupOperation
    * @return AdGroupValues
-   * @throws Exception
    */
   public static List<AdGroupValues> set(AdGroupOperation adGroupOperation) throws Exception {
     // =================================================================
@@ -155,7 +153,7 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(SET)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> setAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.AdGroupService.Error>> setAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V5.AdGroupService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>> setAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>>();
     adGroupService.mutate(adGroupOperation, setAdgroupReturnValueHolder, setAdGroupErrorHolder);
 
     // if error
@@ -188,7 +186,6 @@ public class AdGroupServiceSample {
    *
    * @param operation AdGroupOperation
    * @return AdGroupValues
-   * @throws Exception
    */
   public static List<AdGroupValues> remove(AdGroupOperation operation) throws Exception {
     // =================================================================
@@ -201,7 +198,7 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> removeAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.V5.AdGroupService.Error>> removeAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V5.AdGroupService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>> removeAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>>();
     adGroupService.mutate(operation, removeAdgroupReturnValueHolder, removeAdGroupErrorHolder);
 
     // if error
@@ -248,7 +245,7 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::get");
     System.out.println("############################################");
     Holder<AdGroupPage> adGroupPageHolder = new Holder<AdGroupPage>();
-    Holder<List<jp.yahooapis.im.V5.AdGroupService.Error>> getAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V5.AdGroupService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>> getAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>>();
     adGroupService.get(selector, adGroupPageHolder, getAdGroupErrorHolder);
 
     // if error
@@ -279,7 +276,7 @@ public class AdGroupServiceSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId  long
    * @param campaignId long
    * @return AdGroupOperation
    */
@@ -311,7 +308,7 @@ public class AdGroupServiceSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId     long
    * @param adGroupValues AdGroupValues
    * @return AdGroupOperation
    */
@@ -350,7 +347,7 @@ public class AdGroupServiceSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId     long
    * @param adGroupValues AdGroupValues
    * @return AdGroupOperation
    */
@@ -378,7 +375,7 @@ public class AdGroupServiceSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId     long
    * @param adGroupValues AdGroupValues
    * @return AdGroupSelector
    */
@@ -398,13 +395,12 @@ public class AdGroupServiceSample {
     adGroupPaging.setNumberResults(20);
     adGroupSelector.setPaging(adGroupPaging);
 
-
     return adGroupSelector;
   }
 
   /**
    * display AdGroup entity to stdout.
-   * 
+   *
    * @param adGroup AdGroup entity for display.
    */
   private static void displayAdGroup(AdGroup adGroup) {
@@ -414,9 +410,12 @@ public class AdGroupServiceSample {
     System.out.println("adGroupId = " + adGroup.getAdGroupId());
     System.out.println("adGroupName = " + adGroup.getAdGroupName());
     System.out.println("userStatus = " + adGroup.getUserStatus().toString());
-    if (adGroup.getBid() != null) {
-      System.out.println("bid/type = " + ((ManualCPCAdGroupBid) adGroup.getBid()).getType().toString());
+    if (adGroup.getBid() != null && Objects.equals(adGroup.getBid().getType(), BiddingStrategyType.MANUAL_CPC)) {
+      System.out.println("bid/type = " + (adGroup.getBid()).getType().toString());
       System.out.println("bid/maxCpc = " + ((ManualCPCAdGroupBid) adGroup.getBid()).getMaxCpc().toString());
+    } else if (adGroup.getBid() != null && Objects.equals(adGroup.getBid().getType(), BiddingStrategyType.MANUAL_CPV)) {
+      System.out.println("bid/type = " + (adGroup.getBid()).getType().toString());
+      System.out.println("bid/maxCpv = " + ((ManualCPVAdGroupBid) adGroup.getBid()).getMaxCpv().toString());
     }
     if (adGroup.getDevice() != null) {
       System.out.println("device = " + SoapUtils.arrayToLine(adGroup.getDevice().toArray()));
@@ -430,7 +429,7 @@ public class AdGroupServiceSample {
     if (adGroup.getDynamicImageExtensions() != null) {
       System.out.println("dynamicImageExtensions = " + adGroup.getDynamicImageExtensions().toString());
     }
-    if(null != adGroup.getSmartDeviceCarriers() && !adGroup.getSmartDeviceCarriers().isEmpty()){
+    if (null != adGroup.getSmartDeviceCarriers() && !adGroup.getSmartDeviceCarriers().isEmpty()) {
       System.out.println("smartDeviceCarriers = " + adGroup.getSmartDeviceCarriers().get(0).toString());
     }
     System.out.println("---------");

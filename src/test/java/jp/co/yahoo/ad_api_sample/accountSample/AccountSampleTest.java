@@ -1,22 +1,22 @@
 package jp.co.yahoo.ad_api_sample.accountSample;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.List;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.AccountService.Account;
+import jp.yahooapis.im.V6.AccountService.AccountOperation;
+import jp.yahooapis.im.V6.AccountService.AccountSelector;
+import jp.yahooapis.im.V6.AccountService.AccountValues;
+import jp.yahooapis.im.V6.AccountService.DeliveryStatus;
+import jp.yahooapis.im.V6.AccountService.Operator;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.AccountService.Account;
-import jp.yahooapis.im.V5.AccountService.AccountOperation;
-import jp.yahooapis.im.V5.AccountService.AccountSelector;
-import jp.yahooapis.im.V5.AccountService.AccountValues;
-import jp.yahooapis.im.V5.AccountService.DeliveryStatus;
-import jp.yahooapis.im.V5.AccountService.Operator;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Sample TestCase for AccountSampleTest.<br>
@@ -55,7 +55,6 @@ public class AccountSampleTest {
     // Set Selector
     AccountSelector selector = new AccountSelector();
     selector.getAccountIds().add(new Long(accountId));
-
 
     // Run
     List<AccountValues> accountValues = null;

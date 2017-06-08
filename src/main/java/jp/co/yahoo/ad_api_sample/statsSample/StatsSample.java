@@ -1,20 +1,20 @@
 package jp.co.yahoo.ad_api_sample.statsSample;
 
-import java.util.List;
-
-import javax.xml.ws.Holder;
-
 import jp.co.yahoo.ad_api_sample.error.impl.StatsServiceErrorEntityFactory;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.StatsService.Paging;
-import jp.yahooapis.im.V5.StatsService.Stats;
-import jp.yahooapis.im.V5.StatsService.StatsPage;
-import jp.yahooapis.im.V5.StatsService.StatsSelector;
-import jp.yahooapis.im.V5.StatsService.StatsService;
-import jp.yahooapis.im.V5.StatsService.StatsServiceInterface;
-import jp.yahooapis.im.V5.StatsService.StatsValues;
+import jp.yahooapis.im.V6.StatsService.Paging;
+import jp.yahooapis.im.V6.StatsService.Stats;
+import jp.yahooapis.im.V6.StatsService.StatsPage;
+import jp.yahooapis.im.V6.StatsService.StatsSelector;
+import jp.yahooapis.im.V6.StatsService.StatsService;
+import jp.yahooapis.im.V6.StatsService.StatsServiceInterface;
+import jp.yahooapis.im.V6.StatsService.StatsType;
+import jp.yahooapis.im.V6.StatsService.StatsValues;
 
+import java.util.List;
+import java.util.Objects;
 
+import javax.xml.ws.Holder;
 
 /**
  * Sample Program for StatsService.<br>
@@ -24,7 +24,7 @@ public class StatsSample {
 
   /**
    * main method for StatsSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -50,7 +50,6 @@ public class StatsSample {
    *
    * @param selector StatsSelector
    * @return StatsValues
-   * @throws Exception
    */
   public static List<StatsValues> get(StatsSelector selector) throws Exception {
 
@@ -63,7 +62,7 @@ public class StatsSample {
     System.out.println("StatsService::get");
     System.out.println("############################################");
     Holder<StatsPage> getStatsPageHolder = new Holder<StatsPage>();
-    Holder<List<jp.yahooapis.im.V5.StatsService.Error>> getStatsErrorHolder = new Holder<List<jp.yahooapis.im.V5.StatsService.Error>>();
+    Holder<List<jp.yahooapis.im.V6.StatsService.Error>> getStatsErrorHolder = new Holder<List<jp.yahooapis.im.V6.StatsService.Error>>();
     statsListService.get(selector, getStatsPageHolder, getStatsErrorHolder);
 
     // if error
@@ -90,7 +89,7 @@ public class StatsSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId  long
    * @param campaignId long
    * @return StatsSelector
    */
@@ -111,8 +110,8 @@ public class StatsSample {
 
   /**
    * display Stats entity to stdout.
-   * 
-   * @param stats Stats entity for display.
+   *
+   * @param statsValues Stats entity for display.
    */
   private static void displayStatsValues(StatsValues statsValues) {
 
@@ -127,26 +126,33 @@ public class StatsSample {
       Stats stats = statsValues.getStats();
       System.out.println("stats / imps = " + stats.getImps());
       System.out.println("stats / clickRate = " + stats.getClickRate());
-      System.out.println("stats / clickRateComparisionResult = " + stats.getClickRateComparisionResult());
       System.out.println("stats / totalClickCost = " + stats.getTotalClickCost());
       System.out.println("stats / clickCnt = " + stats.getClickCnt());
       System.out.println("stats / avgClickCost = " + stats.getAvgClickCost());
-      System.out.println("stats / avgClickCostComparisionResult = " + stats.getAvgClickCostComparisionResult());
       System.out.println("stats / convCnt = " + stats.getConvCnt());
       System.out.println("stats / convRate = " + stats.getConvRate());
-      System.out.println("stats / convRateComparisionResult = " + stats.getConvRateComparisionResult());
       System.out.println("stats / cpa = " + stats.getCpa());
-      System.out.println("stats / cpaComparisionResult = " + stats.getCpaComparisionResult());
       System.out.println("stats / avgDeliverRank = " + stats.getAvgDeliverRank());
       System.out.println("stats / totalVimps = " + stats.getTotalVimps());
       System.out.println("stats / vImps = " + stats.getVImps());
       System.out.println("stats / inViewClickCnt = " + stats.getInViewClickCnt());
       System.out.println("stats / inViewRate = " + stats.getInViewRate());
       System.out.println("stats / inViewClickRate = " + stats.getInViewClickRate());
-
+      if (Objects.equals(statsValues.getStatsType(), StatsType.VIDEO)) {
+        System.out.println("stats / autoVideoPlays = " + stats.getAutoVideoPlays());
+        System.out.println("stats / clickVideoPlays = " + stats.getClickVideoPlays());
+        System.out.println("stats / videoViewedRate = " + stats.getVideoViewedRate());
+        System.out.println("stats / averageCpv = " + stats.getAverageCpv());
+        System.out.println("stats / videoPlays = " + stats.getVideoPlays());
+        System.out.println("stats / videoViewsTo25 = " + stats.getVideoViewsTo25());
+        System.out.println("stats / videoViewsTo50 = " + stats.getVideoViewsTo50());
+        System.out.println("stats / videoViewsTo75 = " + stats.getVideoViewsTo75());
+        System.out.println("stats / videoViewsTo95 = " + stats.getVideoViewsTo95());
+        System.out.println("stats / videoViewsTo100 = " + stats.getVideoViewsTo100());
+        System.out.println("stats / averageRateVideoViewed = " + stats.getAverageRateVideoViewed());
+        System.out.println("stats / averageDurationVideoViewe = " + stats.getAverageDurationVideoViewed());
+      }
     }
-
     System.out.println("---------");
   }
-
 }

@@ -1,41 +1,42 @@
 package jp.co.yahoo.ad_api_sample.dictionarySample;
 
+import jp.co.yahoo.ad_api_sample.error.impl.DictionaryServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.DictionaryService.Category;
+import jp.yahooapis.im.V6.DictionaryService.CategoryChildValues;
+import jp.yahooapis.im.V6.DictionaryService.CategoryPage;
+import jp.yahooapis.im.V6.DictionaryService.CategorySelector;
+import jp.yahooapis.im.V6.DictionaryService.CategoryValues;
+import jp.yahooapis.im.V6.DictionaryService.ColorSet;
+import jp.yahooapis.im.V6.DictionaryService.ColorSetPage;
+import jp.yahooapis.im.V6.DictionaryService.ColorSetSelector;
+import jp.yahooapis.im.V6.DictionaryService.ColorSetValues;
+import jp.yahooapis.im.V6.DictionaryService.DictionaryLang;
+import jp.yahooapis.im.V6.DictionaryService.DictionaryService;
+import jp.yahooapis.im.V6.DictionaryService.DictionaryServiceInterface;
+import jp.yahooapis.im.V6.DictionaryService.DisapprovalReason;
+import jp.yahooapis.im.V6.DictionaryService.DisapprovalReasonPage;
+import jp.yahooapis.im.V6.DictionaryService.DisapprovalReasonSelector;
+import jp.yahooapis.im.V6.DictionaryService.DisapprovalReasonValues;
+import jp.yahooapis.im.V6.DictionaryService.Error;
+import jp.yahooapis.im.V6.DictionaryService.GeographicLocation;
+import jp.yahooapis.im.V6.DictionaryService.GeographicLocationPage;
+import jp.yahooapis.im.V6.DictionaryService.GeographicLocationSelector;
+import jp.yahooapis.im.V6.DictionaryService.GeographicLocationValues;
+
 import java.util.List;
 
 import javax.xml.ws.Holder;
-
-import jp.co.yahoo.ad_api_sample.error.impl.DictionaryServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V5.DictionaryService.Category;
-import jp.yahooapis.im.V5.DictionaryService.CategoryChildValues;
-import jp.yahooapis.im.V5.DictionaryService.CategoryPage;
-import jp.yahooapis.im.V5.DictionaryService.CategorySelector;
-import jp.yahooapis.im.V5.DictionaryService.CategoryValues;
-import jp.yahooapis.im.V5.DictionaryService.ColorSet;
-import jp.yahooapis.im.V5.DictionaryService.ColorSetPage;
-import jp.yahooapis.im.V5.DictionaryService.ColorSetSelector;
-import jp.yahooapis.im.V5.DictionaryService.ColorSetValues;
-import jp.yahooapis.im.V5.DictionaryService.DictionaryLang;
-import jp.yahooapis.im.V5.DictionaryService.DictionaryService;
-import jp.yahooapis.im.V5.DictionaryService.DictionaryServiceInterface;
-import jp.yahooapis.im.V5.DictionaryService.DisapprovalReason;
-import jp.yahooapis.im.V5.DictionaryService.DisapprovalReasonPage;
-import jp.yahooapis.im.V5.DictionaryService.DisapprovalReasonSelector;
-import jp.yahooapis.im.V5.DictionaryService.DisapprovalReasonValues;
-import jp.yahooapis.im.V5.DictionaryService.Error;
-import jp.yahooapis.im.V5.DictionaryService.GeographicLocation;
-import jp.yahooapis.im.V5.DictionaryService.GeographicLocationPage;
-import jp.yahooapis.im.V5.DictionaryService.GeographicLocationSelector;
-import jp.yahooapis.im.V5.DictionaryService.GeographicLocationValues;
 
 /**
  * Sample Program for DictionaryService.<br>
  * Copyright (C) 2012 Yahoo Japan Corporation. All Rights Reserved.
  */
 public class DictionarySample {
+
   /**
    * main method for AccountSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -98,10 +99,9 @@ public class DictionarySample {
 
   /**
    * Sample Program for DictionaryService GetColorSet.
-   * 
+   *
    * @param selector ColorSetSelector
    * @return ColorSetValues
-   * @throws Exception
    */
   public static List<ColorSetValues> getColorSet(ColorSetSelector selector) throws Exception {
 
@@ -147,10 +147,9 @@ public class DictionarySample {
 
   /**
    * Sample Program for DictionaryService GetSiteCategory.
-   * 
+   *
    * @param selector CategorySelector
    * @return CategoryValues
-   * @throws Exception
    */
   public static List<CategoryValues> getSiteCategory(CategorySelector selector) throws Exception {
 
@@ -196,10 +195,9 @@ public class DictionarySample {
 
   /**
    * Sample Program for DictionaryService GetInterestCategory.
-   * 
+   *
    * @param selector CategorySelector
    * @return CategoryValues
-   * @throws Exception
    */
   public static List<CategoryValues> getInterestCategory(CategorySelector selector) throws Exception {
 
@@ -245,10 +243,9 @@ public class DictionarySample {
 
   /**
    * Sample Program for DictionaryService GetGeographicLocation.
-   * 
+   *
    * @param selector GeographicLocationSelector
    * @return GeographicLocationValues
-   * @throws Exception
    */
   public static List<GeographicLocationValues> getGeographicLocation(GeographicLocationSelector selector) throws Exception {
 
@@ -294,10 +291,9 @@ public class DictionarySample {
 
   /**
    * Sample Program for DictionaryService DisapprovalReason.
-   * 
+   *
    * @param selector DisapprovalReasonSelector
    * @return DisapprovalReasonValues
-   * @throws Exception
    */
   public static List<DisapprovalReasonValues> getDisapprovalReason(DisapprovalReasonSelector selector) throws Exception {
 
@@ -343,7 +339,7 @@ public class DictionarySample {
 
   /**
    * display disapproval reason entity to stdout.
-   * 
+   *
    * @param disapprovalReason disapproval reason entity for display.
    */
   private static void displayDisapprovalReason(DisapprovalReason disapprovalReason) {
@@ -367,7 +363,7 @@ public class DictionarySample {
 
   /**
    * display geographic location entity to stdout.
-   * 
+   *
    * @param geographicLocation account geographic location for display.
    */
   private static void displayGeographicLocation(GeographicLocation geographicLocation) {
@@ -385,14 +381,13 @@ public class DictionarySample {
       System.out.println("  child parent = " + childValue.getParent());
       System.out.println("  =========");
     }
-
     System.out.println("---------");
   }
 
   /**
    * display geographic location entity to stdout.
-   * 
-   * @param geographicLocation account geographic location for display.
+   *
+   * @param category account geographic location for display.
    */
   private static void displayCategory(Category category) {
 
@@ -410,8 +405,8 @@ public class DictionarySample {
 
   /**
    * element colorSet entity to stdout.
-   * 
-   * @param colorSet ad element color for staticFrameAd.
+   *
+   * @param colorSetValues ad element color for staticFrameAd.
    */
   private static void displayColorSet(ColorSetValues colorSetValues) {
     System.out.println("colorSetId = " + colorSetValues.getColorSetId());

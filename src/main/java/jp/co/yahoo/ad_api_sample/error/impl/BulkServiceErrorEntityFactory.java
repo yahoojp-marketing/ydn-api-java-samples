@@ -1,13 +1,13 @@
 package jp.co.yahoo.ad_api_sample.error.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jp.co.yahoo.ad_api_sample.error.ErrorDetailEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntity;
 import jp.co.yahoo.ad_api_sample.error.ErrorEntityFactory;
-import jp.yahooapis.im.V5.BulkService.Error;
-import jp.yahooapis.im.V5.BulkService.ErrorDetail;
+import jp.yahooapis.im.V6.BulkService.Error;
+import jp.yahooapis.im.V6.BulkService.ErrorDetail;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BulkServiceErrorEntityFactory implements ErrorEntityFactory {
 
