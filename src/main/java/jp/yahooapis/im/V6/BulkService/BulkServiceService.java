@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "BulkServiceService", targetNamespace = "http://im.yahooapis.jp/V6", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V6.0/BulkService?wsdl")
+@WebServiceClient(name = "BulkServiceService", targetNamespace = "http://im.yahooapis.jp/V6", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V6.1/BulkService?wsdl")
 public class BulkServiceService
     extends Service
 {
@@ -30,7 +30,7 @@ public class BulkServiceService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://sandbox.im.yahooapis.jp/services/V6.0/BulkService?wsdl");
+            url = new URL("https://sandbox.im.yahooapis.jp/services/V6.1/BulkService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

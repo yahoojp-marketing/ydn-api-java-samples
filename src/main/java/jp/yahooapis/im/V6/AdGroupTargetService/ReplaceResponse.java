@@ -1,5 +1,5 @@
 
-package jp.yahooapis.im.V6.ReportService;
+package jp.yahooapis.im.V6.AdGroupTargetService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="rval" type="{http://im.yahooapis.jp/V6}ReportDownloadUrlPage" minOccurs="0"/>
+ *         &lt;element name="rval" type="{http://im.yahooapis.jp/V6}AdGroupTargetReturnValue" minOccurs="0"/>
  *         &lt;element name="error" type="{http://im.yahooapis.jp/V6}Error" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -34,10 +34,10 @@ import javax.xml.bind.annotation.XmlType;
     "rval",
     "error"
 })
-@XmlRootElement(name = "getDownloadUrlResponse")
-public class GetDownloadUrlResponse {
+@XmlRootElement(name = "replaceResponse")
+public class ReplaceResponse {
 
-    protected ReportDownloadUrlPage rval;
+    protected AdGroupTargetReturnValue rval;
     protected List<Error> error;
 
     /**
@@ -45,10 +45,10 @@ public class GetDownloadUrlResponse {
      * 
      * @return
      *     possible object is
-     *     {@link ReportDownloadUrlPage }
+     *     {@link AdGroupTargetReturnValue }
      *     
      */
-    public ReportDownloadUrlPage getRval() {
+    public AdGroupTargetReturnValue getRval() {
         return rval;
     }
 
@@ -57,10 +57,10 @@ public class GetDownloadUrlResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link ReportDownloadUrlPage }
+     *     {@link AdGroupTargetReturnValue }
      *     
      */
-    public void setRval(ReportDownloadUrlPage value) {
+    public void setRval(AdGroupTargetReturnValue value) {
         this.rval = value;
     }
 

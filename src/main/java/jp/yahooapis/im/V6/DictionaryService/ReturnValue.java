@@ -35,10 +35,12 @@ import javax.xml.bind.annotation.XmlType;
     "error"
 })
 @XmlSeeAlso({
-    CategoryValues.class,
+    MediaAdFormatValues.class,
+    OsVersionValues.class,
     DisapprovalReasonValues.class,
-    ColorSetValues.class,
-    GeographicLocationValues.class
+    GeographicLocationValues.class,
+    CategoryValues.class,
+    ColorSetValues.class
 })
 public abstract class ReturnValue {
 

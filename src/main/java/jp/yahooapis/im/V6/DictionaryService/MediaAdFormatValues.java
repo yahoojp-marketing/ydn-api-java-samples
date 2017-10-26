@@ -1,5 +1,5 @@
 
-package jp.yahooapis.im.V6.AdGroupTargetService;
+package jp.yahooapis.im.V6.DictionaryService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +9,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SearchTargetList complex type.
+ * <p>Java class for MediaAdFormatValues complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="SearchTargetList">
+ * &lt;complexType name="MediaAdFormatValues">
  *   &lt;complexContent>
- *     &lt;extension base="{http://im.yahooapis.jp/V6}AdGroupTargetList">
+ *     &lt;extension base="{http://im.yahooapis.jp/V6}ReturnValue">
  *       &lt;sequence>
- *         &lt;element name="targets" type="{http://im.yahooapis.jp/V6}SearchTarget" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="mediaAdFormat" type="{http://im.yahooapis.jp/V6}MediaAdFormat" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -28,42 +28,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SearchTargetList", propOrder = {
-    "targets"
+@XmlType(name = "MediaAdFormatValues", propOrder = {
+    "mediaAdFormat"
 })
-public class SearchTargetList
-    extends AdGroupTargetList
+public class MediaAdFormatValues
+    extends ReturnValue
 {
 
-    protected List<SearchTarget> targets;
+    protected List<MediaAdFormat> mediaAdFormat;
 
     /**
-     * Gets the value of the targets property.
+     * Gets the value of the mediaAdFormat property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the targets property.
+     * This is why there is not a <CODE>set</CODE> method for the mediaAdFormat property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getTargets().add(newItem);
+     *    getMediaAdFormat().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SearchTarget }
+     * {@link MediaAdFormat }
      * 
      * 
      */
-    public List<SearchTarget> getTargets() {
-        if (targets == null) {
-            targets = new ArrayList<SearchTarget>();
+    public List<MediaAdFormat> getMediaAdFormat() {
+        if (mediaAdFormat == null) {
+            mediaAdFormat = new ArrayList<MediaAdFormat>();
         }
-        return this.targets;
+        return this.mediaAdFormat;
     }
 
 }

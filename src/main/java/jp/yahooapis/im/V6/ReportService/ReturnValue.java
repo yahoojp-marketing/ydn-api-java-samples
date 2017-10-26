@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     ReportValues.class,
-    ReportDownloadUrlValues.class,
     ReportClosedDateRecord.class
 })
 public abstract class ReturnValue {

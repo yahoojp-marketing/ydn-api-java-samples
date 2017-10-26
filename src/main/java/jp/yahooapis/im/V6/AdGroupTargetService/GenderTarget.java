@@ -3,7 +3,6 @@ package jp.yahooapis.im.V6.AdGroupTargetService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
@@ -16,13 +15,12 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="GenderTarget">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://im.yahooapis.jp/V6}Target">
  *       &lt;sequence>
- *         &lt;element name="type" type="{http://im.yahooapis.jp/V6}TargetType"/>
- *         &lt;element name="gender" type="{http://im.yahooapis.jp/V6}Gender"/>
+ *         &lt;element name="gender" type="{http://im.yahooapis.jp/V6}Gender" minOccurs="0"/>
  *         &lt;element name="estimateFlg" type="{http://im.yahooapis.jp/V6}EstimateFlg" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -31,44 +29,17 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GenderTarget", propOrder = {
-    "type",
     "gender",
     "estimateFlg"
 })
-public class GenderTarget {
+public class GenderTarget
+    extends Target
+{
 
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "string")
-    protected TargetType type;
-    @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected Gender gender;
     @XmlSchemaType(name = "string")
     protected EstimateFlg estimateFlg;
-
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TargetType }
-     *     
-     */
-    public TargetType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TargetType }
-     *     
-     */
-    public void setType(TargetType value) {
-        this.type = value;
-    }
 
     /**
      * Gets the value of the gender property.

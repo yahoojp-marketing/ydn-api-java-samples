@@ -23,11 +23,12 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="conversionTrackerName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="status" type="{http://im.yahooapis.jp/V6}ConversionTrackerStatus" minOccurs="0"/>
  *         &lt;element name="category" type="{http://im.yahooapis.jp/V6}ConversionTrackerCategory" minOccurs="0"/>
- *         &lt;element name="numConversionEvents" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="conversionValue" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="mostRecentConversionDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="userRevenueValue" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="conversionTrackerType" type="{http://im.yahooapis.jp/V6}ConversionTrackerType" minOccurs="0"/>
+ *         &lt;element name="measurementPeriod" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="conversions" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="conversionValue" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="mostRecentConversionDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,16 +44,18 @@ import javax.xml.bind.annotation.XmlType;
     "conversionTrackerName",
     "status",
     "category",
-    "numConversionEvents",
-    "conversionValue",
-    "mostRecentConversionDate",
     "userRevenueValue",
-    "conversionTrackerType"
+    "conversionTrackerType",
+    "measurementPeriod",
+    "conversions",
+    "conversionValue",
+    "mostRecentConversionDate"
 })
 @XmlSeeAlso({
+    AppConversion.class,
     WebConversion.class
 })
-public class ConversionTracker {
+public abstract class ConversionTracker {
 
     protected Long accountId;
     protected Long conversionTrackerId;
@@ -61,12 +64,13 @@ public class ConversionTracker {
     protected ConversionTrackerStatus status;
     @XmlSchemaType(name = "string")
     protected ConversionTrackerCategory category;
-    protected Integer numConversionEvents;
-    protected Long conversionValue;
-    protected String mostRecentConversionDate;
     protected Long userRevenueValue;
     @XmlSchemaType(name = "string")
     protected ConversionTrackerType conversionTrackerType;
+    protected Integer measurementPeriod;
+    protected Long conversions;
+    protected String conversionValue;
+    protected String mostRecentConversionDate;
 
     /**
      * Gets the value of the accountId property.
@@ -189,78 +193,6 @@ public class ConversionTracker {
     }
 
     /**
-     * Gets the value of the numConversionEvents property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getNumConversionEvents() {
-        return numConversionEvents;
-    }
-
-    /**
-     * Sets the value of the numConversionEvents property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setNumConversionEvents(Integer value) {
-        this.numConversionEvents = value;
-    }
-
-    /**
-     * Gets the value of the conversionValue property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getConversionValue() {
-        return conversionValue;
-    }
-
-    /**
-     * Sets the value of the conversionValue property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setConversionValue(Long value) {
-        this.conversionValue = value;
-    }
-
-    /**
-     * Gets the value of the mostRecentConversionDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMostRecentConversionDate() {
-        return mostRecentConversionDate;
-    }
-
-    /**
-     * Sets the value of the mostRecentConversionDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMostRecentConversionDate(String value) {
-        this.mostRecentConversionDate = value;
-    }
-
-    /**
      * Gets the value of the userRevenueValue property.
      * 
      * @return
@@ -306,6 +238,102 @@ public class ConversionTracker {
      */
     public void setConversionTrackerType(ConversionTrackerType value) {
         this.conversionTrackerType = value;
+    }
+
+    /**
+     * Gets the value of the measurementPeriod property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMeasurementPeriod() {
+        return measurementPeriod;
+    }
+
+    /**
+     * Sets the value of the measurementPeriod property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMeasurementPeriod(Integer value) {
+        this.measurementPeriod = value;
+    }
+
+    /**
+     * Gets the value of the conversions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getConversions() {
+        return conversions;
+    }
+
+    /**
+     * Sets the value of the conversions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setConversions(Long value) {
+        this.conversions = value;
+    }
+
+    /**
+     * Gets the value of the conversionValue property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConversionValue() {
+        return conversionValue;
+    }
+
+    /**
+     * Sets the value of the conversionValue property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConversionValue(String value) {
+        this.conversionValue = value;
+    }
+
+    /**
+     * Gets the value of the mostRecentConversionDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMostRecentConversionDate() {
+        return mostRecentConversionDate;
+    }
+
+    /**
+     * Sets the value of the mostRecentConversionDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMostRecentConversionDate(String value) {
+        this.mostRecentConversionDate = value;
     }
 
 }

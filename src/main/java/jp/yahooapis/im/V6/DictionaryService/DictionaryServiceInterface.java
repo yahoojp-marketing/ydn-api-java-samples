@@ -124,4 +124,41 @@ public interface DictionaryServiceInterface {
         throws ApiException
     ;
 
+    /**
+     * 
+     * @param selector
+     * @param rval
+     * @param error
+     * @throws ApiException
+     */
+    @WebMethod
+    @RequestWrapper(localName = "getOsVersion", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.DictionaryService.GetOsVersion")
+    @ResponseWrapper(localName = "getOsVersionResponse", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.DictionaryService.GetOsVersionResponse")
+    public void getOsVersion(
+        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V6")
+        OsVersionSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
+        Holder<OsVersionPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
+        Holder<List<Error>> error)
+        throws ApiException
+    ;
+
+    /**
+     * 
+     * @param rval
+     * @param error
+     * @throws ApiException
+     */
+    @WebMethod
+    @RequestWrapper(localName = "getMediaAdFormat", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.DictionaryService.GetMediaAdFormat")
+    @ResponseWrapper(localName = "getMediaAdFormatResponse", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.DictionaryService.GetMediaAdFormatResponse")
+    public void getMediaAdFormat(
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
+        Holder<MediaAdFormatPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
+        Holder<List<Error>> error)
+        throws ApiException
+    ;
+
 }

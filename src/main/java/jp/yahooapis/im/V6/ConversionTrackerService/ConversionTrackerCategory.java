@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="PURCHASE"/>
  *     &lt;enumeration value="SIGNUP"/>
  *     &lt;enumeration value="LEAD"/>
+ *     &lt;enumeration value="DOWNLOAD"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -33,7 +34,8 @@ public enum ConversionTrackerCategory {
     PAGE_VIEW,
     PURCHASE,
     SIGNUP,
-    LEAD;
+    LEAD,
+    DOWNLOAD;
 
     public String value() {
         return name();

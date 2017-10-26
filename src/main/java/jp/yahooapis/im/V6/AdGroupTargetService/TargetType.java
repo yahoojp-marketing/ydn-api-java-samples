@@ -22,6 +22,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="SITE_RETARGETING"/>
  *     &lt;enumeration value="SEARCH_TARGET"/>
  *     &lt;enumeration value="PLACEMENT_TARGET"/>
+ *     &lt;enumeration value="DEVICE_TARGET"/>
+ *     &lt;enumeration value="CARRIER_TARGET"/>
+ *     &lt;enumeration value="APP_TARGET"/>
+ *     &lt;enumeration value="OS_TARGET"/>
+ *     &lt;enumeration value="OS_VERSION_TARGET"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -39,7 +44,12 @@ public enum TargetType {
     SITE_CATEGORY,
     SITE_RETARGETING,
     SEARCH_TARGET,
-    PLACEMENT_TARGET;
+    PLACEMENT_TARGET,
+    DEVICE_TARGET,
+    CARRIER_TARGET,
+    APP_TARGET,
+    OS_TARGET,
+    OS_VERSION_TARGET;
 
     public String value() {
         return name();

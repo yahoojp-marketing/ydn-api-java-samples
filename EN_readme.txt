@@ -10,10 +10,16 @@ Additionally, please note before using it that Yahoo Japan Corporation may chang
 --------------------------------
 <<Version>>
 --------------------------------
-Ver.6.0.0
+Ver.6.1.0
 
 [Update history]
 -----------
+2017/10/25
+ - V6.1 Correspond to Mobile App campaign.
+ - V6.1 Correspond to specification of bid multiplier of AdGroupTargetService on AdSample.
+ - V6.1 Added report download url to response of ADD of ReportDownloadSample.
+ - V6.1 Added Get operation for OS version data, image format data for ads via DictionaryService on DictionarySample.
+
 2017/05/24:
 - V6.0 Added VideoSample.
 - V6.0 Correspond to Yahoo! DMP.
@@ -80,7 +86,7 @@ Ver.6.0.0
 --------------------------------
 <<Overview>>
 --------------------------------
-This sample program uses Java to call each services in API. 
+This sample program uses Java to call each services in API.
 API is called by using JAX-WS.
 
 
@@ -96,7 +102,7 @@ The compiled execute file of sample program and the batch file to excecute on Wi
 [src/main/java directory]
 The following programs are stored.
 
-* Sample programs can be executed directly. 
+* Sample programs can be executed directly.
 
 - Under jp/co/yahoo/ad_api_sample directory
 - AccountAdProductSample/AccountAdProductSample.java   : Sample of Get operation for account ad product via AccountAdProductService.
@@ -110,7 +116,7 @@ The following programs are stored.
 - bulkDownloadSample/BulkDownloadSample.java           : Sample of download process via BulkService.
 - bulkUploadSample/BulkUploadSample.java               : Sample of upload process via BulkService.
 - conversionTrackerSample/ConversionTrackerSample.java : Sample of Get and Mutate operation for conversion information via ConversionTrackerService.
-- dictionarySample.DictionarySample.java               : Sample of Get operation for LOCATION data, rejected reasons, target setting data via DictionaryService.
+- dictionarySample.DictionarySample.java               : Sample of Get operation for LOCATION data, rejected reasons, target setting data, OS version data, image format data for ads via DictionaryService.
 - MediaSample/MediaSample.java                         : Sample of ad creation of Image ads, which MediaService Added to AdSample.java
 - placementUrlSample/PlacementUrlSample.java           : Sample of Placement Targeting via PlacementUrlIdeaService and PlacementUrlListService.
 - ReportDownloadSample/ReportDownloadSample.java       : Sample of Report download via ReportDefinitionService and ReportService.
@@ -131,7 +137,7 @@ The following contents are stored.
 [src/test/java directory]
 The following programs are stored.
 
-* Sample programs can be executed directly. 
+* Sample programs can be executed directly.
 
 - Under jp/co/yahoo/ad_api_sample
 - AccountAdProductSample/AccountAdProductSampleTest.java   : Test case of Get operation for account ad product via AccountAdProductService.
@@ -145,7 +151,7 @@ The following programs are stored.
 - bulkDownloadSample/BulkDownloadSampleTest.java           : Test case of download process via BulkService.
 - bulkUploadSample/BulkUploadSampleTest.java               : Test case of upload process via BulkService.
 - conversionTrackerSample/ConversionTrackerSampleTest.java : Test case of Get and Mutate operation for conversion information via ConversionTrackerService.
-- dictionarySample.DictionarySampleTest.java               : Test case of Get operation for LOCATION data, rejected reasons, target setting data via DictionaryService.
+- dictionarySample.DictionarySampleTest.java               : Test case of Get operation for LOCATION data, rejected reasons, target setting data, OS version data, image format data for ads via DictionaryService.
 - MediaSample/MediaSampleTest.java                         : Test case of ad creation of Image ads, which MediaService Added to AdSample.java.
 - placementUrlSample/PlacementUrlSampleTest.java           : Test case of Placement Targeting via PlacementUrlIdeaService and PlacementUrlListService.
 - ReportDownloadSample/ReportDownloadSampleTest.java       : Test case of Report download via ReportDefinitionService and ReportService.
@@ -198,7 +204,7 @@ MEDIAID             : Enter Media ID (Required)
 --------------------------------
 set SAMPLE_HOME={ad-api-sample}
 set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
-set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V6.0.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V6.1.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 [e.g.]
 ---------------------------------------
@@ -226,7 +232,7 @@ java -classpath %CLASS_PATH% %PACKAGE_NAME%.videoSample/VideoSample
 When data download is executed, the file will be stored to the download directory.
 
 When uploading the data is executed, please store the file you want to upload under the upload directory.
-File name is fixed in each sample program. 
+File name is fixed in each sample program.
 
  - In case of MediaSample       : SampleMedia.jpg
  - In case of BulkUploadSample  : SampleBulkUpload.csv

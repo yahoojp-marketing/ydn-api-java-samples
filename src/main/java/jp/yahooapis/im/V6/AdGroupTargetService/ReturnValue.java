@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
     "error"
 })
 @XmlSeeAlso({
-    AdGroupTargetValues.class
+    AdGroupTargetValue.class
 })
 public abstract class ReturnValue {
 

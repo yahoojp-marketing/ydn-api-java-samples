@@ -52,26 +52,6 @@ public interface ReportServiceInterface {
      * @throws ApiException
      */
     @WebMethod
-    @RequestWrapper(localName = "getDownloadUrl", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.ReportService.GetDownloadUrl")
-    @ResponseWrapper(localName = "getDownloadUrlResponse", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.ReportService.GetDownloadUrlResponse")
-    public void getDownloadUrl(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V6")
-        ReportDownloadUrlSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
-        Holder<ReportDownloadUrlPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
-        throws ApiException
-    ;
-
-    /**
-     * 
-     * @param selector
-     * @param rval
-     * @param error
-     * @throws ApiException
-     */
-    @WebMethod
     @RequestWrapper(localName = "getClosedDate", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.ReportService.GetClosedDate")
     @ResponseWrapper(localName = "getClosedDateResponse", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.ReportService.GetClosedDateResponse")
     public void getClosedDate(

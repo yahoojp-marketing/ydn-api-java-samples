@@ -44,11 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdGroupTargetOperation }
+     * Create an instance of {@link AdGroupTargetMutateOperation }
      * 
      */
-    public AdGroupTargetOperation createAdGroupTargetOperation() {
-        return new AdGroupTargetOperation();
+    public AdGroupTargetMutateOperation createAdGroupTargetMutateOperation() {
+        return new AdGroupTargetMutateOperation();
     }
 
     /**
@@ -116,6 +116,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Replace }
+     * 
+     */
+    public Replace createReplace() {
+        return new Replace();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupTargetOperation }
+     * 
+     */
+    public AdGroupTargetOperation createAdGroupTargetOperation() {
+        return new AdGroupTargetOperation();
+    }
+
+    /**
      * Create an instance of {@link SoapHeader }
      * 
      */
@@ -124,27 +140,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SiteRetargetingTargetList }
+     * Create an instance of {@link ReplaceResponse }
      * 
      */
-    public SiteRetargetingTargetList createSiteRetargetingTargetList() {
-        return new SiteRetargetingTargetList();
+    public ReplaceResponse createReplaceResponse() {
+        return new ReplaceResponse();
     }
 
     /**
-     * Create an instance of {@link GeoTargetList }
+     * Create an instance of {@link DeviceTarget }
      * 
      */
-    public GeoTargetList createGeoTargetList() {
-        return new GeoTargetList();
-    }
-
-    /**
-     * Create an instance of {@link InterestCategoryTargetList }
-     * 
-     */
-    public InterestCategoryTargetList createInterestCategoryTargetList() {
-        return new InterestCategoryTargetList();
+    public DeviceTarget createDeviceTarget() {
+        return new DeviceTarget();
     }
 
     /**
@@ -153,14 +161,6 @@ public class ObjectFactory {
      */
     public PlacementTarget createPlacementTarget() {
         return new PlacementTarget();
-    }
-
-    /**
-     * Create an instance of {@link AgeTargetList }
-     * 
-     */
-    public AgeTargetList createAgeTargetList() {
-        return new AgeTargetList();
     }
 
     /**
@@ -180,6 +180,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Target }
+     * 
+     */
+    public Target createTarget() {
+        return new Target();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupTarget }
+     * 
+     */
+    public AdGroupTarget createAdGroupTarget() {
+        return new AdGroupTarget();
+    }
+
+    /**
      * Create an instance of {@link SearchTarget }
      * 
      */
@@ -196,43 +212,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SiteCategoryTargetList }
-     * 
-     */
-    public SiteCategoryTargetList createSiteCategoryTargetList() {
-        return new SiteCategoryTargetList();
-    }
-
-    /**
-     * Create an instance of {@link AdScheduleTargetList }
-     * 
-     */
-    public AdScheduleTargetList createAdScheduleTargetList() {
-        return new AdScheduleTargetList();
-    }
-
-    /**
-     * Create an instance of {@link SearchTargetList }
-     * 
-     */
-    public SearchTargetList createSearchTargetList() {
-        return new SearchTargetList();
-    }
-
-    /**
      * Create an instance of {@link AgeTarget }
      * 
      */
     public AgeTarget createAgeTarget() {
         return new AgeTarget();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupTargets }
-     * 
-     */
-    public AdGroupTargets createAdGroupTargets() {
-        return new AdGroupTargets();
     }
 
     /**
@@ -244,11 +228,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdGroupTargetValues }
+     * Create an instance of {@link OsVersionTarget }
      * 
      */
-    public AdGroupTargetValues createAdGroupTargetValues() {
-        return new AdGroupTargetValues();
+    public OsVersionTarget createOsVersionTarget() {
+        return new OsVersionTarget();
     }
 
     /**
@@ -260,14 +244,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GenderTargetList }
-     * 
-     */
-    public GenderTargetList createGenderTargetList() {
-        return new GenderTargetList();
-    }
-
-    /**
      * Create an instance of {@link InterestCategoryTarget }
      * 
      */
@@ -276,11 +252,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PlacementTargetList }
+     * Create an instance of {@link CarrierTarget }
      * 
      */
-    public PlacementTargetList createPlacementTargetList() {
-        return new PlacementTargetList();
+    public CarrierTarget createCarrierTarget() {
+        return new CarrierTarget();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupTargetValue }
+     * 
+     */
+    public AdGroupTargetValue createAdGroupTargetValue() {
+        return new AdGroupTargetValue();
+    }
+
+    /**
+     * Create an instance of {@link AppTarget }
+     * 
+     */
+    public AppTarget createAppTarget() {
+        return new AppTarget();
     }
 
     /**
@@ -289,6 +281,14 @@ public class ObjectFactory {
      */
     public SiteCategoryTarget createSiteCategoryTarget() {
         return new SiteCategoryTarget();
+    }
+
+    /**
+     * Create an instance of {@link OsTarget }
+     * 
+     */
+    public OsTarget createOsTarget() {
+        return new OsTarget();
     }
 
     /**

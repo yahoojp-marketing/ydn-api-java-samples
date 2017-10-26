@@ -13,9 +13,9 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;simpleType name="BulkOutput">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="XML"/>
+ *     &lt;enumeration value="TSV"/>
  *     &lt;enumeration value="CSV"/>
- *     &lt;enumeration value="ZIPPED_XML"/>
+ *     &lt;enumeration value="ZIPPED_TSV"/>
  *     &lt;enumeration value="ZIPPED_CSV"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
@@ -26,9 +26,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum BulkOutput {
 
-    XML,
+    TSV,
     CSV,
-    ZIPPED_XML,
+    ZIPPED_TSV,
     ZIPPED_CSV;
 
     public String value() {

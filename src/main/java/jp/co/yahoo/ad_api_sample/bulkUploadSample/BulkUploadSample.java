@@ -63,9 +63,7 @@ public class BulkUploadSample {
       BulkUploadStatusSelector bulkUploadStatusSelector = new BulkUploadStatusSelector();
       bulkUploadStatusSelector.setAccountId(accountId);
       bulkUploadStatusSelector.getUploadBulkJobIds().add(uploadJobId);
-      bulkUploadStatusSelector.setLang(BulkLang.JA);
       bulkUploadStatusSelector.setOutput(BulkOutput.CSV);
-      bulkUploadStatusSelector.setEncoding(BulkEncoding.UTF_8);
       Paging paging = new Paging();
       paging.setStartIndex(1);
       paging.setNumberResults(20);
@@ -141,7 +139,7 @@ public class BulkUploadSample {
 
     Holder<UploadUrlValue> getUploadUrlValueHolder = new Holder<UploadUrlValue>();
     Holder<List<Error>> getUploadUrlErrorHolder = new Holder<List<Error>>();
-    bulkService.getUploadUrl(accountId, getUploadUrlValueHolder, getUploadUrlErrorHolder);
+    bulkService.getUploadUrl(accountId, "bulk-sample-name", getUploadUrlValueHolder, getUploadUrlErrorHolder);
 
     // if error
     if (getUploadUrlErrorHolder.value != null && getUploadUrlErrorHolder.value.size() > 0) {
@@ -214,9 +212,6 @@ public class BulkUploadSample {
               if (uploadBulkJob.getDownloadBulkUploadFileUrl() != null) {
                 System.out.println("downloadBulkUploadFileUrl = " + uploadBulkJob.getDownloadBulkUploadFileUrl());
               }
-              if (uploadBulkJob.getDownloadBulkUploadErrorFileUrl() != null) {
-                System.out.println("downloadBulkUploadErrorFileUrl = " + uploadBulkJob.getDownloadBulkUploadErrorFileUrl());
-              }
             } else {
               SoapUtils.displayErrors(new BulkServiceErrorEntityFactory(values.get(i).getError()), true);
             }
@@ -259,16 +254,6 @@ public class BulkUploadSample {
         System.out.println("BulkService::downloadBulkUploadFile");
         System.out.println("############################################");
         SoapUtils.download(getBulkUploadStatusResponse.getUploadBulkJob().getDownloadBulkUploadFileUrl(), "SampleBulkUploadFile.csv");
-      }
-
-      // -----------------------------------------------
-      // BulkService::downloadBulkUploadErrorFile
-      // -----------------------------------------------
-      if (getBulkUploadStatusResponse.getUploadBulkJob().getDownloadBulkUploadErrorFileUrl() != null) {
-        System.out.println("\n############################################");
-        System.out.println("BulkService::downloadBulkUploadErrorFile");
-        System.out.println("############################################");
-        SoapUtils.download(getBulkUploadStatusResponse.getUploadBulkJob().getDownloadBulkUploadErrorFileUrl(), "SampleBulkUploadErrorFile.csv");
       }
 
     } else {
@@ -318,12 +303,11 @@ public class BulkUploadSample {
       System.out.println("processingItemsCount/adGroupTargetErrorCount = " + uploadBulkJob.getProcessingItemsCount().getAdGroupTargetErrorCount());
       System.out.println("processingItemsCount/mediaCount = " + uploadBulkJob.getProcessingItemsCount().getMediaCount());
       System.out.println("processingItemsCount/mediaErrorCount = " + uploadBulkJob.getProcessingItemsCount().getMediaErrorCount());
+      System.out.println("processingItemsCount/videoCount = " + uploadBulkJob.getProcessingItemsCount().getVideoCount());
+      System.out.println("processingItemsCount/videoErrorCount = " + uploadBulkJob.getProcessingItemsCount().getVideoErrorCount());
     }
     if (uploadBulkJob.getDownloadBulkUploadFileUrl() != null) {
       System.out.println("downloadBulkUploadFileUrl = " + uploadBulkJob.getDownloadBulkUploadFileUrl());
-    }
-    if (uploadBulkJob.getDownloadBulkUploadErrorFileUrl() != null) {
-      System.out.println("downloadBulkUploadErrorFileUrl = " + uploadBulkJob.getDownloadBulkUploadErrorFileUrl());
     }
     System.out.println("----------");
   }

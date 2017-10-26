@@ -1,5 +1,5 @@
 
-package jp.yahooapis.im.V6.ReportService;
+package jp.yahooapis.im.V6.DictionaryService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="selector" type="{http://im.yahooapis.jp/V6}ReportDownloadUrlSelector"/>
+ *         &lt;element name="selector" type="{http://im.yahooapis.jp/V6}OsVersionSelector"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,21 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "selector"
 })
-@XmlRootElement(name = "getDownloadUrl")
-public class GetDownloadUrl {
+@XmlRootElement(name = "getOsVersion")
+public class GetOsVersion {
 
     @XmlElement(required = true)
-    protected ReportDownloadUrlSelector selector;
+    protected OsVersionSelector selector;
 
     /**
      * Gets the value of the selector property.
      * 
      * @return
      *     possible object is
-     *     {@link ReportDownloadUrlSelector }
+     *     {@link OsVersionSelector }
      *     
      */
-    public ReportDownloadUrlSelector getSelector() {
+    public OsVersionSelector getSelector() {
         return selector;
     }
 
@@ -54,10 +54,10 @@ public class GetDownloadUrl {
      * 
      * @param value
      *     allowed object is
-     *     {@link ReportDownloadUrlSelector }
+     *     {@link OsVersionSelector }
      *     
      */
-    public void setSelector(ReportDownloadUrlSelector value) {
+    public void setSelector(OsVersionSelector value) {
         this.selector = value;
     }
 

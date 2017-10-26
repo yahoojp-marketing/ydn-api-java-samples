@@ -9,10 +9,16 @@ Yahoo! JAPANの提供するAPIに関するサンプルコードは、別途Yahoo
 --------------------------------
 【バージョン】
 --------------------------------
-Ver.6.0.0
+Ver.6.1.0
 
 ■変更履歴
 -----------
+2017/10/25
+ - V6.1 アプリキャンペーンに対応しました。
+ - V6.1 AdSampleにてAdGroupTargetServiceの入札価格調整率に対応しました。
+ - V6.1 ReportDownloadSampleのADDのレスポンスにダウンロードURLを追加しました。
+ - V6.1 DictionarySampleにてDictionaryServiceのOSバージョン取得、入稿用画像形式取得を追加しました。
+
 2017/05/24:
 - V6.0 VideoSampleを追加しました。
 - V6.0 Yahoo! DMPに対応しました。
@@ -109,7 +115,7 @@ JAX-WSを使用してAPIを呼び出す形になっています。
 - bulkDownloadSample/BulkDownloadSample.java           ：BulkServiceによるダウンロード処理のサンプルです。
 - bulkUploadSample/BulkUploadSample.java               ：BulkServiceによるアップロード処理のサンプルです。
 - conversionTrackerSample/ConversionTrackerSample.java ：ConversionTrackerServiceによるコンバージョン情報の登録、更新処理のサンプルです。
-- dictionarySample.DictionarySample.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ参照処理のサンプルです。
+- dictionarySample.DictionarySample.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ、OSバージョン、入稿用画像形式参照処理のサンプルです。
 - mediaSample/MediaSample.java                         ：AdSample.javaにMediaServiceを加えた画像広告の入稿処理のサンプルです。
 - placementUrlSample/PlacementUrlSample.java           ：PlacementUrlIdeaService,PlacementUrlListServiceを使用したプレイスメントターゲティング処理のサンプルです。
 - reportDownloadSample/ReportDownloadSample.java       ：ReportDefinitionService, ReportServiceを使用したレポートダウンロード処理のサンプルです。
@@ -144,7 +150,7 @@ JAX-WSを使用してAPIを呼び出す形になっています。
 - bulkDownloadSample/BulkDownloadSampleTest.java           ：BulkServiceによるダウンロード処理のテストケースです。
 - bulkUploadSample/BulkUploadSampleTest.java               ：BulkServiceによるアップロード処理のテストケースです。
 - conversionTrackerSample/ConversionTrackerSampleTest.java ：ConversionTrackerServiceによるコンバージョン情報の登録、更新処理のテストケースです。
-- dictionarySample.DictionarySampleTest.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ参照処理のテストケースです。
+- dictionarySample.DictionarySampleTest.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ、OSバージョン、入稿用画像形式、参照処理のテストケースです。
 - mediaSample/MediaSampleTest.java                         ：AdSampleTest.javaにMediaServiceを加えた画像広告の入稿処理のテストケースです。
 - placementUrlSample/PlacementUrlSampleTest.java           ：PlacementUrlIdeaService,PlacementUrlListServiceを使用したプレイスメントターゲティング処理のテストケースです。
 - reportDownloadSample/ReportDownloadSampleTest.java       ：ReportDefinitionService, ReportServiceを使用したレポートダウンロード処理のテストケースです。
@@ -197,7 +203,7 @@ MEDIAID             : 画像IDを記述（必須）
 --------------------------------
 set SAMPLE_HOME={ad-api-sample}
 set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
-set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V6.0.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V6.1.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 ■実行例：
 ---------------------------------------

@@ -129,8 +129,8 @@ public class StatsSample {
       System.out.println("stats / totalClickCost = " + stats.getTotalClickCost());
       System.out.println("stats / clickCnt = " + stats.getClickCnt());
       System.out.println("stats / avgClickCost = " + stats.getAvgClickCost());
-      System.out.println("stats / convCnt = " + stats.getConvCnt());
-      System.out.println("stats / convRate = " + stats.getConvRate());
+      System.out.println("stats / totalConversions = " + stats.getTotalConversions());
+      System.out.println("stats / totalConversionRate = " + stats.getTotalConversionRate());
       System.out.println("stats / cpa = " + stats.getCpa());
       System.out.println("stats / avgDeliverRank = " + stats.getAvgDeliverRank());
       System.out.println("stats / totalVimps = " + stats.getTotalVimps());

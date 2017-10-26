@@ -76,22 +76,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetDownloadUrl }
-     * 
-     */
-    public GetDownloadUrl createGetDownloadUrl() {
-        return new GetDownloadUrl();
-    }
-
-    /**
-     * Create an instance of {@link ReportDownloadUrlSelector }
-     * 
-     */
-    public ReportDownloadUrlSelector createReportDownloadUrlSelector() {
-        return new ReportDownloadUrlSelector();
-    }
-
-    /**
      * Create an instance of {@link GetResponse }
      * 
      */
@@ -148,22 +132,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetDownloadUrlResponse }
-     * 
-     */
-    public GetDownloadUrlResponse createGetDownloadUrlResponse() {
-        return new GetDownloadUrlResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReportDownloadUrlPage }
-     * 
-     */
-    public ReportDownloadUrlPage createReportDownloadUrlPage() {
-        return new ReportDownloadUrlPage();
-    }
-
-    /**
      * Create an instance of {@link SoapHeader }
      * 
      */
@@ -196,27 +164,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
      * Create an instance of {@link ReportDateRange }
      * 
      */
     public ReportDateRange createReportDateRange() {
         return new ReportDateRange();
-    }
-
-    /**
-     * Create an instance of {@link ReportDownloadUrlValues }
-     * 
-     */
-    public ReportDownloadUrlValues createReportDownloadUrlValues() {
-        return new ReportDownloadUrlValues();
     }
 
     /**
@@ -236,19 +188,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
      * Create an instance of {@link ReportRecord }
      * 
      */
     public ReportRecord createReportRecord() {
         return new ReportRecord();
-    }
-
-    /**
-     * Create an instance of {@link ReportDownloadUrl }
-     * 
-     */
-    public ReportDownloadUrl createReportDownloadUrl() {
-        return new ReportDownloadUrl();
     }
 
     /**

@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="operations" type="{http://im.yahooapis.jp/V6}AdGroupTargetOperation"/>
+ *         &lt;element name="operations" type="{http://im.yahooapis.jp/V6}AdGroupTargetMutateOperation"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,17 +35,17 @@ import javax.xml.bind.annotation.XmlType;
 public class Mutate {
 
     @XmlElement(required = true)
-    protected AdGroupTargetOperation operations;
+    protected AdGroupTargetMutateOperation operations;
 
     /**
      * Gets the value of the operations property.
      * 
      * @return
      *     possible object is
-     *     {@link AdGroupTargetOperation }
+     *     {@link AdGroupTargetMutateOperation }
      *     
      */
-    public AdGroupTargetOperation getOperations() {
+    public AdGroupTargetMutateOperation getOperations() {
         return operations;
     }
 
@@ -54,10 +54,10 @@ public class Mutate {
      * 
      * @param value
      *     allowed object is
-     *     {@link AdGroupTargetOperation }
+     *     {@link AdGroupTargetMutateOperation }
      *     
      */
-    public void setOperations(AdGroupTargetOperation value) {
+    public void setOperations(AdGroupTargetMutateOperation value) {
         this.operations = value;
     }
 

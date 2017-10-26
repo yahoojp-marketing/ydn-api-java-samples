@@ -1,25 +1,23 @@
 
-package jp.yahooapis.im.V6.AdGroupTargetService;
+package jp.yahooapis.im.V6.DictionaryService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Operation complex type.
+ * <p>Java class for OsVersionSelector complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Operation">
+ * &lt;complexType name="OsVersionSelector">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="operator" type="{http://im.yahooapis.jp/V6}Operator"/>
+ *         &lt;element name="osType" type="{http://im.yahooapis.jp/V6}DeviceOsType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,40 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Operation", propOrder = {
-    "operator"
+@XmlType(name = "OsVersionSelector", propOrder = {
+    "osType"
 })
-@XmlSeeAlso({
-    AdGroupTargetOperation.class
-})
-public abstract class Operation {
+public class OsVersionSelector {
 
-    @XmlElement(required = true)
     @XmlSchemaType(name = "string")
-    protected Operator operator;
+    protected DeviceOsType osType;
 
     /**
-     * Gets the value of the operator property.
+     * Gets the value of the osType property.
      * 
      * @return
      *     possible object is
-     *     {@link Operator }
+     *     {@link DeviceOsType }
      *     
      */
-    public Operator getOperator() {
-        return operator;
+    public DeviceOsType getOsType() {
+        return osType;
     }
 
     /**
-     * Sets the value of the operator property.
+     * Sets the value of the osType property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Operator }
+     *     {@link DeviceOsType }
      *     
      */
-    public void setOperator(Operator value) {
-        this.operator = value;
+    public void setOsType(DeviceOsType value) {
+        this.osType = value;
     }
 
 }
