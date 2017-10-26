@@ -67,6 +67,7 @@ public interface BulkServiceInterface {
     /**
      * 
      * @param accountId
+     * @param uploadBulkJobName
      * @param rval
      * @param error
      * @throws ApiException
@@ -77,6 +78,8 @@ public interface BulkServiceInterface {
     public void getUploadUrl(
         @WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V6")
         long accountId,
+        @WebParam(name = "uploadBulkJobName", targetNamespace = "http://im.yahooapis.jp/V6")
+        String uploadBulkJobName,
         @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
         Holder<UploadUrlValue> rval,
         @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)

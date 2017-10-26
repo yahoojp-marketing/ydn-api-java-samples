@@ -29,6 +29,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="adProductType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="frequencyCap" type="{http://im.yahooapis.jp/V6}FrequencyCap" minOccurs="0"/>
  *         &lt;element name="conversionOptimizer" type="{http://im.yahooapis.jp/V6}ConversionOptimizer" minOccurs="0"/>
+ *         &lt;element name="campaignType" type="{http://im.yahooapis.jp/V6}CampaignType" minOccurs="0"/>
+ *         &lt;element name="appName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="appId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="appOs" type="{http://im.yahooapis.jp/V6}DeviceOsType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -50,7 +54,11 @@ import javax.xml.bind.annotation.XmlType;
     "biddingStrategy",
     "adProductType",
     "frequencyCap",
-    "conversionOptimizer"
+    "conversionOptimizer",
+    "campaignType",
+    "appName",
+    "appId",
+    "appOs"
 })
 public class Campaign {
 
@@ -68,6 +76,12 @@ public class Campaign {
     protected String adProductType;
     protected FrequencyCap frequencyCap;
     protected ConversionOptimizer conversionOptimizer;
+    @XmlSchemaType(name = "string")
+    protected CampaignType campaignType;
+    protected String appName;
+    protected String appId;
+    @XmlSchemaType(name = "string")
+    protected DeviceOsType appOs;
 
     /**
      * Gets the value of the accountId property.
@@ -347,6 +361,102 @@ public class Campaign {
      */
     public void setConversionOptimizer(ConversionOptimizer value) {
         this.conversionOptimizer = value;
+    }
+
+    /**
+     * Gets the value of the campaignType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CampaignType }
+     *     
+     */
+    public CampaignType getCampaignType() {
+        return campaignType;
+    }
+
+    /**
+     * Sets the value of the campaignType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CampaignType }
+     *     
+     */
+    public void setCampaignType(CampaignType value) {
+        this.campaignType = value;
+    }
+
+    /**
+     * Gets the value of the appName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAppName() {
+        return appName;
+    }
+
+    /**
+     * Sets the value of the appName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAppName(String value) {
+        this.appName = value;
+    }
+
+    /**
+     * Gets the value of the appId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAppId() {
+        return appId;
+    }
+
+    /**
+     * Sets the value of the appId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAppId(String value) {
+        this.appId = value;
+    }
+
+    /**
+     * Gets the value of the appOs property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DeviceOsType }
+     *     
+     */
+    public DeviceOsType getAppOs() {
+        return appOs;
+    }
+
+    /**
+     * Sets the value of the appOs property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DeviceOsType }
+     *     
+     */
+    public void setAppOs(DeviceOsType value) {
+        this.appOs = value;
     }
 
 }

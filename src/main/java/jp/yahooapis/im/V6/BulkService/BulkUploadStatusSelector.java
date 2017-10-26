@@ -23,9 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="uploadBulkJobIds" type="{http://www.w3.org/2001/XMLSchema}long" maxOccurs="unbounded"/>
  *         &lt;element name="uploadBulkJobStatus" type="{http://im.yahooapis.jp/V6}UploadBulkJobStatus" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="lang" type="{http://im.yahooapis.jp/V6}BulkLang" minOccurs="0"/>
  *         &lt;element name="output" type="{http://im.yahooapis.jp/V6}BulkOutput"/>
- *         &lt;element name="encoding" type="{http://im.yahooapis.jp/V6}BulkEncoding"/>
  *         &lt;element name="paging" type="{http://im.yahooapis.jp/V6}Paging" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -40,9 +38,7 @@ import javax.xml.bind.annotation.XmlType;
     "accountId",
     "uploadBulkJobIds",
     "uploadBulkJobStatus",
-    "lang",
     "output",
-    "encoding",
     "paging"
 })
 public class BulkUploadStatusSelector {
@@ -52,14 +48,9 @@ public class BulkUploadStatusSelector {
     protected List<Long> uploadBulkJobIds;
     @XmlSchemaType(name = "string")
     protected List<UploadBulkJobStatus> uploadBulkJobStatus;
-    @XmlSchemaType(name = "string")
-    protected BulkLang lang;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected BulkOutput output;
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "string")
-    protected BulkEncoding encoding;
     protected Paging paging;
 
     /**
@@ -137,30 +128,6 @@ public class BulkUploadStatusSelector {
     }
 
     /**
-     * Gets the value of the lang property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BulkLang }
-     *     
-     */
-    public BulkLang getLang() {
-        return lang;
-    }
-
-    /**
-     * Sets the value of the lang property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BulkLang }
-     *     
-     */
-    public void setLang(BulkLang value) {
-        this.lang = value;
-    }
-
-    /**
      * Gets the value of the output property.
      * 
      * @return
@@ -182,30 +149,6 @@ public class BulkUploadStatusSelector {
      */
     public void setOutput(BulkOutput value) {
         this.output = value;
-    }
-
-    /**
-     * Gets the value of the encoding property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BulkEncoding }
-     *     
-     */
-    public BulkEncoding getEncoding() {
-        return encoding;
-    }
-
-    /**
-     * Sets the value of the encoding property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BulkEncoding }
-     *     
-     */
-    public void setEncoding(BulkEncoding value) {
-        this.encoding = value;
     }
 
     /**

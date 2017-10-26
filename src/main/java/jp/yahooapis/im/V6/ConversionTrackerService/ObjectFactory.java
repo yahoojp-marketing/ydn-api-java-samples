@@ -124,11 +124,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConversionTracker }
+     * Create an instance of {@link ErrorDetail }
      * 
      */
-    public ConversionTracker createConversionTracker() {
-        return new ConversionTracker();
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link AppConversion }
+     * 
+     */
+    public AppConversion createAppConversion() {
+        return new AppConversion();
+    }
+
+    /**
+     * Create an instance of {@link ConversionTrackerValues }
+     * 
+     */
+    public ConversionTrackerValues createConversionTrackerValues() {
+        return new ConversionTrackerValues();
     }
 
     /**
@@ -153,22 +169,6 @@ public class ObjectFactory {
      */
     public WebConversion createWebConversion() {
         return new WebConversion();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
-    }
-
-    /**
-     * Create an instance of {@link ConversionTrackerValues }
-     * 
-     */
-    public ConversionTrackerValues createConversionTrackerValues() {
-        return new ConversionTrackerValues();
     }
 
     /**

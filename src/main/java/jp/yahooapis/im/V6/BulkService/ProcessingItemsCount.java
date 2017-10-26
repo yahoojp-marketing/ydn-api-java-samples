@@ -21,11 +21,13 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="adGroupAdCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="adGroupTargetCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="mediaCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="videoCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="campaignErrorCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="adGroupErrorCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="adGroupAdErrorCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="adGroupTargetErrorCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="mediaErrorCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="videoErrorCount" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -41,11 +43,13 @@ import javax.xml.bind.annotation.XmlType;
     "adGroupAdCount",
     "adGroupTargetCount",
     "mediaCount",
+    "videoCount",
     "campaignErrorCount",
     "adGroupErrorCount",
     "adGroupAdErrorCount",
     "adGroupTargetErrorCount",
-    "mediaErrorCount"
+    "mediaErrorCount",
+    "videoErrorCount"
 })
 public class ProcessingItemsCount {
 
@@ -54,11 +58,13 @@ public class ProcessingItemsCount {
     protected Long adGroupAdCount;
     protected Long adGroupTargetCount;
     protected Long mediaCount;
+    protected Long videoCount;
     protected Long campaignErrorCount;
     protected Long adGroupErrorCount;
     protected Long adGroupAdErrorCount;
     protected Long adGroupTargetErrorCount;
     protected Long mediaErrorCount;
+    protected Long videoErrorCount;
 
     /**
      * Gets the value of the campaignCount property.
@@ -181,6 +187,30 @@ public class ProcessingItemsCount {
     }
 
     /**
+     * Gets the value of the videoCount property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getVideoCount() {
+        return videoCount;
+    }
+
+    /**
+     * Sets the value of the videoCount property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setVideoCount(Long value) {
+        this.videoCount = value;
+    }
+
+    /**
      * Gets the value of the campaignErrorCount property.
      * 
      * @return
@@ -298,6 +328,30 @@ public class ProcessingItemsCount {
      */
     public void setMediaErrorCount(Long value) {
         this.mediaErrorCount = value;
+    }
+
+    /**
+     * Gets the value of the videoErrorCount property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getVideoErrorCount() {
+        return videoErrorCount;
+    }
+
+    /**
+     * Sets the value of the videoErrorCount property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setVideoErrorCount(Long value) {
+        this.videoErrorCount = value;
     }
 
 }

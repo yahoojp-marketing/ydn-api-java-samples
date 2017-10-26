@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;simpleType name="ConversionTrackerType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="WEB_CONVERSION"/>
+ *     &lt;enumeration value="APP_CONVERSION"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -23,7 +24,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum ConversionTrackerType {
 
-    WEB_CONVERSION;
+    WEB_CONVERSION,
+    APP_CONVERSION;
 
     public String value() {
         return name();

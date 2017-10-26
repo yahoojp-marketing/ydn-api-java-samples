@@ -1,5 +1,5 @@
 
-package jp.yahooapis.im.V6.AdGroupTargetService;
+package jp.yahooapis.im.V6.DictionaryService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +9,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AdScheduleTargetList complex type.
+ * <p>Java class for MediaAdFormatPage complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AdScheduleTargetList">
+ * &lt;complexType name="MediaAdFormatPage">
  *   &lt;complexContent>
- *     &lt;extension base="{http://im.yahooapis.jp/V6}AdGroupTargetList">
+ *     &lt;extension base="{http://im.yahooapis.jp/V6}Page">
  *       &lt;sequence>
- *         &lt;element name="targets" type="{http://im.yahooapis.jp/V6}AdScheduleTarget" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="values" type="{http://im.yahooapis.jp/V6}MediaAdFormatValues" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -28,42 +28,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdScheduleTargetList", propOrder = {
-    "targets"
+@XmlType(name = "MediaAdFormatPage", propOrder = {
+    "values"
 })
-public class AdScheduleTargetList
-    extends AdGroupTargetList
+public class MediaAdFormatPage
+    extends Page
 {
 
-    protected List<AdScheduleTarget> targets;
+    protected List<MediaAdFormatValues> values;
 
     /**
-     * Gets the value of the targets property.
+     * Gets the value of the values property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the targets property.
+     * This is why there is not a <CODE>set</CODE> method for the values property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getTargets().add(newItem);
+     *    getValues().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AdScheduleTarget }
+     * {@link MediaAdFormatValues }
      * 
      * 
      */
-    public List<AdScheduleTarget> getTargets() {
-        if (targets == null) {
-            targets = new ArrayList<AdScheduleTarget>();
+    public List<MediaAdFormatValues> getValues() {
+        if (values == null) {
+            values = new ArrayList<MediaAdFormatValues>();
         }
-        return this.targets;
+        return this.values;
     }
 
 }

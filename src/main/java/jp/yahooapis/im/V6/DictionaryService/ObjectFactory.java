@@ -76,6 +76,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetOsVersionResponse }
+     * 
+     */
+    public GetOsVersionResponse createGetOsVersionResponse() {
+        return new GetOsVersionResponse();
+    }
+
+    /**
+     * Create an instance of {@link OsVersionPage }
+     * 
+     */
+    public OsVersionPage createOsVersionPage() {
+        return new OsVersionPage();
+    }
+
+    /**
      * Create an instance of {@link SoapResponseHeader }
      * 
      */
@@ -140,6 +156,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetMediaAdFormat }
+     * 
+     */
+    public GetMediaAdFormat createGetMediaAdFormat() {
+        return new GetMediaAdFormat();
+    }
+
+    /**
      * Create an instance of {@link GetDisapprovalReasonResponse }
      * 
      */
@@ -156,6 +180,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetOsVersion }
+     * 
+     */
+    public GetOsVersion createGetOsVersion() {
+        return new GetOsVersion();
+    }
+
+    /**
+     * Create an instance of {@link OsVersionSelector }
+     * 
+     */
+    public OsVersionSelector createOsVersionSelector() {
+        return new OsVersionSelector();
+    }
+
+    /**
      * Create an instance of {@link GetGeographicLocationResponse }
      * 
      */
@@ -169,6 +209,22 @@ public class ObjectFactory {
      */
     public GeographicLocationPage createGeographicLocationPage() {
         return new GeographicLocationPage();
+    }
+
+    /**
+     * Create an instance of {@link GetMediaAdFormatResponse }
+     * 
+     */
+    public GetMediaAdFormatResponse createGetMediaAdFormatResponse() {
+        return new GetMediaAdFormatResponse();
+    }
+
+    /**
+     * Create an instance of {@link MediaAdFormatPage }
+     * 
+     */
+    public MediaAdFormatPage createMediaAdFormatPage() {
+        return new MediaAdFormatPage();
     }
 
     /**
@@ -220,11 +276,67 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MediaAdFormatValues }
+     * 
+     */
+    public MediaAdFormatValues createMediaAdFormatValues() {
+        return new MediaAdFormatValues();
+    }
+
+    /**
      * Create an instance of {@link Category }
      * 
      */
     public Category createCategory() {
         return new Category();
+    }
+
+    /**
+     * Create an instance of {@link OsVersionValues }
+     * 
+     */
+    public OsVersionValues createOsVersionValues() {
+        return new OsVersionValues();
+    }
+
+    /**
+     * Create an instance of {@link DisapprovalReasonValues }
+     * 
+     */
+    public DisapprovalReasonValues createDisapprovalReasonValues() {
+        return new DisapprovalReasonValues();
+    }
+
+    /**
+     * Create an instance of {@link OsVersion }
+     * 
+     */
+    public OsVersion createOsVersion() {
+        return new OsVersion();
+    }
+
+    /**
+     * Create an instance of {@link GeographicLocationValues }
+     * 
+     */
+    public GeographicLocationValues createGeographicLocationValues() {
+        return new GeographicLocationValues();
+    }
+
+    /**
+     * Create an instance of {@link ErrorDetail }
+     * 
+     */
+    public ErrorDetail createErrorDetail() {
+        return new ErrorDetail();
+    }
+
+    /**
+     * Create an instance of {@link MediaAdFormat }
+     * 
+     */
+    public MediaAdFormat createMediaAdFormat() {
+        return new MediaAdFormat();
     }
 
     /**
@@ -244,14 +356,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DisapprovalReasonValues }
-     * 
-     */
-    public DisapprovalReasonValues createDisapprovalReasonValues() {
-        return new DisapprovalReasonValues();
-    }
-
-    /**
      * Create an instance of {@link GeographicLocation }
      * 
      */
@@ -265,22 +369,6 @@ public class ObjectFactory {
      */
     public ColorSetValues createColorSetValues() {
         return new ColorSetValues();
-    }
-
-    /**
-     * Create an instance of {@link GeographicLocationValues }
-     * 
-     */
-    public GeographicLocationValues createGeographicLocationValues() {
-        return new GeographicLocationValues();
-    }
-
-    /**
-     * Create an instance of {@link ErrorDetail }
-     * 
-     */
-    public ErrorDetail createErrorDetail() {
-        return new ErrorDetail();
     }
 
     /**

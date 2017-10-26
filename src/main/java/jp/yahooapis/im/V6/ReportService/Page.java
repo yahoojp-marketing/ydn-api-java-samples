@@ -34,8 +34,7 @@ import javax.xml.bind.annotation.XmlType;
     "pageType"
 })
 @XmlSeeAlso({
-    ReportPage.class,
-    ReportDownloadUrlPage.class
+    ReportPage.class
 })
 public abstract class Page {
 

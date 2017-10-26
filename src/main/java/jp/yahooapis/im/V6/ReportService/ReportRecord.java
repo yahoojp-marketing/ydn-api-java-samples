@@ -4,7 +4,6 @@ package jp.yahooapis.im.V6.ReportService;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -28,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="dateRange" type="{http://im.yahooapis.jp/V6}ReportDateRange" minOccurs="0"/>
  *         &lt;element name="status" type="{http://im.yahooapis.jp/V6}ReportJobStatus" minOccurs="0"/>
  *         &lt;element name="jobErrorDetail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="reportDownloadUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,10 +47,8 @@ import javax.xml.bind.annotation.XmlType;
     "dateRangeType",
     "dateRange",
     "status",
-    "jobErrorDetail"
-})
-@XmlSeeAlso({
-    ReportDownloadUrl.class
+    "jobErrorDetail",
+    "reportDownloadUrl"
 })
 public class ReportRecord {
 
@@ -66,6 +64,7 @@ public class ReportRecord {
     @XmlSchemaType(name = "string")
     protected ReportJobStatus status;
     protected String jobErrorDetail;
+    protected String reportDownloadUrl;
 
     /**
      * Gets the value of the accountId property.
@@ -305,6 +304,30 @@ public class ReportRecord {
      */
     public void setJobErrorDetail(String value) {
         this.jobErrorDetail = value;
+    }
+
+    /**
+     * Gets the value of the reportDownloadUrl property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReportDownloadUrl() {
+        return reportDownloadUrl;
+    }
+
+    /**
+     * Sets the value of the reportDownloadUrl property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReportDownloadUrl(String value) {
+        this.reportDownloadUrl = value;
     }
 
 }

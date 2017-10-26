@@ -3,8 +3,6 @@ package jp.yahooapis.im.V6.AdGroupTargetService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -16,12 +14,12 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="SiteCategoryTarget">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://im.yahooapis.jp/V6}Target">
  *       &lt;sequence>
- *         &lt;element name="type" type="{http://im.yahooapis.jp/V6}TargetType"/>
- *         &lt;element name="category" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="categoryFullNameJa" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="categoryFullNameEn" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -30,63 +28,62 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SiteCategoryTarget", propOrder = {
-    "type",
-    "category"
+    "categoryFullNameJa",
+    "categoryFullNameEn"
 })
-public class SiteCategoryTarget {
+public class SiteCategoryTarget
+    extends Target
+{
 
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "string")
-    protected TargetType type;
-    @XmlElement(required = true)
-    protected String category;
-
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TargetType }
-     *     
-     */
-    public TargetType getType() {
-        return type;
-    }
+    protected String categoryFullNameJa;
+    protected String categoryFullNameEn;
 
     /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TargetType }
-     *     
-     */
-    public void setType(TargetType value) {
-        this.type = value;
-    }
-
-    /**
-     * Gets the value of the category property.
+     * Gets the value of the categoryFullNameJa property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCategory() {
-        return category;
+    public String getCategoryFullNameJa() {
+        return categoryFullNameJa;
     }
 
     /**
-     * Sets the value of the category property.
+     * Sets the value of the categoryFullNameJa property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCategory(String value) {
-        this.category = value;
+    public void setCategoryFullNameJa(String value) {
+        this.categoryFullNameJa = value;
+    }
+
+    /**
+     * Gets the value of the categoryFullNameEn property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCategoryFullNameEn() {
+        return categoryFullNameEn;
+    }
+
+    /**
+     * Sets the value of the categoryFullNameEn property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCategoryFullNameEn(String value) {
+        this.categoryFullNameEn = value;
     }
 
 }

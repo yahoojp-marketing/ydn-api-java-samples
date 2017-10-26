@@ -56,6 +56,26 @@ public interface AdGroupTargetServiceInterface {
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.AdGroupTargetService.MutateResponse")
     public void mutate(
         @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V6")
+        AdGroupTargetMutateOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
+        Holder<AdGroupTargetReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
+        Holder<List<Error>> error)
+        throws ApiException
+    ;
+
+    /**
+     * 
+     * @param operations
+     * @param rval
+     * @param error
+     * @throws ApiException
+     */
+    @WebMethod
+    @RequestWrapper(localName = "replace", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.AdGroupTargetService.Replace")
+    @ResponseWrapper(localName = "replaceResponse", targetNamespace = "http://im.yahooapis.jp/V6", className = "jp.yahooapis.im.V6.AdGroupTargetService.ReplaceResponse")
+    public void replace(
+        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V6")
         AdGroupTargetOperation operations,
         @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V6", mode = WebParam.Mode.OUT)
         Holder<AdGroupTargetReturnValue> rval,

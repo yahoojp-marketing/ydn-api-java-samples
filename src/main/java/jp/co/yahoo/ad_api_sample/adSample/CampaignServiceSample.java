@@ -12,7 +12,9 @@ import jp.yahooapis.im.V6.CampaignService.CampaignReturnValue;
 import jp.yahooapis.im.V6.CampaignService.CampaignSelector;
 import jp.yahooapis.im.V6.CampaignService.CampaignServiceInterface;
 import jp.yahooapis.im.V6.CampaignService.CampaignServiceService;
+import jp.yahooapis.im.V6.CampaignService.CampaignType;
 import jp.yahooapis.im.V6.CampaignService.CampaignValues;
+import jp.yahooapis.im.V6.CampaignService.DeviceOsType;
 import jp.yahooapis.im.V6.CampaignService.Error;
 import jp.yahooapis.im.V6.CampaignService.FrequencyCap;
 import jp.yahooapis.im.V6.CampaignService.FrequencyLevel;
@@ -91,7 +93,6 @@ public class CampaignServiceSample {
    *
    * @param operation CampaignOperation
    * @return CampaignValues
-   * @throws Exception
    */
   public static List<CampaignValues> add(CampaignOperation operation) throws Exception {
     // =================================================================
@@ -138,7 +139,6 @@ public class CampaignServiceSample {
    *
    * @param operation CampaignOperation
    * @return CampaignValues
-   * @throws Exception
    */
   public static List<CampaignValues> set(CampaignOperation operation) throws Exception {
     // =================================================================
@@ -186,7 +186,6 @@ public class CampaignServiceSample {
    *
    * @param operation CampaignOperation
    * @return CampaignValues
-   * @throws Exception
    */
   public static List<CampaignValues> remove(CampaignOperation operation) throws Exception {
     // =================================================================
@@ -230,7 +229,6 @@ public class CampaignServiceSample {
    *
    * @param selector CampaignSelector
    * @return CampaignValues
-   * @throws Exception
    */
   public static List<CampaignValues> get(CampaignSelector selector) throws Exception {
     // =================================================================
@@ -279,38 +277,90 @@ public class CampaignServiceSample {
    * @return CampaignOperation
    */
   public static CampaignOperation createSampleAddRequest(long accountId) {
-    Campaign addCampaignOperand = new Campaign();
-    addCampaignOperand.setAccountId(accountId);
-    addCampaignOperand.setCampaignName("SampleCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    addCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
-    addCampaignOperand.setStartDate("20300101");
-    addCampaignOperand.setEndDate("20301231");
-    Budget budget = new Budget();
-    budget.setAmount((long) 1000);
-    budget.setDeliveryMethod(BudgetDeliveryMethod.STANDARD);
-    addCampaignOperand.setBudget(budget);
-    ManualCPC manualCPC = new ManualCPC();
-    manualCPC.setType(BiddingStrategyType.MANUAL_CPC);
-    addCampaignOperand.setBiddingStrategy(manualCPC);
-    addCampaignOperand.setAdProductType("TARGET_MATCH");
-    FrequencyCap frequencyCap = new FrequencyCap();
-    frequencyCap.setLevel(FrequencyLevel.CAMPAIGN);
-    frequencyCap.setTimeUnit(FrequencyTimeUnit.WEEK);
-    frequencyCap.setImpression((long) 10);
-    addCampaignOperand.setFrequencyCap(frequencyCap);
+    Campaign standardCampaignOperand = new Campaign();
+    standardCampaignOperand.setAccountId(accountId);
+    standardCampaignOperand.setCampaignName("SampleCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    standardCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
+    standardCampaignOperand.setStartDate("20300101");
+    standardCampaignOperand.setEndDate("20301231");
+    Budget standardBudget = new Budget();
+    standardBudget.setAmount((long) 1000);
+    standardBudget.setDeliveryMethod(BudgetDeliveryMethod.STANDARD);
+    standardCampaignOperand.setBudget(standardBudget);
+    ManualCPC standardManualCPC = new ManualCPC();
+    standardManualCPC.setType(BiddingStrategyType.MANUAL_CPC);
+    standardCampaignOperand.setBiddingStrategy(standardManualCPC);
+    standardCampaignOperand.setAdProductType("TARGET_MATCH");
+    FrequencyCap standardFequencyCap = new FrequencyCap();
+    standardFequencyCap.setLevel(FrequencyLevel.CAMPAIGN);
+    standardFequencyCap.setTimeUnit(FrequencyTimeUnit.WEEK);
+    standardFequencyCap.setImpression((long) 10);
+    standardCampaignOperand.setFrequencyCap(standardFequencyCap);
+    standardCampaignOperand.setCampaignType(CampaignType.STANDARD);
+
+    Campaign androidCampaignOperand = new Campaign();
+    androidCampaignOperand.setAccountId(accountId);
+    androidCampaignOperand.setCampaignName("AndroidCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    androidCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
+    androidCampaignOperand.setStartDate("20300101");
+    androidCampaignOperand.setEndDate("20301231");
+    Budget androidBudget = new Budget();
+    androidBudget.setAmount((long) 1000);
+    androidBudget.setDeliveryMethod(BudgetDeliveryMethod.STANDARD);
+    androidCampaignOperand.setBudget(androidBudget);
+    ManualCPC androidManualCPC = new ManualCPC();
+    androidManualCPC.setType(BiddingStrategyType.MANUAL_CPC);
+    androidCampaignOperand.setBiddingStrategy(androidManualCPC);
+    androidCampaignOperand.setAdProductType("TARGET_MATCH");
+    FrequencyCap androidFrequencyCap = new FrequencyCap();
+    androidFrequencyCap.setLevel(FrequencyLevel.CAMPAIGN);
+    androidFrequencyCap.setTimeUnit(FrequencyTimeUnit.WEEK);
+    androidFrequencyCap.setImpression((long) 10);
+    androidCampaignOperand.setFrequencyCap(androidFrequencyCap);
+    androidCampaignOperand.setCampaignType(CampaignType.APP);
+    androidCampaignOperand.setAppOs(DeviceOsType.ANDROID);
+    androidCampaignOperand.setAppId("jp.co.yahoo.sample");
+    androidCampaignOperand.setAppName("Sample Android app");
+
+    Campaign iosCampaignOperand = new Campaign();
+    iosCampaignOperand.setAccountId(accountId);
+    iosCampaignOperand.setCampaignName("IOSCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    iosCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
+    iosCampaignOperand.setStartDate("20300101");
+    iosCampaignOperand.setEndDate("20301231");
+    Budget iosBudget = new Budget();
+    iosBudget.setAmount((long) 1000);
+    iosBudget.setDeliveryMethod(BudgetDeliveryMethod.STANDARD);
+    iosCampaignOperand.setBudget(iosBudget);
+    ManualCPC iosManualCPC = new ManualCPC();
+    iosManualCPC.setType(BiddingStrategyType.MANUAL_CPC);
+    iosCampaignOperand.setBiddingStrategy(iosManualCPC);
+    iosCampaignOperand.setAdProductType("TARGET_MATCH");
+    FrequencyCap iosFrequencyCap = new FrequencyCap();
+    iosFrequencyCap.setLevel(FrequencyLevel.CAMPAIGN);
+    iosFrequencyCap.setTimeUnit(FrequencyTimeUnit.WEEK);
+    iosFrequencyCap.setImpression((long) 10);
+    iosCampaignOperand.setFrequencyCap(iosFrequencyCap);
+    iosCampaignOperand.setCampaignType(CampaignType.APP);
+    iosCampaignOperand.setAppOs(DeviceOsType.IOS);
+    iosCampaignOperand.setAppId("1234567890");
+    iosCampaignOperand.setAppName("Sample IOS app");
 
     CampaignOperation addCampaignOperation = new CampaignOperation();
     addCampaignOperation.setOperator(jp.yahooapis.im.V6.CampaignService.Operator.ADD);
     addCampaignOperation.setAccountId(accountId);
-    addCampaignOperation.getOperand().add(addCampaignOperand);
+    addCampaignOperation.getOperand().add(standardCampaignOperand);
+    addCampaignOperation.getOperand().add(androidCampaignOperand);
+    addCampaignOperation.getOperand().add(iosCampaignOperand);
 
     return addCampaignOperation;
   }
 
+
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId      long
    * @param campaignValues CampaignValues
    * @return CampaignOperation
    */
@@ -323,7 +373,7 @@ public class CampaignServiceSample {
       Campaign setCampaignOperand = new Campaign();
       setCampaignOperand.setAccountId(campaignValue.getCampaign().getAccountId());
       setCampaignOperand.setCampaignId(campaignValue.getCampaign().getCampaignId());
-      setCampaignOperand.setCampaignName("SampleCampaign_UpdateOn_" + SoapUtils.getCurrentTimestamp());
+      setCampaignOperand.setCampaignName("SampleCampaign_UpdateOn_" + SoapUtils.getCurrentTimestamp() + campaignValue.getCampaign().getCampaignId());
       setCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.PAUSED);
       setCampaignOperand.setStartDate("20300101");
       setCampaignOperand.setEndDate("20301231");
@@ -342,14 +392,13 @@ public class CampaignServiceSample {
       setCampaignOperation.getOperand().add(setCampaignOperand);
     }
 
-
     return setCampaignOperation;
   }
 
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId      long
    * @param campaignValues CampaignValues
    * @return CampaignOperation
    */
@@ -375,7 +424,7 @@ public class CampaignServiceSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId      long
    * @param campaignValues CampaignValues
    * @return CampaignSelector
    */
@@ -399,7 +448,7 @@ public class CampaignServiceSample {
 
   /**
    * display Campaign entity to stdout.
-   * 
+   *
    * @param campaign Campaign entity for display.
    */
   private static void displayCampaign(Campaign campaign) {
@@ -409,6 +458,10 @@ public class CampaignServiceSample {
     System.out.println("userStatus = " + campaign.getUserStatus().toString());
     System.out.println("startDate = " + campaign.getStartDate());
     System.out.println("endDate = " + campaign.getEndDate());
+    System.out.println("campaignType = " + campaign.getCampaignType());
+    System.out.println("appId = " + campaign.getAppId());
+    System.out.println("appName = " + campaign.getAppName());
+    System.out.println("appOs = " + campaign.getAppOs());
     if (campaign.getBudget() != null) {
       System.out.println("budget/amount = " + campaign.getBudget().getAmount());
       System.out.println("budget/deliveryMethod = " + campaign.getBudget().getDeliveryMethod().toString());

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "VideoService", targetNamespace = "http://im.yahooapis.jp/V6", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V6.0/VideoService?wsdl")
+@WebServiceClient(name = "VideoService", targetNamespace = "http://im.yahooapis.jp/V6", wsdlLocation = "https://sandbox.im.yahooapis.jp/services/V6.1/VideoService?wsdl")
 public class VideoService
     extends Service
 {
@@ -30,7 +30,7 @@ public class VideoService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://sandbox.im.yahooapis.jp/services/V6.0/VideoService?wsdl");
+            url = new URL("https://sandbox.im.yahooapis.jp/services/V6.1/VideoService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

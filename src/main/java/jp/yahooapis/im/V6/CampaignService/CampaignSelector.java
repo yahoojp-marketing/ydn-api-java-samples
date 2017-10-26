@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="campaignIds" type="{http://www.w3.org/2001/XMLSchema}long" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="userStatus" type="{http://im.yahooapis.jp/V6}UserStatus" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="paging" type="{http://im.yahooapis.jp/V6}Paging" minOccurs="0"/>
+ *         &lt;element name="campaignType" type="{http://im.yahooapis.jp/V6}CampaignType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,7 +38,8 @@ import javax.xml.bind.annotation.XmlType;
     "accountId",
     "campaignIds",
     "userStatus",
-    "paging"
+    "paging",
+    "campaignType"
 })
 public class CampaignSelector {
 
@@ -47,6 +49,8 @@ public class CampaignSelector {
     @XmlSchemaType(name = "string")
     protected List<UserStatus> userStatus;
     protected Paging paging;
+    @XmlSchemaType(name = "string")
+    protected CampaignType campaignType;
 
     /**
      * Gets the value of the accountId property.
@@ -144,6 +148,30 @@ public class CampaignSelector {
      */
     public void setPaging(Paging value) {
         this.paging = value;
+    }
+
+    /**
+     * Gets the value of the campaignType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CampaignType }
+     *     
+     */
+    public CampaignType getCampaignType() {
+        return campaignType;
+    }
+
+    /**
+     * Sets the value of the campaignType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CampaignType }
+     *     
+     */
+    public void setCampaignType(CampaignType value) {
+        this.campaignType = value;
     }
 
 }

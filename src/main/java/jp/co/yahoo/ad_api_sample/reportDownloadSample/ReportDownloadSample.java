@@ -23,10 +23,6 @@ import jp.yahooapis.im.V6.ReportDefinitionService.ReportLang;
 import jp.yahooapis.im.V6.ReportService.ReportClosedDateRecord;
 import jp.yahooapis.im.V6.ReportService.ReportClosedDateSelector;
 import jp.yahooapis.im.V6.ReportService.ReportClosedDateValue;
-import jp.yahooapis.im.V6.ReportService.ReportDownloadUrl;
-import jp.yahooapis.im.V6.ReportService.ReportDownloadUrlPage;
-import jp.yahooapis.im.V6.ReportService.ReportDownloadUrlSelector;
-import jp.yahooapis.im.V6.ReportService.ReportDownloadUrlValues;
 import jp.yahooapis.im.V6.ReportService.ReportJobOperation;
 import jp.yahooapis.im.V6.ReportService.ReportJobStatus;
 import jp.yahooapis.im.V6.ReportService.ReportPage;
@@ -100,7 +96,7 @@ public class ReportDownloadSample {
       reportDefinition.setDateRangeType(ReportDateRangeType.YESTERDAY);
       // fileds
       reportDefinition.getFields()
-          .addAll(Arrays.asList("ACCOUNT_NAME", "ACCOUNT_ID", "DAY", "DEVICE", "IMPS", "CLICK", "CLICK_RATE", "AVG_DELIVER_RANK", "COST", "AVG_CPC", "CONVERSION", "CONVERSION_RATE", "CPA"));
+          .addAll(Arrays.asList("ACCOUNT_NAME", "ACCOUNT_ID", "DAY", "DEVICE", "IMPS", "CLICK", "CLICK_RATE", "AVG_DELIVER_RANK", "COST", "AVG_CPC"));
       // reportDefinition.getFields().addAll(Arrays.asList("ACCOUNT_ID", "AD_ID"));
 
       reportDefinition.setFormat(ReportDownloadFormat.CSV);
@@ -282,6 +278,7 @@ public class ReportDownloadSample {
       ReportSelector reportSelector = new ReportSelector();
       reportSelector.setAccountId(SoapUtils.getAccountId());
       reportSelector.getReportJobIds().add(reportJobId);
+      String downloadURLStr = null;
 
       // call 30sec sleep * 30 = 15minute
       for (int i = 0; i < 30; i++) {
@@ -315,6 +312,7 @@ public class ReportDownloadSample {
             }
 
             if (values.getReportRecord().getStatus() == ReportJobStatus.COMPLETED) {
+              downloadURLStr = values.getReportRecord().getReportDownloadUrl();
               break;
             } else {
               if (values.getReportRecord().getStatus() == ReportJobStatus.ACCEPTED || values.getReportRecord().getStatus() == ReportJobStatus.IN_PROGRESS) {
@@ -330,41 +328,6 @@ public class ReportDownloadSample {
             System.exit(0);
           }
 
-        }
-      }
-
-      // -----------------------------------------------
-      // call ReportService::getDownloadUrl
-      // -----------------------------------------------
-      // request
-      ReportDownloadUrlSelector urlSelector = new ReportDownloadUrlSelector();
-      urlSelector.setAccountId(SoapUtils.getAccountId());
-      urlSelector.getReportJobIds().add(reportJobId);
-
-      // call API
-      System.out.println("############################################");
-      System.out.println("ReportService::getDownloadUrl");
-      System.out.println("############################################");
-      Holder<ReportDownloadUrlPage> getUrlPageHolder = new Holder<ReportDownloadUrlPage>();
-      Holder<List<jp.yahooapis.im.V6.ReportService.Error>> getUrlError = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
-      reportService.getDownloadUrl(urlSelector, getUrlPageHolder, getUrlError);
-
-      // if error
-      if (getUrlError.value != null && getUrlError.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(getUrlError.value), true);
-      }
-
-      // response
-      String downloadURLStr = null;
-      if (getUrlPageHolder.value != null) {
-        ReportDownloadUrlPage downloadUrlPage = getUrlPageHolder.value;
-        for (ReportDownloadUrlValues values : downloadUrlPage.getValues()) {
-          if (values.isOperationSucceeded()) {
-            downloadURLStr = values.getReportDownloadUrl().getDownloadUrl();
-            displayReportDownloadUrl(values.getReportDownloadUrl());
-          } else {
-            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
-          }
         }
       }
 
@@ -419,7 +382,7 @@ public class ReportDownloadSample {
       ReportSelector frequencyReportSelector = new ReportSelector();
       frequencyReportSelector.setAccountId(SoapUtils.getAccountId());
       frequencyReportSelector.getReportJobIds().add(frequencyReportJobId);
-
+      String downloadFrequencyURLStr = null;
       // call 30sec sleep * 30 = 15minute
       for (int i = 0; i < 30; i++) {
         // sleep 30 second.
@@ -452,6 +415,7 @@ public class ReportDownloadSample {
             }
 
             if (values.getReportRecord().getStatus() == ReportJobStatus.COMPLETED) {
+              downloadFrequencyURLStr = values.getReportRecord().getReportDownloadUrl();
               break;
             } else {
               if (values.getReportRecord().getStatus() == ReportJobStatus.ACCEPTED || values.getReportRecord().getStatus() == ReportJobStatus.IN_PROGRESS) {
@@ -467,41 +431,6 @@ public class ReportDownloadSample {
             System.exit(0);
           }
 
-        }
-      }
-
-      // -----------------------------------------------
-      // call ReportService::getDownloadUrl REACH_FREQUENCY
-      // -----------------------------------------------
-      // request
-      ReportDownloadUrlSelector frequencyUrlSelector = new ReportDownloadUrlSelector();
-      frequencyUrlSelector.setAccountId(SoapUtils.getAccountId());
-      frequencyUrlSelector.getReportJobIds().add(frequencyReportJobId);
-
-      // call API
-      System.out.println("############################################");
-      System.out.println("ReportService::getDownloadUrl REACH_FREQUENCY");
-      System.out.println("############################################");
-      Holder<ReportDownloadUrlPage> getFrequencyUrlPageHolder = new Holder<ReportDownloadUrlPage>();
-      Holder<List<jp.yahooapis.im.V6.ReportService.Error>> getFrequencyUrlError = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
-      reportService.getDownloadUrl(frequencyUrlSelector, getFrequencyUrlPageHolder, getFrequencyUrlError);
-
-      // if error
-      if (getFrequencyUrlError.value != null && getFrequencyUrlError.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(getFrequencyUrlError.value), true);
-      }
-
-      // response
-      String downloadFrequencyURLStr = null;
-      if (getFrequencyUrlPageHolder.value != null) {
-        ReportDownloadUrlPage downloadUrlPage = getFrequencyUrlPageHolder.value;
-        for (ReportDownloadUrlValues values : downloadUrlPage.getValues()) {
-          if (values.isOperationSucceeded()) {
-            downloadFrequencyURLStr = values.getReportDownloadUrl().getDownloadUrl();
-            displayReportDownloadUrl(values.getReportDownloadUrl());
-          } else {
-            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
-          }
         }
       }
 
@@ -663,25 +592,6 @@ public class ReportDownloadSample {
   }
 
   /**
-   * display ReportDownloadUrl entity to stdout.*
-   *
-   * @param downloadUrl ReportDownloadUrl
-   */
-  private static void displayReportDownloadUrl(ReportDownloadUrl downloadUrl) {
-    // display response
-    System.out.println("accountId = " + downloadUrl.getAccountId());
-    System.out.println("reportId = " + downloadUrl.getReportId());
-    System.out.println("reportJobId = " + downloadUrl.getReportJobId());
-    System.out.println("reportName = " + downloadUrl.getReportName());
-    System.out.println("requestTime = " + downloadUrl.getRequestTime());
-    System.out.println("completeTime = " + downloadUrl.getCompleteTime());
-    System.out.println("status = " + downloadUrl.getStatus());
-    System.out.println("---------");
-
-  }
-
-
-  /**
    * display ReportRecord entity to stdout.
    *
    * @param reportRecord ReportRecord entity for display.
@@ -693,6 +603,7 @@ public class ReportDownloadSample {
     System.out.println("reportName = " + reportRecord.getReportName());
     System.out.println("requestTime = " + reportRecord.getRequestTime());
     System.out.println("status = " + reportRecord.getStatus());
+    System.out.println("reportDownloadURL = " + reportRecord.getReportDownloadUrl());
     System.out.println("---------");
 
   }

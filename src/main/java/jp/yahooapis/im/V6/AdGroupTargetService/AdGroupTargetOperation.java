@@ -17,13 +17,12 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="AdGroupTargetOperation">
  *   &lt;complexContent>
- *     &lt;extension base="{http://im.yahooapis.jp/V6}Operation">
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="campaignId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="operand" type="{http://im.yahooapis.jp/V6}AdGroupTargets" maxOccurs="unbounded"/>
+ *         &lt;element name="operand" type="{http://im.yahooapis.jp/V6}AdGroupTarget" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *     &lt;/extension>
+ *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -33,17 +32,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AdGroupTargetOperation", propOrder = {
     "accountId",
-    "campaignId",
     "operand"
 })
-public class AdGroupTargetOperation
-    extends Operation
-{
+public class AdGroupTargetOperation {
 
     protected long accountId;
-    protected long campaignId;
     @XmlElement(required = true)
-    protected List<AdGroupTargets> operand;
+    protected List<AdGroupTarget> operand;
 
     /**
      * Gets the value of the accountId property.
@@ -59,22 +54,6 @@ public class AdGroupTargetOperation
      */
     public void setAccountId(long value) {
         this.accountId = value;
-    }
-
-    /**
-     * Gets the value of the campaignId property.
-     * 
-     */
-    public long getCampaignId() {
-        return campaignId;
-    }
-
-    /**
-     * Sets the value of the campaignId property.
-     * 
-     */
-    public void setCampaignId(long value) {
-        this.campaignId = value;
     }
 
     /**
@@ -95,13 +74,13 @@ public class AdGroupTargetOperation
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AdGroupTargets }
+     * {@link AdGroupTarget }
      * 
      * 
      */
-    public List<AdGroupTargets> getOperand() {
+    public List<AdGroupTarget> getOperand() {
         if (operand == null) {
-            operand = new ArrayList<AdGroupTargets>();
+            operand = new ArrayList<AdGroupTarget>();
         }
         return this.operand;
     }

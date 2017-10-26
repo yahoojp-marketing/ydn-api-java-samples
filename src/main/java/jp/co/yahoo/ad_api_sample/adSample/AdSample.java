@@ -9,40 +9,48 @@ import jp.yahooapis.im.V6.AdGroupService.AdGroup;
 import jp.yahooapis.im.V6.AdGroupService.AdGroupOperation;
 import jp.yahooapis.im.V6.AdGroupService.AdGroupSelector;
 import jp.yahooapis.im.V6.AdGroupService.AdGroupValues;
-import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetMutateOperation;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetOperation;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetPage;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetReturnValue;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetSelector;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetServiceInterface;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetServiceService;
-import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetValues;
-import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargets;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetValue;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdScheduleTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.AdScheduleTargetList;
 import jp.yahooapis.im.V6.AdGroupTargetService.Age;
 import jp.yahooapis.im.V6.AdGroupTargetService.AgeTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.AgeTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.AppTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.CarrierTarget;
 import jp.yahooapis.im.V6.AdGroupTargetService.DayOfWeek;
+import jp.yahooapis.im.V6.AdGroupTargetService.DeviceTarget;
 import jp.yahooapis.im.V6.AdGroupTargetService.EstimateFlg;
 import jp.yahooapis.im.V6.AdGroupTargetService.Gender;
 import jp.yahooapis.im.V6.AdGroupTargetService.GenderTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.GenderTargetList;
 import jp.yahooapis.im.V6.AdGroupTargetService.GeoTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.GeoTargetList;
 import jp.yahooapis.im.V6.AdGroupTargetService.InterestCategoryTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.InterestCategoryTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.Operator;
+import jp.yahooapis.im.V6.AdGroupTargetService.OsTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.OsVersionTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.PlacementTarget;
 import jp.yahooapis.im.V6.AdGroupTargetService.SearchTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.SearchTargetList;
 import jp.yahooapis.im.V6.AdGroupTargetService.SiteCategoryTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.SiteCategoryTargetList;
 import jp.yahooapis.im.V6.AdGroupTargetService.SiteRetargetingTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.SiteRetargetingTargetList;
+import jp.yahooapis.im.V6.AdGroupTargetService.Target;
 import jp.yahooapis.im.V6.AdGroupTargetService.TargetType;
+import jp.yahooapis.im.V6.CampaignService.BiddingStrategyType;
+import jp.yahooapis.im.V6.CampaignService.Budget;
+import jp.yahooapis.im.V6.CampaignService.BudgetDeliveryMethod;
 import jp.yahooapis.im.V6.CampaignService.Campaign;
 import jp.yahooapis.im.V6.CampaignService.CampaignOperation;
 import jp.yahooapis.im.V6.CampaignService.CampaignSelector;
+import jp.yahooapis.im.V6.CampaignService.CampaignType;
 import jp.yahooapis.im.V6.CampaignService.CampaignValues;
+import jp.yahooapis.im.V6.CampaignService.FrequencyCap;
+import jp.yahooapis.im.V6.CampaignService.FrequencyLevel;
+import jp.yahooapis.im.V6.CampaignService.FrequencyTimeUnit;
+import jp.yahooapis.im.V6.CampaignService.ManualCPC;
 
 import java.util.Arrays;
 import java.util.List;
@@ -70,7 +78,7 @@ public class AdSample {
       // CampaignService::mutate(ADD)
       // -----------------------------------------------
       // request
-      CampaignOperation addCampaignOperation = CampaignServiceSample.createSampleAddRequest(accountId);
+      CampaignOperation addCampaignOperation = createSampleAddRequest(accountId);
       // call API
       List<CampaignValues> campaignValues = CampaignServiceSample.add(addCampaignOperation);
 
@@ -165,14 +173,31 @@ public class AdSample {
       AdGroupAdServiceSample.set(setAdGroupAdOperation);
 
       // -----------------------------------------------
+      // AdGroupTargetService::mutate(ADD)
+      // -----------------------------------------------
+      // request
+      AdGroupTargetMutateOperation addAdGroupTargetMutateOperation = createAdGroupTargetSampleAddRequest(accountId, campaignId, adGroupId);
+
+      // call API
+      List<AdGroupTargetValue> adGroupTargetValues = addAdGroupTarget(addAdGroupTargetMutateOperation);
+
+      // -----------------------------------------------
       // AdGroupTargetService::mutate(SET)
       // -----------------------------------------------
       // request
-      AdGroupTargetOperation setAdGroupTargetOperation = createAdGroupTargetSampleSetRequest(accountId, campaignId, adGroupId);
+      AdGroupTargetMutateOperation setAdGroupTargetMutateOperation = createAdGroupTargetSampleSetRequest(accountId, adGroupTargetValues);
 
       // call API
-      setAdGroupTarget(setAdGroupTargetOperation);
+      setAdGroupTarget(setAdGroupTargetMutateOperation);
 
+      // -----------------------------------------------
+      // AdGroupTargetService::replace
+      // -----------------------------------------------
+      // request
+      AdGroupTargetOperation replaceAdGroupTargetMutateOperation = createAdGroupTargetSampleReplaceRequest(accountId, campaignId, adGroupId);
+
+      // call API
+      replaceAdGroupTarget(replaceAdGroupTargetMutateOperation);
 
       // -----------------------------------------------
       // AdGroupTargetService::get
@@ -181,11 +206,21 @@ public class AdSample {
       AdGroupTargetSelector adGroupTargetSelector = createAdGroupTargetSampleGetRequest(accountId, campaignId, adGroupId);
 
       // call API
-      getAdGroupTarget(adGroupTargetSelector);
+      adGroupTargetValues = getAdGroupTarget(adGroupTargetSelector);
 
       // =================================================================
-      // remove AdGroupAd, AdGroup, Campaign
+      // remove AdGroupTarget, AdGroupAd, AdGroup, Campaign
       // =================================================================
+
+      // -----------------------------------------------
+      // AdGroupTargetService::mutate(REMOVE)
+      // -----------------------------------------------
+      // request
+      AdGroupTargetMutateOperation removeAdGroupTargetMutateOperation = createAdGroupTargetSampleRemoveRequest(accountId, adGroupTargetValues);
+
+      // call API
+      removeAdGroupTarget(removeAdGroupTargetMutateOperation);
+
       // -----------------------------------------------
       // AdGroupAdService::mutate(REMOVE)
       // -----------------------------------------------
@@ -218,13 +253,57 @@ public class AdSample {
   }
 
   /**
+   * Sample Program for AdGroupTargetService ADD.
+   *
+   * @param operation AdGroupTargetMutateOperation
+   * @return AdGroupTargetValues
+   */
+  public static List<AdGroupTargetValue> addAdGroupTarget(AdGroupTargetMutateOperation operation) throws Exception {
+
+    // =================================================================
+    // AdGroupTargetService
+    // =================================================================
+    AdGroupTargetServiceInterface adGroupTargetService = SoapUtils.createServiceInterface(AdGroupTargetServiceInterface.class, AdGroupTargetServiceService.class);
+
+    System.out.println("############################################");
+    System.out.println("AdGroupTargetService::mutate(ADD)");
+    System.out.println("############################################");
+    Holder<AdGroupTargetReturnValue> setAdGroupTargetReturnValueHolder = new Holder<AdGroupTargetReturnValue>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>>();
+    adGroupTargetService.mutate(operation, setAdGroupTargetReturnValueHolder, setAdGroupTargetErrorHolder);
+
+    // if error
+    if (setAdGroupTargetErrorHolder.value != null && setAdGroupTargetErrorHolder.value.size() > 0) {
+      SoapUtils.displayErrors(new AdGroupTargetServiceErrorEntityFactory(setAdGroupTargetErrorHolder.value), true);
+    }
+
+    // response
+    if (setAdGroupTargetReturnValueHolder.value != null) {
+      AdGroupTargetReturnValue returnValue = setAdGroupTargetReturnValueHolder.value;
+      if (returnValue.getValues() != null && returnValue.getValues().size() > 0) {
+        List<AdGroupTargetValue> values = returnValue.getValues();
+        for (int i = 0; i < values.size(); i++) {
+          if (values.get(i).isOperationSucceeded()) {
+            // display response
+            displayAdGroupTargetList(values.get(i).getAdGroupTargetList());
+          } else {
+            // if error
+            SoapUtils.displayErrors(new AdGroupTargetServiceErrorEntityFactory(values.get(i).getError()), true);
+          }
+        }
+      }
+    }
+    // Response
+    return setAdGroupTargetReturnValueHolder.value.getValues();
+  }
+
+  /**
    * Sample Program for AdGroupTargetService SET.
    *
-   * @param operation AdGroupTargetOperation
+   * @param operation AdGroupTargetMutateOperation
    * @return AdGroupTargetValues
-   * @throws Exception
    */
-  public static List<AdGroupTargetValues> setAdGroupTarget(AdGroupTargetOperation operation) throws Exception {
+  public static List<AdGroupTargetValue> setAdGroupTarget(AdGroupTargetMutateOperation operation) throws Exception {
 
     // =================================================================
     // AdGroupTargetService
@@ -247,11 +326,102 @@ public class AdSample {
     if (setAdGroupTargetReturnValueHolder.value != null) {
       AdGroupTargetReturnValue returnValue = setAdGroupTargetReturnValueHolder.value;
       if (returnValue.getValues() != null && returnValue.getValues().size() > 0) {
-        List<AdGroupTargetValues> values = returnValue.getValues();
+        List<AdGroupTargetValue> values = returnValue.getValues();
         for (int i = 0; i < values.size(); i++) {
           if (values.get(i).isOperationSucceeded()) {
             // display response
-            displayAdGroupTargetList(values.get(i).getTargetList());
+            displayAdGroupTargetList(values.get(i).getAdGroupTargetList());
+          } else {
+            // if error
+            SoapUtils.displayErrors(new AdGroupTargetServiceErrorEntityFactory(values.get(i).getError()), true);
+          }
+        }
+      }
+    }
+    // Response
+    return setAdGroupTargetReturnValueHolder.value.getValues();
+  }
+
+  /**
+   * Sample Program for AdGroupTargetService REMOVE.
+   *
+   * @param operation AdGroupTargetMutateOperation
+   * @return AdGroupTargetValues
+   */
+  public static List<AdGroupTargetValue> removeAdGroupTarget(AdGroupTargetMutateOperation operation) throws Exception {
+
+    // =================================================================
+    // AdGroupTargetService
+    // =================================================================
+    AdGroupTargetServiceInterface adGroupTargetService = SoapUtils.createServiceInterface(AdGroupTargetServiceInterface.class, AdGroupTargetServiceService.class);
+
+    System.out.println("############################################");
+    System.out.println("AdGroupTargetService::mutate(REMOVE)");
+    System.out.println("############################################");
+    Holder<AdGroupTargetReturnValue> setAdGroupTargetReturnValueHolder = new Holder<AdGroupTargetReturnValue>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>>();
+    adGroupTargetService.mutate(operation, setAdGroupTargetReturnValueHolder, setAdGroupTargetErrorHolder);
+
+    // if error
+    if (setAdGroupTargetErrorHolder.value != null && setAdGroupTargetErrorHolder.value.size() > 0) {
+      SoapUtils.displayErrors(new AdGroupTargetServiceErrorEntityFactory(setAdGroupTargetErrorHolder.value), true);
+    }
+
+    // response
+    if (setAdGroupTargetReturnValueHolder.value != null) {
+      AdGroupTargetReturnValue returnValue = setAdGroupTargetReturnValueHolder.value;
+      if (returnValue.getValues() != null && returnValue.getValues().size() > 0) {
+        List<AdGroupTargetValue> values = returnValue.getValues();
+        for (int i = 0; i < values.size(); i++) {
+          if (values.get(i).isOperationSucceeded()) {
+            // display response
+            displayAdGroupTargetList(values.get(i).getAdGroupTargetList());
+          } else {
+            // if error
+            SoapUtils.displayErrors(new AdGroupTargetServiceErrorEntityFactory(values.get(i).getError()), true);
+          }
+        }
+      }
+    }
+    // Response
+    return setAdGroupTargetReturnValueHolder.value.getValues();
+  }
+
+
+  /**
+   * Sample Program for AdGroupTargetService replace.
+   *
+   * @param operation AdGroupTargetMutateOperation
+   * @return AdGroupTargetValues
+   */
+  public static List<AdGroupTargetValue> replaceAdGroupTarget(AdGroupTargetOperation operation) throws Exception {
+
+    // =================================================================
+    // AdGroupTargetService
+    // =================================================================
+    AdGroupTargetServiceInterface adGroupTargetService = SoapUtils.createServiceInterface(AdGroupTargetServiceInterface.class, AdGroupTargetServiceService.class);
+
+    System.out.println("############################################");
+    System.out.println("AdGroupTargetService::replace");
+    System.out.println("############################################");
+    Holder<AdGroupTargetReturnValue> setAdGroupTargetReturnValueHolder = new Holder<AdGroupTargetReturnValue>();
+    Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupTargetService.Error>>();
+    adGroupTargetService.replace(operation, setAdGroupTargetReturnValueHolder, setAdGroupTargetErrorHolder);
+
+    // if error
+    if (setAdGroupTargetErrorHolder.value != null && setAdGroupTargetErrorHolder.value.size() > 0) {
+      SoapUtils.displayErrors(new AdGroupTargetServiceErrorEntityFactory(setAdGroupTargetErrorHolder.value), true);
+    }
+
+    // response
+    if (setAdGroupTargetReturnValueHolder.value != null) {
+      AdGroupTargetReturnValue returnValue = setAdGroupTargetReturnValueHolder.value;
+      if (returnValue.getValues() != null && returnValue.getValues().size() > 0) {
+        List<AdGroupTargetValue> values = returnValue.getValues();
+        for (int i = 0; i < values.size(); i++) {
+          if (values.get(i).isOperationSucceeded()) {
+            // display response
+            displayAdGroupTargetList(values.get(i).getAdGroupTargetList());
           } else {
             // if error
             SoapUtils.displayErrors(new AdGroupTargetServiceErrorEntityFactory(values.get(i).getError()), true);
@@ -268,9 +438,8 @@ public class AdSample {
    *
    * @param selector AdGroupTargetSelector
    * @return AdGroupValues
-   * @throws Exception
    */
-  public static List<AdGroupTargetValues> getAdGroupTarget(AdGroupTargetSelector selector) throws Exception {
+  public static List<AdGroupTargetValue> getAdGroupTarget(AdGroupTargetSelector selector) throws Exception {
     // =================================================================
     // AdGroupTargetService
     // =================================================================
@@ -293,11 +462,11 @@ public class AdSample {
     if (adGroupTargetPageHolder.value != null) {
       AdGroupTargetPage adGroupTargetPage = adGroupTargetPageHolder.value;
       if (adGroupTargetPage.getValues() != null && adGroupTargetPage.getValues().size() > 0) {
-        List<AdGroupTargetValues> values = adGroupTargetPage.getValues();
+        List<AdGroupTargetValue> values = adGroupTargetPage.getValues();
         for (int i = 0; i < values.size(); i++) {
           if (values.get(i).isOperationSucceeded()) {
             // display response
-            displayAdGroupTargetList(values.get(i).getTargetList());
+            displayAdGroupTargetList(values.get(i).getAdGroupTargetList());
           } else {
             // if error
             SoapUtils.displayErrors(new AdGroupTargetServiceErrorEntityFactory(values.get(i).getError()), true);
@@ -315,8 +484,44 @@ public class AdSample {
    * create sample request.
    *
    * @param accountId long
+   * @return CampaignOperation
+   */
+  public static CampaignOperation createSampleAddRequest(long accountId) {
+    Campaign appCampaignOperand = new Campaign();
+    appCampaignOperand.setAccountId(accountId);
+    appCampaignOperand.setCampaignName("SampleAppCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    appCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
+    appCampaignOperand.setStartDate("20300101");
+    appCampaignOperand.setEndDate("20301231");
+    Budget appBudget = new Budget();
+    appBudget.setAmount((long) 1000);
+    appBudget.setDeliveryMethod(BudgetDeliveryMethod.STANDARD);
+    appCampaignOperand.setBudget(appBudget);
+    ManualCPC appManualCPC = new ManualCPC();
+    appManualCPC.setType(BiddingStrategyType.MANUAL_CPC);
+    appCampaignOperand.setBiddingStrategy(appManualCPC);
+    appCampaignOperand.setAdProductType("TARGET_MATCH");
+    FrequencyCap appFrequencyCap = new FrequencyCap();
+    appFrequencyCap.setLevel(FrequencyLevel.CAMPAIGN);
+    appFrequencyCap.setTimeUnit(FrequencyTimeUnit.WEEK);
+    appFrequencyCap.setImpression((long) 10);
+    appCampaignOperand.setFrequencyCap(appFrequencyCap);
+    appCampaignOperand.setCampaignType(CampaignType.STANDARD);
+
+    CampaignOperation addCampaignOperation = new CampaignOperation();
+    addCampaignOperation.setOperator(jp.yahooapis.im.V6.CampaignService.Operator.ADD);
+    addCampaignOperation.setAccountId(accountId);
+    addCampaignOperation.getOperand().add(appCampaignOperand);
+
+    return addCampaignOperation;
+  }
+
+  /**
+   * create sample request.
+   *
+   * @param accountId  long
    * @param campaignId long
-   * @param adGroupId long
+   * @param adGroupId  long
    * @return AdGroupTargetSelector
    */
   public static AdGroupTargetSelector createAdGroupTargetSampleGetRequest(long accountId, long campaignId, long adGroupId) {
@@ -333,163 +538,284 @@ public class AdSample {
   /**
    * create AdGroupTarget SET sample request.
    *
-   * @param accountId long
+   * @param accountId  long
    * @param campaignId long
-   * @param adGroupId long
-   * @return AdGroupTargetOperation
+   * @param adGroupId  long
+   * @return AdGroupTargetMutateOperation
    */
-  public static AdGroupTargetOperation createAdGroupTargetSampleSetRequest(long accountId, long campaignId, long adGroupId) {
+  public static AdGroupTargetMutateOperation createAdGroupTargetSampleAddRequest(long accountId, long campaignId, long adGroupId) {
     AdScheduleTarget setAdScheduleTarget1 = new AdScheduleTarget();
     setAdScheduleTarget1.setType(TargetType.AD_SCHEDULE_TARGET);
     setAdScheduleTarget1.setDayOfWeek(DayOfWeek.MONDAY);
     setAdScheduleTarget1.setStartHour(13);
     setAdScheduleTarget1.setEndHour(14);
+    AdGroupTarget setAdScheduleAdGroupTarget1 = new AdGroupTarget();
+    setAdScheduleAdGroupTarget1.setAccountId(accountId);
+    setAdScheduleAdGroupTarget1.setAccountId(accountId);
+    setAdScheduleAdGroupTarget1.setCampaignId(campaignId);
+    setAdScheduleAdGroupTarget1.setAdGroupId(adGroupId);
+    setAdScheduleAdGroupTarget1.setTarget(setAdScheduleTarget1);
+    setAdScheduleAdGroupTarget1.setBidMultiplier(1.12);
+
     AdScheduleTarget setAdScheduleTarget2 = new AdScheduleTarget();
     setAdScheduleTarget2.setType(TargetType.AD_SCHEDULE_TARGET);
     setAdScheduleTarget2.setDayOfWeek(DayOfWeek.TUESDAY);
     setAdScheduleTarget2.setStartHour(14);
     setAdScheduleTarget2.setEndHour(15);
-
-    AdScheduleTargetList setAdScheduleTargetList = new AdScheduleTargetList();
-    setAdScheduleTargetList.setAccountId(accountId);
-    setAdScheduleTargetList.setCampaignId(campaignId);
-    setAdScheduleTargetList.setAdGroupId(adGroupId);
-    setAdScheduleTargetList.setType(TargetType.AD_SCHEDULE_TARGET);
-    setAdScheduleTargetList.getTargets().addAll(Arrays.asList(setAdScheduleTarget1, setAdScheduleTarget2));
+    AdGroupTarget setAdScheduleAdGroupTarget2 = new AdGroupTarget();
+    setAdScheduleAdGroupTarget2.setAccountId(accountId);
+    setAdScheduleAdGroupTarget2.setAccountId(accountId);
+    setAdScheduleAdGroupTarget2.setCampaignId(campaignId);
+    setAdScheduleAdGroupTarget2.setAdGroupId(adGroupId);
+    setAdScheduleAdGroupTarget2.setTarget(setAdScheduleTarget2);
+    setAdScheduleAdGroupTarget2.setBidMultiplier(1.12);
 
     GenderTarget setGenderTarget1 = new GenderTarget();
     setGenderTarget1.setType(TargetType.GENDER_TARGET);
     setGenderTarget1.setGender(Gender.ST_MALE);
     setGenderTarget1.setEstimateFlg(EstimateFlg.ACTIVE);
+    AdGroupTarget setGenderAdGroupTarget1 = new AdGroupTarget();
+    setGenderAdGroupTarget1.setAccountId(accountId);
+    setGenderAdGroupTarget1.setAccountId(accountId);
+    setGenderAdGroupTarget1.setCampaignId(campaignId);
+    setGenderAdGroupTarget1.setAdGroupId(adGroupId);
+    setGenderAdGroupTarget1.setTarget(setGenderTarget1);
+    setGenderAdGroupTarget1.setBidMultiplier(1.12);
 
     GenderTarget setGenderTarget2 = new GenderTarget();
     setGenderTarget2.setType(TargetType.GENDER_TARGET);
     setGenderTarget2.setGender(Gender.ST_UNKNOWN);
-
-    GenderTargetList setGenderTargetList = new GenderTargetList();
-    setGenderTargetList.setAccountId(accountId);
-    setGenderTargetList.setCampaignId(campaignId);
-    setGenderTargetList.setAdGroupId(adGroupId);
-    setGenderTargetList.setType(TargetType.GENDER_TARGET);
-    setGenderTargetList.getTargets().addAll(Arrays.asList(setGenderTarget1, setGenderTarget2));
+    AdGroupTarget setGenderAdGroupTarget2 = new AdGroupTarget();
+    setGenderAdGroupTarget2.setAccountId(accountId);
+    setGenderAdGroupTarget2.setAccountId(accountId);
+    setGenderAdGroupTarget2.setCampaignId(campaignId);
+    setGenderAdGroupTarget2.setAdGroupId(adGroupId);
+    setGenderAdGroupTarget2.setTarget(setGenderTarget2);
+    setGenderAdGroupTarget2.setBidMultiplier(1.12);
 
     AgeTarget setAgeTarget1 = new AgeTarget();
     setAgeTarget1.setType(TargetType.AGE_TARGET);
     setAgeTarget1.setAge(Age.GT_UNKNOWN);
+    AdGroupTarget setAgeAdGroupTarget = new AdGroupTarget();
+    setAgeAdGroupTarget.setAccountId(accountId);
+    setAgeAdGroupTarget.setAccountId(accountId);
+    setAgeAdGroupTarget.setCampaignId(campaignId);
+    setAgeAdGroupTarget.setAdGroupId(adGroupId);
+    setAgeAdGroupTarget.setTarget(setAgeTarget1);
+    setAgeAdGroupTarget.setBidMultiplier(1.12);
 
-    AgeTargetList setAgeTargetList = new AgeTargetList();
-    setAgeTargetList.setAccountId(accountId);
-    setAgeTargetList.setCampaignId(campaignId);
-    setAgeTargetList.setAdGroupId(adGroupId);
-    setAgeTargetList.setType(TargetType.AGE_TARGET);
-    setAgeTargetList.getTargets().add(setAgeTarget1);
 
-    AdGroupTargets setAdGroupTargetOperand = new AdGroupTargets();
-    setAdGroupTargetOperand.setAccountId(accountId);
-    setAdGroupTargetOperand.setCampaignId(campaignId);
-    setAdGroupTargetOperand.setAdGroupId(adGroupId);
-    setAdGroupTargetOperand.getTargets().addAll(Arrays.asList(setAdScheduleTargetList, setGenderTargetList, setAgeTargetList));
+    AdGroupTargetMutateOperation setAdGroupTargetMutateOperation = new AdGroupTargetMutateOperation();
+    setAdGroupTargetMutateOperation.setOperator(jp.yahooapis.im.V6.AdGroupTargetService.Operator.ADD);
+    setAdGroupTargetMutateOperation.setAccountId(accountId);
+    setAdGroupTargetMutateOperation.getOperand().addAll(Arrays.asList(setAdScheduleAdGroupTarget1, setAdScheduleAdGroupTarget2, setGenderAdGroupTarget1, setGenderAdGroupTarget2, setAgeAdGroupTarget));
 
-    AdGroupTargetOperation setAdGroupTargetOperation = new AdGroupTargetOperation();
-    setAdGroupTargetOperation.setOperator(jp.yahooapis.im.V6.AdGroupTargetService.Operator.SET);
-    setAdGroupTargetOperation.setAccountId(accountId);
-    setAdGroupTargetOperation.setCampaignId(campaignId);
-    setAdGroupTargetOperation.getOperand().add(setAdGroupTargetOperand);
-
-    return setAdGroupTargetOperation;
+    return setAdGroupTargetMutateOperation;
   }
 
 
-  /**
-   * display AdGroupTargetList entity to stdout.
-   *
-   * @param adGroupTargets AdGroupTargets entity for display.
-   */
-  private static void displayAdGroupTargetList(AdGroupTargets adGroupTargets) {
-    System.out.println("accountId = " + adGroupTargets.getAccountId());
-    System.out.println("campaignId = " + adGroupTargets.getCampaignId());
-    System.out.println("adGroupId = " + adGroupTargets.getAdGroupId());
-    if (adGroupTargets.getTargets() != null && adGroupTargets.getTargets().size() > 0) {
-      List<AdGroupTargetList> targetList = adGroupTargets.getTargets();
-      for (int j = 0; j < targetList.size(); j++) {
-        System.out.println("targets---------");
-        System.out.println("targets/accountId = " + targetList.get(j).getAccountId());
-        System.out.println("targets/campaignId = " + targetList.get(j).getCampaignId());
-        System.out.println("targets/adGroupId = " + targetList.get(j).getAdGroupId());
-        System.out.println("targets/type = " + targetList.get(j).getType().toString());
-        if (targetList.get(j) instanceof AdScheduleTargetList) {
-          AdScheduleTargetList adScheduleTargetList = (AdScheduleTargetList) targetList.get(j);
-          List<AdScheduleTarget> adScheduleTarget = adScheduleTargetList.getTargets();
-          for (int k = 0; k < adScheduleTarget.size(); k++) {
-            System.out.println("targets/targets---------");
-            System.out.println("targets/targets/type = " + adScheduleTarget.get(k).getType().toString());
-            System.out.println("targets/targets/dayOfWeek = " + adScheduleTarget.get(k).getDayOfWeek().toString());
-            System.out.println("targets/targets/startHour = " + adScheduleTarget.get(k).getStartHour());
-            System.out.println("targets/targets/endHour = " + adScheduleTarget.get(k).getEndHour());
-
-          }
-        } else if (targetList.get(j) instanceof GenderTargetList) {
-          GenderTargetList genderTargetList = (GenderTargetList) targetList.get(j);
-          List<GenderTarget> genderTarget = genderTargetList.getTargets();
-          for (int k = 0; k < genderTarget.size(); k++) {
-            System.out.println("targets/targets---------");
-            System.out.println("targets/targets/type = " + genderTarget.get(k).getType().toString());
-            System.out.println("targets/targets/gender = " + genderTarget.get(k).getGender().toString());
-            System.out.println("targets/targets/estimateFlg = " + genderTarget.get(k).getEstimateFlg());
-          }
-        } else if (targetList.get(j) instanceof GeoTargetList) {
-          GeoTargetList geoTargetList = (GeoTargetList) targetList.get(j);
-          List<GeoTarget> geoTarget = geoTargetList.getTargets();
-          for (int k = 0; k < geoTarget.size(); k++) {
-            System.out.println("targets/targets---------");
-            System.out.println("targets/targets/type = " + geoTarget.get(k).getType().toString());
-            System.out.println("targets/targets/geo = " + geoTarget.get(k).getGeo());
-          }
-        } else if (targetList.get(j) instanceof AgeTargetList) {
-          AgeTargetList ageTargetList = (AgeTargetList) targetList.get(j);
-          List<AgeTarget> ageTarget = ageTargetList.getTargets();
-          for (int k = 0; k < ageTarget.size(); k++) {
-            System.out.println("targets/targets---------");
-            System.out.println("targets/targets/type = " + ageTarget.get(k).getType().toString());
-            System.out.println("targets/targets/age = " + ageTarget.get(k).getAge().toString());
-          }
-        } else if (targetList.get(j) instanceof InterestCategoryTargetList) {
-          InterestCategoryTargetList interestCategoryTargetList = (InterestCategoryTargetList) targetList.get(j);
-          List<InterestCategoryTarget> interestCategoryTarget = interestCategoryTargetList.getTargets();
-          for (int k = 0; k < interestCategoryTarget.size(); k++) {
-            System.out.println("targets/targets---------");
-            System.out.println("targets/targets/type = " + interestCategoryTarget.get(k).getType().toString());
-            System.out.println("targets/targets/category = " + interestCategoryTarget.get(k).getCategory());
-          }
-        } else if (targetList.get(j) instanceof SiteCategoryTargetList) {
-          SiteCategoryTargetList siteCategoryTargetList = (SiteCategoryTargetList) targetList.get(j);
-          List<SiteCategoryTarget> siteCategoryTarget = siteCategoryTargetList.getTargets();
-          for (int k = 0; k < siteCategoryTarget.size(); k++) {
-            System.out.println("targets/targets---------");
-            System.out.println("targets/targets/type = " + siteCategoryTarget.get(k).getType().toString());
-            System.out.println("targets/targets/category = " + siteCategoryTarget.get(k).getCategory());
-          }
-        } else if (targetList.get(j) instanceof SiteRetargetingTargetList) {
-          SiteRetargetingTargetList siteRetargetingTargetList = (SiteRetargetingTargetList) targetList.get(j);
-          List<SiteRetargetingTarget> siteRetargetingTarget = siteRetargetingTargetList.getTargets();
-          for (int k = 0; k < siteRetargetingTarget.size(); k++) {
-            System.out.println("targets/targets---------");
-            System.out.println("targets/targets/type = " + siteRetargetingTarget.get(k).getType().toString());
-            System.out.println("targets/targets/targetListId = " + siteRetargetingTarget.get(k).getTargetListId());
-            System.out.println("targets/targets/targetListName = " + siteRetargetingTarget.get(k).getTargetListName().toString());
-          }
-        } else if (targetList.get(j) instanceof SearchTargetList) {
-          SearchTargetList searchTargetList = (SearchTargetList) targetList.get(j);
-          List<SearchTarget> searchTarget = searchTargetList.getTargets();
-          for (int k = 0; k < searchTarget.size(); k++) {
-            System.out.println("targets/targets---------");
-            System.out.println("targets/targets/type = " + searchTarget.get(k).getType());
-            System.out.println("targets/targets/searchKeywordListId = " + searchTarget.get(k).getSearchKeywordListId());
-            System.out.println("targets/targets/searchKeywordListName = " + searchTarget.get(k).getSearchKeywordListName());
-          }
-        }
+  public static AdGroupTargetMutateOperation createAdGroupTargetSampleSetRequest(long accountId, List<AdGroupTargetValue> adGroupTargetValues) {
+    AdGroupTargetMutateOperation adGroupTargetMutateOperation = new AdGroupTargetMutateOperation();
+    adGroupTargetMutateOperation.setOperator(Operator.SET);
+    adGroupTargetMutateOperation.setAccountId(accountId);
+    for (AdGroupTargetValue adGroupTargetValue : adGroupTargetValues) {
+      AdGroupTarget adGroupTarget = new AdGroupTarget();
+      adGroupTarget.setCampaignId(adGroupTargetValue.getAdGroupTargetList().getCampaignId());
+      adGroupTarget.setAdGroupId(adGroupTargetValue.getAdGroupTargetList().getAdGroupId());
+      adGroupTarget.setBidMultiplier(2.0);
+      Target srcTarget = adGroupTargetValue.getAdGroupTargetList().getTarget();
+      Target target;
+      switch (srcTarget.getType()) {
+        case AD_SCHEDULE_TARGET:
+          target = new AdScheduleTarget();
+          break;
+        case AGE_TARGET:
+          target = new AgeTarget();
+          break;
+        case GENDER_TARGET:
+          target = new GenderTarget();
+          break;
+        case GEO_TARGET:
+          target = new GeoTarget();
+          break;
+        case INTEREST_CATEGORY:
+          target = new InterestCategoryTarget();
+          break;
+        case SITE_CATEGORY:
+          target = new SiteCategoryTarget();
+          break;
+        case DEVICE_TARGET:
+          target = new DeviceTarget();
+          break;
+        case CARRIER_TARGET:
+          target = new CarrierTarget();
+          break;
+        default:
+          continue;
       }
+      target.setType(srcTarget.getType());
+      target.setTargetId(srcTarget.getTargetId());
+      adGroupTarget.setTarget(target);
+      adGroupTargetMutateOperation.getOperand().add(adGroupTarget);
+
     }
+    return adGroupTargetMutateOperation;
+  }
+
+  public static AdGroupTargetMutateOperation createAdGroupTargetSampleRemoveRequest(long accountId, List<AdGroupTargetValue> adGroupTargetValues) {
+    AdGroupTargetMutateOperation adGroupTargetMutateOperation = new AdGroupTargetMutateOperation();
+    adGroupTargetMutateOperation.setOperator(Operator.REMOVE);
+    adGroupTargetMutateOperation.setAccountId(accountId);
+    for (AdGroupTargetValue adGroupTargetValue : adGroupTargetValues) {
+      AdGroupTarget adGroupTarget = new AdGroupTarget();
+      adGroupTarget.setCampaignId(adGroupTargetValue.getAdGroupTargetList().getCampaignId());
+      adGroupTarget.setAdGroupId(adGroupTargetValue.getAdGroupTargetList().getAdGroupId());
+      Target srcTarget = adGroupTargetValue.getAdGroupTargetList().getTarget();
+      Target target;
+      switch (srcTarget.getType()) {
+        case AD_SCHEDULE_TARGET:
+          target = new AdScheduleTarget();
+          break;
+        case AGE_TARGET:
+          target = new AgeTarget();
+          break;
+        case GENDER_TARGET:
+          target = new GenderTarget();
+          break;
+        case GEO_TARGET:
+          target = new GeoTarget();
+          break;
+        case INTEREST_CATEGORY:
+          target = new InterestCategoryTarget();
+          break;
+        case SITE_CATEGORY:
+          target = new SiteCategoryTarget();
+          break;
+        case DEVICE_TARGET:
+          target = new DeviceTarget();
+          break;
+        case CARRIER_TARGET:
+          target = new CarrierTarget();
+          break;
+        default:
+          continue;
+      }
+      target.setType(srcTarget.getType());
+      target.setTargetId(srcTarget.getTargetId());
+      adGroupTarget.setTarget(target);
+      adGroupTargetMutateOperation.getOperand().add(adGroupTarget);
+    }
+    return adGroupTargetMutateOperation;
+  }
+
+  public static AdGroupTargetOperation createAdGroupTargetSampleReplaceRequest(long accountId, long campaignId, long adGroupId) {
+    AdScheduleTarget setAdScheduleTarget1 = new AdScheduleTarget();
+    setAdScheduleTarget1.setType(TargetType.AD_SCHEDULE_TARGET);
+    setAdScheduleTarget1.setDayOfWeek(DayOfWeek.FRIDAY);
+    setAdScheduleTarget1.setStartHour(20);
+    setAdScheduleTarget1.setEndHour(21);
+    AdGroupTarget setAdScheduleAdGroupTarget1 = new AdGroupTarget();
+    setAdScheduleAdGroupTarget1.setAccountId(accountId);
+    setAdScheduleAdGroupTarget1.setAccountId(accountId);
+    setAdScheduleAdGroupTarget1.setCampaignId(campaignId);
+    setAdScheduleAdGroupTarget1.setAdGroupId(adGroupId);
+    setAdScheduleAdGroupTarget1.setTarget(setAdScheduleTarget1);
+    setAdScheduleAdGroupTarget1.setBidMultiplier(1.7);
+
+    GenderTarget setGenderTarget2 = new GenderTarget();
+    setGenderTarget2.setType(TargetType.GENDER_TARGET);
+    setGenderTarget2.setIsRemove(true);
+    AdGroupTarget setGenderAdGroupTarget2 = new AdGroupTarget();
+    setGenderAdGroupTarget2.setAccountId(accountId);
+    setGenderAdGroupTarget2.setAccountId(accountId);
+    setGenderAdGroupTarget2.setCampaignId(campaignId);
+    setGenderAdGroupTarget2.setAdGroupId(adGroupId);
+    setGenderAdGroupTarget2.setTarget(setGenderTarget2);
+
+    AgeTarget setAgeTarget1 = new AgeTarget();
+    setAgeTarget1.setType(TargetType.AGE_TARGET);
+    setAgeTarget1.setIsRemove(true);
+    AdGroupTarget setAgeAdGroupTarget = new AdGroupTarget();
+    setAgeAdGroupTarget.setAccountId(accountId);
+    setAgeAdGroupTarget.setAccountId(accountId);
+    setAgeAdGroupTarget.setCampaignId(campaignId);
+    setAgeAdGroupTarget.setAdGroupId(adGroupId);
+    setAgeAdGroupTarget.setTarget(setAgeTarget1);
+
+
+    AdGroupTargetOperation adGroupTargetOperation = new AdGroupTargetOperation();
+    adGroupTargetOperation.setAccountId(accountId);
+    adGroupTargetOperation.getOperand().addAll(Arrays.asList(setAdScheduleAdGroupTarget1, setGenderAdGroupTarget2, setAgeAdGroupTarget));
+
+    return adGroupTargetOperation;
+  }
+
+  /**
+   * display AdGroupTarget entity to stdout.
+   *
+   * @param adGroupTarget AdGroupTarget
+   */
+  private static void displayAdGroupTargetList(AdGroupTarget adGroupTarget) {
+    System.out.println("accountId = " + adGroupTarget.getAccountId());
+    System.out.println("campaignId = " + adGroupTarget.getCampaignId());
+    System.out.println("adGroupId = " + adGroupTarget.getAdGroupId());
+    System.out.println("bidMultiplier = " + adGroupTarget.getBidMultiplier());
+    Target target = adGroupTarget.getTarget();
+    System.out.println("target---------");
+    System.out.println("target/type = " + target.getType().toString());
+    System.out.println("targets/targetId = " + target.getTargetId());
+    if (target instanceof AdScheduleTarget) {
+      AdScheduleTarget adScheduleTarget = (AdScheduleTarget) target;
+      System.out.println("target/dayOfWeek = " + adScheduleTarget.getDayOfWeek().toString());
+      System.out.println("target/startHour = " + adScheduleTarget.getStartHour());
+      System.out.println("target/endHour = " + adScheduleTarget.getEndHour());
+    } else if (target instanceof GenderTarget) {
+      GenderTarget genderTarget = (GenderTarget) target;
+      System.out.println("target/gender = " + genderTarget.getGender().toString());
+      System.out.println("target/estimateFlg = " + genderTarget.getEstimateFlg());
+    } else if (target instanceof GeoTarget) {
+      GeoTarget geoTarget = (GeoTarget) target;
+      System.out.println("target/geoNameJa = " + geoTarget.getGeoNameEn());
+      System.out.println("target/geoNameEn = " + geoTarget.getGeoNameEn());
+    } else if (target instanceof AgeTarget) {
+      AgeTarget ageTarget = (AgeTarget) target;
+      System.out.println("target/age = " + ageTarget.getAge().toString());
+    } else if (target instanceof InterestCategoryTarget) {
+      InterestCategoryTarget interestCategoryTarget = (InterestCategoryTarget) target;
+      System.out.println("target/categoryFullNameJa = " + interestCategoryTarget.getCategoryFullNameJa());
+      System.out.println("target/categoryFullNameEn = " + interestCategoryTarget.getCategoryFullNameEn());
+    } else if (target instanceof SiteCategoryTarget) {
+      SiteCategoryTarget siteCategoryTarget = (SiteCategoryTarget) target;
+      System.out.println("target/categoryFullNameJa = " + siteCategoryTarget.getCategoryFullNameJa());
+      System.out.println("target/categoryFullNameEn = " + siteCategoryTarget.getCategoryFullNameEn());
+    } else if (target instanceof SiteRetargetingTarget) {
+      SiteRetargetingTarget siteRetargetingTarget = (SiteRetargetingTarget) target;
+      System.out.println("target/targetListName = " + siteRetargetingTarget.getTargetListName());
+      System.out.println("target/deliverType = " + siteRetargetingTarget.getDeliverType().toString());
+    } else if (target instanceof SearchTarget) {
+      SearchTarget searchTarget = (SearchTarget) target;
+      System.out.println("target/searchKeywordListName = " + searchTarget.getSearchKeywordListName());
+    } else if (target instanceof PlacementTarget) {
+      PlacementTarget placementTarget = (PlacementTarget) target;
+      System.out.println("target/placementUrlListName = " + placementTarget.getPlacementUrlListName());
+      System.out.println("target/deliverType = " + placementTarget.getDeliverType().toString());
+    } else if (target instanceof DeviceTarget) {
+      DeviceTarget deviceTarget = (DeviceTarget) target;
+      System.out.println("target/deviceType = " + deviceTarget.getDeviceType().toString());
+    } else if (target instanceof CarrierTarget) {
+      CarrierTarget carrierTarget = (CarrierTarget) target;
+      System.out.println("target/mobileCarrier = " + carrierTarget.getMobileCarrier().toString());
+    } else if (target instanceof AppTarget) {
+      AppTarget appTarget = (AppTarget) target;
+      System.out.println("target/appType = " + appTarget.getAppType().toString());
+    } else if (target instanceof OsTarget) {
+      OsTarget osTarget = (OsTarget) target;
+      System.out.println("target/osType = " + osTarget.getOsType().toString());
+    } else if (target instanceof OsVersionTarget) {
+      OsVersionTarget osVersionTarget = (OsVersionTarget) target;
+      System.out.println("target/osVersion = " + osVersionTarget.getOsVersion());
+    }
+
     System.out.println("---------");
   }
 }

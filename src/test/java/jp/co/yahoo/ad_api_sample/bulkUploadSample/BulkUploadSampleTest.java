@@ -104,9 +104,7 @@ public class BulkUploadSampleTest {
     BulkUploadStatusSelector selector = new BulkUploadStatusSelector();
     selector.setAccountId(accountId);
     selector.getUploadBulkJobIds().add(uploadJobId);
-    selector.setLang(BulkLang.JA);
     selector.setOutput(BulkOutput.CSV);
-    selector.setEncoding(BulkEncoding.SJIS);
     Paging paging = new Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(20);

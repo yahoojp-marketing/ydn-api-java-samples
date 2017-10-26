@@ -1,5 +1,5 @@
 
-package jp.yahooapis.im.V6.AdGroupTargetService;
+package jp.yahooapis.im.V6.DictionaryService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +9,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SiteRetargetingTargetList complex type.
+ * <p>Java class for OsVersionValues complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="SiteRetargetingTargetList">
+ * &lt;complexType name="OsVersionValues">
  *   &lt;complexContent>
- *     &lt;extension base="{http://im.yahooapis.jp/V6}AdGroupTargetList">
+ *     &lt;extension base="{http://im.yahooapis.jp/V6}ReturnValue">
  *       &lt;sequence>
- *         &lt;element name="targets" type="{http://im.yahooapis.jp/V6}SiteRetargetingTarget" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="osVersion" type="{http://im.yahooapis.jp/V6}OsVersion" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -28,42 +28,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SiteRetargetingTargetList", propOrder = {
-    "targets"
+@XmlType(name = "OsVersionValues", propOrder = {
+    "osVersion"
 })
-public class SiteRetargetingTargetList
-    extends AdGroupTargetList
+public class OsVersionValues
+    extends ReturnValue
 {
 
-    protected List<SiteRetargetingTarget> targets;
+    protected List<OsVersion> osVersion;
 
     /**
-     * Gets the value of the targets property.
+     * Gets the value of the osVersion property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the targets property.
+     * This is why there is not a <CODE>set</CODE> method for the osVersion property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getTargets().add(newItem);
+     *    getOsVersion().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SiteRetargetingTarget }
+     * {@link OsVersion }
      * 
      * 
      */
-    public List<SiteRetargetingTarget> getTargets() {
-        if (targets == null) {
-            targets = new ArrayList<SiteRetargetingTarget>();
+    public List<OsVersion> getOsVersion() {
+        if (osVersion == null) {
+            osVersion = new ArrayList<OsVersion>();
         }
-        return this.targets;
+        return this.osVersion;
     }
 
 }

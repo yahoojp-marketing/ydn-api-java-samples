@@ -36,8 +36,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     CategoryPage.class,
     ColorSetPage.class,
+    OsVersionPage.class,
     DisapprovalReasonPage.class,
-    GeographicLocationPage.class
+    GeographicLocationPage.class,
+    MediaAdFormatPage.class
 })
 public abstract class Page {
 

@@ -27,7 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="processingItemsCount" type="{http://im.yahooapis.jp/V6}ProcessingItemsCount" minOccurs="0"/>
  *         &lt;element name="progress" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="downloadBulkUploadFileUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="downloadBulkUploadErrorFileUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,8 +46,7 @@ import javax.xml.bind.annotation.XmlType;
     "uploadBulkJobStatus",
     "processingItemsCount",
     "progress",
-    "downloadBulkUploadFileUrl",
-    "downloadBulkUploadErrorFileUrl"
+    "downloadBulkUploadFileUrl"
 })
 public class UploadBulkJob {
 
@@ -63,7 +61,6 @@ public class UploadBulkJob {
     protected ProcessingItemsCount processingItemsCount;
     protected Integer progress;
     protected String downloadBulkUploadFileUrl;
-    protected String downloadBulkUploadErrorFileUrl;
 
     /**
      * Gets the value of the accountId property.
@@ -295,30 +292,6 @@ public class UploadBulkJob {
      */
     public void setDownloadBulkUploadFileUrl(String value) {
         this.downloadBulkUploadFileUrl = value;
-    }
-
-    /**
-     * Gets the value of the downloadBulkUploadErrorFileUrl property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDownloadBulkUploadErrorFileUrl() {
-        return downloadBulkUploadErrorFileUrl;
-    }
-
-    /**
-     * Sets the value of the downloadBulkUploadErrorFileUrl property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDownloadBulkUploadErrorFileUrl(String value) {
-        this.downloadBulkUploadErrorFileUrl = value;
     }
 
 }

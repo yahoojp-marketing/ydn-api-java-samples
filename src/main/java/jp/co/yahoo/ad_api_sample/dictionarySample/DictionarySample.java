@@ -11,6 +11,7 @@ import jp.yahooapis.im.V6.DictionaryService.ColorSet;
 import jp.yahooapis.im.V6.DictionaryService.ColorSetPage;
 import jp.yahooapis.im.V6.DictionaryService.ColorSetSelector;
 import jp.yahooapis.im.V6.DictionaryService.ColorSetValues;
+import jp.yahooapis.im.V6.DictionaryService.DeviceOsType;
 import jp.yahooapis.im.V6.DictionaryService.DictionaryLang;
 import jp.yahooapis.im.V6.DictionaryService.DictionaryService;
 import jp.yahooapis.im.V6.DictionaryService.DictionaryServiceInterface;
@@ -23,6 +24,13 @@ import jp.yahooapis.im.V6.DictionaryService.GeographicLocation;
 import jp.yahooapis.im.V6.DictionaryService.GeographicLocationPage;
 import jp.yahooapis.im.V6.DictionaryService.GeographicLocationSelector;
 import jp.yahooapis.im.V6.DictionaryService.GeographicLocationValues;
+import jp.yahooapis.im.V6.DictionaryService.MediaAdFormat;
+import jp.yahooapis.im.V6.DictionaryService.MediaAdFormatPage;
+import jp.yahooapis.im.V6.DictionaryService.MediaAdFormatValues;
+import jp.yahooapis.im.V6.DictionaryService.OsVersion;
+import jp.yahooapis.im.V6.DictionaryService.OsVersionPage;
+import jp.yahooapis.im.V6.DictionaryService.OsVersionSelector;
+import jp.yahooapis.im.V6.DictionaryService.OsVersionValues;
 
 import java.util.List;
 
@@ -91,6 +99,22 @@ public class DictionarySample {
 
       // call API
       getColorSet(colorSetSelector);
+
+      // -----------------------------------------------
+      // DictionaryService::getInterestCategory
+      // -----------------------------------------------
+      // request
+      OsVersionSelector osVersionSelector = new OsVersionSelector();
+      osVersionSelector.setOsType(DeviceOsType.ANDROID);
+
+      // call API
+      getOsVersion(osVersionSelector);
+
+      // -----------------------------------------------
+      // DictionaryService::getMediaAdFormat
+      // -----------------------------------------------
+      // call API
+      getMediaAdFormat();
 
     } catch (Exception ex) {
       ex.printStackTrace();
@@ -338,6 +362,100 @@ public class DictionarySample {
   }
 
   /**
+   * Sample Program for DictionaryService OsVersion.
+   *
+   * @return OsVersionValues
+   */
+  public static List<OsVersionValues> getOsVersion(OsVersionSelector selector) throws Exception {
+
+    // =================================================================
+    // DictionaryService
+    // =================================================================
+    DictionaryServiceInterface dictionaryService = SoapUtils.createServiceInterface(DictionaryServiceInterface.class, DictionaryService.class);
+
+    // call API
+    System.out.println("############################################");
+    System.out.println("DictionaryService::getOsVersion");
+    System.out.println("############################################");
+
+    Holder<OsVersionPage> osVersionPageHolder = new Holder<OsVersionPage>();
+    Holder<List<Error>> dictionaryErrorHolder = new Holder<List<Error>>();
+    dictionaryService.getOsVersion(selector, osVersionPageHolder, dictionaryErrorHolder);
+
+    // if error
+    if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
+      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+    }
+
+    // response
+    if (osVersionPageHolder.value != null) {
+      OsVersionPage OsVersionPage = osVersionPageHolder.value;
+      if (OsVersionPage.getValues() != null && OsVersionPage.getValues().size() > 0) {
+        for (int i = 0; i < OsVersionPage.getValues().size(); i++) {
+          List<OsVersionValues> values = OsVersionPage.getValues();
+          if (values.get(i).isOperationSucceeded()) {
+            // display response
+            displayOsVersion(values.get(i).getOsVersion());
+          } else {
+            // if error
+            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+          }
+        }
+      }
+    }
+
+    // Response
+    return osVersionPageHolder.value.getValues();
+  }
+
+  /**
+   * Sample Program for DictionaryService MediaAdFormat.
+   *
+   * @return MediaAdFormatValues
+   */
+  public static List<MediaAdFormatValues> getMediaAdFormat() throws Exception {
+
+    // =================================================================
+    // DictionaryService
+    // =================================================================
+    DictionaryServiceInterface dictionaryService = SoapUtils.createServiceInterface(DictionaryServiceInterface.class, DictionaryService.class);
+
+    // call API
+    System.out.println("############################################");
+    System.out.println("DictionaryService::getMediaAdFormat");
+    System.out.println("############################################");
+
+    Holder<MediaAdFormatPage> mediaAdFormatPageHolder = new Holder<MediaAdFormatPage>();
+    Holder<List<Error>> dictionaryErrorHolder = new Holder<List<Error>>();
+    dictionaryService.getMediaAdFormat(mediaAdFormatPageHolder, dictionaryErrorHolder);
+
+    // if error
+    if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
+      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+    }
+
+    // response
+    if (mediaAdFormatPageHolder.value != null) {
+      MediaAdFormatPage MediaAdFormatPage = mediaAdFormatPageHolder.value;
+      if (MediaAdFormatPage.getValues() != null && MediaAdFormatPage.getValues().size() > 0) {
+        for (int i = 0; i < MediaAdFormatPage.getValues().size(); i++) {
+          List<MediaAdFormatValues> values = MediaAdFormatPage.getValues();
+          if (values.get(i).isOperationSucceeded()) {
+            // display response
+            displayMediaAdFormat(values.get(i).getMediaAdFormat());
+          } else {
+            // if error
+            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+          }
+        }
+      }
+    }
+
+    // Response
+    return mediaAdFormatPageHolder.value.getValues();
+  }
+
+  /**
    * display disapproval reason entity to stdout.
    *
    * @param disapprovalReason disapproval reason entity for display.
@@ -415,6 +533,37 @@ public class DictionarySample {
       System.out.println("  element = " + colorSet.getElement());
       System.out.println("  color = " + colorSet.getColor());
       System.out.println("  =========");
+    }
+    System.out.println("---------");
+  }
+
+  /**
+   * element osVersion entity to stdout.
+   * @param osVersions os version entities for display.
+   */
+  private static void displayOsVersion(List<OsVersion> osVersions) {
+    for (OsVersion osVersion : osVersions) {
+      System.out.println("osType = " + osVersion.getOsType());
+      System.out.println("version = " + osVersion.getVersion());
+    }
+    System.out.println("---------");
+  }
+
+  /**
+   * element mediaAdFormat entity to stdout.
+   * @param mediaAdFormats Media ad format entity for display.
+   */
+  private static void displayMediaAdFormat(List<MediaAdFormat> mediaAdFormats) {
+    for (MediaAdFormat mediaAdFormat :mediaAdFormats) {
+      System.out.println("id = " + mediaAdFormat.getId());
+      System.out.println("width = " + mediaAdFormat.getWidth());
+      System.out.println("height = " + mediaAdFormat.getHeight());
+      System.out.println("size = " + mediaAdFormat.getSize());
+      System.out.println("transparent = " + mediaAdFormat.isTransparent());
+      System.out.println("animation = " + mediaAdFormat.isAnimation());
+      System.out.println("logo = " + mediaAdFormat.isLogo());
+      System.out.println("thumbnail = " + mediaAdFormat.isThumbnail());
+      System.out.println("adFormat = " + mediaAdFormat.getAdFormat());
     }
     System.out.println("---------");
   }

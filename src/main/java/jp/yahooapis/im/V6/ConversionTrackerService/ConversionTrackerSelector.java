@@ -22,8 +22,11 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="conversionTrackerIds" type="{http://www.w3.org/2001/XMLSchema}long" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="conversionTrackerTypes" type="{http://im.yahooapis.jp/V6}ConversionTrackerType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="statuses" type="{http://im.yahooapis.jp/V6}ConversionTrackerStatus" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="categories" type="{http://im.yahooapis.jp/V6}ConversionTrackerCategory" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="appIds" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="appPlatform" type="{http://im.yahooapis.jp/V6}AppConversionPlatform" minOccurs="0"/>
  *         &lt;element name="statsPeriod" type="{http://im.yahooapis.jp/V6}StatsPeriod" minOccurs="0"/>
  *         &lt;element name="paging" type="{http://im.yahooapis.jp/V6}Paging" minOccurs="0"/>
  *       &lt;/sequence>
@@ -38,8 +41,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ConversionTrackerSelector", propOrder = {
     "accountId",
     "conversionTrackerIds",
+    "conversionTrackerTypes",
     "statuses",
     "categories",
+    "appIds",
+    "appPlatform",
     "statsPeriod",
     "paging"
 })
@@ -49,9 +55,14 @@ public class ConversionTrackerSelector {
     @XmlElement(type = Long.class)
     protected List<Long> conversionTrackerIds;
     @XmlSchemaType(name = "string")
+    protected List<ConversionTrackerType> conversionTrackerTypes;
+    @XmlSchemaType(name = "string")
     protected List<ConversionTrackerStatus> statuses;
     @XmlSchemaType(name = "string")
     protected List<ConversionTrackerCategory> categories;
+    protected List<String> appIds;
+    @XmlSchemaType(name = "string")
+    protected AppConversionPlatform appPlatform;
     @XmlSchemaType(name = "string")
     protected StatsPeriod statsPeriod;
     protected Paging paging;
@@ -99,6 +110,35 @@ public class ConversionTrackerSelector {
             conversionTrackerIds = new ArrayList<Long>();
         }
         return this.conversionTrackerIds;
+    }
+
+    /**
+     * Gets the value of the conversionTrackerTypes property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the conversionTrackerTypes property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getConversionTrackerTypes().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ConversionTrackerType }
+     * 
+     * 
+     */
+    public List<ConversionTrackerType> getConversionTrackerTypes() {
+        if (conversionTrackerTypes == null) {
+            conversionTrackerTypes = new ArrayList<ConversionTrackerType>();
+        }
+        return this.conversionTrackerTypes;
     }
 
     /**
@@ -157,6 +197,59 @@ public class ConversionTrackerSelector {
             categories = new ArrayList<ConversionTrackerCategory>();
         }
         return this.categories;
+    }
+
+    /**
+     * Gets the value of the appIds property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the appIds property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getAppIds().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
+    public List<String> getAppIds() {
+        if (appIds == null) {
+            appIds = new ArrayList<String>();
+        }
+        return this.appIds;
+    }
+
+    /**
+     * Gets the value of the appPlatform property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AppConversionPlatform }
+     *     
+     */
+    public AppConversionPlatform getAppPlatform() {
+        return appPlatform;
+    }
+
+    /**
+     * Sets the value of the appPlatform property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AppConversionPlatform }
+     *     
+     */
+    public void setAppPlatform(AppConversionPlatform value) {
+        this.appPlatform = value;
     }
 
     /**

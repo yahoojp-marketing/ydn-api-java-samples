@@ -22,15 +22,13 @@ import jp.yahooapis.im.V6.AdGroupService.DeviceAppType;
 import jp.yahooapis.im.V6.AdGroupService.DeviceOsType;
 import jp.yahooapis.im.V6.AdGroupService.DeviceType;
 import jp.yahooapis.im.V6.AdGroupService.ManualCPCAdGroupBid;
-import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetOperation;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTarget;
+import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetMutateOperation;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargetSelector;
-import jp.yahooapis.im.V6.AdGroupTargetService.AdGroupTargets;
 import jp.yahooapis.im.V6.AdGroupTargetService.AdScheduleTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.AdScheduleTargetList;
 import jp.yahooapis.im.V6.AdGroupTargetService.DayOfWeek;
 import jp.yahooapis.im.V6.AdGroupTargetService.Gender;
 import jp.yahooapis.im.V6.AdGroupTargetService.GenderTarget;
-import jp.yahooapis.im.V6.AdGroupTargetService.GenderTargetList;
 import jp.yahooapis.im.V6.AdGroupTargetService.TargetType;
 import jp.yahooapis.im.V6.CampaignService.BiddingStrategyType;
 import jp.yahooapis.im.V6.CampaignService.Budget;
@@ -220,10 +218,10 @@ public class MediaSample {
       // AdGroupTargetService::mutate(SET)
       // -----------------------------------------------
       // request
-      AdGroupTargetOperation setAdGroupTargetOperation = createAdGroupTargetSampleSetRequest(accountId, campaignId, adGroupId);
+      AdGroupTargetMutateOperation setAdGroupTargetMutateOperation = createAdGroupTargetSampleSetRequest(accountId, campaignId, adGroupId);
 
       // call API
-      AdSample.setAdGroupTarget(setAdGroupTargetOperation);
+      AdSample.setAdGroupTarget(setAdGroupTargetMutateOperation);
 
       // -----------------------------------------------
       // AdGroupTargetService::get
@@ -785,51 +783,52 @@ public class MediaSample {
    * @param accountId  long
    * @param campaignId long
    * @param adGroupId  long
-   * @return AdGroupTargetOperation
+   * @return AdGroupTargetMutateOperation
    */
-  public static AdGroupTargetOperation createAdGroupTargetSampleSetRequest(long accountId, long campaignId, long adGroupId) {
+  public static AdGroupTargetMutateOperation createAdGroupTargetSampleSetRequest(long accountId, long campaignId, long adGroupId) {
     AdScheduleTarget setAdScheduleTarget1 = new AdScheduleTarget();
     setAdScheduleTarget1.setType(TargetType.AD_SCHEDULE_TARGET);
     setAdScheduleTarget1.setDayOfWeek(DayOfWeek.MONDAY);
     setAdScheduleTarget1.setStartHour(13);
     setAdScheduleTarget1.setEndHour(14);
+    AdGroupTarget setAdScheduleAdGroupTarget1 = new AdGroupTarget();
+    setAdScheduleAdGroupTarget1.setAccountId(accountId);
+    setAdScheduleAdGroupTarget1.setAccountId(accountId);
+    setAdScheduleAdGroupTarget1.setCampaignId(campaignId);
+    setAdScheduleAdGroupTarget1.setAdGroupId(adGroupId);
+    setAdScheduleAdGroupTarget1.setTarget(setAdScheduleTarget1);
+    setAdScheduleAdGroupTarget1.setBidMultiplier(1.12);
 
     AdScheduleTarget setAdScheduleTarget2 = new AdScheduleTarget();
     setAdScheduleTarget2.setType(TargetType.AD_SCHEDULE_TARGET);
     setAdScheduleTarget2.setDayOfWeek(DayOfWeek.TUESDAY);
     setAdScheduleTarget2.setStartHour(14);
     setAdScheduleTarget2.setEndHour(15);
-
-    AdScheduleTargetList setAdScheduleTargetList = new AdScheduleTargetList();
-    setAdScheduleTargetList.setAccountId(accountId);
-    setAdScheduleTargetList.setCampaignId(campaignId);
-    setAdScheduleTargetList.setAdGroupId(adGroupId);
-    setAdScheduleTargetList.setType(TargetType.AD_SCHEDULE_TARGET);
-    setAdScheduleTargetList.getTargets().addAll(Arrays.asList(setAdScheduleTarget1, setAdScheduleTarget2));
+    AdGroupTarget setAdScheduleAdGroupTarget2 = new AdGroupTarget();
+    setAdScheduleAdGroupTarget2.setAccountId(accountId);
+    setAdScheduleAdGroupTarget2.setAccountId(accountId);
+    setAdScheduleAdGroupTarget2.setCampaignId(campaignId);
+    setAdScheduleAdGroupTarget2.setAdGroupId(adGroupId);
+    setAdScheduleAdGroupTarget2.setTarget(setAdScheduleTarget2);
+    setAdScheduleAdGroupTarget2.setBidMultiplier(1.12);
 
     GenderTarget setGenderTarget1 = new GenderTarget();
     setGenderTarget1.setType(TargetType.GENDER_TARGET);
     setGenderTarget1.setGender(Gender.ST_MALE);
+    AdGroupTarget setGenderAdGroupTarget1 = new AdGroupTarget();
+    setGenderAdGroupTarget1.setAccountId(accountId);
+    setGenderAdGroupTarget1.setAccountId(accountId);
+    setGenderAdGroupTarget1.setCampaignId(campaignId);
+    setGenderAdGroupTarget1.setAdGroupId(adGroupId);
+    setGenderAdGroupTarget1.setTarget(setGenderTarget1);
+    setGenderAdGroupTarget1.setBidMultiplier(1.12);
 
-    GenderTargetList setGenderTargetList = new GenderTargetList();
-    setGenderTargetList.setAccountId(accountId);
-    setGenderTargetList.setCampaignId(campaignId);
-    setGenderTargetList.setAdGroupId(adGroupId);
-    setGenderTargetList.setType(TargetType.GENDER_TARGET);
-    setGenderTargetList.getTargets().add(setGenderTarget1);
 
-    AdGroupTargets setAdGroupTargetOperand = new AdGroupTargets();
-    setAdGroupTargetOperand.setAccountId(accountId);
-    setAdGroupTargetOperand.setCampaignId(campaignId);
-    setAdGroupTargetOperand.setAdGroupId(adGroupId);
-    setAdGroupTargetOperand.getTargets().addAll(Arrays.asList(setAdScheduleTargetList, setGenderTargetList));
-
-    AdGroupTargetOperation setAdGroupTargetOperation = new AdGroupTargetOperation();
-    setAdGroupTargetOperation.setOperator(jp.yahooapis.im.V6.AdGroupTargetService.Operator.SET);
-    setAdGroupTargetOperation.setAccountId(accountId);
-    setAdGroupTargetOperation.setCampaignId(campaignId);
-    setAdGroupTargetOperation.getOperand().add(setAdGroupTargetOperand);
-    return setAdGroupTargetOperation;
+    AdGroupTargetMutateOperation setAdGroupTargetMutateOperation = new AdGroupTargetMutateOperation();
+    setAdGroupTargetMutateOperation.setOperator(jp.yahooapis.im.V6.AdGroupTargetService.Operator.ADD);
+    setAdGroupTargetMutateOperation.setAccountId(accountId);
+    setAdGroupTargetMutateOperation.getOperand().addAll(Arrays.asList(setAdScheduleAdGroupTarget1, setAdScheduleAdGroupTarget2, setGenderAdGroupTarget1));
+    return setAdGroupTargetMutateOperation;
   }
 
   /**

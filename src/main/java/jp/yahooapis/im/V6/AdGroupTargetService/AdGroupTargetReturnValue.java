@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://im.yahooapis.jp/V6}ListReturnValue">
  *       &lt;sequence>
- *         &lt;element name="values" type="{http://im.yahooapis.jp/V6}AdGroupTargetValues" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="values" type="{http://im.yahooapis.jp/V6}AdGroupTargetValue" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -35,7 +35,7 @@ public class AdGroupTargetReturnValue
     extends ListReturnValue
 {
 
-    protected List<AdGroupTargetValues> values;
+    protected List<AdGroupTargetValue> values;
 
     /**
      * Gets the value of the values property.
@@ -55,13 +55,13 @@ public class AdGroupTargetReturnValue
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AdGroupTargetValues }
+     * {@link AdGroupTargetValue }
      * 
      * 
      */
-    public List<AdGroupTargetValues> getValues() {
+    public List<AdGroupTargetValue> getValues() {
         if (values == null) {
-            values = new ArrayList<AdGroupTargetValues>();
+            values = new ArrayList<AdGroupTargetValue>();
         }
         return this.values;
     }

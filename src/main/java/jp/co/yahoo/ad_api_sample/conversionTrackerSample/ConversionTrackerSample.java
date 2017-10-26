@@ -2,6 +2,9 @@ package jp.co.yahoo.ad_api_sample.conversionTrackerSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ConversionTrackerServiceErrorEntityFactory;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
+import jp.yahooapis.im.V6.ConversionTrackerService.AppConversion;
+import jp.yahooapis.im.V6.ConversionTrackerService.AppConversionPlatform;
+import jp.yahooapis.im.V6.ConversionTrackerService.AppConversionType;
 import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTracker;
 import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerCategory;
 import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerOperation;
@@ -15,6 +18,7 @@ import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerType;
 import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerValues;
 import jp.yahooapis.im.V6.ConversionTrackerService.Operator;
 import jp.yahooapis.im.V6.ConversionTrackerService.Paging;
+import jp.yahooapis.im.V6.ConversionTrackerService.WebConversion;
 
 import java.util.List;
 
@@ -194,17 +198,29 @@ public class ConversionTrackerSample {
    * @return ConversionTrackerOperation
    */
   public static ConversionTrackerOperation createSampleAddRequest(long accountId) {
-    ConversionTracker addConversionTracker = new ConversionTracker();
-    addConversionTracker.setAccountId(accountId);
-    addConversionTracker.setConversionTrackerName("SampleConversionTracker_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    addConversionTracker.setStatus(ConversionTrackerStatus.ENABLED);
-    addConversionTracker.setCategory(ConversionTrackerCategory.PURCHASE);
-    addConversionTracker.setConversionTrackerType(ConversionTrackerType.WEB_CONVERSION);
+
+    WebConversion webConversion = new WebConversion();
+    webConversion.setAccountId(accountId);
+    webConversion.setConversionTrackerName("SampleWebConversionTracker_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    webConversion.setStatus(ConversionTrackerStatus.ENABLED);
+    webConversion.setCategory(ConversionTrackerCategory.PURCHASE);
+    webConversion.setConversionTrackerType(ConversionTrackerType.WEB_CONVERSION);
+
+    AppConversion appConversion = new AppConversion();
+    appConversion.setAccountId(accountId);
+    appConversion.setConversionTrackerName("SampleAppConversionTracker_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    appConversion.setStatus(ConversionTrackerStatus.ENABLED);
+    appConversion.setCategory(ConversionTrackerCategory.DOWNLOAD);
+    appConversion.setConversionTrackerType(ConversionTrackerType.APP_CONVERSION);
+    appConversion.setAppId("1234567890");
+    appConversion.setAppPlatform(AppConversionPlatform.ITUNES);
+    appConversion.setAppConversionType(AppConversionType.FIRST_OPEN);
 
     ConversionTrackerOperation addConversionTrackerOperation = new ConversionTrackerOperation();
     addConversionTrackerOperation.setAccountId(accountId);
     addConversionTrackerOperation.setOperator(Operator.ADD);
-    addConversionTrackerOperation.getOperand().add(addConversionTracker);
+    addConversionTrackerOperation.getOperand().add(webConversion);
+    addConversionTrackerOperation.getOperand().add(appConversion);
 
     return addConversionTrackerOperation;
   }
@@ -246,15 +262,27 @@ public class ConversionTrackerSample {
     setConversionTrackerOperation.setOperator(Operator.SET);
 
     for (ConversionTrackerValues values : conversionTrackerValues) {
-      ConversionTracker setConversionTracker = new ConversionTracker();
-      setConversionTracker.setAccountId(accountId);
-      setConversionTracker.setConversionTrackerId(values.getConversionTracker().getConversionTrackerId());
-      setConversionTracker.setConversionTrackerName("SampleConversionTracker_UpdateOn_" + SoapUtils.getCurrentTimestamp());
-      setConversionTracker.setStatus(ConversionTrackerStatus.DISABLED);
-      setConversionTracker.setCategory(ConversionTrackerCategory.PAGE_VIEW);
-      setConversionTracker.setUserRevenueValue((long) 300);
-      setConversionTracker.setConversionTrackerType(ConversionTrackerType.WEB_CONVERSION);
-      setConversionTrackerOperation.getOperand().add(setConversionTracker);
+      if (values.getConversionTracker().getConversionTrackerType() == ConversionTrackerType.WEB_CONVERSION) {
+        WebConversion webConversion = new WebConversion();
+        webConversion.setAccountId(accountId);
+        webConversion.setConversionTrackerId(values.getConversionTracker().getConversionTrackerId());
+        webConversion.setConversionTrackerName("SampleWebConversionTracker_UpdateOn_" + SoapUtils.getCurrentTimestamp());
+        webConversion.setStatus(ConversionTrackerStatus.DISABLED);
+        webConversion.setCategory(ConversionTrackerCategory.PAGE_VIEW);
+        webConversion.setUserRevenueValue((long) 300);
+        webConversion.setConversionTrackerType(ConversionTrackerType.WEB_CONVERSION);
+        setConversionTrackerOperation.getOperand().add(webConversion);
+      } else {
+        AppConversion appConversion = new AppConversion();
+        appConversion.setAccountId(accountId);
+        appConversion.setConversionTrackerId(values.getConversionTracker().getConversionTrackerId());
+        appConversion.setConversionTrackerName("SampleAppConversionTracker_UpdateOn_" + SoapUtils.getCurrentTimestamp());
+        appConversion.setStatus(ConversionTrackerStatus.DISABLED);
+        appConversion.setCategory(ConversionTrackerCategory.DOWNLOAD);
+        appConversion.setUserRevenueValue((long) 300);
+        appConversion.setConversionTrackerType(ConversionTrackerType.APP_CONVERSION);
+        setConversionTrackerOperation.getOperand().add(appConversion);
+      }
     }
 
     return setConversionTrackerOperation;
@@ -270,12 +298,22 @@ public class ConversionTrackerSample {
     System.out.println("conversionTrackerId = " + conversionTracker.getConversionTrackerId());
     System.out.println("conversionTrackerName = " + conversionTracker.getConversionTrackerName());
     System.out.println("status = " + conversionTracker.getStatus());
-    System.out.println("isUnknownDomain = " + conversionTracker.getCategory());
-    System.out.println("numConversionEvents = " + conversionTracker.getNumConversionEvents());
+    System.out.println("category = " + conversionTracker.getCategory());
+    System.out.println("conversions = " + conversionTracker.getConversions());
     System.out.println("conversionValue = " + conversionTracker.getConversionValue());
-    System.out.println("mostRecentConversionDate = " + conversionTracker.getMostRecentConversionDate());
     System.out.println("userRevenueValue = " + conversionTracker.getUserRevenueValue());
     System.out.println("conversionTrackerType = " + conversionTracker.getConversionTrackerType());
+    System.out.println("measurementPeriod = " + conversionTracker.getMeasurementPeriod());
+    System.out.println("mostRecentConversionDate = " + conversionTracker.getMostRecentConversionDate());
+    if (conversionTracker.getConversionTrackerType() == ConversionTrackerType.WEB_CONVERSION) {
+      WebConversion webConversion = (WebConversion)conversionTracker;
+      System.out.println("snippet = " + webConversion.getSnippet());
+    } else {
+      AppConversion appConversion = (AppConversion)conversionTracker;
+      System.out.println("appId = " + appConversion.getAppId());
+      System.out.println("appPlatform = " + appConversion.getAppPlatform());
+      System.out.println("appConversionType = " + appConversion.getAppConversionType());
+    }
     System.out.println("---------");
   }
 }

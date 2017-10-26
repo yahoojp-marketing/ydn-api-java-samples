@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AdGroupTargetValues complex type.
+ * <p>Java class for AdGroupTargetValue complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AdGroupTargetValues">
+ * &lt;complexType name="AdGroupTargetValue">
  *   &lt;complexContent>
  *     &lt;extension base="{http://im.yahooapis.jp/V6}ReturnValue">
  *       &lt;sequence>
- *         &lt;element name="targetList" type="{http://im.yahooapis.jp/V6}AdGroupTargets" minOccurs="0"/>
+ *         &lt;element name="adGroupTargetList" type="{http://im.yahooapis.jp/V6}AdGroupTarget" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -26,37 +26,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdGroupTargetValues", propOrder = {
-    "targetList"
+@XmlType(name = "AdGroupTargetValue", propOrder = {
+    "adGroupTargetList"
 })
-public class AdGroupTargetValues
+public class AdGroupTargetValue
     extends ReturnValue
 {
 
-    protected AdGroupTargets targetList;
+    protected AdGroupTarget adGroupTargetList;
 
     /**
-     * Gets the value of the targetList property.
+     * Gets the value of the adGroupTargetList property.
      * 
      * @return
      *     possible object is
-     *     {@link AdGroupTargets }
+     *     {@link AdGroupTarget }
      *     
      */
-    public AdGroupTargets getTargetList() {
-        return targetList;
+    public AdGroupTarget getAdGroupTargetList() {
+        return adGroupTargetList;
     }
 
     /**
-     * Sets the value of the targetList property.
+     * Sets the value of the adGroupTargetList property.
      * 
      * @param value
      *     allowed object is
-     *     {@link AdGroupTargets }
+     *     {@link AdGroupTarget }
      *     
      */
-    public void setTargetList(AdGroupTargets value) {
-        this.targetList = value;
+    public void setAdGroupTargetList(AdGroupTarget value) {
+        this.adGroupTargetList = value;
     }
 
 }

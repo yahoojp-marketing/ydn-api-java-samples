@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="deviceApp" type="{http://im.yahooapis.jp/V6}DeviceAppType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="deviceOs" type="{http://im.yahooapis.jp/V6}DeviceOsType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="smartDeviceCarriers" type="{http://im.yahooapis.jp/V6}SmartDeviceCarrier" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="deviceOsVersion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="dynamicImageExtensions" type="{http://im.yahooapis.jp/V6}DynamicImageExtensions" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -52,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
     "deviceApp",
     "deviceOs",
     "smartDeviceCarriers",
+    "deviceOsVersion",
     "dynamicImageExtensions"
 })
 public class AdGroup {
@@ -72,6 +74,7 @@ public class AdGroup {
     protected List<DeviceOsType> deviceOs;
     @XmlSchemaType(name = "string")
     protected List<SmartDeviceCarrier> smartDeviceCarriers;
+    protected String deviceOsVersion;
     @XmlSchemaType(name = "string")
     protected DynamicImageExtensions dynamicImageExtensions;
 
@@ -341,6 +344,30 @@ public class AdGroup {
             smartDeviceCarriers = new ArrayList<SmartDeviceCarrier>();
         }
         return this.smartDeviceCarriers;
+    }
+
+    /**
+     * Gets the value of the deviceOsVersion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDeviceOsVersion() {
+        return deviceOsVersion;
+    }
+
+    /**
+     * Sets the value of the deviceOsVersion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDeviceOsVersion(String value) {
+        this.deviceOsVersion = value;
     }
 
     /**

@@ -18,12 +18,12 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="imps" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="clickRate" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="totalClickCost" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="totalClickCost" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="clickCnt" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="avgClickCost" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="convCnt" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="convRate" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="cpa" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="totalConversions" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="totalConversionRate" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="cpa" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="avgDeliverRank" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="totalVimps" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="vImps" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -57,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
     "totalClickCost",
     "clickCnt",
     "avgClickCost",
-    "convCnt",
-    "convRate",
+    "totalConversions",
+    "totalConversionRate",
     "cpa",
     "avgDeliverRank",
     "totalVimps",
@@ -83,12 +83,12 @@ public class Stats {
 
     protected Long imps;
     protected Double clickRate;
-    protected Long totalClickCost;
+    protected Double totalClickCost;
     protected Long clickCnt;
     protected Double avgClickCost;
-    protected Long convCnt;
-    protected Double convRate;
-    protected Double cpa;
+    protected String totalConversions;
+    protected Double totalConversionRate;
+    protected String cpa;
     protected Double avgDeliverRank;
     protected Long totalVimps;
     protected Long vImps;
@@ -161,10 +161,10 @@ public class Stats {
      * 
      * @return
      *     possible object is
-     *     {@link Long }
+     *     {@link Double }
      *     
      */
-    public Long getTotalClickCost() {
+    public Double getTotalClickCost() {
         return totalClickCost;
     }
 
@@ -173,10 +173,10 @@ public class Stats {
      * 
      * @param value
      *     allowed object is
-     *     {@link Long }
+     *     {@link Double }
      *     
      */
-    public void setTotalClickCost(Long value) {
+    public void setTotalClickCost(Double value) {
         this.totalClickCost = value;
     }
 
@@ -229,51 +229,51 @@ public class Stats {
     }
 
     /**
-     * Gets the value of the convCnt property.
+     * Gets the value of the totalConversions property.
      * 
      * @return
      *     possible object is
-     *     {@link Long }
+     *     {@link String }
      *     
      */
-    public Long getConvCnt() {
-        return convCnt;
+    public String getTotalConversions() {
+        return totalConversions;
     }
 
     /**
-     * Sets the value of the convCnt property.
+     * Sets the value of the totalConversions property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Long }
+     *     {@link String }
      *     
      */
-    public void setConvCnt(Long value) {
-        this.convCnt = value;
+    public void setTotalConversions(String value) {
+        this.totalConversions = value;
     }
 
     /**
-     * Gets the value of the convRate property.
+     * Gets the value of the totalConversionRate property.
      * 
      * @return
      *     possible object is
      *     {@link Double }
      *     
      */
-    public Double getConvRate() {
-        return convRate;
+    public Double getTotalConversionRate() {
+        return totalConversionRate;
     }
 
     /**
-     * Sets the value of the convRate property.
+     * Sets the value of the totalConversionRate property.
      * 
      * @param value
      *     allowed object is
      *     {@link Double }
      *     
      */
-    public void setConvRate(Double value) {
-        this.convRate = value;
+    public void setTotalConversionRate(Double value) {
+        this.totalConversionRate = value;
     }
 
     /**
@@ -281,10 +281,10 @@ public class Stats {
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getCpa() {
+    public String getCpa() {
         return cpa;
     }
 
@@ -293,10 +293,10 @@ public class Stats {
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setCpa(Double value) {
+    public void setCpa(String value) {
         this.cpa = value;
     }
 

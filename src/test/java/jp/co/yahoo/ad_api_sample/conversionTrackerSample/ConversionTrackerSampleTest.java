@@ -10,6 +10,7 @@ import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerType;
 import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerValues;
 import jp.yahooapis.im.V6.ConversionTrackerService.Operator;
 import jp.yahooapis.im.V6.ConversionTrackerService.Paging;
+import jp.yahooapis.im.V6.ConversionTrackerService.WebConversion;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -56,7 +57,7 @@ public class ConversionTrackerSampleTest {
   @Test
   public void testAdd() throws Exception {
     // Set Operation
-    ConversionTracker addConversionTracker = new ConversionTracker();
+    WebConversion addConversionTracker = new WebConversion();
     addConversionTracker.setAccountId(accountId);
     addConversionTracker.setConversionTrackerName("SampleConversionTracker_CreateOn_" + SoapUtils.getCurrentTimestamp());
     addConversionTracker.setStatus(ConversionTrackerStatus.ENABLED);
@@ -92,7 +93,7 @@ public class ConversionTrackerSampleTest {
     // ConversionTrackerService::mutate(ADD)
     // =================================================================
     // Set Operation
-    ConversionTracker addConversionTracker = new ConversionTracker();
+    WebConversion addConversionTracker = new WebConversion();
     addConversionTracker.setAccountId(accountId);
     addConversionTracker.setConversionTrackerName("SampleConversionTracker_CreateOn_" + SoapUtils.getCurrentTimestamp());
     addConversionTracker.setStatus(ConversionTrackerStatus.ENABLED);
@@ -120,7 +121,7 @@ public class ConversionTrackerSampleTest {
     setConversionTrackerOperation.setAccountId(accountId);
     setConversionTrackerOperation.setOperator(Operator.SET);
 
-    ConversionTracker setConversionTracker = new ConversionTracker();
+    WebConversion setConversionTracker = new WebConversion();
     setConversionTracker.setAccountId(accountId);
     setConversionTracker.setConversionTrackerId(addResponse.get(0).getConversionTracker().getConversionTrackerId());
     setConversionTracker.setConversionTrackerName("SampleConversionTracker_UpdateOn_" + SoapUtils.getCurrentTimestamp());
@@ -154,7 +155,7 @@ public class ConversionTrackerSampleTest {
     // ConversionTrackerService::mutate(ADD)
     // =================================================================
     // Set Operation
-    ConversionTracker addConversionTracker = new ConversionTracker();
+    WebConversion addConversionTracker = new WebConversion();
     addConversionTracker.setAccountId(accountId);
     addConversionTracker.setConversionTrackerName("SampleConversionTracker_CreateOn_" + SoapUtils.getCurrentTimestamp());
     addConversionTracker.setStatus(ConversionTrackerStatus.ENABLED);
