@@ -1,16 +1,15 @@
 package jp.co.yahoo.ad_api_sample.conversionTrackerSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTracker;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerCategory;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerOperation;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerSelector;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerStatus;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerType;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerValues;
-import jp.yahooapis.im.V6.ConversionTrackerService.Operator;
-import jp.yahooapis.im.V6.ConversionTrackerService.Paging;
-import jp.yahooapis.im.V6.ConversionTrackerService.WebConversion;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerCategory;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerOperation;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerSelector;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerStatus;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerType;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerValues;
+import jp.yahooapis.im.v201806.conversiontracker.Operator;
+import jp.yahooapis.im.v201806.conversiontracker.WebConversion;
 
 import org.junit.Before;
 import org.junit.Test;

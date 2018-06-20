@@ -1,19 +1,19 @@
 package jp.co.yahoo.ad_api_sample.auditLogDownloadSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.AuditLogServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogDateRange;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadJobStatus;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadReturnValue;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadSelector;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadStatusPage;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadStatusSelector;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogDownloadValues;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogJob;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogServiceInterface;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogServiceService;
-import jp.yahooapis.im.V6.AuditLogService.AuditLogUpdateSource;
-import jp.yahooapis.im.V6.AuditLogService.Error;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.auditlog.AuditLogDateRange;
+import jp.yahooapis.im.v201806.auditlog.AuditLogDownloadJobStatus;
+import jp.yahooapis.im.v201806.auditlog.AuditLogDownloadReturnValue;
+import jp.yahooapis.im.v201806.auditlog.AuditLogDownloadSelector;
+import jp.yahooapis.im.v201806.auditlog.AuditLogDownloadStatusPage;
+import jp.yahooapis.im.v201806.auditlog.AuditLogDownloadStatusSelector;
+import jp.yahooapis.im.v201806.auditlog.AuditLogDownloadValues;
+import jp.yahooapis.im.v201806.auditlog.AuditLogJob;
+import jp.yahooapis.im.v201806.auditlog.AuditLogServiceInterface;
+import jp.yahooapis.im.v201806.auditlog.AuditLogServiceService;
+import jp.yahooapis.im.v201806.auditlog.AuditLogUpdateSource;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,7 +31,7 @@ public class AuditLogDownloadSample {
 
   /**
    * main method for AuditLogDownloadSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -60,7 +60,8 @@ public class AuditLogDownloadSample {
 
       AuditLogDownloadSelector auditLogDownloadSelector = new AuditLogDownloadSelector();
       auditLogDownloadSelector.setAccountId(accountId);
-      auditLogDownloadSelector.setDateRange(dateRange);;
+      auditLogDownloadSelector.setDateRange(dateRange);
+      ;
       auditLogDownloadSelector.getUpdateSources().add(AuditLogUpdateSource.API);
       auditLogDownloadSelector.getUpdateSources().add(AuditLogUpdateSource.CAMPAIGN_MANAGEMENT_TOOL);
 
@@ -73,7 +74,7 @@ public class AuditLogDownloadSample {
       // request
       AuditLogDownloadStatusSelector auditLogDownloadStatusSelector = new AuditLogDownloadStatusSelector();
       auditLogDownloadStatusSelector.setAccountId(accountId);
-      auditLogDownloadStatusSelector.getAuditLogJobIds().add(Long.valueOf(getAuditLogDownloadResponse.get(0).getAuditLogJob().getAuditLogJobId()));
+      auditLogDownloadStatusSelector.getAuditLogJobIds().add(getAuditLogDownloadResponse.get(0).getAuditLogJob().getAuditLogJobId());
 
       // call API
       List<AuditLogDownloadValues> getAuditLogDownloadStatusResponse = getAuditLogDownloadStatus(auditLogDownloadStatusSelector);
@@ -96,10 +97,9 @@ public class AuditLogDownloadSample {
 
   /**
    * download auditLog.
-   * 
+   *
    * @param getAuditLogDownloadStatusResponse AuditLogDownloadValues
-   * @param auditLogDownloadFileName String
-   * @throws Exception
+   * @param auditLogDownloadFileName          String
    */
   public static void downloadAuditLog(AuditLogDownloadValues getAuditLogDownloadStatusResponse, String auditLogDownloadFileName) throws Exception {
 
@@ -113,10 +113,9 @@ public class AuditLogDownloadSample {
 
   /**
    * Sample Program for AuditLogDownloadService GetAuditLogDownload.
-   * 
+   *
    * @param selector AuditLogDownloadSelector
    * @return AuditLogDownloadValues
-   * @throws Exception
    */
   public static List<AuditLogDownloadValues> getAuditLogDownload(AuditLogDownloadSelector selector) throws Exception {
 
@@ -136,7 +135,7 @@ public class AuditLogDownloadSample {
 
     // Error
     if (auditLogDownloadError.value != null && auditLogDownloadError.value.size() > 0) {
-      SoapUtils.displayErrors(new AuditLogServiceErrorEntityFactory(auditLogDownloadError.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(auditLogDownloadError.value), true);
     }
     if (auditLogDownloadError.value == null) {
       throw new Exception("NoDataResponse:AuditLogDownloadService GetAuditLogDownload");
@@ -147,7 +146,7 @@ public class AuditLogDownloadSample {
       if (auditLogDownloadValues.isOperationSucceeded()) {
         display(auditLogDownloadValues.getAuditLogJob());
       } else {
-        SoapUtils.displayErrors(new AuditLogServiceErrorEntityFactory(auditLogDownloadError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(auditLogDownloadError.value), true);
       }
     }
 
@@ -157,10 +156,9 @@ public class AuditLogDownloadSample {
 
   /**
    * Sample Program for AuditLogDownloadService GetAuditLogDownloadStatus.
-   * 
+   *
    * @param selector AuditLogDownloadStatusSelector
    * @return AuditLogDownloadValues
-   * @throws Exception
    */
   public static List<AuditLogDownloadValues> getAuditLogDownloadStatus(AuditLogDownloadStatusSelector selector) throws Exception {
 
@@ -186,7 +184,7 @@ public class AuditLogDownloadSample {
 
       // if error
       if (auditLogDownloadStatusError.value != null && auditLogDownloadStatusError.value.size() > 0) {
-        SoapUtils.displayErrors(new AuditLogServiceErrorEntityFactory(auditLogDownloadStatusError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(auditLogDownloadStatusError.value), true);
       }
 
       // response
@@ -212,7 +210,7 @@ public class AuditLogDownloadSample {
         }
 
       } else {
-        SoapUtils.displayErrors(new AuditLogServiceErrorEntityFactory(auditLogDownloadStatusValues.get(0).getError()), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(auditLogDownloadStatusValues.get(0).getError()), true);
       }
     }
 

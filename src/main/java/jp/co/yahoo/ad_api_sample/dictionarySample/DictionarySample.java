@@ -1,36 +1,36 @@
 package jp.co.yahoo.ad_api_sample.dictionarySample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.DictionaryServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.DictionaryService.Category;
-import jp.yahooapis.im.V6.DictionaryService.CategoryChildValues;
-import jp.yahooapis.im.V6.DictionaryService.CategoryPage;
-import jp.yahooapis.im.V6.DictionaryService.CategorySelector;
-import jp.yahooapis.im.V6.DictionaryService.CategoryValues;
-import jp.yahooapis.im.V6.DictionaryService.ColorSet;
-import jp.yahooapis.im.V6.DictionaryService.ColorSetPage;
-import jp.yahooapis.im.V6.DictionaryService.ColorSetSelector;
-import jp.yahooapis.im.V6.DictionaryService.ColorSetValues;
-import jp.yahooapis.im.V6.DictionaryService.DeviceOsType;
-import jp.yahooapis.im.V6.DictionaryService.DictionaryLang;
-import jp.yahooapis.im.V6.DictionaryService.DictionaryService;
-import jp.yahooapis.im.V6.DictionaryService.DictionaryServiceInterface;
-import jp.yahooapis.im.V6.DictionaryService.DisapprovalReason;
-import jp.yahooapis.im.V6.DictionaryService.DisapprovalReasonPage;
-import jp.yahooapis.im.V6.DictionaryService.DisapprovalReasonSelector;
-import jp.yahooapis.im.V6.DictionaryService.DisapprovalReasonValues;
-import jp.yahooapis.im.V6.DictionaryService.Error;
-import jp.yahooapis.im.V6.DictionaryService.GeographicLocation;
-import jp.yahooapis.im.V6.DictionaryService.GeographicLocationPage;
-import jp.yahooapis.im.V6.DictionaryService.GeographicLocationSelector;
-import jp.yahooapis.im.V6.DictionaryService.GeographicLocationValues;
-import jp.yahooapis.im.V6.DictionaryService.MediaAdFormat;
-import jp.yahooapis.im.V6.DictionaryService.MediaAdFormatPage;
-import jp.yahooapis.im.V6.DictionaryService.MediaAdFormatValues;
-import jp.yahooapis.im.V6.DictionaryService.OsVersion;
-import jp.yahooapis.im.V6.DictionaryService.OsVersionPage;
-import jp.yahooapis.im.V6.DictionaryService.OsVersionSelector;
-import jp.yahooapis.im.V6.DictionaryService.OsVersionValues;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.dictionary.Category;
+import jp.yahooapis.im.v201806.dictionary.CategoryChildValues;
+import jp.yahooapis.im.v201806.dictionary.CategoryPage;
+import jp.yahooapis.im.v201806.dictionary.CategorySelector;
+import jp.yahooapis.im.v201806.dictionary.CategoryValues;
+import jp.yahooapis.im.v201806.dictionary.ColorSet;
+import jp.yahooapis.im.v201806.dictionary.ColorSetPage;
+import jp.yahooapis.im.v201806.dictionary.ColorSetSelector;
+import jp.yahooapis.im.v201806.dictionary.ColorSetValues;
+import jp.yahooapis.im.v201806.dictionary.DeviceOsType;
+import jp.yahooapis.im.v201806.dictionary.DictionaryLang;
+import jp.yahooapis.im.v201806.dictionary.DictionaryService;
+import jp.yahooapis.im.v201806.dictionary.DictionaryServiceInterface;
+import jp.yahooapis.im.v201806.dictionary.DisapprovalReason;
+import jp.yahooapis.im.v201806.dictionary.DisapprovalReasonPage;
+import jp.yahooapis.im.v201806.dictionary.DisapprovalReasonSelector;
+import jp.yahooapis.im.v201806.dictionary.DisapprovalReasonValues;
+import jp.yahooapis.im.v201806.dictionary.GeographicLocation;
+import jp.yahooapis.im.v201806.dictionary.GeographicLocationPage;
+import jp.yahooapis.im.v201806.dictionary.GeographicLocationSelector;
+import jp.yahooapis.im.v201806.dictionary.GeographicLocationValues;
+import jp.yahooapis.im.v201806.dictionary.MediaAdFormat;
+import jp.yahooapis.im.v201806.dictionary.MediaAdFormatPage;
+import jp.yahooapis.im.v201806.dictionary.MediaAdFormatValues;
+import jp.yahooapis.im.v201806.dictionary.OsVersion;
+import jp.yahooapis.im.v201806.dictionary.OsVersionPage;
+import jp.yahooapis.im.v201806.dictionary.OsVersionSelector;
+import jp.yahooapis.im.v201806.dictionary.OsVersionValues;
 
 import java.util.List;
 
@@ -145,7 +145,7 @@ public class DictionarySample {
 
     // if error
     if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(dictionaryErrorHolder.value), true);
     }
 
     // response
@@ -159,7 +159,7 @@ public class DictionarySample {
             displayColorSet(values.get(i));
           } else {
             // if error
-            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -193,7 +193,7 @@ public class DictionarySample {
 
     // if error
     if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(dictionaryErrorHolder.value), true);
     }
 
     // response
@@ -207,7 +207,7 @@ public class DictionarySample {
             displayCategory(values.get(i).getCategory());
           } else {
             // if error
-            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -241,7 +241,7 @@ public class DictionarySample {
 
     // if error
     if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(dictionaryErrorHolder.value), true);
     }
 
     // response
@@ -255,7 +255,7 @@ public class DictionarySample {
             displayCategory(values.get(i).getCategory());
           } else {
             // if error
-            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -289,7 +289,7 @@ public class DictionarySample {
 
     // if error
     if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(dictionaryErrorHolder.value), true);
     }
 
     // response
@@ -303,7 +303,7 @@ public class DictionarySample {
             displayGeographicLocation(values.get(i).getGeographicLocation());
           } else {
             // if error
-            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -337,7 +337,7 @@ public class DictionarySample {
 
     // if error
     if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(dictionaryErrorHolder.value), true);
     }
 
     // response
@@ -351,7 +351,7 @@ public class DictionarySample {
             displayDisapprovalReason(values.get(i).getDisapprovalReason());
           } else {
             // if error
-            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -384,7 +384,7 @@ public class DictionarySample {
 
     // if error
     if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(dictionaryErrorHolder.value), true);
     }
 
     // response
@@ -398,7 +398,7 @@ public class DictionarySample {
             displayOsVersion(values.get(i).getOsVersion());
           } else {
             // if error
-            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -431,7 +431,7 @@ public class DictionarySample {
 
     // if error
     if (dictionaryErrorHolder.value != null && dictionaryErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(dictionaryErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(dictionaryErrorHolder.value), true);
     }
 
     // response
@@ -445,7 +445,7 @@ public class DictionarySample {
             displayMediaAdFormat(values.get(i).getMediaAdFormat());
           } else {
             // if error
-            SoapUtils.displayErrors(new DictionaryServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -539,6 +539,7 @@ public class DictionarySample {
 
   /**
    * element osVersion entity to stdout.
+   *
    * @param osVersions os version entities for display.
    */
   private static void displayOsVersion(List<OsVersion> osVersions) {
@@ -551,10 +552,11 @@ public class DictionarySample {
 
   /**
    * element mediaAdFormat entity to stdout.
+   *
    * @param mediaAdFormats Media ad format entity for display.
    */
   private static void displayMediaAdFormat(List<MediaAdFormat> mediaAdFormats) {
-    for (MediaAdFormat mediaAdFormat :mediaAdFormats) {
+    for (MediaAdFormat mediaAdFormat : mediaAdFormats) {
       System.out.println("id = " + mediaAdFormat.getId());
       System.out.println("width = " + mediaAdFormat.getWidth());
       System.out.println("height = " + mediaAdFormat.getHeight());

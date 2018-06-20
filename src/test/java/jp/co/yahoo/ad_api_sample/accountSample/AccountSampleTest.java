@@ -1,12 +1,12 @@
 package jp.co.yahoo.ad_api_sample.accountSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.AccountService.Account;
-import jp.yahooapis.im.V6.AccountService.AccountOperation;
-import jp.yahooapis.im.V6.AccountService.AccountSelector;
-import jp.yahooapis.im.V6.AccountService.AccountValues;
-import jp.yahooapis.im.V6.AccountService.DeliveryStatus;
-import jp.yahooapis.im.V6.AccountService.Operator;
+import jp.yahooapis.im.v201806.account.Account;
+import jp.yahooapis.im.v201806.account.AccountOperation;
+import jp.yahooapis.im.v201806.account.AccountSelector;
+import jp.yahooapis.im.v201806.account.AccountValues;
+import jp.yahooapis.im.v201806.account.DeliveryStatus;
+import jp.yahooapis.im.v201806.account.Operator;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,20 +1,18 @@
 package jp.co.yahoo.ad_api_sample.bulkUploadSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.BulkServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.BulkService.BulkEncoding;
-import jp.yahooapis.im.V6.BulkService.BulkLang;
-import jp.yahooapis.im.V6.BulkService.BulkOutput;
-import jp.yahooapis.im.V6.BulkService.BulkServiceInterface;
-import jp.yahooapis.im.V6.BulkService.BulkServiceService;
-import jp.yahooapis.im.V6.BulkService.BulkUploadStatusPage;
-import jp.yahooapis.im.V6.BulkService.BulkUploadStatusSelector;
-import jp.yahooapis.im.V6.BulkService.BulkUploadValues;
-import jp.yahooapis.im.V6.BulkService.Error;
-import jp.yahooapis.im.V6.BulkService.Paging;
-import jp.yahooapis.im.V6.BulkService.UploadBulkJob;
-import jp.yahooapis.im.V6.BulkService.UploadBulkJobStatus;
-import jp.yahooapis.im.V6.BulkService.UploadUrlValue;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.bulk.BulkOutput;
+import jp.yahooapis.im.v201806.bulk.BulkServiceInterface;
+import jp.yahooapis.im.v201806.bulk.BulkServiceService;
+import jp.yahooapis.im.v201806.bulk.BulkUploadStatusPage;
+import jp.yahooapis.im.v201806.bulk.BulkUploadStatusSelector;
+import jp.yahooapis.im.v201806.bulk.BulkUploadValues;
+import jp.yahooapis.im.v201806.bulk.UploadBulkJob;
+import jp.yahooapis.im.v201806.bulk.UploadBulkJobStatus;
+import jp.yahooapis.im.v201806.bulk.UploadUrlValue;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -35,7 +33,7 @@ public class BulkUploadSample {
 
   /**
    * main method for BulkUploadSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -63,7 +61,6 @@ public class BulkUploadSample {
       BulkUploadStatusSelector bulkUploadStatusSelector = new BulkUploadStatusSelector();
       bulkUploadStatusSelector.setAccountId(accountId);
       bulkUploadStatusSelector.getUploadBulkJobIds().add(uploadJobId);
-      bulkUploadStatusSelector.setOutput(BulkOutput.CSV);
       Paging paging = new Paging();
       paging.setStartIndex(1);
       paging.setNumberResults(20);
@@ -80,7 +77,6 @@ public class BulkUploadSample {
       downloadBulk(getBulkUploadStatusResponse.get(0));
 
 
-
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -88,10 +84,9 @@ public class BulkUploadSample {
 
   /**
    * Sample Program for BulkUploadService Upload.
-   * 
+   *
    * @param uploadUrl String
    * @return uploadJobId long
-   * @throws Exception
    */
   public static long upload(String uploadUrl) throws Exception {
 
@@ -117,10 +112,9 @@ public class BulkUploadSample {
 
   /**
    * Sample Program for BulkUploadService GetUploadUrl.
-   * 
+   *
    * @param accountId long
    * @return UploadUrlValue
-   * @throws Exception
    */
   public static UploadUrlValue getUploadUrl(long accountId) throws Exception {
 
@@ -143,7 +137,7 @@ public class BulkUploadSample {
 
     // if error
     if (getUploadUrlErrorHolder.value != null && getUploadUrlErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new BulkServiceErrorEntityFactory(getUploadUrlErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getUploadUrlErrorHolder.value), true);
     }
 
     // response
@@ -161,10 +155,9 @@ public class BulkUploadSample {
 
   /**
    * Sample Program for BulkUploadService GetBulkUploadStatus.
-   * 
+   *
    * @param selector BulkUploadStatusSelector
    * @return BulkUploadValues
-   * @throws Exception
    */
   public static List<BulkUploadValues> getBulkUploadStatus(BulkUploadStatusSelector selector) throws Exception {
 
@@ -195,7 +188,7 @@ public class BulkUploadSample {
 
       // if error
       if (getBulkUploadStatusErrorHolder.value != null && getBulkUploadStatusErrorHolder.value.size() > 0) {
-        SoapUtils.displayErrors(new BulkServiceErrorEntityFactory(getBulkUploadStatusErrorHolder.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getBulkUploadStatusErrorHolder.value), true);
       }
 
       // response
@@ -213,7 +206,7 @@ public class BulkUploadSample {
                 System.out.println("downloadBulkUploadFileUrl = " + uploadBulkJob.getDownloadBulkUploadFileUrl());
               }
             } else {
-              SoapUtils.displayErrors(new BulkServiceErrorEntityFactory(values.get(i).getError()), true);
+              SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
             }
           }
         }
@@ -237,9 +230,8 @@ public class BulkUploadSample {
 
   /**
    * download bulk.
-   * 
+   *
    * @param getBulkUploadStatusResponse BulkUploadValues
-   * @throws Exception
    */
   public static void downloadBulk(BulkUploadValues getBulkUploadStatusResponse) throws Exception {
 

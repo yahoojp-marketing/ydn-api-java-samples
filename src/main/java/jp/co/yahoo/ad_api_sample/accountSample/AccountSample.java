@@ -1,21 +1,21 @@
 package jp.co.yahoo.ad_api_sample.accountSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.AccountServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.AccountService.Account;
-import jp.yahooapis.im.V6.AccountService.AccountOperation;
-import jp.yahooapis.im.V6.AccountService.AccountPage;
-import jp.yahooapis.im.V6.AccountService.AccountReturnValue;
-import jp.yahooapis.im.V6.AccountService.AccountSelector;
-import jp.yahooapis.im.V6.AccountService.AccountServiceInterface;
-import jp.yahooapis.im.V6.AccountService.AccountServiceService;
-import jp.yahooapis.im.V6.AccountService.AccountStatus;
-import jp.yahooapis.im.V6.AccountService.AccountType;
-import jp.yahooapis.im.V6.AccountService.AccountValues;
-import jp.yahooapis.im.V6.AccountService.DeliveryStatus;
-import jp.yahooapis.im.V6.AccountService.Error;
-import jp.yahooapis.im.V6.AccountService.Operator;
-import jp.yahooapis.im.V6.AccountService.Paging;
+import jp.yahooapis.im.v201806.account.Account;
+import jp.yahooapis.im.v201806.account.AccountOperation;
+import jp.yahooapis.im.v201806.account.AccountPage;
+import jp.yahooapis.im.v201806.account.AccountReturnValue;
+import jp.yahooapis.im.v201806.account.AccountSelector;
+import jp.yahooapis.im.v201806.account.AccountServiceInterface;
+import jp.yahooapis.im.v201806.account.AccountServiceService;
+import jp.yahooapis.im.v201806.account.AccountStatus;
+import jp.yahooapis.im.v201806.account.AccountType;
+import jp.yahooapis.im.v201806.account.AccountValues;
+import jp.yahooapis.im.v201806.account.DeliveryStatus;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.account.Operator;
+import jp.yahooapis.im.v201806.Paging;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,7 +51,7 @@ public class AccountSample {
 
     // if error
     if (accountErrorHolder.value != null && accountErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new AccountServiceErrorEntityFactory(accountErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(accountErrorHolder.value), true);
     }
 
     // response
@@ -65,7 +65,7 @@ public class AccountSample {
             displayAccount(values.get(i).getAccount());
           } else {
             // if error
-            SoapUtils.displayErrors(new AccountServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -97,7 +97,7 @@ public class AccountSample {
 
     // if error
     if (accountSetErrorHolder.value != null && accountSetErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new AccountServiceErrorEntityFactory(accountSetErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(accountSetErrorHolder.value), true);
     }
 
     // response
@@ -110,7 +110,7 @@ public class AccountSample {
           displayAccount(accountValues.getAccount());
         } else {
           // if error
-          SoapUtils.displayErrors(new AccountServiceErrorEntityFactory(accountValues.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(accountValues.getError()), true);
         }
       }
     }

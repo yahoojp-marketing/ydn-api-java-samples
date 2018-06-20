@@ -1,15 +1,15 @@
 package jp.co.yahoo.ad_api_sample.accountAdProductSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.AccountAdProductServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProduct;
-import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductPage;
-import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductSelector;
-import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductService;
-import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductServiceInterface;
-import jp.yahooapis.im.V6.AccountAdProductService.AccountAdProductValues;
-import jp.yahooapis.im.V6.AccountAdProductService.AdProduct;
-import jp.yahooapis.im.V6.AccountAdProductService.Error;
+import jp.yahooapis.im.v201806.accountadproduct.AccountAdProduct;
+import jp.yahooapis.im.v201806.accountadproduct.AccountAdProductPage;
+import jp.yahooapis.im.v201806.accountadproduct.AccountAdProductSelector;
+import jp.yahooapis.im.v201806.accountadproduct.AccountAdProductService;
+import jp.yahooapis.im.v201806.accountadproduct.AccountAdProductServiceInterface;
+import jp.yahooapis.im.v201806.accountadproduct.AccountAdProductValues;
+import jp.yahooapis.im.v201806.accountadproduct.AdProduct;
+import jp.yahooapis.im.v201806.Error;
 
 import java.util.List;
 
@@ -69,7 +69,7 @@ public class AccountAdProductSample {
 
     // if error
     if (accountAdProductErrorHolder.value != null && accountAdProductErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new AccountAdProductServiceErrorEntityFactory(accountAdProductErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(accountAdProductErrorHolder.value), true);
     }
 
     // response
@@ -83,7 +83,7 @@ public class AccountAdProductSample {
             displayAccountAdProduct(values.get(i).getAccountAdProduct());
           } else {
             // if error
-            SoapUtils.displayErrors(new AccountAdProductServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }

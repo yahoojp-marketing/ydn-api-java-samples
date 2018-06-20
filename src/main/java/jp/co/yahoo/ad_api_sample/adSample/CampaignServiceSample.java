@@ -1,28 +1,31 @@
 package jp.co.yahoo.ad_api_sample.adSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.CampaignServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.CampaignService.BiddingStrategyType;
-import jp.yahooapis.im.V6.CampaignService.Budget;
-import jp.yahooapis.im.V6.CampaignService.BudgetDeliveryMethod;
-import jp.yahooapis.im.V6.CampaignService.Campaign;
-import jp.yahooapis.im.V6.CampaignService.CampaignOperation;
-import jp.yahooapis.im.V6.CampaignService.CampaignPage;
-import jp.yahooapis.im.V6.CampaignService.CampaignReturnValue;
-import jp.yahooapis.im.V6.CampaignService.CampaignSelector;
-import jp.yahooapis.im.V6.CampaignService.CampaignServiceInterface;
-import jp.yahooapis.im.V6.CampaignService.CampaignServiceService;
-import jp.yahooapis.im.V6.CampaignService.CampaignType;
-import jp.yahooapis.im.V6.CampaignService.CampaignValues;
-import jp.yahooapis.im.V6.CampaignService.DeviceOsType;
-import jp.yahooapis.im.V6.CampaignService.Error;
-import jp.yahooapis.im.V6.CampaignService.FrequencyCap;
-import jp.yahooapis.im.V6.CampaignService.FrequencyLevel;
-import jp.yahooapis.im.V6.CampaignService.FrequencyTimeUnit;
-import jp.yahooapis.im.V6.CampaignService.ManualCPC;
-import jp.yahooapis.im.V6.CampaignService.Operator;
-import jp.yahooapis.im.V6.CampaignService.Paging;
-import jp.yahooapis.im.V6.CampaignService.UserStatus;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.campaign.AutoCampaignConversionOptimizer;
+import jp.yahooapis.im.v201806.campaign.BiddingStrategyType;
+import jp.yahooapis.im.v201806.campaign.Budget;
+import jp.yahooapis.im.v201806.campaign.BudgetDeliveryMethod;
+import jp.yahooapis.im.v201806.campaign.Campaign;
+import jp.yahooapis.im.v201806.campaign.CampaignConversionOptimizerType;
+import jp.yahooapis.im.v201806.campaign.CampaignOperation;
+import jp.yahooapis.im.v201806.campaign.CampaignPage;
+import jp.yahooapis.im.v201806.campaign.CampaignReturnValue;
+import jp.yahooapis.im.v201806.campaign.CampaignSelector;
+import jp.yahooapis.im.v201806.campaign.CampaignServiceInterface;
+import jp.yahooapis.im.v201806.campaign.CampaignServiceService;
+import jp.yahooapis.im.v201806.campaign.CampaignType;
+import jp.yahooapis.im.v201806.campaign.CampaignValues;
+import jp.yahooapis.im.v201806.campaign.DeviceOsType;
+import jp.yahooapis.im.v201806.campaign.FrequencyCap;
+import jp.yahooapis.im.v201806.campaign.FrequencyLevel;
+import jp.yahooapis.im.v201806.campaign.FrequencyTimeUnit;
+import jp.yahooapis.im.v201806.campaign.ManualCPC;
+import jp.yahooapis.im.v201806.campaign.ManualCampaignConversionOptimizer;
+import jp.yahooapis.im.v201806.campaign.Operator;
+import jp.yahooapis.im.v201806.campaign.UserStatus;
 
 import java.util.Arrays;
 import java.util.List;
@@ -110,7 +113,7 @@ public class CampaignServiceSample {
 
     // if error
     if (addCampaignErrorHolder.value != null && addCampaignErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new CampaignServiceErrorEntityFactory(addCampaignErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(addCampaignErrorHolder.value), true);
     }
 
     // response
@@ -125,7 +128,7 @@ public class CampaignServiceSample {
             displayCampaign(campaign);
           } else {
             // if error
-            SoapUtils.displayErrors(new CampaignServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -156,7 +159,7 @@ public class CampaignServiceSample {
 
     // if error
     if (setCampaignErrorHolder.value != null && setCampaignErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new CampaignServiceErrorEntityFactory(setCampaignErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(setCampaignErrorHolder.value), true);
     }
 
     // response
@@ -170,7 +173,7 @@ public class CampaignServiceSample {
             displayCampaign(values.get(i).getCampaign());
           } else {
             // if error
-            SoapUtils.displayErrors(new CampaignServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -202,7 +205,7 @@ public class CampaignServiceSample {
 
     // if error
     if (removeCampaignErrorHolder.value != null && removeCampaignErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new CampaignServiceErrorEntityFactory(removeCampaignErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(removeCampaignErrorHolder.value), true);
     }
 
     // response
@@ -216,7 +219,7 @@ public class CampaignServiceSample {
             displayCampaign(values.get(i).getCampaign());
           } else {
             // if error
-            SoapUtils.displayErrors(new CampaignServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -246,7 +249,7 @@ public class CampaignServiceSample {
 
     // if error
     if (getCampaignErrorHolder.value != null && getCampaignErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new CampaignServiceErrorEntityFactory(getCampaignErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getCampaignErrorHolder.value), true);
     }
 
     // response
@@ -259,7 +262,7 @@ public class CampaignServiceSample {
             displayCampaign(values.get(i).getCampaign());
           } else {
             // if error
-            SoapUtils.displayErrors(new CampaignServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -280,7 +283,7 @@ public class CampaignServiceSample {
     Campaign standardCampaignOperand = new Campaign();
     standardCampaignOperand.setAccountId(accountId);
     standardCampaignOperand.setCampaignName("SampleCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    standardCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
+    standardCampaignOperand.setUserStatus(jp.yahooapis.im.v201806.campaign.UserStatus.ACTIVE);
     standardCampaignOperand.setStartDate("20300101");
     standardCampaignOperand.setEndDate("20301231");
     Budget standardBudget = new Budget();
@@ -301,7 +304,7 @@ public class CampaignServiceSample {
     Campaign androidCampaignOperand = new Campaign();
     androidCampaignOperand.setAccountId(accountId);
     androidCampaignOperand.setCampaignName("AndroidCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    androidCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
+    androidCampaignOperand.setUserStatus(jp.yahooapis.im.v201806.campaign.UserStatus.ACTIVE);
     androidCampaignOperand.setStartDate("20300101");
     androidCampaignOperand.setEndDate("20301231");
     Budget androidBudget = new Budget();
@@ -321,11 +324,14 @@ public class CampaignServiceSample {
     androidCampaignOperand.setAppOs(DeviceOsType.ANDROID);
     androidCampaignOperand.setAppId("jp.co.yahoo.sample");
     androidCampaignOperand.setAppName("Sample Android app");
+    ManualCampaignConversionOptimizer manualCampaignConversionOptimizer = new ManualCampaignConversionOptimizer();
+    manualCampaignConversionOptimizer.setOptimizerType(CampaignConversionOptimizerType.MANUAL);
+    androidCampaignOperand.setConversionOptimizer(manualCampaignConversionOptimizer);
 
     Campaign iosCampaignOperand = new Campaign();
     iosCampaignOperand.setAccountId(accountId);
     iosCampaignOperand.setCampaignName("IOSCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    iosCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.ACTIVE);
+    iosCampaignOperand.setUserStatus(jp.yahooapis.im.v201806.campaign.UserStatus.ACTIVE);
     iosCampaignOperand.setStartDate("20300101");
     iosCampaignOperand.setEndDate("20301231");
     Budget iosBudget = new Budget();
@@ -347,11 +353,15 @@ public class CampaignServiceSample {
     iosCampaignOperand.setAppName("Sample IOS app");
 
     CampaignOperation addCampaignOperation = new CampaignOperation();
-    addCampaignOperation.setOperator(jp.yahooapis.im.V6.CampaignService.Operator.ADD);
+    addCampaignOperation.setOperator(jp.yahooapis.im.v201806.campaign.Operator.ADD);
     addCampaignOperation.setAccountId(accountId);
     addCampaignOperation.getOperand().add(standardCampaignOperand);
     addCampaignOperation.getOperand().add(androidCampaignOperand);
     addCampaignOperation.getOperand().add(iosCampaignOperand);
+    AutoCampaignConversionOptimizer autoCampaignConversionOptimizer = new AutoCampaignConversionOptimizer();
+    autoCampaignConversionOptimizer.setOptimizerType(CampaignConversionOptimizerType.AUTO);
+    androidCampaignOperand.setConversionOptimizer(autoCampaignConversionOptimizer);
+
 
     return addCampaignOperation;
   }
@@ -366,7 +376,7 @@ public class CampaignServiceSample {
    */
   public static CampaignOperation createSampleSetRequest(long accountId, List<CampaignValues> campaignValues) {
     CampaignOperation setCampaignOperation = new CampaignOperation();
-    setCampaignOperation.setOperator(jp.yahooapis.im.V6.CampaignService.Operator.SET);
+    setCampaignOperation.setOperator(jp.yahooapis.im.v201806.campaign.Operator.SET);
     setCampaignOperation.setAccountId(accountId);
 
     for (CampaignValues campaignValue : campaignValues) {
@@ -374,7 +384,7 @@ public class CampaignServiceSample {
       setCampaignOperand.setAccountId(campaignValue.getCampaign().getAccountId());
       setCampaignOperand.setCampaignId(campaignValue.getCampaign().getCampaignId());
       setCampaignOperand.setCampaignName("SampleCampaign_UpdateOn_" + SoapUtils.getCurrentTimestamp() + campaignValue.getCampaign().getCampaignId());
-      setCampaignOperand.setUserStatus(jp.yahooapis.im.V6.CampaignService.UserStatus.PAUSED);
+      setCampaignOperand.setUserStatus(jp.yahooapis.im.v201806.campaign.UserStatus.PAUSED);
       setCampaignOperand.setStartDate("20300101");
       setCampaignOperand.setEndDate("20301231");
       Budget setCamapginBudget = new Budget();
@@ -476,8 +486,13 @@ public class CampaignServiceSample {
       System.out.println("frequencyCap/impression = " + campaign.getFrequencyCap().getImpression());
     }
     if (campaign.getConversionOptimizer() != null) {
-      System.out.println("conversionOptimizer/targetCpa = " + campaign.getConversionOptimizer().getTargetCpa());
-      System.out.println("conversionOptimizer/eligibilityFlg = " + campaign.getConversionOptimizer().getEligibilityFlg());
+      System.out.println("conversionOptimizer/optimizerType = " + campaign.getConversionOptimizer().getOptimizerType());
+      if (campaign.getConversionOptimizer() instanceof AutoCampaignConversionOptimizer) {
+        System.out.println("conversionOptimizer/targetCpa = " + ((AutoCampaignConversionOptimizer) campaign.getConversionOptimizer()).getTargetCpa());
+        System.out.println("conversionOptimizer/eligibilityFlg = " + ((AutoCampaignConversionOptimizer) campaign.getConversionOptimizer()).getEligibilityFlg());
+      } else if(campaign.getConversionOptimizer() instanceof ManualCampaignConversionOptimizer) {
+        System.out.println("conversionOptimizer/eligibilityFlg = " + ((ManualCampaignConversionOptimizer) campaign.getConversionOptimizer()).getEligibilityFlg());
+      }
     }
     System.out.println("---------");
   }
