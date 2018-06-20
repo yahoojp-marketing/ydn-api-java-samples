@@ -10,10 +10,13 @@ Additionally, please note before using it that Yahoo Japan Corporation may chang
 --------------------------------
 <<Version>>
 --------------------------------
-Ver.6.1.0
+Ver.201806
 
 [Update history]
 -----------
+2018/06/20:
+- V201806 Add
+
 2017/10/25
  - V6.1 Correspond to Mobile App campaign.
  - V6.1 Correspond to specification of bid multiplier of AdGroupTargetService on AdSample.
@@ -204,7 +207,7 @@ MEDIAID             : Enter Media ID (Required)
 --------------------------------
 set SAMPLE_HOME={ad-api-sample}
 set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
-set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V6.1.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V201806.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 [e.g.]
 ---------------------------------------

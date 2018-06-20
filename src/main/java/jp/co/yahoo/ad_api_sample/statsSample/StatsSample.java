@@ -1,15 +1,16 @@
 package jp.co.yahoo.ad_api_sample.statsSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.StatsServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.StatsService.Paging;
-import jp.yahooapis.im.V6.StatsService.Stats;
-import jp.yahooapis.im.V6.StatsService.StatsPage;
-import jp.yahooapis.im.V6.StatsService.StatsSelector;
-import jp.yahooapis.im.V6.StatsService.StatsService;
-import jp.yahooapis.im.V6.StatsService.StatsServiceInterface;
-import jp.yahooapis.im.V6.StatsService.StatsType;
-import jp.yahooapis.im.V6.StatsService.StatsValues;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.stats.Period;
+import jp.yahooapis.im.v201806.stats.Stats;
+import jp.yahooapis.im.v201806.stats.StatsPage;
+import jp.yahooapis.im.v201806.stats.StatsSelector;
+import jp.yahooapis.im.v201806.stats.StatsService;
+import jp.yahooapis.im.v201806.stats.StatsServiceInterface;
+import jp.yahooapis.im.v201806.stats.StatsType;
+import jp.yahooapis.im.v201806.stats.StatsValues;
 
 import java.util.List;
 import java.util.Objects;
@@ -62,21 +63,24 @@ public class StatsSample {
     System.out.println("StatsService::get");
     System.out.println("############################################");
     Holder<StatsPage> getStatsPageHolder = new Holder<StatsPage>();
-    Holder<List<jp.yahooapis.im.V6.StatsService.Error>> getStatsErrorHolder = new Holder<List<jp.yahooapis.im.V6.StatsService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> getStatsErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     statsListService.get(selector, getStatsPageHolder, getStatsErrorHolder);
 
     // if error
     if (getStatsErrorHolder.value != null && getStatsErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new StatsServiceErrorEntityFactory(getStatsErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getStatsErrorHolder.value), true);
     }
 
     // response
     if (getStatsPageHolder.value != null) {
+      if (null != getStatsPageHolder.value.getPeriod()) {
+        displayPeriod(getStatsPageHolder.value.getPeriod());
+      }
       for (StatsValues values : getStatsPageHolder.value.getValues()) {
         if (values.isOperationSucceeded()) {
           displayStatsValues(values);
         } else {
-          SoapUtils.displayErrors(new StatsServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -107,6 +111,16 @@ public class StatsSample {
     return selector;
 
   }
+  /**
+   * display Period entity to stdout.
+   *
+   * @param period Period entity for display.
+   */
+  private static void displayPeriod(Period period) {
+    System.out.println("periodStartDate = " + period.getPeriodStartDate());
+    System.out.println("periodEndDate = " + period.getPeriodEndDate());
+  }
+
 
   /**
    * display Stats entity to stdout.
@@ -129,9 +143,16 @@ public class StatsSample {
       System.out.println("stats / totalClickCost = " + stats.getTotalClickCost());
       System.out.println("stats / clickCnt = " + stats.getClickCnt());
       System.out.println("stats / avgClickCost = " + stats.getAvgClickCost());
-      System.out.println("stats / totalConversions = " + stats.getTotalConversions());
-      System.out.println("stats / totalConversionRate = " + stats.getTotalConversionRate());
+      System.out.println("stats / conversions = " + stats.getConversions());
+      System.out.println("stats / conversionRate = " + stats.getConversionRate());
       System.out.println("stats / cpa = " + stats.getCpa());
+      System.out.println("stats / conversionValue = " + stats.getConversionValue());
+      System.out.println("stats / valuePerConversions = " + stats.getValuePerConversions());
+      System.out.println("stats / allConversions = " + stats.getAllConversions());
+      System.out.println("stats / allConversionRate = " + stats.getAllConversionRate());
+      System.out.println("stats / allCpa = " + stats.getAllCpa());
+      System.out.println("stats / allConversionValue = " + stats.getAllConversionValue());
+      System.out.println("stats / valuePerAllConversions = " + stats.getValuePerAllConversions());
       System.out.println("stats / avgDeliverRank = " + stats.getAvgDeliverRank());
       System.out.println("stats / totalVimps = " + stats.getTotalVimps());
       System.out.println("stats / vImps = " + stats.getVImps());
@@ -142,6 +163,8 @@ public class StatsSample {
         System.out.println("stats / autoVideoPlays = " + stats.getAutoVideoPlays());
         System.out.println("stats / clickVideoPlays = " + stats.getClickVideoPlays());
         System.out.println("stats / videoViewedRate = " + stats.getVideoViewedRate());
+        System.out.println("stats / paidVideoViews = " + stats.getPaidVideoViews());
+        System.out.println("stats / paidVideoViewRate = " + stats.getPaidVideoViewRate());
         System.out.println("stats / averageCpv = " + stats.getAverageCpv());
         System.out.println("stats / videoPlays = " + stats.getVideoPlays());
         System.out.println("stats / videoViewsTo25 = " + stats.getVideoViewsTo25());
@@ -149,6 +172,7 @@ public class StatsSample {
         System.out.println("stats / videoViewsTo75 = " + stats.getVideoViewsTo75());
         System.out.println("stats / videoViewsTo95 = " + stats.getVideoViewsTo95());
         System.out.println("stats / videoViewsTo100 = " + stats.getVideoViewsTo100());
+        System.out.println("stats / videoViewsTo3Sec = " + stats.getVideoViewsTo3Sec());
         System.out.println("stats / averageRateVideoViewed = " + stats.getAverageRateVideoViewed());
         System.out.println("stats / averageDurationVideoViewe = " + stats.getAverageDurationVideoViewed());
       }

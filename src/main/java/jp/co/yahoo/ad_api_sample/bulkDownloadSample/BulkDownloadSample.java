@@ -1,25 +1,25 @@
 package jp.co.yahoo.ad_api_sample.bulkDownloadSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.BulkServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.BulkService.ApprovalStatus;
-import jp.yahooapis.im.V6.BulkService.BulkDownloadReturnValue;
-import jp.yahooapis.im.V6.BulkService.BulkDownloadSelector;
-import jp.yahooapis.im.V6.BulkService.BulkDownloadStatusPage;
-import jp.yahooapis.im.V6.BulkService.BulkDownloadStatusSelector;
-import jp.yahooapis.im.V6.BulkService.BulkDownloadType;
-import jp.yahooapis.im.V6.BulkService.BulkDownloadValues;
-import jp.yahooapis.im.V6.BulkService.BulkEncoding;
-import jp.yahooapis.im.V6.BulkService.BulkLang;
-import jp.yahooapis.im.V6.BulkService.BulkOutput;
-import jp.yahooapis.im.V6.BulkService.BulkServiceInterface;
-import jp.yahooapis.im.V6.BulkService.BulkServiceService;
-import jp.yahooapis.im.V6.BulkService.DownloadBulkJob;
-import jp.yahooapis.im.V6.BulkService.DownloadBulkJobStatus;
-import jp.yahooapis.im.V6.BulkService.EntityType;
-import jp.yahooapis.im.V6.BulkService.Error;
-import jp.yahooapis.im.V6.BulkService.MediaApprovalStatus;
-import jp.yahooapis.im.V6.BulkService.UserStatus;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.bulk.ApprovalStatus;
+import jp.yahooapis.im.v201806.bulk.BulkDownloadReturnValue;
+import jp.yahooapis.im.v201806.bulk.BulkDownloadSelector;
+import jp.yahooapis.im.v201806.bulk.BulkDownloadStatusPage;
+import jp.yahooapis.im.v201806.bulk.BulkDownloadStatusSelector;
+import jp.yahooapis.im.v201806.bulk.BulkDownloadType;
+import jp.yahooapis.im.v201806.bulk.BulkDownloadValues;
+import jp.yahooapis.im.v201806.bulk.BulkEncoding;
+import jp.yahooapis.im.v201806.bulk.BulkLang;
+import jp.yahooapis.im.v201806.bulk.BulkOutput;
+import jp.yahooapis.im.v201806.bulk.BulkServiceInterface;
+import jp.yahooapis.im.v201806.bulk.BulkServiceService;
+import jp.yahooapis.im.v201806.bulk.DownloadBulkJob;
+import jp.yahooapis.im.v201806.bulk.DownloadBulkJobStatus;
+import jp.yahooapis.im.v201806.bulk.EntityType;
+import jp.yahooapis.im.v201806.bulk.MediaApprovalStatus;
+import jp.yahooapis.im.v201806.bulk.UserStatus;
 
 import java.util.List;
 
@@ -134,7 +134,7 @@ public class BulkDownloadSample {
 
     // Error
     if (bulkDownloadError.value != null && bulkDownloadError.value.size() > 0) {
-      SoapUtils.displayErrors(new BulkServiceErrorEntityFactory(bulkDownloadError.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(bulkDownloadError.value), true);
     }
     if (bulkDownloadError.value == null) {
       throw new Exception("NoDataResponse:BulkDownloadService GetBulkDownload");
@@ -145,7 +145,7 @@ public class BulkDownloadSample {
       if (bulkDownloadValues.isOperationSucceeded()) {
         display(bulkDownloadValues.getDownloadBulkJob());
       } else {
-        SoapUtils.displayErrors(new BulkServiceErrorEntityFactory(bulkDownloadError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(bulkDownloadError.value), true);
       }
     }
 
@@ -183,7 +183,7 @@ public class BulkDownloadSample {
 
       // if error
       if (bulkDownloadStatusError.value != null && bulkDownloadStatusError.value.size() > 0) {
-        SoapUtils.displayErrors(new BulkServiceErrorEntityFactory(bulkDownloadStatusError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(bulkDownloadStatusError.value), true);
       }
 
       // response
@@ -208,7 +208,7 @@ public class BulkDownloadSample {
         }
 
       } else {
-        SoapUtils.displayErrors(new BulkServiceErrorEntityFactory(bulkDownloadStatusValues.get(0).getError()), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(bulkDownloadStatusValues.get(0).getError()), true);
       }
     }
 

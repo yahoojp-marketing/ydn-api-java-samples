@@ -1,14 +1,14 @@
 package jp.co.yahoo.ad_api_sample.balanceSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.BalanceServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.BalanceService.Balance;
-import jp.yahooapis.im.V6.BalanceService.BalancePage;
-import jp.yahooapis.im.V6.BalanceService.BalanceSelector;
-import jp.yahooapis.im.V6.BalanceService.BalanceServiceInterface;
-import jp.yahooapis.im.V6.BalanceService.BalanceServiceService;
-import jp.yahooapis.im.V6.BalanceService.BalanceValues;
-import jp.yahooapis.im.V6.BalanceService.Error;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.balance.Balance;
+import jp.yahooapis.im.v201806.balance.BalancePage;
+import jp.yahooapis.im.v201806.balance.BalanceSelector;
+import jp.yahooapis.im.v201806.balance.BalanceServiceInterface;
+import jp.yahooapis.im.v201806.balance.BalanceServiceService;
+import jp.yahooapis.im.v201806.balance.BalanceValues;
 
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class BalanceSample {
 
       // if error
       if (balanceErrorHolder.value != null && balanceErrorHolder.value.size() > 0) {
-        SoapUtils.displayErrors(new BalanceServiceErrorEntityFactory(balanceErrorHolder.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(balanceErrorHolder.value), true);
       }
 
       // response
@@ -67,7 +67,7 @@ public class BalanceSample {
             System.out.println("accountId = " + balance.getAccountId());
             System.out.println("balance = " + balance.getBalance());
           } else {
-            SoapUtils.displayErrors(new BalanceServiceErrorEntityFactory(balanceValues.getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(balanceValues.getError()), true);
           }
         }
       }

@@ -1,37 +1,36 @@
 package jp.co.yahoo.ad_api_sample.reportDownloadSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.ReportDefinitionServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.error.impl.ReportServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.ReportDefinitionService.Error;
-import jp.yahooapis.im.V6.ReportDefinitionService.Operator;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportAddTemplate;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportCategory;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDateRangeType;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDefinition;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDefinitionField;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDefinitionFieldValue;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDefinitionOperation;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDefinitionReturnValue;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDefinitionServiceInterface;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDefinitionServiceService;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDefinitionValues;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDownloadEncode;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportDownloadFormat;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportFrequencyRange;
-import jp.yahooapis.im.V6.ReportDefinitionService.ReportLang;
-import jp.yahooapis.im.V6.ReportService.ReportClosedDateRecord;
-import jp.yahooapis.im.V6.ReportService.ReportClosedDateSelector;
-import jp.yahooapis.im.V6.ReportService.ReportClosedDateValue;
-import jp.yahooapis.im.V6.ReportService.ReportJobOperation;
-import jp.yahooapis.im.V6.ReportService.ReportJobStatus;
-import jp.yahooapis.im.V6.ReportService.ReportPage;
-import jp.yahooapis.im.V6.ReportService.ReportRecord;
-import jp.yahooapis.im.V6.ReportService.ReportReturnValue;
-import jp.yahooapis.im.V6.ReportService.ReportSelector;
-import jp.yahooapis.im.V6.ReportService.ReportServiceInterface;
-import jp.yahooapis.im.V6.ReportService.ReportServiceService;
-import jp.yahooapis.im.V6.ReportService.ReportValues;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.report.ReportClosedDateRecord;
+import jp.yahooapis.im.v201806.report.ReportClosedDateSelector;
+import jp.yahooapis.im.v201806.report.ReportClosedDateValue;
+import jp.yahooapis.im.v201806.report.ReportJobOperation;
+import jp.yahooapis.im.v201806.report.ReportJobStatus;
+import jp.yahooapis.im.v201806.report.ReportPage;
+import jp.yahooapis.im.v201806.report.ReportRecord;
+import jp.yahooapis.im.v201806.report.ReportReturnValue;
+import jp.yahooapis.im.v201806.report.ReportSelector;
+import jp.yahooapis.im.v201806.report.ReportServiceInterface;
+import jp.yahooapis.im.v201806.report.ReportServiceService;
+import jp.yahooapis.im.v201806.report.ReportValues;
+import jp.yahooapis.im.v201806.reportdefinition.Operator;
+import jp.yahooapis.im.v201806.reportdefinition.ReportAddTemplate;
+import jp.yahooapis.im.v201806.reportdefinition.ReportCategory;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDateRangeType;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDefinition;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDefinitionField;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDefinitionFieldValue;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDefinitionOperation;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDefinitionReturnValue;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDefinitionServiceInterface;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDefinitionServiceService;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDefinitionValues;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDownloadEncode;
+import jp.yahooapis.im.v201806.reportdefinition.ReportDownloadFormat;
+import jp.yahooapis.im.v201806.reportdefinition.ReportFrequencyRange;
+import jp.yahooapis.im.v201806.reportdefinition.ReportLang;
 
 import java.util.Arrays;
 import java.util.List;
@@ -64,19 +63,19 @@ public class ReportDownloadSample {
       System.out.println("############################################");
       Holder<ReportDefinitionFieldValue> fieldsValueHolder = new Holder<ReportDefinitionFieldValue>();
       Holder<List<Error>> fieldsErrorHolder = new Holder<List<Error>>();
-      reportDefinitionService.getReportFields(ReportCategory.AD, ReportLang.EN, fieldsValueHolder, fieldsErrorHolder);
+      reportDefinitionService.getReportFields(ReportCategory.AD, fieldsValueHolder, fieldsErrorHolder);
 
       // if error
       if (fieldsErrorHolder.value != null && fieldsErrorHolder.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(fieldsErrorHolder.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(fieldsErrorHolder.value), true);
       }
 
       // response
       if (fieldsValueHolder.value != null) {
-        List<ReportDefinitionField> fields = fieldsValueHolder.value.getField();
+        List<ReportDefinitionField> fields = fieldsValueHolder.value.getFields();
         for (ReportDefinitionField reportDefinitionField : fields) {
           System.out.println("fieldName        = " + reportDefinitionField.getFieldName());
-          System.out.println("displayFieldName = " + reportDefinitionField.getDisplayFieldName());
+          System.out.println("displayFieldName = " + reportDefinitionField.getDisplayFieldNameJA());
           System.out.println("xmlAttributeName = " + reportDefinitionField.getXmlAttributeName());
           System.out.println("---------");
         }
@@ -115,7 +114,7 @@ public class ReportDownloadSample {
 
       // if error
       if (reportDefinitionError.value != null && reportDefinitionError.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(reportDefinitionError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(reportDefinitionError.value), true);
       }
 
       // response
@@ -134,7 +133,7 @@ public class ReportDownloadSample {
             displayReportDefintion(addReportDefinition);
 
           } else {
-            SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(values.getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
           }
         }
       }
@@ -173,7 +172,7 @@ public class ReportDownloadSample {
 
       // if error
       if (addFrequencyReportDefinitionError.value != null && addFrequencyReportDefinitionError.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(addFrequencyReportDefinitionError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(addFrequencyReportDefinitionError.value), true);
       }
 
       // response
@@ -190,7 +189,7 @@ public class ReportDownloadSample {
             downloadFrequencyFileName = "Report_" + frequencyReportId + "." + addReportDefinition.getFormat().toString().toLowerCase();
             displayReportDefintion(addReportDefinition);
           } else {
-            SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(values.getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
           }
         }
       }
@@ -210,12 +209,12 @@ public class ReportDownloadSample {
       System.out.println("ReportService::getClosedDate");
       System.out.println("############################################");
       Holder<ReportClosedDateValue> getClosedDateValueHolder = new Holder<ReportClosedDateValue>();
-      Holder<List<jp.yahooapis.im.V6.ReportService.Error>> getClosedDateErrorHolder = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
+      Holder<List<jp.yahooapis.im.v201806.Error>> getClosedDateErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
       reportService.getClosedDate(getClosedDateSelector, getClosedDateValueHolder, getClosedDateErrorHolder);
 
       // if error
       if (getClosedDateErrorHolder.value != null && getClosedDateErrorHolder.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(getClosedDateErrorHolder.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getClosedDateErrorHolder.value), true);
       }
 
       // response
@@ -227,7 +226,7 @@ public class ReportDownloadSample {
             System.out.println("closedDate = " + values.getClosedDate());
             System.out.println("-----------------");
           } else {
-            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
           }
         }
       }
@@ -240,7 +239,7 @@ public class ReportDownloadSample {
       addReportRecord.setAccountId(SoapUtils.getAccountId());
       addReportRecord.setReportId(reportId);
       ReportJobOperation addReportOperation = new ReportJobOperation();
-      addReportOperation.setOperator(jp.yahooapis.im.V6.ReportService.Operator.ADD);
+      addReportOperation.setOperator(jp.yahooapis.im.v201806.report.Operator.ADD);
       addReportOperation.setAccountId(SoapUtils.getAccountId());
       addReportOperation.getOperand().add(addReportRecord);
 
@@ -249,12 +248,12 @@ public class ReportDownloadSample {
       System.out.println("ReportService::mutate(ADD)");
       System.out.println("############################################");
       Holder<ReportReturnValue> addReportReturnValueHolder = new Holder<ReportReturnValue>();
-      Holder<List<jp.yahooapis.im.V6.ReportService.Error>> addReportError = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
+      Holder<List<jp.yahooapis.im.v201806.Error>> addReportError = new Holder<List<jp.yahooapis.im.v201806.Error>>();
       reportService.mutate(addReportOperation, addReportReturnValueHolder, addReportError);
 
       // if error
       if (addReportError.value != null && addReportError.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(addReportError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(addReportError.value), true);
       }
 
       // response
@@ -266,7 +265,7 @@ public class ReportDownloadSample {
             reportJobId = values.getReportRecord().getReportJobId();
             displayReportRecord(values.getReportRecord());
           } else {
-            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
           }
         }
       }
@@ -291,12 +290,12 @@ public class ReportDownloadSample {
         System.out.println("ReportService::get");
         System.out.println("############################################");
         Holder<ReportPage> getReportPageHolder = new Holder<ReportPage>();
-        Holder<List<jp.yahooapis.im.V6.ReportService.Error>> getReportError = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
+        Holder<List<jp.yahooapis.im.v201806.Error>> getReportError = new Holder<List<jp.yahooapis.im.v201806.Error>>();
         reportService.get(reportSelector, getReportPageHolder, getReportError);
 
         // if error
         if (getReportError.value != null && getReportError.value.size() > 0) {
-          SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(getReportError.value), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getReportError.value), true);
         }
 
         // response
@@ -307,7 +306,7 @@ public class ReportDownloadSample {
             if (values.isOperationSucceeded()) {
               displayReportRecord(values.getReportRecord());
             } else {
-              SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+              SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
               System.exit(0);
             }
 
@@ -344,7 +343,7 @@ public class ReportDownloadSample {
       addFrequencyReportRecord.setAccountId(SoapUtils.getAccountId());
       addFrequencyReportRecord.setReportId(frequencyReportId);
       ReportJobOperation addFrequencyReportOperation = new ReportJobOperation();
-      addFrequencyReportOperation.setOperator(jp.yahooapis.im.V6.ReportService.Operator.ADD);
+      addFrequencyReportOperation.setOperator(jp.yahooapis.im.v201806.report.Operator.ADD);
       addFrequencyReportOperation.setAccountId(SoapUtils.getAccountId());
       addFrequencyReportOperation.getOperand().add(addFrequencyReportRecord);
 
@@ -353,12 +352,12 @@ public class ReportDownloadSample {
       System.out.println("ReportService::mutate(ADD) REACH_FREQUENCY");
       System.out.println("############################################");
       Holder<ReportReturnValue> addFrequencyReportReturnValueHolder = new Holder<ReportReturnValue>();
-      Holder<List<jp.yahooapis.im.V6.ReportService.Error>> addFrequencyReportError = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
+      Holder<List<jp.yahooapis.im.v201806.Error>> addFrequencyReportError = new Holder<List<jp.yahooapis.im.v201806.Error>>();
       reportService.mutate(addFrequencyReportOperation, addFrequencyReportReturnValueHolder, addFrequencyReportError);
 
       // if error
       if (addFrequencyReportError.value != null && addFrequencyReportError.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(addFrequencyReportError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(addFrequencyReportError.value), true);
       }
 
       // response
@@ -370,7 +369,7 @@ public class ReportDownloadSample {
             frequencyReportJobId = values.getReportRecord().getReportJobId();
             displayReportRecord(values.getReportRecord());
           } else {
-            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
           }
         }
       }
@@ -394,12 +393,12 @@ public class ReportDownloadSample {
         System.out.println("ReportService::get REACH_FREQUENCY REACH_FREQUENCY");
         System.out.println("############################################");
         Holder<ReportPage> getReportPageHolder = new Holder<ReportPage>();
-        Holder<List<jp.yahooapis.im.V6.ReportService.Error>> getReportError = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
+        Holder<List<jp.yahooapis.im.v201806.Error>> getReportError = new Holder<List<jp.yahooapis.im.v201806.Error>>();
         reportService.get(frequencyReportSelector, getReportPageHolder, getReportError);
 
         // if error
         if (getReportError.value != null && getReportError.value.size() > 0) {
-          SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(getReportError.value), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getReportError.value), true);
         }
 
         // response
@@ -410,7 +409,7 @@ public class ReportDownloadSample {
             if (values.isOperationSucceeded()) {
               displayReportRecord(values.getReportRecord());
             } else {
-              SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+              SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
               System.exit(0);
             }
 
@@ -447,7 +446,7 @@ public class ReportDownloadSample {
       removeReportRecord.setAccountId(SoapUtils.getAccountId());
       removeReportRecord.setReportJobId(reportJobId);
       ReportJobOperation removeReportOperation = new ReportJobOperation();
-      removeReportOperation.setOperator(jp.yahooapis.im.V6.ReportService.Operator.REMOVE);
+      removeReportOperation.setOperator(jp.yahooapis.im.v201806.report.Operator.REMOVE);
       removeReportOperation.setAccountId(SoapUtils.getAccountId());
       removeReportOperation.getOperand().add(removeReportRecord);
 
@@ -456,12 +455,12 @@ public class ReportDownloadSample {
       System.out.println("ReportService::mutate(REMOVE)");
       System.out.println("############################################");
       Holder<ReportReturnValue> removeReportReturnValueHolder = new Holder<ReportReturnValue>();
-      Holder<List<jp.yahooapis.im.V6.ReportService.Error>> removeReportError = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
+      Holder<List<jp.yahooapis.im.v201806.Error>> removeReportError = new Holder<List<jp.yahooapis.im.v201806.Error>>();
       reportService.mutate(removeReportOperation, removeReportReturnValueHolder, removeReportError);
 
       // if error
       if (removeReportError.value != null && removeReportError.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(removeReportError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(removeReportError.value), true);
       }
 
       // response
@@ -471,7 +470,7 @@ public class ReportDownloadSample {
           if (values.isOperationSucceeded()) {
             displayReportRecord(values.getReportRecord());
           } else {
-            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
           }
         }
       }
@@ -499,7 +498,7 @@ public class ReportDownloadSample {
 
       // if error
       if (removeReportDefintionErrorHolder.value != null && removeReportDefintionErrorHolder.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(removeReportDefintionErrorHolder.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(removeReportDefintionErrorHolder.value), true);
       }
 
       // reponse
@@ -508,7 +507,7 @@ public class ReportDownloadSample {
         if (values.get(0).isOperationSucceeded()) {
           displayReportDefintion(values.get(0).getReportDefinition());
         } else {
-          SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(values.get(0).getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(0).getError()), true);
         }
       }
 
@@ -520,7 +519,7 @@ public class ReportDownloadSample {
       removeFrequencyReportRecord.setAccountId(SoapUtils.getAccountId());
       removeFrequencyReportRecord.setReportJobId(frequencyReportJobId);
       ReportJobOperation removeFrequencyReportOperation = new ReportJobOperation();
-      removeFrequencyReportOperation.setOperator(jp.yahooapis.im.V6.ReportService.Operator.REMOVE);
+      removeFrequencyReportOperation.setOperator(jp.yahooapis.im.v201806.report.Operator.REMOVE);
       removeFrequencyReportOperation.setAccountId(SoapUtils.getAccountId());
       removeFrequencyReportOperation.getOperand().add(removeFrequencyReportRecord);
 
@@ -529,12 +528,12 @@ public class ReportDownloadSample {
       System.out.println("ReportService::mutate(REMOVE) REACH_FREQUENCY");
       System.out.println("############################################");
       Holder<ReportReturnValue> removeFrequencyReportReturnValueHolder = new Holder<ReportReturnValue>();
-      Holder<List<jp.yahooapis.im.V6.ReportService.Error>> removeFrequencyReportError = new Holder<List<jp.yahooapis.im.V6.ReportService.Error>>();
+      Holder<List<jp.yahooapis.im.v201806.Error>> removeFrequencyReportError = new Holder<List<jp.yahooapis.im.v201806.Error>>();
       reportService.mutate(removeFrequencyReportOperation, removeFrequencyReportReturnValueHolder, removeFrequencyReportError);
 
       // if error
       if (removeFrequencyReportError.value != null && removeFrequencyReportError.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(removeFrequencyReportError.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(removeFrequencyReportError.value), true);
       }
 
       // response
@@ -544,7 +543,7 @@ public class ReportDownloadSample {
           if (values.isOperationSucceeded()) {
             displayReportRecord(values.getReportRecord());
           } else {
-            SoapUtils.displayErrors(new ReportServiceErrorEntityFactory(values.getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
           }
         }
       }
@@ -572,7 +571,7 @@ public class ReportDownloadSample {
 
       // if error
       if (removeFrequencyReportDefintionErrorHolder.value != null && removeFrequencyReportDefintionErrorHolder.value.size() > 0) {
-        SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(removeFrequencyReportDefintionErrorHolder.value), true);
+        SoapUtils.displayErrors(new ErrorEntityFactoryImpl(removeFrequencyReportDefintionErrorHolder.value), true);
       }
 
       // reponse
@@ -581,7 +580,7 @@ public class ReportDownloadSample {
         if (values.get(0).isOperationSucceeded()) {
           displayReportDefintion(values.get(0).getReportDefinition());
         } else {
-          SoapUtils.displayErrors(new ReportDefinitionServiceErrorEntityFactory(values.get(0).getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(0).getError()), true);
         }
       }
 

@@ -1,29 +1,28 @@
 package jp.co.yahoo.ad_api_sample.placementUrlSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.PlacementUrlIdeaServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.error.impl.PlacementUrlListServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.AdFormat;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.AdFormatConditions;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.Error;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdea;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaPage;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaSelector;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaService;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaServiceInterface;
-import jp.yahooapis.im.V6.PlacementUrlIdeaService.PlacementUrlIdeaValues;
-import jp.yahooapis.im.V6.PlacementUrlListService.Operator;
-import jp.yahooapis.im.V6.PlacementUrlListService.Paging;
-import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlList;
-import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListOperation;
-import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListPage;
-import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListReturnValue;
-import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListSelector;
-import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListService;
-import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListServiceInterface;
-import jp.yahooapis.im.V6.PlacementUrlListService.PlacementUrlListValues;
-import jp.yahooapis.im.V6.PlacementUrlListService.UrlActiveFlg;
-import jp.yahooapis.im.V6.PlacementUrlListService.UrlList;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.placementurlidea.AdFormat;
+import jp.yahooapis.im.v201806.placementurlidea.AdFormatConditions;
+import jp.yahooapis.im.v201806.placementurlidea.PlacementUrlIdea;
+import jp.yahooapis.im.v201806.placementurlidea.PlacementUrlIdeaPage;
+import jp.yahooapis.im.v201806.placementurlidea.PlacementUrlIdeaSelector;
+import jp.yahooapis.im.v201806.placementurlidea.PlacementUrlIdeaService;
+import jp.yahooapis.im.v201806.placementurlidea.PlacementUrlIdeaServiceInterface;
+import jp.yahooapis.im.v201806.placementurlidea.PlacementUrlIdeaValues;
+import jp.yahooapis.im.v201806.placementurllist.Operator;
+import jp.yahooapis.im.v201806.placementurllist.PlacementUrlList;
+import jp.yahooapis.im.v201806.placementurllist.PlacementUrlListOperation;
+import jp.yahooapis.im.v201806.placementurllist.PlacementUrlListPage;
+import jp.yahooapis.im.v201806.placementurllist.PlacementUrlListReturnValue;
+import jp.yahooapis.im.v201806.placementurllist.PlacementUrlListSelector;
+import jp.yahooapis.im.v201806.placementurllist.PlacementUrlListService;
+import jp.yahooapis.im.v201806.placementurllist.PlacementUrlListServiceInterface;
+import jp.yahooapis.im.v201806.placementurllist.PlacementUrlListValues;
+import jp.yahooapis.im.v201806.placementurllist.UrlActiveFlg;
+import jp.yahooapis.im.v201806.placementurllist.UrlList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class PlacementUrlSample {
 
   /**
    * main method for AdSample
-   * 
+   *
    * @param args command line arguments
    */
   public static void main(String[] args) {
@@ -112,7 +111,6 @@ public class PlacementUrlSample {
    *
    * @param operation PlacementUrlListOperation
    * @return PlacementUrlListValues
-   * @throws Exception
    */
   public static List<PlacementUrlListValues> addPlacementUrlList(PlacementUrlListOperation operation) throws Exception {
     // =================================================================
@@ -125,12 +123,12 @@ public class PlacementUrlSample {
     System.out.println("PlacementUrlListService::mutate(ADD)");
     System.out.println("############################################");
     Holder<PlacementUrlListReturnValue> addPlacementUrlListReturnValueHolder = new Holder<PlacementUrlListReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>> addPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> addPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     placementUrlListService.mutate(operation, addPlacementUrlListReturnValueHolder, addPlacementUrlListErrorHolder);
 
     // if error
     if (addPlacementUrlListErrorHolder.value != null && addPlacementUrlListErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new PlacementUrlListServiceErrorEntityFactory(addPlacementUrlListErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(addPlacementUrlListErrorHolder.value), true);
     }
 
     // response
@@ -145,7 +143,7 @@ public class PlacementUrlSample {
             displayPlacementUrlList(urlList);
           } else {
             // if error
-            SoapUtils.displayErrors(new PlacementUrlListServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -159,7 +157,6 @@ public class PlacementUrlSample {
    *
    * @param selector PlacementUrlListSelector
    * @return PlacementUrlListValues
-   * @throws Exception
    */
   public static List<PlacementUrlListValues> getPlacementUrlList(PlacementUrlListSelector selector) throws Exception {
     // =================================================================
@@ -171,12 +168,12 @@ public class PlacementUrlSample {
     System.out.println("PlacementUrlListService::get");
     System.out.println("############################################");
     Holder<PlacementUrlListPage> getPlacementUrlListPageHolder = new Holder<PlacementUrlListPage>();
-    Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>> getPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> getPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     placementUrlListService.get(selector, getPlacementUrlListPageHolder, getPlacementUrlListErrorHolder);
 
     // if error
     if (getPlacementUrlListErrorHolder.value != null && getPlacementUrlListErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new PlacementUrlListServiceErrorEntityFactory(getPlacementUrlListErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getPlacementUrlListErrorHolder.value), true);
     }
 
     // response
@@ -185,7 +182,7 @@ public class PlacementUrlSample {
         if (values.isOperationSucceeded()) {
           displayPlacementUrlList(values.getUrlList());
         } else {
-          SoapUtils.displayErrors(new PlacementUrlListServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -199,7 +196,6 @@ public class PlacementUrlSample {
    *
    * @param operation PlacementUrlListOperation
    * @return PlacementUrlListValues
-   * @throws Exception
    */
   public static List<PlacementUrlListValues> setPlacementUrlList(PlacementUrlListOperation operation) throws Exception {
     // =================================================================
@@ -212,12 +208,12 @@ public class PlacementUrlSample {
     System.out.println("PlacementUrlListService::mutate(SET)");
     System.out.println("############################################");
     Holder<PlacementUrlListReturnValue> setPlacementUrlListReturnValueHolder = new Holder<PlacementUrlListReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>> setPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> setPlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     placementUrlListService.mutate(operation, setPlacementUrlListReturnValueHolder, setPlacementUrlListErrorHolder);
 
     // if error
     if (setPlacementUrlListErrorHolder.value != null && setPlacementUrlListErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new PlacementUrlListServiceErrorEntityFactory(setPlacementUrlListErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(setPlacementUrlListErrorHolder.value), true);
     }
 
     // response
@@ -226,7 +222,7 @@ public class PlacementUrlSample {
         if (values.isOperationSucceeded()) {
           displayPlacementUrlList(values.getUrlList());
         } else {
-          SoapUtils.displayErrors(new PlacementUrlListServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -240,7 +236,6 @@ public class PlacementUrlSample {
    *
    * @param operation PlacementUrlListOperation
    * @return PlacementUrlListValues
-   * @throws Exception
    */
   public static List<PlacementUrlListValues> removePlacementUrlList(PlacementUrlListOperation operation) throws Exception {
     // =================================================================
@@ -252,12 +247,12 @@ public class PlacementUrlSample {
     System.out.println("PlacementUrlListService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<PlacementUrlListReturnValue> removePlacementUrlListReturnValueHolder = new Holder<PlacementUrlListReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>> removePlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.V6.PlacementUrlListService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> removePlacementUrlListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     placementUrlListService.mutate(operation, removePlacementUrlListReturnValueHolder, removePlacementUrlListErrorHolder);
 
     // if error
     if (removePlacementUrlListErrorHolder.value != null && removePlacementUrlListErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new PlacementUrlListServiceErrorEntityFactory(removePlacementUrlListErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(removePlacementUrlListErrorHolder.value), true);
     }
 
     // response
@@ -266,7 +261,7 @@ public class PlacementUrlSample {
         if (values.isOperationSucceeded()) {
           displayPlacementUrlList(values.getUrlList());
         } else {
-          SoapUtils.displayErrors(new PlacementUrlListServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -277,7 +272,7 @@ public class PlacementUrlSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId                 long
    * @param getPlacementUrlIdeaValues PlacementUrlIdeaValues
    * @return CampaignOperation
    */
@@ -300,7 +295,7 @@ public class PlacementUrlSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId              long
    * @param placementUrlListValues PlacementUrlListValues
    * @return PlacementUrlListSelector
    */
@@ -324,9 +319,9 @@ public class PlacementUrlSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId              long
    * @param placementUrlListValues PlacementUrlListValues
-   * @param addUrlList UrlList
+   * @param addUrlList             UrlList
    * @return PlacementUrlListOperation
    */
   public static PlacementUrlListOperation createPlacementUrlListSampleSetRequest(long accountId, List<PlacementUrlListValues> placementUrlListValues, List<UrlList> addUrlList) {
@@ -357,7 +352,7 @@ public class PlacementUrlSample {
   /**
    * create sample request.
    *
-   * @param accountId long
+   * @param accountId              long
    * @param placementUrlListValues PlacementUrlListValues
    * @return PlacementUrlListOperation
    */
@@ -385,7 +380,6 @@ public class PlacementUrlSample {
    *
    * @param selector PlacementUrlIdeaSelector
    * @return PlacementUrlIdeaValues
-   * @throws Exception
    */
   public static List<PlacementUrlIdeaValues> getPlacementUrlIdea(PlacementUrlIdeaSelector selector) throws Exception {
     // =================================================================
@@ -403,7 +397,7 @@ public class PlacementUrlSample {
 
     // if error
     if (placementUrlIdeaErrorHolder.value != null && placementUrlIdeaErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new PlacementUrlIdeaServiceErrorEntityFactory(placementUrlIdeaErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(placementUrlIdeaErrorHolder.value), true);
     }
 
     // response
@@ -414,7 +408,7 @@ public class PlacementUrlSample {
           displayPlacementUrlIdea(values.getPlacementUrlIdea());
         } else {
           // if error
-          SoapUtils.displayErrors(new PlacementUrlIdeaServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -445,7 +439,7 @@ public class PlacementUrlSample {
 
   /**
    * display PlacementUrlList entity to stdout.
-   * 
+   *
    * @param placementUrlList PlacementUrlList entity for display.
    */
   private static void displayPlacementUrlList(PlacementUrlList placementUrlList) {
@@ -464,7 +458,7 @@ public class PlacementUrlSample {
 
   /**
    * display PlacementUrlIdea entity to stdout.
-   * 
+   *
    * @param placementUrlIdea PlacementUrlIdea entity for display.
    */
   private static void displayPlacementUrlIdea(PlacementUrlIdea placementUrlIdea) {

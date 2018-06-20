@@ -1,26 +1,30 @@
 package jp.co.yahoo.ad_api_sample.adSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.AdGroupServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.AdGroupService.AdGroup;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupOperation;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupPage;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupReturnValue;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupSelector;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupServiceInterface;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupServiceService;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupValues;
-import jp.yahooapis.im.V6.AdGroupService.BiddingStrategyType;
-import jp.yahooapis.im.V6.AdGroupService.DeviceAppType;
-import jp.yahooapis.im.V6.AdGroupService.DeviceOsType;
-import jp.yahooapis.im.V6.AdGroupService.DeviceType;
-import jp.yahooapis.im.V6.AdGroupService.DynamicImageExtensions;
-import jp.yahooapis.im.V6.AdGroupService.ManualCPCAdGroupBid;
-import jp.yahooapis.im.V6.AdGroupService.ManualCPVAdGroupBid;
-import jp.yahooapis.im.V6.AdGroupService.Operator;
-import jp.yahooapis.im.V6.AdGroupService.Paging;
-import jp.yahooapis.im.V6.AdGroupService.SmartDeviceCarrier;
-import jp.yahooapis.im.V6.AdGroupService.UserStatus;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.adgroup.AdGroup;
+import jp.yahooapis.im.v201806.adgroup.AdGroupConversionOptimizerType;
+import jp.yahooapis.im.v201806.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201806.adgroup.AdGroupPage;
+import jp.yahooapis.im.v201806.adgroup.AdGroupReturnValue;
+import jp.yahooapis.im.v201806.adgroup.AdGroupSelector;
+import jp.yahooapis.im.v201806.adgroup.AdGroupServiceInterface;
+import jp.yahooapis.im.v201806.adgroup.AdGroupServiceService;
+import jp.yahooapis.im.v201806.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201806.adgroup.AutoAdGroupConversionOptimizer;
+import jp.yahooapis.im.v201806.adgroup.BiddingStrategyType;
+import jp.yahooapis.im.v201806.adgroup.DeviceAppType;
+import jp.yahooapis.im.v201806.adgroup.DeviceOsType;
+import jp.yahooapis.im.v201806.adgroup.DeviceType;
+import jp.yahooapis.im.v201806.adgroup.DynamicImageExtensions;
+import jp.yahooapis.im.v201806.adgroup.ManualAdGroupConversionOptimizer;
+import jp.yahooapis.im.v201806.adgroup.ManualCPCAdGroupBid;
+import jp.yahooapis.im.v201806.adgroup.ManualCPVAdGroupBid;
+import jp.yahooapis.im.v201806.adgroup.NoneAdGroupConversionOptimizer;
+import jp.yahooapis.im.v201806.adgroup.Operator;
+import jp.yahooapis.im.v201806.adgroup.SmartDeviceCarrier;
+import jp.yahooapis.im.v201806.adgroup.UserStatus;
 
 import java.util.Arrays;
 import java.util.List;
@@ -106,12 +110,12 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(ADD)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> addAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>> addAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> addAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     adGroupService.mutate(operation, addAdgroupReturnValueHolder, addAdGroupErrorHolder);
 
     // if error
     if (addAdGroupErrorHolder.value != null && addAdGroupErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(addAdGroupErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(addAdGroupErrorHolder.value), true);
     }
 
     // response
@@ -126,7 +130,7 @@ public class AdGroupServiceSample {
             displayAdGroup(adGroup);
           } else {
             // if error
-            SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -153,12 +157,12 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(SET)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> setAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>> setAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> setAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     adGroupService.mutate(adGroupOperation, setAdgroupReturnValueHolder, setAdGroupErrorHolder);
 
     // if error
     if (setAdGroupErrorHolder.value != null && setAdGroupErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(setAdGroupErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(setAdGroupErrorHolder.value), true);
     }
 
     // response
@@ -172,7 +176,7 @@ public class AdGroupServiceSample {
             displayAdGroup(values.get(i).getAdGroup());
           } else {
             // if error
-            SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -198,12 +202,12 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> removeAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>> removeAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> removeAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     adGroupService.mutate(operation, removeAdgroupReturnValueHolder, removeAdGroupErrorHolder);
 
     // if error
     if (removeAdGroupErrorHolder.value != null && removeAdGroupErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(removeAdGroupErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(removeAdGroupErrorHolder.value), true);
     }
 
     // response
@@ -217,7 +221,7 @@ public class AdGroupServiceSample {
             displayAdGroup(values.get(i).getAdGroup());
           } else {
             // if error
-            SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -245,12 +249,12 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::get");
     System.out.println("############################################");
     Holder<AdGroupPage> adGroupPageHolder = new Holder<AdGroupPage>();
-    Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>> getAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.V6.AdGroupService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> getAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     adGroupService.get(selector, adGroupPageHolder, getAdGroupErrorHolder);
 
     // if error
     if (getAdGroupErrorHolder.value != null && getAdGroupErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(getAdGroupErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getAdGroupErrorHolder.value), true);
     }
 
     // response
@@ -263,7 +267,7 @@ public class AdGroupServiceSample {
             displayAdGroup(values.get(i).getAdGroup());
           } else {
             // if error
-            SoapUtils.displayErrors(new AdGroupServiceErrorEntityFactory(values.get(i).getError()), true);
+            SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.get(i).getError()), true);
           }
         }
       }
@@ -281,25 +285,33 @@ public class AdGroupServiceSample {
    * @return AdGroupOperation
    */
   public static AdGroupOperation createSampleAddRequest(long accountId, long campaignId) {
+
+    // create NoneAdGroupConversionOptimizer
+    AdGroupOperation addAdGroupOperation = new AdGroupOperation();
+    addAdGroupOperation.setOperator(Operator.ADD);
+    addAdGroupOperation.setAccountId(accountId);
+
     AdGroup addAdGroupOperand = new AdGroup();
     addAdGroupOperand.setAccountId(accountId);
     addAdGroupOperand.setCampaignId(campaignId);
-    addAdGroupOperand.setAdGroupName("SampleAdGroup_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    addAdGroupOperand.setAdGroupName("SampleAdGroup1_CreateOn_" + SoapUtils.getCurrentTimestamp());
     addAdGroupOperand.setUserStatus(UserStatus.ACTIVE);
+
     ManualCPCAdGroupBid addAdGroupBid = new ManualCPCAdGroupBid();
     addAdGroupBid.setType(BiddingStrategyType.MANUAL_CPC);
     addAdGroupBid.setMaxCpc((long) 120);
     addAdGroupOperand.setBid(addAdGroupBid);
+
+    NoneAdGroupConversionOptimizer noneAdGroupConversionOptimizer = new NoneAdGroupConversionOptimizer();
+    noneAdGroupConversionOptimizer.setOptimizerType(AdGroupConversionOptimizerType.NONE);
+    addAdGroupOperand.setConversionOptimizer(noneAdGroupConversionOptimizer);
+
     addAdGroupOperand.getDevice().add(DeviceType.SMARTPHONE);
     addAdGroupOperand.getDeviceOs().add(DeviceOsType.IOS);
     addAdGroupOperand.getDeviceApp().add(DeviceAppType.APP);
     addAdGroupOperand.setDynamicImageExtensions(DynamicImageExtensions.ACTIVE);
     addAdGroupOperand.getSmartDeviceCarriers().add(SmartDeviceCarrier.DOCOMO);
 
-    AdGroupOperation addAdGroupOperation = new AdGroupOperation();
-    addAdGroupOperation.setOperator(Operator.ADD);
-    addAdGroupOperation.setAccountId(accountId);
-    addAdGroupOperation.setCampaignId(campaignId);
     addAdGroupOperation.getOperand().add(addAdGroupOperand);
 
     return addAdGroupOperation;
@@ -319,13 +331,13 @@ public class AdGroupServiceSample {
     setAdGroupOperation.setAccountId(accountId);
 
     // Set Operand
+    int i = 0;
     for (AdGroupValues adGroupValue : adGroupValues) {
-      setAdGroupOperation.setCampaignId(adGroupValue.getAdGroup().getCampaignId());
       AdGroup setAdGroupOperand = new AdGroup();
       setAdGroupOperand.setAccountId(accountId);
       setAdGroupOperand.setCampaignId(adGroupValue.getAdGroup().getCampaignId());
       setAdGroupOperand.setAdGroupId(adGroupValue.getAdGroup().getAdGroupId());
-      setAdGroupOperand.setAdGroupName("SampleAdGroup_UpdateOn_" + SoapUtils.getCurrentTimestamp());
+      setAdGroupOperand.setAdGroupName("SampleAdGroup_UpdateOn" + String.valueOf(++i)  + "_" +  SoapUtils.getCurrentTimestamp());
       setAdGroupOperand.setUserStatus(UserStatus.PAUSED);
       ManualCPCAdGroupBid setAdGroupBid = new ManualCPCAdGroupBid();
       setAdGroupBid.setMaxCpc((long) 120);
@@ -338,7 +350,6 @@ public class AdGroupServiceSample {
       setAdGroupOperand.getSmartDeviceCarriers().add(SmartDeviceCarrier.KDDI);
 
       setAdGroupOperation.getOperand().add(setAdGroupOperand);
-
     }
 
     return setAdGroupOperation;
@@ -360,7 +371,6 @@ public class AdGroupServiceSample {
     // Set Operand
     for (AdGroupValues adGroupValue : adGroupValues) {
 
-      removeAdGroupOperation.setCampaignId(adGroupValue.getAdGroup().getCampaignId());
       AdGroup removeAdGroupOperand = new AdGroup();
       removeAdGroupOperand.setAccountId(accountId);
       removeAdGroupOperand.setCampaignId(adGroupValue.getAdGroup().getCampaignId());
@@ -431,6 +441,17 @@ public class AdGroupServiceSample {
     }
     if (null != adGroup.getSmartDeviceCarriers() && !adGroup.getSmartDeviceCarriers().isEmpty()) {
       System.out.println("smartDeviceCarriers = " + adGroup.getSmartDeviceCarriers().get(0).toString());
+    }
+    if (null != adGroup.getConversionOptimizer() ) {
+      System.out.println("conversionOptimizer/optimizerType = " + adGroup.getConversionOptimizer().getOptimizerType());
+      if (AdGroupConversionOptimizerType.MANUAL.equals(adGroup.getConversionOptimizer().getOptimizerType())) {
+        System.out.println("conversionOptimizer/eligibilityFlg = " + ((ManualAdGroupConversionOptimizer)adGroup.getConversionOptimizer()).getEligibilityFlg());
+      } else if (AdGroupConversionOptimizerType.AUTO.equals(adGroup.getConversionOptimizer().getOptimizerType())) {
+        System.out.println("conversionOptimizer/targetCpa = " + ((AutoAdGroupConversionOptimizer)adGroup.getConversionOptimizer()).getTargetCpa());
+        System.out.println("conversionOptimizer/eligibilityFlg = " + ((AutoAdGroupConversionOptimizer)adGroup.getConversionOptimizer()).getEligibilityFlg());
+      } else if (AdGroupConversionOptimizerType.NONE.equals(adGroup.getConversionOptimizer().getOptimizerType())) {
+        System.out.println("conversionOptimizer/eligibilityFlg = " + ((NoneAdGroupConversionOptimizer)adGroup.getConversionOptimizer()).getEligibilityFlg());
+      }
     }
     System.out.println("---------");
   }

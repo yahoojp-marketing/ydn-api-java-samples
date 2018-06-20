@@ -1,13 +1,11 @@
 package jp.co.yahoo.ad_api_sample.bulkUploadSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.BulkService.BulkEncoding;
-import jp.yahooapis.im.V6.BulkService.BulkLang;
-import jp.yahooapis.im.V6.BulkService.BulkOutput;
-import jp.yahooapis.im.V6.BulkService.BulkUploadStatusSelector;
-import jp.yahooapis.im.V6.BulkService.BulkUploadValues;
-import jp.yahooapis.im.V6.BulkService.Paging;
-import jp.yahooapis.im.V6.BulkService.UploadUrlValue;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.bulk.BulkOutput;
+import jp.yahooapis.im.v201806.bulk.BulkUploadStatusSelector;
+import jp.yahooapis.im.v201806.bulk.BulkUploadValues;
+import jp.yahooapis.im.v201806.bulk.UploadUrlValue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -104,7 +102,6 @@ public class BulkUploadSampleTest {
     BulkUploadStatusSelector selector = new BulkUploadStatusSelector();
     selector.setAccountId(accountId);
     selector.getUploadBulkJobIds().add(uploadJobId);
-    selector.setOutput(BulkOutput.CSV);
     Paging paging = new Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(20);

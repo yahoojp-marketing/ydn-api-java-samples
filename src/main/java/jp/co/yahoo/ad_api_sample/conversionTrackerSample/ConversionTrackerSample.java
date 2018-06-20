@@ -1,24 +1,27 @@
 package jp.co.yahoo.ad_api_sample.conversionTrackerSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.ConversionTrackerServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.ConversionTrackerService.AppConversion;
-import jp.yahooapis.im.V6.ConversionTrackerService.AppConversionPlatform;
-import jp.yahooapis.im.V6.ConversionTrackerService.AppConversionType;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTracker;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerCategory;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerOperation;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerPage;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerReturnValue;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerSelector;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerService;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerServiceInterface;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerStatus;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerType;
-import jp.yahooapis.im.V6.ConversionTrackerService.ConversionTrackerValues;
-import jp.yahooapis.im.V6.ConversionTrackerService.Operator;
-import jp.yahooapis.im.V6.ConversionTrackerService.Paging;
-import jp.yahooapis.im.V6.ConversionTrackerService.WebConversion;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.conversiontracker.AppConversion;
+import jp.yahooapis.im.v201806.conversiontracker.AppConversionPlatform;
+import jp.yahooapis.im.v201806.conversiontracker.AppConversionType;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionCountingType;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTracker;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerCategory;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerOperation;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerPage;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerReturnValue;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerSelector;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerService;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerServiceInterface;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerStatus;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerType;
+import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerValues;
+import jp.yahooapis.im.v201806.conversiontracker.ExcludeFromBidding;
+import jp.yahooapis.im.v201806.conversiontracker.Operator;
+import jp.yahooapis.im.v201806.conversiontracker.WebConversion;
 
 import java.util.List;
 
@@ -87,12 +90,12 @@ public class ConversionTrackerSample {
     System.out.println("ConversionTrackerService::mutate(ADD)");
     System.out.println("############################################");
     Holder<ConversionTrackerReturnValue> addConversionTrackerReturnValueHolder = new Holder<ConversionTrackerReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>> addConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>>();
+    Holder<List<Error>> addConversionTrackerErrorHolder = new Holder<List<Error>>();
     conversionTrackerService.mutate(operation, addConversionTrackerReturnValueHolder, addConversionTrackerErrorHolder);
 
     // if error
     if (addConversionTrackerErrorHolder.value != null && addConversionTrackerErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new ConversionTrackerServiceErrorEntityFactory(addConversionTrackerErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(addConversionTrackerErrorHolder.value), true);
     }
 
     // response
@@ -103,7 +106,7 @@ public class ConversionTrackerSample {
           displayConversionTracker(values.getConversionTracker());
         } else {
           // if error
-          SoapUtils.displayErrors(new ConversionTrackerServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -129,21 +132,22 @@ public class ConversionTrackerSample {
     System.out.println("ConversionTrackerService::get");
     System.out.println("############################################");
     Holder<ConversionTrackerPage> getConversionTrackerPageHolder = new Holder<ConversionTrackerPage>();
-    Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>> getConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>>();
+    Holder<List<Error>> getConversionTrackerErrorHolder = new Holder<List<Error>>();
     conversionTrackerService.get(selector, getConversionTrackerPageHolder, getConversionTrackerErrorHolder);
 
     // if error
     if (getConversionTrackerErrorHolder.value != null && getConversionTrackerErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new ConversionTrackerServiceErrorEntityFactory(getConversionTrackerErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getConversionTrackerErrorHolder.value), true);
     }
 
     // response
     if (getConversionTrackerErrorHolder.value != null) {
+      displayConversionTrackerPage(getConversionTrackerPageHolder.value);
       for (ConversionTrackerValues values : getConversionTrackerPageHolder.value.getValues()) {
         if (values.isOperationSucceeded()) {
           displayConversionTracker(values.getConversionTracker());
         } else {
-          SoapUtils.displayErrors(new ConversionTrackerServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -169,12 +173,12 @@ public class ConversionTrackerSample {
     System.out.println("ConversionTrackerService::mutate(SET)");
     System.out.println("############################################");
     Holder<ConversionTrackerReturnValue> setConversionTrackerReturnValueHolder = new Holder<ConversionTrackerReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>> setConversionTrackerErrorHolder = new Holder<List<jp.yahooapis.im.V6.ConversionTrackerService.Error>>();
+    Holder<List<Error>> setConversionTrackerErrorHolder = new Holder<List<Error>>();
     conversionTrackerService.mutate(operation, setConversionTrackerReturnValueHolder, setConversionTrackerErrorHolder);
 
     // if error
     if (setConversionTrackerErrorHolder.value != null && setConversionTrackerErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new ConversionTrackerServiceErrorEntityFactory(setConversionTrackerErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(setConversionTrackerErrorHolder.value), true);
     }
 
     // response
@@ -183,7 +187,7 @@ public class ConversionTrackerSample {
         if (values.isOperationSucceeded()) {
           displayConversionTracker(values.getConversionTracker());
         } else {
-          SoapUtils.displayErrors(new ConversionTrackerServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -205,6 +209,8 @@ public class ConversionTrackerSample {
     webConversion.setStatus(ConversionTrackerStatus.ENABLED);
     webConversion.setCategory(ConversionTrackerCategory.PURCHASE);
     webConversion.setConversionTrackerType(ConversionTrackerType.WEB_CONVERSION);
+    webConversion.setCountingType(ConversionCountingType.MANY_PER_CLICK);
+    webConversion.setExcludeFromBidding(ExcludeFromBidding.FALSE);
 
     AppConversion appConversion = new AppConversion();
     appConversion.setAccountId(accountId);
@@ -215,6 +221,8 @@ public class ConversionTrackerSample {
     appConversion.setAppId("1234567890");
     appConversion.setAppPlatform(AppConversionPlatform.ITUNES);
     appConversion.setAppConversionType(AppConversionType.FIRST_OPEN);
+    appConversion.setCountingType(ConversionCountingType.ONE_PER_CLICK);
+    appConversion.setExcludeFromBidding(ExcludeFromBidding.FALSE);
 
     ConversionTrackerOperation addConversionTrackerOperation = new ConversionTrackerOperation();
     addConversionTrackerOperation.setAccountId(accountId);
@@ -288,6 +296,14 @@ public class ConversionTrackerSample {
     return setConversionTrackerOperation;
   }
 
+
+  private static void displayConversionTrackerPage(ConversionTrackerPage conversionTrackerPage) {
+    System.out.println("totalConversions = " + conversionTrackerPage.getTotalConversions());
+    System.out.println("totalConversionValue = " + conversionTrackerPage.getTotalConversionValue());
+    System.out.println("totalAllConversions = " + conversionTrackerPage.getTotalAllConversions());
+    System.out.println("totalAllConversionValue = " + conversionTrackerPage.getTotalAllConversionValue());
+  }
+
   /**
    * display ConversionTracker entity to stdout.
    *
@@ -303,13 +319,17 @@ public class ConversionTrackerSample {
     System.out.println("conversionValue = " + conversionTracker.getConversionValue());
     System.out.println("userRevenueValue = " + conversionTracker.getUserRevenueValue());
     System.out.println("conversionTrackerType = " + conversionTracker.getConversionTrackerType());
+    System.out.println("countingType = " + conversionTracker.getCountingType());
     System.out.println("measurementPeriod = " + conversionTracker.getMeasurementPeriod());
+    System.out.println("excludeFromBidding = " + conversionTracker.getExcludeFromBidding());
+    System.out.println("allConversions = " + conversionTracker.getAllConversions());
+    System.out.println("allConversionValue = " + conversionTracker.getAllConversionValue());
     System.out.println("mostRecentConversionDate = " + conversionTracker.getMostRecentConversionDate());
     if (conversionTracker.getConversionTrackerType() == ConversionTrackerType.WEB_CONVERSION) {
-      WebConversion webConversion = (WebConversion)conversionTracker;
+      WebConversion webConversion = (WebConversion) conversionTracker;
       System.out.println("snippet = " + webConversion.getSnippet());
     } else {
-      AppConversion appConversion = (AppConversion)conversionTracker;
+      AppConversion appConversion = (AppConversion) conversionTracker;
       System.out.println("appId = " + appConversion.getAppId());
       System.out.println("appPlatform = " + appConversion.getAppPlatform());
       System.out.println("appConversionType = " + appConversion.getAppConversionType());

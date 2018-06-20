@@ -1,11 +1,11 @@
 package jp.co.yahoo.ad_api_sample.adSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupOperation;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupSelector;
-import jp.yahooapis.im.V6.AdGroupService.AdGroupValues;
-import jp.yahooapis.im.V6.AdGroupService.Paging;
-import jp.yahooapis.im.V6.AdGroupService.UserStatus;
+import jp.yahooapis.im.v201806.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201806.adgroup.AdGroupSelector;
+import jp.yahooapis.im.v201806.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.adgroup.UserStatus;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -9,10 +9,13 @@ Yahoo! JAPANの提供するAPIに関するサンプルコードは、別途Yahoo
 --------------------------------
 【バージョン】
 --------------------------------
-Ver.6.1.0
+Ver.201806
 
 ■変更履歴
 -----------
+2018/06/20:
+- Version V201806に対応しました。
+
 2017/10/25
  - V6.1 アプリキャンペーンに対応しました。
  - V6.1 AdSampleにてAdGroupTargetServiceの入札価格調整率に対応しました。
@@ -203,7 +206,7 @@ MEDIAID             : 画像IDを記述（必須）
 --------------------------------
 set SAMPLE_HOME={ad-api-sample}
 set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
-set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V6.1.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V201806.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 ■実行例：
 ---------------------------------------

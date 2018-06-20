@@ -1,28 +1,27 @@
 package jp.co.yahoo.ad_api_sample.searchKeywordSample;
 
-import jp.co.yahoo.ad_api_sample.error.impl.SearchKeywordIdeaServiceErrorEntityFactory;
-import jp.co.yahoo.ad_api_sample.error.impl.SearchKeywordListServiceErrorEntityFactory;
+import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.Error;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.KeywordFrequency;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.KeywordRecency;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdea;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaPage;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaSelector;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaService;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaServiceInterface;
-import jp.yahooapis.im.V6.SearchKeywordIdeaService.SearchKeywordIdeaValues;
-import jp.yahooapis.im.V6.SearchKeywordListService.Operator;
-import jp.yahooapis.im.V6.SearchKeywordListService.Paging;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeyword;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordList;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListOperation;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListPage;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListReturnValue;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListSelector;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListService;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListServiceInterface;
-import jp.yahooapis.im.V6.SearchKeywordListService.SearchKeywordListValues;
+import jp.yahooapis.im.v201806.Error;
+import jp.yahooapis.im.v201806.Paging;
+import jp.yahooapis.im.v201806.searchkeywordidea.KeywordFrequency;
+import jp.yahooapis.im.v201806.searchkeywordidea.KeywordRecency;
+import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdea;
+import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaPage;
+import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaSelector;
+import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaService;
+import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaServiceInterface;
+import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaValues;
+import jp.yahooapis.im.v201806.searchkeywordlist.Operator;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeyword;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordList;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListOperation;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListPage;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListReturnValue;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListSelector;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListService;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListServiceInterface;
+import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListValues;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -115,7 +114,7 @@ public class SearchKeywordSample {
 
     // if error
     if (searchKeywordIdeaErrorHolder.value != null && searchKeywordIdeaErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new SearchKeywordIdeaServiceErrorEntityFactory(searchKeywordIdeaErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(searchKeywordIdeaErrorHolder.value), true);
     }
 
     // response
@@ -126,7 +125,7 @@ public class SearchKeywordSample {
           displaySearchKeywordIdea(values.getSearchKeywordIdea());
         } else {
           // if error
-          SoapUtils.displayErrors(new SearchKeywordIdeaServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
 
@@ -152,12 +151,12 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(ADD)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> addSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>> addSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> addSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     searchKeywordListService.mutate(operation, addSearchKeywordListReturnValueHolder, addSearchKeywordListErrorHolder);
 
     // if error
     if (addSearchKeywordListErrorHolder.value != null && addSearchKeywordListErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new SearchKeywordListServiceErrorEntityFactory(addSearchKeywordListErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(addSearchKeywordListErrorHolder.value), true);
     }
 
     // response
@@ -168,7 +167,7 @@ public class SearchKeywordSample {
           displaySearchKeywordList(values.getSearchKeywordList());
         } else {
           // if error
-          SoapUtils.displayErrors(new SearchKeywordListServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -193,12 +192,12 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::get");
     System.out.println("############################################");
     Holder<SearchKeywordListPage> getSearchKeywordListPageHolder = new Holder<SearchKeywordListPage>();
-    Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>> getSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> getSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     searchKeywordListService.get(selector, getSearchKeywordListPageHolder, getSearchKeywordListErrorHolder);
 
     // if error
     if (getSearchKeywordListErrorHolder.value != null && getSearchKeywordListErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new SearchKeywordListServiceErrorEntityFactory(getSearchKeywordListErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(getSearchKeywordListErrorHolder.value), true);
     }
 
     // response
@@ -207,7 +206,7 @@ public class SearchKeywordSample {
         if (values.isOperationSucceeded()) {
           displaySearchKeywordList(values.getSearchKeywordList());
         } else {
-          SoapUtils.displayErrors(new SearchKeywordListServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -232,12 +231,12 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(SET)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> setSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>> setSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> setSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     searchKeywordListService.mutate(operation, setSearchKeywordListReturnValueHolder, setSearchKeywordListErrorHolder);
 
     // if error
     if (setSearchKeywordListErrorHolder.value != null && setSearchKeywordListErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new SearchKeywordListServiceErrorEntityFactory(setSearchKeywordListErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(setSearchKeywordListErrorHolder.value), true);
     }
 
     // response
@@ -246,7 +245,7 @@ public class SearchKeywordSample {
         if (values.isOperationSucceeded()) {
           displaySearchKeywordList(values.getSearchKeywordList());
         } else {
-          SoapUtils.displayErrors(new SearchKeywordListServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -271,12 +270,12 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> removeSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>> removeSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.V6.SearchKeywordListService.Error>>();
+    Holder<List<jp.yahooapis.im.v201806.Error>> removeSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
     searchKeywordListService.mutate(operation, removeSearchKeywordListReturnValueHolder, removeSearchKeywordListErrorHolder);
 
     // if error
     if (removeSearchKeywordListErrorHolder.value != null && removeSearchKeywordListErrorHolder.value.size() > 0) {
-      SoapUtils.displayErrors(new SearchKeywordListServiceErrorEntityFactory(removeSearchKeywordListErrorHolder.value), true);
+      SoapUtils.displayErrors(new ErrorEntityFactoryImpl(removeSearchKeywordListErrorHolder.value), true);
     }
 
     // response
@@ -285,7 +284,7 @@ public class SearchKeywordSample {
         if (values.isOperationSucceeded()) {
           displaySearchKeywordList(values.getSearchKeywordList());
         } else {
-          SoapUtils.displayErrors(new SearchKeywordListServiceErrorEntityFactory(values.getError()), true);
+          SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
         }
       }
     }
@@ -304,7 +303,7 @@ public class SearchKeywordSample {
     selector.getKeywords().addAll(Arrays.asList("gizmo", "vlookup"));
     selector.setSearchKeywordRecency(KeywordRecency.WITHIN_30_DAYS);
     selector.setSearchKeywordFrequency(KeywordFrequency.ONCE_OR_MORE);
-    jp.yahooapis.im.V6.SearchKeywordIdeaService.Paging paging = new jp.yahooapis.im.V6.SearchKeywordIdeaService.Paging();
+    jp.yahooapis.im.v201806.Paging paging = new jp.yahooapis.im.v201806.Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(1000);
     selector.setPaging(paging);
