@@ -1,17 +1,17 @@
 package jp.co.yahoo.ad_api_sample.bulkDownloadSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.bulk.ApprovalStatus;
-import jp.yahooapis.im.v201806.bulk.BulkDownloadSelector;
-import jp.yahooapis.im.v201806.bulk.BulkDownloadStatusSelector;
-import jp.yahooapis.im.v201806.bulk.BulkDownloadType;
-import jp.yahooapis.im.v201806.bulk.BulkDownloadValues;
-import jp.yahooapis.im.v201806.bulk.BulkEncoding;
-import jp.yahooapis.im.v201806.bulk.BulkLang;
-import jp.yahooapis.im.v201806.bulk.BulkOutput;
-import jp.yahooapis.im.v201806.bulk.EntityType;
-import jp.yahooapis.im.v201806.bulk.MediaApprovalStatus;
-import jp.yahooapis.im.v201806.bulk.UserStatus;
+import jp.yahooapis.im.v201809.bulk.ApprovalStatus;
+import jp.yahooapis.im.v201809.bulk.BulkDownloadSelector;
+import jp.yahooapis.im.v201809.bulk.BulkDownloadStatusSelector;
+import jp.yahooapis.im.v201809.bulk.BulkDownloadType;
+import jp.yahooapis.im.v201809.bulk.BulkDownloadValues;
+import jp.yahooapis.im.v201809.bulk.BulkEncoding;
+import jp.yahooapis.im.v201809.bulk.BulkLang;
+import jp.yahooapis.im.v201809.bulk.BulkOutput;
+import jp.yahooapis.im.v201809.bulk.EntityType;
+import jp.yahooapis.im.v201809.bulk.MediaApprovalStatus;
+import jp.yahooapis.im.v201809.bulk.UserStatus;
 
 import org.junit.Before;
 import org.junit.Test;

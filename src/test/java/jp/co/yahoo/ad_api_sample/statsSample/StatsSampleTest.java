@@ -1,10 +1,10 @@
 package jp.co.yahoo.ad_api_sample.statsSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.Paging;
-import jp.yahooapis.im.v201806.stats.StatsSelector;
-import jp.yahooapis.im.v201806.stats.StatsType;
-import jp.yahooapis.im.v201806.stats.StatsValues;
+import jp.yahooapis.im.v201809.Paging;
+import jp.yahooapis.im.v201809.stats.StatsSelector;
+import jp.yahooapis.im.v201809.stats.StatsType;
+import jp.yahooapis.im.v201809.stats.StatsValues;
 
 import org.junit.Before;
 import org.junit.Test;

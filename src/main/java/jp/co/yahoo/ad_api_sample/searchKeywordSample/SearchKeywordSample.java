@@ -2,26 +2,26 @@ package jp.co.yahoo.ad_api_sample.searchKeywordSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.Error;
-import jp.yahooapis.im.v201806.Paging;
-import jp.yahooapis.im.v201806.searchkeywordidea.KeywordFrequency;
-import jp.yahooapis.im.v201806.searchkeywordidea.KeywordRecency;
-import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdea;
-import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaPage;
-import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaSelector;
-import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaService;
-import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaServiceInterface;
-import jp.yahooapis.im.v201806.searchkeywordidea.SearchKeywordIdeaValues;
-import jp.yahooapis.im.v201806.searchkeywordlist.Operator;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeyword;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordList;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListOperation;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListPage;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListReturnValue;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListSelector;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListService;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListServiceInterface;
-import jp.yahooapis.im.v201806.searchkeywordlist.SearchKeywordListValues;
+import jp.yahooapis.im.v201809.Error;
+import jp.yahooapis.im.v201809.Paging;
+import jp.yahooapis.im.v201809.searchkeywordidea.KeywordFrequency;
+import jp.yahooapis.im.v201809.searchkeywordidea.KeywordRecency;
+import jp.yahooapis.im.v201809.searchkeywordidea.SearchKeywordIdea;
+import jp.yahooapis.im.v201809.searchkeywordidea.SearchKeywordIdeaPage;
+import jp.yahooapis.im.v201809.searchkeywordidea.SearchKeywordIdeaSelector;
+import jp.yahooapis.im.v201809.searchkeywordidea.SearchKeywordIdeaService;
+import jp.yahooapis.im.v201809.searchkeywordidea.SearchKeywordIdeaServiceInterface;
+import jp.yahooapis.im.v201809.searchkeywordidea.SearchKeywordIdeaValues;
+import jp.yahooapis.im.v201809.searchkeywordlist.Operator;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeyword;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeywordList;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeywordListOperation;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeywordListPage;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeywordListReturnValue;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeywordListSelector;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeywordListService;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeywordListServiceInterface;
+import jp.yahooapis.im.v201809.searchkeywordlist.SearchKeywordListValues;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -151,7 +151,7 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(ADD)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> addSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> addSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> addSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     searchKeywordListService.mutate(operation, addSearchKeywordListReturnValueHolder, addSearchKeywordListErrorHolder);
 
     // if error
@@ -192,7 +192,7 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::get");
     System.out.println("############################################");
     Holder<SearchKeywordListPage> getSearchKeywordListPageHolder = new Holder<SearchKeywordListPage>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> getSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> getSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     searchKeywordListService.get(selector, getSearchKeywordListPageHolder, getSearchKeywordListErrorHolder);
 
     // if error
@@ -231,7 +231,7 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(SET)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> setSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> setSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> setSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     searchKeywordListService.mutate(operation, setSearchKeywordListReturnValueHolder, setSearchKeywordListErrorHolder);
 
     // if error
@@ -270,7 +270,7 @@ public class SearchKeywordSample {
     System.out.println("SearchKeywordListService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<SearchKeywordListReturnValue> removeSearchKeywordListReturnValueHolder = new Holder<SearchKeywordListReturnValue>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> removeSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> removeSearchKeywordListErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     searchKeywordListService.mutate(operation, removeSearchKeywordListReturnValueHolder, removeSearchKeywordListErrorHolder);
 
     // if error
@@ -303,7 +303,7 @@ public class SearchKeywordSample {
     selector.getKeywords().addAll(Arrays.asList("gizmo", "vlookup"));
     selector.setSearchKeywordRecency(KeywordRecency.WITHIN_30_DAYS);
     selector.setSearchKeywordFrequency(KeywordFrequency.ONCE_OR_MORE);
-    jp.yahooapis.im.v201806.Paging paging = new jp.yahooapis.im.v201806.Paging();
+    jp.yahooapis.im.v201809.Paging paging = new jp.yahooapis.im.v201809.Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(1000);
     selector.setPaging(paging);

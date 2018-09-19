@@ -2,29 +2,29 @@ package jp.co.yahoo.ad_api_sample.adSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.Paging;
-import jp.yahooapis.im.v201806.adgroup.AdGroup;
-import jp.yahooapis.im.v201806.adgroup.AdGroupConversionOptimizerType;
-import jp.yahooapis.im.v201806.adgroup.AdGroupOperation;
-import jp.yahooapis.im.v201806.adgroup.AdGroupPage;
-import jp.yahooapis.im.v201806.adgroup.AdGroupReturnValue;
-import jp.yahooapis.im.v201806.adgroup.AdGroupSelector;
-import jp.yahooapis.im.v201806.adgroup.AdGroupServiceInterface;
-import jp.yahooapis.im.v201806.adgroup.AdGroupServiceService;
-import jp.yahooapis.im.v201806.adgroup.AdGroupValues;
-import jp.yahooapis.im.v201806.adgroup.AutoAdGroupConversionOptimizer;
-import jp.yahooapis.im.v201806.adgroup.BiddingStrategyType;
-import jp.yahooapis.im.v201806.adgroup.DeviceAppType;
-import jp.yahooapis.im.v201806.adgroup.DeviceOsType;
-import jp.yahooapis.im.v201806.adgroup.DeviceType;
-import jp.yahooapis.im.v201806.adgroup.DynamicImageExtensions;
-import jp.yahooapis.im.v201806.adgroup.ManualAdGroupConversionOptimizer;
-import jp.yahooapis.im.v201806.adgroup.ManualCPCAdGroupBid;
-import jp.yahooapis.im.v201806.adgroup.ManualCPVAdGroupBid;
-import jp.yahooapis.im.v201806.adgroup.NoneAdGroupConversionOptimizer;
-import jp.yahooapis.im.v201806.adgroup.Operator;
-import jp.yahooapis.im.v201806.adgroup.SmartDeviceCarrier;
-import jp.yahooapis.im.v201806.adgroup.UserStatus;
+import jp.yahooapis.im.v201809.Paging;
+import jp.yahooapis.im.v201809.adgroup.AdGroup;
+import jp.yahooapis.im.v201809.adgroup.AdGroupConversionOptimizerType;
+import jp.yahooapis.im.v201809.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201809.adgroup.AdGroupPage;
+import jp.yahooapis.im.v201809.adgroup.AdGroupReturnValue;
+import jp.yahooapis.im.v201809.adgroup.AdGroupSelector;
+import jp.yahooapis.im.v201809.adgroup.AdGroupServiceInterface;
+import jp.yahooapis.im.v201809.adgroup.AdGroupServiceService;
+import jp.yahooapis.im.v201809.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201809.adgroup.AutoAdGroupConversionOptimizer;
+import jp.yahooapis.im.v201809.adgroup.BiddingStrategyType;
+import jp.yahooapis.im.v201809.adgroup.DeviceAppType;
+import jp.yahooapis.im.v201809.adgroup.DeviceOsType;
+import jp.yahooapis.im.v201809.adgroup.DeviceType;
+import jp.yahooapis.im.v201809.adgroup.DynamicImageExtensions;
+import jp.yahooapis.im.v201809.adgroup.ManualAdGroupConversionOptimizer;
+import jp.yahooapis.im.v201809.adgroup.ManualCPCAdGroupBid;
+import jp.yahooapis.im.v201809.adgroup.ManualCPVAdGroupBid;
+import jp.yahooapis.im.v201809.adgroup.NoneAdGroupConversionOptimizer;
+import jp.yahooapis.im.v201809.adgroup.Operator;
+import jp.yahooapis.im.v201809.adgroup.SmartDeviceCarrier;
+import jp.yahooapis.im.v201809.adgroup.UserStatus;
 
 import java.util.Arrays;
 import java.util.List;
@@ -110,7 +110,7 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(ADD)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> addAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> addAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> addAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     adGroupService.mutate(operation, addAdgroupReturnValueHolder, addAdGroupErrorHolder);
 
     // if error
@@ -157,7 +157,7 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(SET)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> setAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> setAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> setAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     adGroupService.mutate(adGroupOperation, setAdgroupReturnValueHolder, setAdGroupErrorHolder);
 
     // if error
@@ -202,7 +202,7 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<AdGroupReturnValue> removeAdgroupReturnValueHolder = new Holder<AdGroupReturnValue>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> removeAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> removeAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     adGroupService.mutate(operation, removeAdgroupReturnValueHolder, removeAdGroupErrorHolder);
 
     // if error
@@ -249,7 +249,7 @@ public class AdGroupServiceSample {
     System.out.println("AdGroupService::get");
     System.out.println("############################################");
     Holder<AdGroupPage> adGroupPageHolder = new Holder<AdGroupPage>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> getAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> getAdGroupErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     adGroupService.get(selector, adGroupPageHolder, getAdGroupErrorHolder);
 
     // if error

@@ -8,50 +8,50 @@ import jp.co.yahoo.ad_api_sample.adSample.CampaignServiceSample;
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.mediaSample.MediaSample;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.Error;
-import jp.yahooapis.im.v201806.adgroup.AdGroup;
-import jp.yahooapis.im.v201806.adgroup.AdGroupOperation;
-import jp.yahooapis.im.v201806.adgroup.AdGroupSelector;
-import jp.yahooapis.im.v201806.adgroup.AdGroupValues;
-import jp.yahooapis.im.v201806.adgroup.DeviceAppType;
-import jp.yahooapis.im.v201806.adgroup.DeviceOsType;
-import jp.yahooapis.im.v201806.adgroup.DeviceType;
-import jp.yahooapis.im.v201806.adgroup.ManualCPVAdGroupBid;
-import jp.yahooapis.im.v201806.adgroupad.AdGroupAd;
-import jp.yahooapis.im.v201806.adgroupad.AdGroupAdOperation;
-import jp.yahooapis.im.v201806.adgroupad.AdGroupAdSelector;
-import jp.yahooapis.im.v201806.adgroupad.AdGroupAdValues;
-import jp.yahooapis.im.v201806.adgroupad.AdStyle;
-import jp.yahooapis.im.v201806.adgroupad.AdType;
-import jp.yahooapis.im.v201806.adgroupad.ManualCPVAdGroupAdBid;
-import jp.yahooapis.im.v201806.adgroupad.VideoAd;
-import jp.yahooapis.im.v201806.campaign.BiddingStrategyType;
-import jp.yahooapis.im.v201806.campaign.Budget;
-import jp.yahooapis.im.v201806.campaign.BudgetDeliveryMethod;
-import jp.yahooapis.im.v201806.campaign.Campaign;
-import jp.yahooapis.im.v201806.campaign.CampaignOperation;
-import jp.yahooapis.im.v201806.campaign.CampaignSelector;
-import jp.yahooapis.im.v201806.campaign.CampaignValues;
-import jp.yahooapis.im.v201806.campaign.ManualCPV;
-import jp.yahooapis.im.v201806.media.ImageMedia;
-import jp.yahooapis.im.v201806.media.MediaOperation;
-import jp.yahooapis.im.v201806.media.MediaRecord;
-import jp.yahooapis.im.v201806.media.MediaValues;
-import jp.yahooapis.im.v201806.media.ThumbnailFlg;
-import jp.yahooapis.im.v201806.video.Operator;
-import jp.yahooapis.im.v201806.video.UploadUrlPage;
-import jp.yahooapis.im.v201806.video.UploadUrlValue;
-import jp.yahooapis.im.v201806.video.UploadUrlValues;
-import jp.yahooapis.im.v201806.video.UploadVideo;
-import jp.yahooapis.im.v201806.video.UserStatus;
-import jp.yahooapis.im.v201806.video.Video;
-import jp.yahooapis.im.v201806.video.VideoOperation;
-import jp.yahooapis.im.v201806.video.VideoPage;
-import jp.yahooapis.im.v201806.video.VideoReturnValue;
-import jp.yahooapis.im.v201806.video.VideoSelector;
-import jp.yahooapis.im.v201806.video.VideoService;
-import jp.yahooapis.im.v201806.video.VideoServiceInterface;
-import jp.yahooapis.im.v201806.video.VideoValues;
+import jp.yahooapis.im.v201809.Error;
+import jp.yahooapis.im.v201809.adgroup.AdGroup;
+import jp.yahooapis.im.v201809.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201809.adgroup.AdGroupSelector;
+import jp.yahooapis.im.v201809.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201809.adgroup.DeviceAppType;
+import jp.yahooapis.im.v201809.adgroup.DeviceOsType;
+import jp.yahooapis.im.v201809.adgroup.DeviceType;
+import jp.yahooapis.im.v201809.adgroup.ManualCPVAdGroupBid;
+import jp.yahooapis.im.v201809.adgroupad.AdGroupAd;
+import jp.yahooapis.im.v201809.adgroupad.AdGroupAdOperation;
+import jp.yahooapis.im.v201809.adgroupad.AdGroupAdSelector;
+import jp.yahooapis.im.v201809.adgroupad.AdGroupAdValues;
+import jp.yahooapis.im.v201809.adgroupad.AdStyle;
+import jp.yahooapis.im.v201809.adgroupad.AdType;
+import jp.yahooapis.im.v201809.adgroupad.ManualCPVAdGroupAdBid;
+import jp.yahooapis.im.v201809.adgroupad.VideoAd;
+import jp.yahooapis.im.v201809.campaign.BiddingStrategyType;
+import jp.yahooapis.im.v201809.campaign.Budget;
+import jp.yahooapis.im.v201809.campaign.BudgetDeliveryMethod;
+import jp.yahooapis.im.v201809.campaign.Campaign;
+import jp.yahooapis.im.v201809.campaign.CampaignOperation;
+import jp.yahooapis.im.v201809.campaign.CampaignSelector;
+import jp.yahooapis.im.v201809.campaign.CampaignValues;
+import jp.yahooapis.im.v201809.campaign.ManualCPV;
+import jp.yahooapis.im.v201809.media.ImageMedia;
+import jp.yahooapis.im.v201809.media.MediaOperation;
+import jp.yahooapis.im.v201809.media.MediaRecord;
+import jp.yahooapis.im.v201809.media.MediaValues;
+import jp.yahooapis.im.v201809.media.ThumbnailFlg;
+import jp.yahooapis.im.v201809.video.Operator;
+import jp.yahooapis.im.v201809.video.UploadUrlPage;
+import jp.yahooapis.im.v201809.video.UploadUrlValue;
+import jp.yahooapis.im.v201809.video.UploadUrlValues;
+import jp.yahooapis.im.v201809.video.UploadVideo;
+import jp.yahooapis.im.v201809.video.UserStatus;
+import jp.yahooapis.im.v201809.video.Video;
+import jp.yahooapis.im.v201809.video.VideoOperation;
+import jp.yahooapis.im.v201809.video.VideoPage;
+import jp.yahooapis.im.v201809.video.VideoReturnValue;
+import jp.yahooapis.im.v201809.video.VideoSelector;
+import jp.yahooapis.im.v201809.video.VideoService;
+import jp.yahooapis.im.v201809.video.VideoServiceInterface;
+import jp.yahooapis.im.v201809.video.VideoValues;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -324,7 +324,7 @@ public class VideoSample {
     Campaign addCampaignOperand = new Campaign();
     addCampaignOperand.setAccountId(accountId);
     addCampaignOperand.setCampaignName("SampleCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    addCampaignOperand.setUserStatus(jp.yahooapis.im.v201806.campaign.UserStatus.ACTIVE);
+    addCampaignOperand.setUserStatus(jp.yahooapis.im.v201809.campaign.UserStatus.ACTIVE);
     addCampaignOperand.setStartDate("20300101");
     addCampaignOperand.setEndDate("20301231");
 
@@ -339,7 +339,7 @@ public class VideoSample {
     addCampaignOperand.setAdProductType("VIDEO_AD");
 
     CampaignOperation addCampaignOperation = new CampaignOperation();
-    addCampaignOperation.setOperator(jp.yahooapis.im.v201806.campaign.Operator.ADD);
+    addCampaignOperation.setOperator(jp.yahooapis.im.v201809.campaign.Operator.ADD);
     addCampaignOperation.setAccountId(accountId);
     addCampaignOperation.getOperand().add(addCampaignOperand);
 
@@ -355,7 +355,7 @@ public class VideoSample {
    */
   public static CampaignOperation createCampaignSampleSetRequest(long accountId, List<CampaignValues> campaignValues) {
     CampaignOperation setCampaignOperation = new CampaignOperation();
-    setCampaignOperation.setOperator(jp.yahooapis.im.v201806.campaign.Operator.SET);
+    setCampaignOperation.setOperator(jp.yahooapis.im.v201809.campaign.Operator.SET);
     setCampaignOperation.setAccountId(accountId);
 
     for (CampaignValues campaignValue : campaignValues) {
@@ -363,7 +363,7 @@ public class VideoSample {
       setCampaignOperand.setAccountId(accountId);
       setCampaignOperand.setCampaignId(campaignValue.getCampaign().getCampaignId());
       setCampaignOperand.setCampaignName("SampleCampaign_UpdateOn_" + SoapUtils.getCurrentTimestamp());
-      setCampaignOperand.setUserStatus(jp.yahooapis.im.v201806.campaign.UserStatus.PAUSED);
+      setCampaignOperand.setUserStatus(jp.yahooapis.im.v201809.campaign.UserStatus.PAUSED);
       setCampaignOperand.setStartDate("20300101");
       setCampaignOperand.setEndDate("20301231");
 
@@ -393,9 +393,9 @@ public class VideoSample {
     addAdGroupOperand.setAccountId(accountId);
     addAdGroupOperand.setCampaignId(campaignId);
     addAdGroupOperand.setAdGroupName("SampleAdGroup_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    addAdGroupOperand.setUserStatus(jp.yahooapis.im.v201806.adgroup.UserStatus.ACTIVE);
+    addAdGroupOperand.setUserStatus(jp.yahooapis.im.v201809.adgroup.UserStatus.ACTIVE);
     ManualCPVAdGroupBid addAdGroupManualCpv = new ManualCPVAdGroupBid();
-    addAdGroupManualCpv.setType(jp.yahooapis.im.v201806.adgroup.BiddingStrategyType.MANUAL_CPV);
+    addAdGroupManualCpv.setType(jp.yahooapis.im.v201809.adgroup.BiddingStrategyType.MANUAL_CPV);
     addAdGroupManualCpv.setMaxCpv((long) 1000);
     addAdGroupOperand.setBid(addAdGroupManualCpv);
     addAdGroupOperand.getDevice().add(DeviceType.SMARTPHONE);
@@ -403,7 +403,7 @@ public class VideoSample {
     addAdGroupOperand.getDeviceApp().add(DeviceAppType.APP);
 
     AdGroupOperation addAdGroupOperation = new AdGroupOperation();
-    addAdGroupOperation.setOperator(jp.yahooapis.im.v201806.adgroup.Operator.ADD);
+    addAdGroupOperation.setOperator(jp.yahooapis.im.v201809.adgroup.Operator.ADD);
     addAdGroupOperation.setAccountId(accountId);
     addAdGroupOperation.getOperand().add(addAdGroupOperand);
 
@@ -420,7 +420,7 @@ public class VideoSample {
   public static AdGroupOperation createAdGroupSampleSetRequest(long accountId, List<AdGroupValues> adGroupValues) {
     // Set Operation
     AdGroupOperation setAdGroupOperation = new AdGroupOperation();
-    setAdGroupOperation.setOperator(jp.yahooapis.im.v201806.adgroup.Operator.SET);
+    setAdGroupOperation.setOperator(jp.yahooapis.im.v201809.adgroup.Operator.SET);
     setAdGroupOperation.setAccountId(accountId);
 
     // Set Operand
@@ -430,10 +430,10 @@ public class VideoSample {
       setAdGroupOperand.setCampaignId(adGroupValue.getAdGroup().getCampaignId());
       setAdGroupOperand.setAdGroupId(adGroupValue.getAdGroup().getAdGroupId());
       setAdGroupOperand.setAdGroupName("SampleAdGroup_UpdateOn_" + SoapUtils.getCurrentTimestamp());
-      setAdGroupOperand.setUserStatus(jp.yahooapis.im.v201806.adgroup.UserStatus.PAUSED);
+      setAdGroupOperand.setUserStatus(jp.yahooapis.im.v201809.adgroup.UserStatus.PAUSED);
       ManualCPVAdGroupBid setAdGroupManualCpv = new ManualCPVAdGroupBid();
       setAdGroupManualCpv.setMaxCpv((long) 1100);
-      setAdGroupManualCpv.setType(jp.yahooapis.im.v201806.adgroup.BiddingStrategyType.MANUAL_CPV);
+      setAdGroupManualCpv.setType(jp.yahooapis.im.v201809.adgroup.BiddingStrategyType.MANUAL_CPV);
       setAdGroupOperand.setBid(setAdGroupManualCpv);
       setAdGroupOperand.getDevice().add(DeviceType.SMARTPHONE);
       setAdGroupOperand.getDeviceOs().add(DeviceOsType.IOS);
@@ -459,12 +459,12 @@ public class VideoSample {
     addMediaOperand.setAccountId(accountId);
     addMediaOperand.setMediaName("SampleMedia_CreateOn_" + SoapUtils.getCurrentTimestamp() + ".jpg");
     addMediaOperand.setMediaTitle("SampleMedia_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    addMediaOperand.setUserStatus(jp.yahooapis.im.v201806.media.UserStatus.ACTIVE);
+    addMediaOperand.setUserStatus(jp.yahooapis.im.v201809.media.UserStatus.ACTIVE);
     addMediaOperand.setMedia(imageMedia);
     addMediaOperand.setThumbnailFlg(ThumbnailFlg.TRUE);
 
     MediaOperation addMediaOperation = new MediaOperation();
-    addMediaOperation.setOperator(jp.yahooapis.im.v201806.media.Operator.ADD);
+    addMediaOperation.setOperator(jp.yahooapis.im.v201809.media.Operator.ADD);
     addMediaOperation.setAccountId(accountId);
     addMediaOperation.getOperand().add(addMediaOperand);
 
@@ -499,14 +499,14 @@ public class VideoSample {
     addAdGroupAdOperand.setAdName("SampleAdGroupAd_CreateOn_" + SoapUtils.getCurrentTimestamp());
     addAdGroupAdOperand.setAdStyle(AdStyle.VIDEO);
     addAdGroupAdOperand.setMediaId(mediaId);
-    addAdGroupAdOperand.setUserStatus(jp.yahooapis.im.v201806.adgroupad.UserStatus.ACTIVE);
+    addAdGroupAdOperand.setUserStatus(jp.yahooapis.im.v201809.adgroupad.UserStatus.ACTIVE);
     ManualCPVAdGroupAdBid addAdGroupAd = new ManualCPVAdGroupAdBid();
     addAdGroupAd.setMaxCpv((long) 50);
-    addAdGroupAd.setType(jp.yahooapis.im.v201806.adgroupad.BiddingStrategyType.MANUAL_CPV);
+    addAdGroupAd.setType(jp.yahooapis.im.v201809.adgroupad.BiddingStrategyType.MANUAL_CPV);
     addAdGroupAdOperand.setAd(addVideoAd);
 
     AdGroupAdOperation addAdGroupAdOperation = new AdGroupAdOperation();
-    addAdGroupAdOperation.setOperator(jp.yahooapis.im.v201806.adgroupad.Operator.ADD);
+    addAdGroupAdOperation.setOperator(jp.yahooapis.im.v201809.adgroupad.Operator.ADD);
     addAdGroupAdOperation.setAccountId(accountId);
     addAdGroupAdOperation.getOperand().add(addAdGroupAdOperand);
 
@@ -523,7 +523,7 @@ public class VideoSample {
   public static AdGroupAdOperation createAdGroupAdSampleSetRequest(long accountId, List<AdGroupAdValues> adGroupAdValues) {
     // Set Operation
     AdGroupAdOperation setAdGroupAdOperation = new AdGroupAdOperation();
-    setAdGroupAdOperation.setOperator(jp.yahooapis.im.v201806.adgroupad.Operator.SET);
+    setAdGroupAdOperation.setOperator(jp.yahooapis.im.v201809.adgroupad.Operator.SET);
     setAdGroupAdOperation.setAccountId(accountId);
 
     VideoAd setVideoAd = new VideoAd();
@@ -542,9 +542,9 @@ public class VideoSample {
       setAdGroupAdOperand.setAdGroupId(adGroupAdValue.getAdGroupAd().getAdGroupId());
       setAdGroupAdOperand.setAdId(adGroupAdValue.getAdGroupAd().getAdId());
       setAdGroupAdOperand.setAdName("SampleAdGroupAd_UpdateOn_" + SoapUtils.getCurrentTimestamp());
-      setAdGroupAdOperand.setUserStatus(jp.yahooapis.im.v201806.adgroupad.UserStatus.PAUSED);
+      setAdGroupAdOperand.setUserStatus(jp.yahooapis.im.v201809.adgroupad.UserStatus.PAUSED);
       ManualCPVAdGroupAdBid setAdGroupAdManualCpv = new ManualCPVAdGroupAdBid();
-      setAdGroupAdManualCpv.setType(jp.yahooapis.im.v201806.adgroupad.BiddingStrategyType.MANUAL_CPC);
+      setAdGroupAdManualCpv.setType(jp.yahooapis.im.v201809.adgroupad.BiddingStrategyType.MANUAL_CPC);
       setAdGroupAdManualCpv.setMaxCpv((long) 60);
       setAdGroupAdOperand.setAd(setVideoAd);
 
