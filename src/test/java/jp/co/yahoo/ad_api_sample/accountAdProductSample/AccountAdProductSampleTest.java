@@ -1,8 +1,8 @@
 package jp.co.yahoo.ad_api_sample.accountAdProductSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.accountadproduct.AccountAdProductSelector;
-import jp.yahooapis.im.v201806.accountadproduct.AccountAdProductValues;
+import jp.yahooapis.im.v201809.accountadproduct.AccountAdProductSelector;
+import jp.yahooapis.im.v201809.accountadproduct.AccountAdProductValues;
 
 import org.junit.Before;
 import org.junit.Test;

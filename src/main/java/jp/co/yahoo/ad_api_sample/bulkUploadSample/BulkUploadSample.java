@@ -2,17 +2,17 @@ package jp.co.yahoo.ad_api_sample.bulkUploadSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.Error;
-import jp.yahooapis.im.v201806.Paging;
-import jp.yahooapis.im.v201806.bulk.BulkOutput;
-import jp.yahooapis.im.v201806.bulk.BulkServiceInterface;
-import jp.yahooapis.im.v201806.bulk.BulkServiceService;
-import jp.yahooapis.im.v201806.bulk.BulkUploadStatusPage;
-import jp.yahooapis.im.v201806.bulk.BulkUploadStatusSelector;
-import jp.yahooapis.im.v201806.bulk.BulkUploadValues;
-import jp.yahooapis.im.v201806.bulk.UploadBulkJob;
-import jp.yahooapis.im.v201806.bulk.UploadBulkJobStatus;
-import jp.yahooapis.im.v201806.bulk.UploadUrlValue;
+import jp.yahooapis.im.v201809.Error;
+import jp.yahooapis.im.v201809.Paging;
+import jp.yahooapis.im.v201809.bulk.BulkOutput;
+import jp.yahooapis.im.v201809.bulk.BulkServiceInterface;
+import jp.yahooapis.im.v201809.bulk.BulkServiceService;
+import jp.yahooapis.im.v201809.bulk.BulkUploadStatusPage;
+import jp.yahooapis.im.v201809.bulk.BulkUploadStatusSelector;
+import jp.yahooapis.im.v201809.bulk.BulkUploadValues;
+import jp.yahooapis.im.v201809.bulk.UploadBulkJob;
+import jp.yahooapis.im.v201809.bulk.UploadBulkJobStatus;
+import jp.yahooapis.im.v201809.bulk.UploadUrlValue;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;

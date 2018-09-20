@@ -4,7 +4,7 @@
 
   <groupId>jp.co.yahoo</groupId>
   <artifactId>ad-api-sample</artifactId>
-  <version>IM-API-V201806</version>
+  <version>IM-API-V201809</version>
   <packaging>jar</packaging>
 
   <name>ad-api-sample</name>

@@ -2,16 +2,20 @@ package jp.co.yahoo.ad_api_sample.statsSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.Paging;
-import jp.yahooapis.im.v201806.stats.Period;
-import jp.yahooapis.im.v201806.stats.Stats;
-import jp.yahooapis.im.v201806.stats.StatsPage;
-import jp.yahooapis.im.v201806.stats.StatsSelector;
-import jp.yahooapis.im.v201806.stats.StatsService;
-import jp.yahooapis.im.v201806.stats.StatsServiceInterface;
-import jp.yahooapis.im.v201806.stats.StatsType;
-import jp.yahooapis.im.v201806.stats.StatsValues;
+import jp.yahooapis.im.v201809.Paging;
+import jp.yahooapis.im.v201809.stats.Period;
+import jp.yahooapis.im.v201809.stats.Stats;
+import jp.yahooapis.im.v201809.stats.StatsPage;
+import jp.yahooapis.im.v201809.stats.StatsPeriod;
+import jp.yahooapis.im.v201809.stats.StatsPeriodCustomDate;
+import jp.yahooapis.im.v201809.stats.StatsSelector;
+import jp.yahooapis.im.v201809.stats.StatsService;
+import jp.yahooapis.im.v201809.stats.StatsServiceInterface;
+import jp.yahooapis.im.v201809.stats.StatsType;
+import jp.yahooapis.im.v201809.stats.StatsValues;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,13 +37,15 @@ public class StatsSample {
       long accountId = SoapUtils.getAccountId();
       long campaignId = SoapUtils.getCampaignId();
 
-      // -----------------------------------------------
-      // StatsService::get Campaign Stats
-      // -----------------------------------------------
       // request
-      StatsSelector statsListSelector = createSampleGetCampaginStatsRequest(accountId, campaignId);
+      StatsSelector statsListSelector = createSampleGetCampaignStatsRequest(accountId, campaignId);
       // call API
       get(statsListSelector);
+
+      // request use CustomDate
+      StatsSelector statsListSelectorCustomDate = createSampleGetCampaignStatsCustomDateRequest(accountId, campaignId);
+      // call API
+      get(statsListSelectorCustomDate);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -63,7 +69,7 @@ public class StatsSample {
     System.out.println("StatsService::get");
     System.out.println("############################################");
     Holder<StatsPage> getStatsPageHolder = new Holder<StatsPage>();
-    Holder<List<jp.yahooapis.im.v201806.Error>> getStatsErrorHolder = new Holder<List<jp.yahooapis.im.v201806.Error>>();
+    Holder<List<jp.yahooapis.im.v201809.Error>> getStatsErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
     statsListService.get(selector, getStatsPageHolder, getStatsErrorHolder);
 
     // if error
@@ -97,7 +103,7 @@ public class StatsSample {
    * @param campaignId long
    * @return StatsSelector
    */
-  public static StatsSelector createSampleGetCampaginStatsRequest(long accountId, long campaignId) {
+  public static StatsSelector createSampleGetCampaignStatsRequest(long accountId, long campaignId) {
     // Set Selector
     StatsSelector selector = new StatsSelector();
     selector.setAccountId(accountId);
@@ -111,14 +117,52 @@ public class StatsSample {
     return selector;
 
   }
+
+  /**
+   * create sample request.
+   * use CustomDate
+   *
+   * @param accountId  long
+   * @param campaignId long
+   * @return StatsSelector
+   */
+  public static StatsSelector createSampleGetCampaignStatsCustomDateRequest(long accountId, long campaignId) {
+    // Set Selector
+    StatsSelector selector = new StatsSelector();
+    selector.setAccountId(accountId);
+    selector.getCampaignIds().add(campaignId);
+    selector.setStatsPeriod(StatsPeriod.CUSTOM_DATE);
+
+    StatsPeriodCustomDate statsPeriodCustomDate = new StatsPeriodCustomDate();
+    statsPeriodCustomDate.setStatsStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
+    statsPeriodCustomDate.setStatsEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now().plusMonths(1L)));
+    selector.setStatsPeriodCustomDate(statsPeriodCustomDate);
+
+    Paging paging = new Paging();
+    paging.setStartIndex(1);
+    paging.setNumberResults(20);
+    selector.setPaging(paging);
+
+    return selector;
+
+  }
+
+
   /**
    * display Period entity to stdout.
    *
    * @param period Period entity for display.
    */
   private static void displayPeriod(Period period) {
-    System.out.println("periodStartDate = " + period.getPeriodStartDate());
-    System.out.println("periodEndDate = " + period.getPeriodEndDate());
+    if(null != period.getPeriodStartDate()){
+      System.out.println("periodStartDate/periodDate = " + period.getPeriodStartDate().getPeriodDate());
+      System.out.println("periodStartDate/periodTime = " + period.getPeriodStartDate().getPeriodTime());
+    }
+
+    if(null != period.getPeriodEndDate()){
+      System.out.println("periodEndDate/periodDate = " + period.getPeriodEndDate().getPeriodDate());
+      System.out.println("periodEndDate/periodTime = " + period.getPeriodEndDate().getPeriodTime());
+    }
   }
 
 

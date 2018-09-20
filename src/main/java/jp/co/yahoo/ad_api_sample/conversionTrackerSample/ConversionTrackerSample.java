@@ -2,27 +2,32 @@ package jp.co.yahoo.ad_api_sample.conversionTrackerSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201806.Error;
-import jp.yahooapis.im.v201806.Paging;
-import jp.yahooapis.im.v201806.conversiontracker.AppConversion;
-import jp.yahooapis.im.v201806.conversiontracker.AppConversionPlatform;
-import jp.yahooapis.im.v201806.conversiontracker.AppConversionType;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionCountingType;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTracker;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerCategory;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerOperation;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerPage;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerReturnValue;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerSelector;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerService;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerServiceInterface;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerStatus;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerType;
-import jp.yahooapis.im.v201806.conversiontracker.ConversionTrackerValues;
-import jp.yahooapis.im.v201806.conversiontracker.ExcludeFromBidding;
-import jp.yahooapis.im.v201806.conversiontracker.Operator;
-import jp.yahooapis.im.v201806.conversiontracker.WebConversion;
+import jp.yahooapis.im.v201809.Error;
+import jp.yahooapis.im.v201809.Paging;
+import jp.yahooapis.im.v201809.conversiontracker.AppConversion;
+import jp.yahooapis.im.v201809.conversiontracker.AppConversionPlatform;
+import jp.yahooapis.im.v201809.conversiontracker.AppConversionType;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionCountingType;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTracker;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerCategory;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerOperation;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerPage;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerReturnValue;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerSelector;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerService;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerServiceInterface;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerStatus;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerType;
+import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerValues;
+import jp.yahooapis.im.v201809.conversiontracker.ExcludeFromBidding;
+import jp.yahooapis.im.v201809.conversiontracker.Operator;
+import jp.yahooapis.im.v201809.conversiontracker.Period;
+import jp.yahooapis.im.v201809.conversiontracker.StatsPeriod;
+import jp.yahooapis.im.v201809.conversiontracker.StatsPeriodCustomDate;
+import jp.yahooapis.im.v201809.conversiontracker.WebConversion;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.xml.ws.Holder;
@@ -59,6 +64,16 @@ public class ConversionTrackerSample {
 
       // call API
       get(conversionTrackerSelector);
+
+      // -----------------------------------------------
+      // ConversionTrackerService::get
+      // use CustomDate
+      // -----------------------------------------------
+      // request
+      ConversionTrackerSelector conversionTrackerCustomDateSelector = createSampleGetCustomDateRequest(accountId, addResponse);
+
+      // call API
+      get(conversionTrackerCustomDateSelector);
 
       // -----------------------------------------------
       // ConversionTrackerService::mutate(SET)
@@ -143,6 +158,9 @@ public class ConversionTrackerSample {
     // response
     if (getConversionTrackerErrorHolder.value != null) {
       displayConversionTrackerPage(getConversionTrackerPageHolder.value);
+      if(null != getConversionTrackerPageHolder.value.getPeriod()){
+        displayPeriod(getConversionTrackerPageHolder.value.getPeriod());
+      }
       for (ConversionTrackerValues values : getConversionTrackerPageHolder.value.getValues()) {
         if (values.isOperationSucceeded()) {
           displayConversionTracker(values.getConversionTracker());
@@ -259,6 +277,37 @@ public class ConversionTrackerSample {
 
   /**
    * create sample request.
+   * use CustomDate.
+   *
+   * @param accountId               long
+   * @param conversionTrackerValues ConversionTrackerValues
+   * @return ConversionTrackerSelector
+   */
+  public static ConversionTrackerSelector createSampleGetCustomDateRequest(long accountId, List<ConversionTrackerValues> conversionTrackerValues) {
+    // Set Selector
+    ConversionTrackerSelector conversionTrackerSelector = new ConversionTrackerSelector();
+    conversionTrackerSelector.setAccountId(accountId);
+    conversionTrackerSelector.setStatsPeriod(StatsPeriod.CUSTOM_DATE);
+
+    for (ConversionTrackerValues values : conversionTrackerValues) {
+      conversionTrackerSelector.getConversionTrackerIds().add(values.getConversionTracker().getConversionTrackerId());
+    }
+
+    StatsPeriodCustomDate statsPeriodCustomDate = new StatsPeriodCustomDate();
+    statsPeriodCustomDate.setStatsStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
+    statsPeriodCustomDate.setStatsEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now().plusMonths(1L)));
+    conversionTrackerSelector.setStatsPeriodCustomDate(statsPeriodCustomDate);
+
+    Paging paging = new Paging();
+    paging.setStartIndex(1);
+    paging.setNumberResults(20);
+    conversionTrackerSelector.setPaging(paging);
+
+    return conversionTrackerSelector;
+  }
+
+  /**
+   * create sample request.
    *
    * @param accountId               long
    * @param conversionTrackerValues CampaignValues
@@ -296,6 +345,22 @@ public class ConversionTrackerSample {
     return setConversionTrackerOperation;
   }
 
+  /**
+   * display Period entity to stdout.
+   *
+   * @param period Period entity for display.
+   */
+  private static void displayPeriod(Period period) {
+    if(null != period.getPeriodStartDate()){
+      System.out.println("periodStartDate/periodDate = " + period.getPeriodStartDate().getPeriodDate());
+      System.out.println("periodStartDate/periodTime = " + period.getPeriodStartDate().getPeriodTime());
+    }
+
+    if(null != period.getPeriodEndDate()){
+      System.out.println("periodEndDate/periodDate = " + period.getPeriodEndDate().getPeriodDate());
+      System.out.println("periodEndDate/periodTime = " + period.getPeriodEndDate().getPeriodTime());
+    }
+  }
 
   private static void displayConversionTrackerPage(ConversionTrackerPage conversionTrackerPage) {
     System.out.println("totalConversions = " + conversionTrackerPage.getTotalConversions());

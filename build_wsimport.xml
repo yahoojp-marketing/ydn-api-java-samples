@@ -8,8 +8,8 @@
     <property name="src.dir"   value="${basedir}/src/main/java"/>
     <property name="dest.dir"  value="${basedir}/build"/>
     <property name="wsdl.dir"  value="${basedir}/wsdl"/>
-    <property name="wsdl.location"  value="https://sandbox.im.yahooapis.jp/services/V201806"/>
-    <property name="pakcage.base" value="jp.yahooapis.im.V201806"/>
+    <property name="wsdl.location"  value="https://sandbox.im.yahooapis.jp/services/V201809"/>
+    <property name="pakcage.base" value="jp.yahooapis.im.V201809"/>
     <!--==================================
       classpath for build
     ===================================-->
