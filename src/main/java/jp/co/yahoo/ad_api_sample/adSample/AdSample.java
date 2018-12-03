@@ -2,55 +2,55 @@ package jp.co.yahoo.ad_api_sample.adSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.adgroup.AdGroup;
-import jp.yahooapis.im.v201809.adgroup.AdGroupOperation;
-import jp.yahooapis.im.v201809.adgroup.AdGroupSelector;
-import jp.yahooapis.im.v201809.adgroup.AdGroupValues;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdOperation;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdSelector;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdValues;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTargetMutateOperation;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTargetOperation;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTargetPage;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTargetReturnValue;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTargetSelector;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTargetServiceInterface;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTargetServiceService;
-import jp.yahooapis.im.v201809.adgrouptarget.AdGroupTargetValue;
-import jp.yahooapis.im.v201809.adgrouptarget.AdScheduleTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.Age;
-import jp.yahooapis.im.v201809.adgrouptarget.AgeTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.AppTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.CarrierTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.DayOfWeek;
-import jp.yahooapis.im.v201809.adgrouptarget.DeviceTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.EstimateFlg;
-import jp.yahooapis.im.v201809.adgrouptarget.Gender;
-import jp.yahooapis.im.v201809.adgrouptarget.GenderTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.GeoTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.InterestCategoryTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.Operator;
-import jp.yahooapis.im.v201809.adgrouptarget.OsTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.OsVersionTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.PlacementTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.SearchTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.SiteCategoryTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.SiteRetargetingTarget;
-import jp.yahooapis.im.v201809.adgrouptarget.Target;
-import jp.yahooapis.im.v201809.adgrouptarget.TargetType;
-import jp.yahooapis.im.v201809.campaign.BiddingStrategyType;
-import jp.yahooapis.im.v201809.campaign.Budget;
-import jp.yahooapis.im.v201809.campaign.BudgetDeliveryMethod;
-import jp.yahooapis.im.v201809.campaign.Campaign;
-import jp.yahooapis.im.v201809.campaign.CampaignOperation;
-import jp.yahooapis.im.v201809.campaign.CampaignSelector;
-import jp.yahooapis.im.v201809.campaign.CampaignType;
-import jp.yahooapis.im.v201809.campaign.CampaignValues;
-import jp.yahooapis.im.v201809.campaign.FrequencyCap;
-import jp.yahooapis.im.v201809.campaign.FrequencyLevel;
-import jp.yahooapis.im.v201809.campaign.FrequencyTimeUnit;
-import jp.yahooapis.im.v201809.campaign.ManualCPC;
+import jp.yahooapis.im.v201812.adgroup.AdGroup;
+import jp.yahooapis.im.v201812.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201812.adgroup.AdGroupSelector;
+import jp.yahooapis.im.v201812.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdOperation;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdSelector;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdValues;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTargetMutateOperation;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTargetOperation;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTargetPage;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTargetReturnValue;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTargetSelector;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTargetServiceInterface;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTargetServiceService;
+import jp.yahooapis.im.v201812.adgrouptarget.AdGroupTargetValue;
+import jp.yahooapis.im.v201812.adgrouptarget.AdScheduleTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.Age;
+import jp.yahooapis.im.v201812.adgrouptarget.AgeTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.AppTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.CarrierTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.DayOfWeek;
+import jp.yahooapis.im.v201812.adgrouptarget.DeviceTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.EstimateFlg;
+import jp.yahooapis.im.v201812.adgrouptarget.Gender;
+import jp.yahooapis.im.v201812.adgrouptarget.GenderTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.GeoTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.InterestCategoryTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.Operator;
+import jp.yahooapis.im.v201812.adgrouptarget.OsTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.OsVersionTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.PlacementTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.SearchTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.SiteCategoryTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.SiteRetargetingTarget;
+import jp.yahooapis.im.v201812.adgrouptarget.Target;
+import jp.yahooapis.im.v201812.adgrouptarget.TargetType;
+import jp.yahooapis.im.v201812.campaign.BiddingStrategyType;
+import jp.yahooapis.im.v201812.campaign.Budget;
+import jp.yahooapis.im.v201812.campaign.BudgetDeliveryMethod;
+import jp.yahooapis.im.v201812.campaign.Campaign;
+import jp.yahooapis.im.v201812.campaign.CampaignOperation;
+import jp.yahooapis.im.v201812.campaign.CampaignSelector;
+import jp.yahooapis.im.v201812.campaign.CampaignType;
+import jp.yahooapis.im.v201812.campaign.CampaignValues;
+import jp.yahooapis.im.v201812.campaign.FrequencyCap;
+import jp.yahooapis.im.v201812.campaign.FrequencyLevel;
+import jp.yahooapis.im.v201812.campaign.FrequencyTimeUnit;
+import jp.yahooapis.im.v201812.campaign.ManualCPC;
 
 import java.util.Arrays;
 import java.util.List;
@@ -269,7 +269,7 @@ public class AdSample {
     System.out.println("AdGroupTargetService::mutate(ADD)");
     System.out.println("############################################");
     Holder<AdGroupTargetReturnValue> setAdGroupTargetReturnValueHolder = new Holder<AdGroupTargetReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     adGroupTargetService.mutate(operation, setAdGroupTargetReturnValueHolder, setAdGroupTargetErrorHolder);
 
     // if error
@@ -314,7 +314,7 @@ public class AdSample {
     System.out.println("AdGroupTargetService::mutate(SET)");
     System.out.println("############################################");
     Holder<AdGroupTargetReturnValue> setAdGroupTargetReturnValueHolder = new Holder<AdGroupTargetReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     adGroupTargetService.mutate(operation, setAdGroupTargetReturnValueHolder, setAdGroupTargetErrorHolder);
 
     // if error
@@ -359,7 +359,7 @@ public class AdSample {
     System.out.println("AdGroupTargetService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<AdGroupTargetReturnValue> setAdGroupTargetReturnValueHolder = new Holder<AdGroupTargetReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     adGroupTargetService.mutate(operation, setAdGroupTargetReturnValueHolder, setAdGroupTargetErrorHolder);
 
     // if error
@@ -405,7 +405,7 @@ public class AdSample {
     System.out.println("AdGroupTargetService::replace");
     System.out.println("############################################");
     Holder<AdGroupTargetReturnValue> setAdGroupTargetReturnValueHolder = new Holder<AdGroupTargetReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> setAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     adGroupTargetService.replace(operation, setAdGroupTargetReturnValueHolder, setAdGroupTargetErrorHolder);
 
     // if error
@@ -450,7 +450,7 @@ public class AdSample {
     System.out.println("AdGroupTargetService::get");
     System.out.println("############################################");
     Holder<AdGroupTargetPage> adGroupTargetPageHolder = new Holder<AdGroupTargetPage>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> getAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> getAdGroupTargetErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     adGroupTargetService.get(selector, adGroupTargetPageHolder, getAdGroupTargetErrorHolder);
 
     // if error
@@ -490,7 +490,7 @@ public class AdSample {
     Campaign appCampaignOperand = new Campaign();
     appCampaignOperand.setAccountId(accountId);
     appCampaignOperand.setCampaignName("SampleAppCampaign_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    appCampaignOperand.setUserStatus(jp.yahooapis.im.v201809.campaign.UserStatus.ACTIVE);
+    appCampaignOperand.setUserStatus(jp.yahooapis.im.v201812.campaign.UserStatus.ACTIVE);
     appCampaignOperand.setStartDate("20300101");
     appCampaignOperand.setEndDate("20301231");
     Budget appBudget = new Budget();
@@ -509,7 +509,7 @@ public class AdSample {
     appCampaignOperand.setCampaignType(CampaignType.STANDARD);
 
     CampaignOperation addCampaignOperation = new CampaignOperation();
-    addCampaignOperation.setOperator(jp.yahooapis.im.v201809.campaign.Operator.ADD);
+    addCampaignOperation.setOperator(jp.yahooapis.im.v201812.campaign.Operator.ADD);
     addCampaignOperation.setAccountId(accountId);
     addCampaignOperation.getOperand().add(appCampaignOperand);
 
@@ -606,7 +606,7 @@ public class AdSample {
 
 
     AdGroupTargetMutateOperation setAdGroupTargetMutateOperation = new AdGroupTargetMutateOperation();
-    setAdGroupTargetMutateOperation.setOperator(jp.yahooapis.im.v201809.adgrouptarget.Operator.ADD);
+    setAdGroupTargetMutateOperation.setOperator(jp.yahooapis.im.v201812.adgrouptarget.Operator.ADD);
     setAdGroupTargetMutateOperation.setAccountId(accountId);
     setAdGroupTargetMutateOperation.getOperand().addAll(Arrays.asList(setAdScheduleAdGroupTarget1, setAdScheduleAdGroupTarget2, setGenderAdGroupTarget1, setGenderAdGroupTarget2, setAgeAdGroupTarget));
 

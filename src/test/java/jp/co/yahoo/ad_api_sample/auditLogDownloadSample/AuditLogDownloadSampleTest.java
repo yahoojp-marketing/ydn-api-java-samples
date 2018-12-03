@@ -1,11 +1,11 @@
 package jp.co.yahoo.ad_api_sample.auditLogDownloadSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.auditlog.AuditLogDateRange;
-import jp.yahooapis.im.v201809.auditlog.AuditLogDownloadSelector;
-import jp.yahooapis.im.v201809.auditlog.AuditLogDownloadStatusSelector;
-import jp.yahooapis.im.v201809.auditlog.AuditLogDownloadValues;
-import jp.yahooapis.im.v201809.auditlog.AuditLogUpdateSource;
+import jp.yahooapis.im.v201812.auditlog.AuditLogDateRange;
+import jp.yahooapis.im.v201812.auditlog.AuditLogDownloadSelector;
+import jp.yahooapis.im.v201812.auditlog.AuditLogDownloadStatusSelector;
+import jp.yahooapis.im.v201812.auditlog.AuditLogDownloadValues;
+import jp.yahooapis.im.v201812.auditlog.AuditLogUpdateSource;
 
 import org.junit.Before;
 import org.junit.Test;

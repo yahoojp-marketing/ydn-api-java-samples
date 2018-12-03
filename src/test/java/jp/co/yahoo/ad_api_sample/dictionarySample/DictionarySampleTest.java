@@ -1,10 +1,10 @@
 package jp.co.yahoo.ad_api_sample.dictionarySample;
 
-import jp.yahooapis.im.v201809.dictionary.DictionaryLang;
-import jp.yahooapis.im.v201809.dictionary.DisapprovalReasonSelector;
-import jp.yahooapis.im.v201809.dictionary.DisapprovalReasonValues;
-import jp.yahooapis.im.v201809.dictionary.GeographicLocationSelector;
-import jp.yahooapis.im.v201809.dictionary.GeographicLocationValues;
+import jp.yahooapis.im.v201812.dictionary.DictionaryLang;
+import jp.yahooapis.im.v201812.dictionary.DisapprovalReasonSelector;
+import jp.yahooapis.im.v201812.dictionary.DisapprovalReasonValues;
+import jp.yahooapis.im.v201812.dictionary.GeographicLocationSelector;
+import jp.yahooapis.im.v201812.dictionary.GeographicLocationValues;
 
 import org.junit.Test;
 

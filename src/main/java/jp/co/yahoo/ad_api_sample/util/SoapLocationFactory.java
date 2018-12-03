@@ -1,9 +1,9 @@
 package jp.co.yahoo.ad_api_sample.util;
 
-import jp.yahooapis.im.v201809.Error;
-import jp.yahooapis.im.v201809.location.LocationReturnValue;
-import jp.yahooapis.im.v201809.location.LocationServiceInterface;
-import jp.yahooapis.im.v201809.location.LocationServiceService;
+import jp.yahooapis.im.v201812.Error;
+import jp.yahooapis.im.v201812.location.LocationReturnValue;
+import jp.yahooapis.im.v201812.location.LocationServiceInterface;
+import jp.yahooapis.im.v201812.location.LocationServiceService;
 
 import java.net.URL;
 import java.util.List;

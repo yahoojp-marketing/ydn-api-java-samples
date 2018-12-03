@@ -2,14 +2,14 @@ package jp.co.yahoo.ad_api_sample.accountAdProductSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.accountadproduct.AccountAdProduct;
-import jp.yahooapis.im.v201809.accountadproduct.AccountAdProductPage;
-import jp.yahooapis.im.v201809.accountadproduct.AccountAdProductSelector;
-import jp.yahooapis.im.v201809.accountadproduct.AccountAdProductService;
-import jp.yahooapis.im.v201809.accountadproduct.AccountAdProductServiceInterface;
-import jp.yahooapis.im.v201809.accountadproduct.AccountAdProductValues;
-import jp.yahooapis.im.v201809.accountadproduct.AdProduct;
-import jp.yahooapis.im.v201809.Error;
+import jp.yahooapis.im.v201812.accountadproduct.AccountAdProduct;
+import jp.yahooapis.im.v201812.accountadproduct.AccountAdProductPage;
+import jp.yahooapis.im.v201812.accountadproduct.AccountAdProductSelector;
+import jp.yahooapis.im.v201812.accountadproduct.AccountAdProductService;
+import jp.yahooapis.im.v201812.accountadproduct.AccountAdProductServiceInterface;
+import jp.yahooapis.im.v201812.accountadproduct.AccountAdProductValues;
+import jp.yahooapis.im.v201812.accountadproduct.AdProduct;
+import jp.yahooapis.im.v201812.Error;
 
 import java.util.List;
 

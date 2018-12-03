@@ -2,29 +2,29 @@ package jp.co.yahoo.ad_api_sample.conversionTrackerSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.Error;
-import jp.yahooapis.im.v201809.Paging;
-import jp.yahooapis.im.v201809.conversiontracker.AppConversion;
-import jp.yahooapis.im.v201809.conversiontracker.AppConversionPlatform;
-import jp.yahooapis.im.v201809.conversiontracker.AppConversionType;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionCountingType;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTracker;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerCategory;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerOperation;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerPage;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerReturnValue;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerSelector;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerService;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerServiceInterface;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerStatus;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerType;
-import jp.yahooapis.im.v201809.conversiontracker.ConversionTrackerValues;
-import jp.yahooapis.im.v201809.conversiontracker.ExcludeFromBidding;
-import jp.yahooapis.im.v201809.conversiontracker.Operator;
-import jp.yahooapis.im.v201809.conversiontracker.Period;
-import jp.yahooapis.im.v201809.conversiontracker.StatsPeriod;
-import jp.yahooapis.im.v201809.conversiontracker.StatsPeriodCustomDate;
-import jp.yahooapis.im.v201809.conversiontracker.WebConversion;
+import jp.yahooapis.im.v201812.Error;
+import jp.yahooapis.im.v201812.Paging;
+import jp.yahooapis.im.v201812.conversiontracker.AppConversion;
+import jp.yahooapis.im.v201812.conversiontracker.AppConversionPlatform;
+import jp.yahooapis.im.v201812.conversiontracker.AppConversionType;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionCountingType;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTracker;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerCategory;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerOperation;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerPage;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerReturnValue;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerSelector;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerService;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerServiceInterface;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerStatus;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerType;
+import jp.yahooapis.im.v201812.conversiontracker.ConversionTrackerValues;
+import jp.yahooapis.im.v201812.conversiontracker.ExcludeFromBidding;
+import jp.yahooapis.im.v201812.conversiontracker.Operator;
+import jp.yahooapis.im.v201812.conversiontracker.Period;
+import jp.yahooapis.im.v201812.conversiontracker.StatsPeriod;
+import jp.yahooapis.im.v201812.conversiontracker.StatsPeriodCustomDate;
+import jp.yahooapis.im.v201812.conversiontracker.WebConversion;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -203,6 +203,9 @@ public class ConversionTrackerSample {
     if (setConversionTrackerReturnValueHolder.value != null) {
       for (ConversionTrackerValues values : setConversionTrackerReturnValueHolder.value.getValues()) {
         if (values.isOperationSucceeded()) {
+          if(null != values.getStatsPeriodCustomDate()){
+            displayStatsPeriodCustomDate(values.getStatsPeriodCustomDate());
+          }
           displayConversionTracker(values.getConversionTracker());
         } else {
           SoapUtils.displayErrors(new ErrorEntityFactoryImpl(values.getError()), true);
@@ -229,6 +232,8 @@ public class ConversionTrackerSample {
     webConversion.setConversionTrackerType(ConversionTrackerType.WEB_CONVERSION);
     webConversion.setCountingType(ConversionCountingType.MANY_PER_CLICK);
     webConversion.setExcludeFromBidding(ExcludeFromBidding.FALSE);
+    webConversion.setMeasurementPeriod(31);
+    webConversion.setMeasurementPeriodView(15);
 
     AppConversion appConversion = new AppConversion();
     appConversion.setAccountId(accountId);
@@ -236,11 +241,13 @@ public class ConversionTrackerSample {
     appConversion.setStatus(ConversionTrackerStatus.ENABLED);
     appConversion.setCategory(ConversionTrackerCategory.DOWNLOAD);
     appConversion.setConversionTrackerType(ConversionTrackerType.APP_CONVERSION);
-    appConversion.setAppId("1234567890");
+    appConversion.setAppId("1234567893");
     appConversion.setAppPlatform(AppConversionPlatform.ITUNES);
     appConversion.setAppConversionType(AppConversionType.FIRST_OPEN);
     appConversion.setCountingType(ConversionCountingType.ONE_PER_CLICK);
     appConversion.setExcludeFromBidding(ExcludeFromBidding.FALSE);
+    appConversion.setMeasurementPeriod(31);
+    appConversion.setMeasurementPeriodView(15);
 
     ConversionTrackerOperation addConversionTrackerOperation = new ConversionTrackerOperation();
     addConversionTrackerOperation.setAccountId(accountId);
@@ -328,6 +335,8 @@ public class ConversionTrackerSample {
         webConversion.setCategory(ConversionTrackerCategory.PAGE_VIEW);
         webConversion.setUserRevenueValue((long) 300);
         webConversion.setConversionTrackerType(ConversionTrackerType.WEB_CONVERSION);
+        webConversion.setMeasurementPeriod(32);
+        webConversion.setMeasurementPeriodView(14);
         setConversionTrackerOperation.getOperand().add(webConversion);
       } else {
         AppConversion appConversion = new AppConversion();
@@ -338,6 +347,8 @@ public class ConversionTrackerSample {
         appConversion.setCategory(ConversionTrackerCategory.DOWNLOAD);
         appConversion.setUserRevenueValue((long) 300);
         appConversion.setConversionTrackerType(ConversionTrackerType.APP_CONVERSION);
+        appConversion.setMeasurementPeriod(32);
+        appConversion.setMeasurementPeriodView(14);
         setConversionTrackerOperation.getOperand().add(appConversion);
       }
     }
@@ -365,8 +376,12 @@ public class ConversionTrackerSample {
   private static void displayConversionTrackerPage(ConversionTrackerPage conversionTrackerPage) {
     System.out.println("totalConversions = " + conversionTrackerPage.getTotalConversions());
     System.out.println("totalConversionValue = " + conversionTrackerPage.getTotalConversionValue());
+    System.out.println("totalConversionsViaAdClick = " + conversionTrackerPage.getTotalConversionsViaAdClick());
+    System.out.println("totalConversionValueViaAdClick = " + conversionTrackerPage.getTotalConversionValueViaAdClick());
     System.out.println("totalAllConversions = " + conversionTrackerPage.getTotalAllConversions());
     System.out.println("totalAllConversionValue = " + conversionTrackerPage.getTotalAllConversionValue());
+    System.out.println("totalCrossDeviceConversions = " + conversionTrackerPage.getTotalCrossDeviceConversions());
+
   }
 
   /**
@@ -382,13 +397,17 @@ public class ConversionTrackerSample {
     System.out.println("category = " + conversionTracker.getCategory());
     System.out.println("conversions = " + conversionTracker.getConversions());
     System.out.println("conversionValue = " + conversionTracker.getConversionValue());
+    System.out.println("conversionsViaAdClick = " + conversionTracker.getConversionsViaAdClick());
+    System.out.println("conversionValueViaAdClick = " + conversionTracker.getConversionValueViaAdClick());
     System.out.println("userRevenueValue = " + conversionTracker.getUserRevenueValue());
     System.out.println("conversionTrackerType = " + conversionTracker.getConversionTrackerType());
     System.out.println("countingType = " + conversionTracker.getCountingType());
     System.out.println("measurementPeriod = " + conversionTracker.getMeasurementPeriod());
+    System.out.println("measurementPeriodView = " + conversionTracker.getMeasurementPeriodView());
     System.out.println("excludeFromBidding = " + conversionTracker.getExcludeFromBidding());
     System.out.println("allConversions = " + conversionTracker.getAllConversions());
     System.out.println("allConversionValue = " + conversionTracker.getAllConversionValue());
+    System.out.println("crossDeviceConversions = " + conversionTracker.getCrossDeviceConversions());
     System.out.println("mostRecentConversionDate = " + conversionTracker.getMostRecentConversionDate());
     if (conversionTracker.getConversionTrackerType() == ConversionTrackerType.WEB_CONVERSION) {
       WebConversion webConversion = (WebConversion) conversionTracker;
@@ -401,4 +420,17 @@ public class ConversionTrackerSample {
     }
     System.out.println("---------");
   }
+
+
+  /**
+   * display StatsPeriodCustomDate entity to stdout.
+   *
+   * @param statsPeriodCustomDate StatsPeriodCustomDate entity for display.
+   */
+  private static void displayStatsPeriodCustomDate(StatsPeriodCustomDate statsPeriodCustomDate) {
+    System.out.println("statsPeriodCustomDate/statsStartDate = " + statsPeriodCustomDate.getStatsStartDate());
+    System.out.println("statsPeriodCustomDate/statsEndDate = " + statsPeriodCustomDate.getStatsEndDate());
+    System.out.println("---------");
+  }
+
 }
