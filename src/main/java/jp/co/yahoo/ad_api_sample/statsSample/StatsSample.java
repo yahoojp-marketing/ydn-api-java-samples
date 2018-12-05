@@ -2,17 +2,17 @@ package jp.co.yahoo.ad_api_sample.statsSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.Paging;
-import jp.yahooapis.im.v201809.stats.Period;
-import jp.yahooapis.im.v201809.stats.Stats;
-import jp.yahooapis.im.v201809.stats.StatsPage;
-import jp.yahooapis.im.v201809.stats.StatsPeriod;
-import jp.yahooapis.im.v201809.stats.StatsPeriodCustomDate;
-import jp.yahooapis.im.v201809.stats.StatsSelector;
-import jp.yahooapis.im.v201809.stats.StatsService;
-import jp.yahooapis.im.v201809.stats.StatsServiceInterface;
-import jp.yahooapis.im.v201809.stats.StatsType;
-import jp.yahooapis.im.v201809.stats.StatsValues;
+import jp.yahooapis.im.v201812.Paging;
+import jp.yahooapis.im.v201812.stats.Period;
+import jp.yahooapis.im.v201812.stats.Stats;
+import jp.yahooapis.im.v201812.stats.StatsPage;
+import jp.yahooapis.im.v201812.stats.StatsPeriod;
+import jp.yahooapis.im.v201812.stats.StatsPeriodCustomDate;
+import jp.yahooapis.im.v201812.stats.StatsSelector;
+import jp.yahooapis.im.v201812.stats.StatsService;
+import jp.yahooapis.im.v201812.stats.StatsServiceInterface;
+import jp.yahooapis.im.v201812.stats.StatsType;
+import jp.yahooapis.im.v201812.stats.StatsValues;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -69,7 +69,7 @@ public class StatsSample {
     System.out.println("StatsService::get");
     System.out.println("############################################");
     Holder<StatsPage> getStatsPageHolder = new Holder<StatsPage>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> getStatsErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> getStatsErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     statsListService.get(selector, getStatsPageHolder, getStatsErrorHolder);
 
     // if error
@@ -192,11 +192,17 @@ public class StatsSample {
       System.out.println("stats / cpa = " + stats.getCpa());
       System.out.println("stats / conversionValue = " + stats.getConversionValue());
       System.out.println("stats / valuePerConversions = " + stats.getValuePerConversions());
+      System.out.println("stats / conversionsViaAdClick = " + stats.getConversionsViaAdClick());
+      System.out.println("stats / conversionRateViaAdClick = " + stats.getConversionRateViaAdClick());
+      System.out.println("stats / cpaViaAdClick = " + stats.getCpaViaAdClick());
+      System.out.println("stats / conversionValueViaAdClick = " + stats.getConversionValueViaAdClick());
+      System.out.println("stats / valuePerConversionsViaAdClick = " + stats.getValuePerConversionsViaAdClick());
       System.out.println("stats / allConversions = " + stats.getAllConversions());
       System.out.println("stats / allConversionRate = " + stats.getAllConversionRate());
       System.out.println("stats / allCpa = " + stats.getAllCpa());
       System.out.println("stats / allConversionValue = " + stats.getAllConversionValue());
       System.out.println("stats / valuePerAllConversions = " + stats.getValuePerAllConversions());
+      System.out.println("stats / crossDeviceConversions = " + stats.getCrossDeviceConversions());
       System.out.println("stats / avgDeliverRank = " + stats.getAvgDeliverRank());
       System.out.println("stats / totalVimps = " + stats.getTotalVimps());
       System.out.println("stats / vImps = " + stats.getVImps());
@@ -204,13 +210,9 @@ public class StatsSample {
       System.out.println("stats / inViewRate = " + stats.getInViewRate());
       System.out.println("stats / inViewClickRate = " + stats.getInViewClickRate());
       if (Objects.equals(statsValues.getStatsType(), StatsType.VIDEO)) {
-        System.out.println("stats / autoVideoPlays = " + stats.getAutoVideoPlays());
-        System.out.println("stats / clickVideoPlays = " + stats.getClickVideoPlays());
-        System.out.println("stats / videoViewedRate = " + stats.getVideoViewedRate());
         System.out.println("stats / paidVideoViews = " + stats.getPaidVideoViews());
         System.out.println("stats / paidVideoViewRate = " + stats.getPaidVideoViewRate());
         System.out.println("stats / averageCpv = " + stats.getAverageCpv());
-        System.out.println("stats / videoPlays = " + stats.getVideoPlays());
         System.out.println("stats / videoViewsTo25 = " + stats.getVideoViewsTo25());
         System.out.println("stats / videoViewsTo50 = " + stats.getVideoViewsTo50());
         System.out.println("stats / videoViewsTo75 = " + stats.getVideoViewsTo75());

@@ -10,10 +10,15 @@ Additionally, please note before using it that Yahoo Japan Corporation may chang
 --------------------------------
 <<Version>>
 --------------------------------
-Ver.201809
+Ver.201812
 
 [Update history]
 -----------
+
+2018/12/05:
+- V201812 video tracking conversion is available.
+- V201812 search targeting enhancement is available.
+
 2018/09/19:
 - V201809 Correspond to site Retargeting enhancement.
 - V201809 Correspond to period of performance data available changed.
@@ -215,7 +220,7 @@ MEDIAID             : Enter Media ID (Required)
 --------------------------------
 set SAMPLE_HOME={ad-api-sample}
 set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
-set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V201809.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V201812.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 [e.g.]
 ---------------------------------------

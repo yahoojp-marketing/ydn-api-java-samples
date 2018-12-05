@@ -2,41 +2,41 @@ package jp.co.yahoo.ad_api_sample.retargetingSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.Error;
-import jp.yahooapis.im.v201809.Paging;
-import jp.yahooapis.im.v201809.retargetinglist.Combination;
-import jp.yahooapis.im.v201809.retargetinglist.CombinationTargetList;
-import jp.yahooapis.im.v201809.retargetinglist.CompareOperator;
-import jp.yahooapis.im.v201809.retargetinglist.CustomAudienceTargetList;
-import jp.yahooapis.im.v201809.retargetinglist.IsOpen;
-import jp.yahooapis.im.v201809.retargetinglist.IsPreset;
-import jp.yahooapis.im.v201809.retargetinglist.LogicalOperator;
-import jp.yahooapis.im.v201809.retargetinglist.Operator;
-import jp.yahooapis.im.v201809.retargetinglist.RetargetingList;
-import jp.yahooapis.im.v201809.retargetinglist.RetargetingListOperation;
-import jp.yahooapis.im.v201809.retargetinglist.RetargetingListPage;
-import jp.yahooapis.im.v201809.retargetinglist.RetargetingListReturnValue;
-import jp.yahooapis.im.v201809.retargetinglist.RetargetingListSelector;
-import jp.yahooapis.im.v201809.retargetinglist.RetargetingListServiceInterface;
-import jp.yahooapis.im.v201809.retargetinglist.RetargetingListServiceService;
-import jp.yahooapis.im.v201809.retargetinglist.RetargetingListValues;
-import jp.yahooapis.im.v201809.retargetinglist.Rule;
-import jp.yahooapis.im.v201809.retargetinglist.RuleCondition;
-import jp.yahooapis.im.v201809.retargetinglist.RuleTargetList;
-import jp.yahooapis.im.v201809.retargetinglist.RuleType;
-import jp.yahooapis.im.v201809.retargetinglist.SimilarityTargetList;
-import jp.yahooapis.im.v201809.retargetinglist.TargetListData;
-import jp.yahooapis.im.v201809.retargetinglist.TargetListSize;
-import jp.yahooapis.im.v201809.retargetinglist.TargetListSizeReaches;
-import jp.yahooapis.im.v201809.retargetinglist.TargetListType;
-import jp.yahooapis.im.v201809.retargetingtag.RetargetingTag;
-import jp.yahooapis.im.v201809.retargetingtag.RetargetingTagOperation;
-import jp.yahooapis.im.v201809.retargetingtag.RetargetingTagPage;
-import jp.yahooapis.im.v201809.retargetingtag.RetargetingTagReturnValue;
-import jp.yahooapis.im.v201809.retargetingtag.RetargetingTagSelector;
-import jp.yahooapis.im.v201809.retargetingtag.RetargetingTagService;
-import jp.yahooapis.im.v201809.retargetingtag.RetargetingTagServiceInterface;
-import jp.yahooapis.im.v201809.retargetingtag.RetargetingTagValues;
+import jp.yahooapis.im.v201812.Error;
+import jp.yahooapis.im.v201812.Paging;
+import jp.yahooapis.im.v201812.retargetinglist.Combination;
+import jp.yahooapis.im.v201812.retargetinglist.CombinationTargetList;
+import jp.yahooapis.im.v201812.retargetinglist.CompareOperator;
+import jp.yahooapis.im.v201812.retargetinglist.CustomAudienceTargetList;
+import jp.yahooapis.im.v201812.retargetinglist.IsOpen;
+import jp.yahooapis.im.v201812.retargetinglist.IsPreset;
+import jp.yahooapis.im.v201812.retargetinglist.LogicalOperator;
+import jp.yahooapis.im.v201812.retargetinglist.Operator;
+import jp.yahooapis.im.v201812.retargetinglist.RetargetingList;
+import jp.yahooapis.im.v201812.retargetinglist.RetargetingListOperation;
+import jp.yahooapis.im.v201812.retargetinglist.RetargetingListPage;
+import jp.yahooapis.im.v201812.retargetinglist.RetargetingListReturnValue;
+import jp.yahooapis.im.v201812.retargetinglist.RetargetingListSelector;
+import jp.yahooapis.im.v201812.retargetinglist.RetargetingListServiceInterface;
+import jp.yahooapis.im.v201812.retargetinglist.RetargetingListServiceService;
+import jp.yahooapis.im.v201812.retargetinglist.RetargetingListValues;
+import jp.yahooapis.im.v201812.retargetinglist.Rule;
+import jp.yahooapis.im.v201812.retargetinglist.RuleCondition;
+import jp.yahooapis.im.v201812.retargetinglist.RuleTargetList;
+import jp.yahooapis.im.v201812.retargetinglist.RuleType;
+import jp.yahooapis.im.v201812.retargetinglist.SimilarityTargetList;
+import jp.yahooapis.im.v201812.retargetinglist.TargetListData;
+import jp.yahooapis.im.v201812.retargetinglist.TargetListSize;
+import jp.yahooapis.im.v201812.retargetinglist.TargetListSizeReaches;
+import jp.yahooapis.im.v201812.retargetinglist.TargetListType;
+import jp.yahooapis.im.v201812.retargetingtag.RetargetingTag;
+import jp.yahooapis.im.v201812.retargetingtag.RetargetingTagOperation;
+import jp.yahooapis.im.v201812.retargetingtag.RetargetingTagPage;
+import jp.yahooapis.im.v201812.retargetingtag.RetargetingTagReturnValue;
+import jp.yahooapis.im.v201812.retargetingtag.RetargetingTagSelector;
+import jp.yahooapis.im.v201812.retargetingtag.RetargetingTagService;
+import jp.yahooapis.im.v201812.retargetingtag.RetargetingTagServiceInterface;
+import jp.yahooapis.im.v201812.retargetingtag.RetargetingTagValues;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -233,7 +233,7 @@ public class RetargetingSample {
 
     // call API
     Holder<RetargetingTagReturnValue> addRetargetingTagReturnValueHolder = new Holder<RetargetingTagReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> addRetargetingTagErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> addRetargetingTagErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     retargetingTagService.mutate(operation, addRetargetingTagReturnValueHolder, addRetargetingTagErrorHolder);
 
     // if error
@@ -315,7 +315,7 @@ public class RetargetingSample {
     RetargetingListServiceInterface retargetingListService = SoapUtils.createServiceInterface(RetargetingListServiceInterface.class, RetargetingListServiceService.class);
 
     Holder<RetargetingListReturnValue> addRuleRetargetingListReturnValueHolder = new Holder<RetargetingListReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> addRuleRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> addRuleRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     retargetingListService.mutate(operation, addRuleRetargetingListReturnValueHolder, addRuleRetargetingListErrorHolder);
 
     // if error
@@ -354,7 +354,7 @@ public class RetargetingSample {
     RetargetingListServiceInterface retargetingListService = SoapUtils.createServiceInterface(RetargetingListServiceInterface.class, RetargetingListServiceService.class);
 
     Holder<RetargetingListPage> getDefaultRetargetingListPageHolder = new Holder<RetargetingListPage>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> getDefaultRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> getDefaultRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     retargetingListService.get(selector, getDefaultRetargetingListPageHolder, getDefaultRetargetingListErrorHolder);
 
     // if error
@@ -395,7 +395,7 @@ public class RetargetingSample {
     RetargetingListServiceInterface retargetingListService = SoapUtils.createServiceInterface(RetargetingListServiceInterface.class, RetargetingListServiceService.class);
 
     Holder<RetargetingListReturnValue> setRuleRetargetingListReturnValueHolder = new Holder<RetargetingListReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> setRuleRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> setRuleRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     retargetingListService.mutate(operation, setRuleRetargetingListReturnValueHolder, setRuleRetargetingListErrorHolder);
 
     // if error
@@ -438,7 +438,7 @@ public class RetargetingSample {
     System.out.println("RetargetingListService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<RetargetingListReturnValue> removeRetargetingListReturnValueHolder = new Holder<RetargetingListReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> removeRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> removeRetargetingListErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     retargetingListService.mutate(operation, removeRetargetingListReturnValueHolder, removeRetargetingListErrorHolder);
 
     // if error
@@ -474,7 +474,7 @@ public class RetargetingSample {
    */
   public static RetargetingTagOperation createRetargetingTagSampleAddRequest(long accountId) {
     RetargetingTagOperation addRetargetingTagOperation = new RetargetingTagOperation();
-    addRetargetingTagOperation.setOperator(jp.yahooapis.im.v201809.retargetingtag.Operator.ADD);
+    addRetargetingTagOperation.setOperator(jp.yahooapis.im.v201812.retargetingtag.Operator.ADD);
     addRetargetingTagOperation.setAccountId(accountId);
 
     return addRetargetingTagOperation;

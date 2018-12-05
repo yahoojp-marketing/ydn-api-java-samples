@@ -9,10 +9,14 @@ Yahoo! JAPANの提供するAPIに関するサンプルコードは、別途Yahoo
 --------------------------------
 【バージョン】
 --------------------------------
-Ver.201809
+Ver.201812
 
 ■変更履歴
 -----------
+2018/12/05:
+- V201812 動画視聴コンバージョンの測定に対応しました。
+- V201812 サーチターゲティングの機能変更に対応しました。
+
 2018/09/19:
 - V201809 サイトリターゲティングの機能追加に対応しました。
 - V201809 パフォーマンスデータの取得可能期間を変更に対応しました。
@@ -214,7 +218,7 @@ MEDIAID             : 画像IDを記述（必須）
 --------------------------------
 set SAMPLE_HOME={ad-api-sample}
 set PACKAGE_NAME=jp.co.yahoo.ad_api_sample
-set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V201809.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
+set CLASS_PATH=%SAMPLE_HOME%\bin\ad-api-sample-IM-API-V201812.jar;%SAMPLE_HOME%;%SAMPLE_HOME%\src\main\resources
 
 ■実行例：
 ---------------------------------------

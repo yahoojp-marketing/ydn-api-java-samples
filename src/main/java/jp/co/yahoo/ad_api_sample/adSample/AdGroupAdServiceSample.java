@@ -2,23 +2,23 @@ package jp.co.yahoo.ad_api_sample.adSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.adgroupad.Ad;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAd;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdOperation;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdPage;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdReturnValue;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdSelector;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdServiceInterface;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdServiceService;
-import jp.yahooapis.im.v201809.adgroupad.AdGroupAdValues;
-import jp.yahooapis.im.v201809.adgroupad.AdStyle;
-import jp.yahooapis.im.v201809.adgroupad.AdType;
-import jp.yahooapis.im.v201809.adgroupad.BiddingStrategyType;
-import jp.yahooapis.im.v201809.adgroupad.ManualCPCAdGroupAdBid;
-import jp.yahooapis.im.v201809.adgroupad.ManualCPVAdGroupAdBid;
-import jp.yahooapis.im.v201809.adgroupad.MobileAd;
-import jp.yahooapis.im.v201809.adgroupad.PosAd;
-import jp.yahooapis.im.v201809.adgroupad.TextAd;
+import jp.yahooapis.im.v201812.adgroupad.Ad;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAd;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdOperation;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdPage;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdReturnValue;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdSelector;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdServiceInterface;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdServiceService;
+import jp.yahooapis.im.v201812.adgroupad.AdGroupAdValues;
+import jp.yahooapis.im.v201812.adgroupad.AdStyle;
+import jp.yahooapis.im.v201812.adgroupad.AdType;
+import jp.yahooapis.im.v201812.adgroupad.BiddingStrategyType;
+import jp.yahooapis.im.v201812.adgroupad.ManualCPCAdGroupAdBid;
+import jp.yahooapis.im.v201812.adgroupad.ManualCPVAdGroupAdBid;
+import jp.yahooapis.im.v201812.adgroupad.MobileAd;
+import jp.yahooapis.im.v201812.adgroupad.PosAd;
+import jp.yahooapis.im.v201812.adgroupad.TextAd;
 
 import java.util.Arrays;
 import java.util.List;
@@ -107,7 +107,7 @@ public class AdGroupAdServiceSample {
     System.out.println("############################################");
 
     Holder<AdGroupAdReturnValue> addAdGroupAdReturnValueHolder = new Holder<AdGroupAdReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> addAdGroupAdErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> addAdGroupAdErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     adGroupAdService.mutate(operation, addAdGroupAdReturnValueHolder, addAdGroupAdErrorHolder);
 
     // if error
@@ -156,7 +156,7 @@ public class AdGroupAdServiceSample {
     System.out.println("AdGroupAdService::mutate(SET)");
     System.out.println("############################################");
     Holder<AdGroupAdReturnValue> setAdGroupAdReturnValueHolder = new Holder<AdGroupAdReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> setAdGroupAdErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> setAdGroupAdErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     adGroupAdService.mutate(operation, setAdGroupAdReturnValueHolder, setAdGroupAdErrorHolder);
 
     // if error
@@ -202,7 +202,7 @@ public class AdGroupAdServiceSample {
     System.out.println("AdGroupAdService::mutate(REMOVE)");
     System.out.println("############################################");
     Holder<AdGroupAdReturnValue> removeAdGroupAdReturnValueHolder = new Holder<AdGroupAdReturnValue>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> removeAdGroupAdErrorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> removeAdGroupAdErrorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
     adGroupAdService.mutate(operation, removeAdGroupAdReturnValueHolder, removeAdGroupAdErrorHolder);
 
     // if error
@@ -249,7 +249,7 @@ public class AdGroupAdServiceSample {
     System.out.println("############################################");
 
     Holder<AdGroupAdPage> adGroupAdPage = new Holder<AdGroupAdPage>();
-    Holder<List<jp.yahooapis.im.v201809.Error>> errorHolder = new Holder<List<jp.yahooapis.im.v201809.Error>>();
+    Holder<List<jp.yahooapis.im.v201812.Error>> errorHolder = new Holder<List<jp.yahooapis.im.v201812.Error>>();
 
     adGroupAdService.get(adGroupAdSelector, adGroupAdPage, errorHolder);
 
@@ -304,15 +304,15 @@ public class AdGroupAdServiceSample {
     addAdGroupAdOperand.setAdGroupId(adGroupId);
     addAdGroupAdOperand.setAdStyle(AdStyle.TEXT);
     addAdGroupAdOperand.setAdName("SampleAdGroupAd_CreateOn_" + SoapUtils.getCurrentTimestamp());
-    addAdGroupAdOperand.setUserStatus(jp.yahooapis.im.v201809.adgroupad.UserStatus.ACTIVE);
+    addAdGroupAdOperand.setUserStatus(jp.yahooapis.im.v201812.adgroupad.UserStatus.ACTIVE);
     ManualCPCAdGroupAdBid addAdBid = new ManualCPCAdGroupAdBid();
     addAdBid.setMaxCpc((long) 50);
-    addAdBid.setType(jp.yahooapis.im.v201809.adgroupad.BiddingStrategyType.MANUAL_CPC);
+    addAdBid.setType(jp.yahooapis.im.v201812.adgroupad.BiddingStrategyType.MANUAL_CPC);
     addAdGroupAdOperand.setBid(addAdBid);
     addAdGroupAdOperand.setAd(addTextAd);
 
     AdGroupAdOperation addAdGroupAdOperation = new AdGroupAdOperation();
-    addAdGroupAdOperation.setOperator(jp.yahooapis.im.v201809.adgroupad.Operator.ADD);
+    addAdGroupAdOperation.setOperator(jp.yahooapis.im.v201812.adgroupad.Operator.ADD);
     addAdGroupAdOperation.setAccountId(accountId);
     addAdGroupAdOperation.getOperand().add(addAdGroupAdOperand);
 
@@ -329,7 +329,7 @@ public class AdGroupAdServiceSample {
   public static AdGroupAdOperation createSampleSetRequest(long accountId, List<AdGroupAdValues> adGroupAdValues) {
     // Set Operation
     AdGroupAdOperation setAdGroupAdOperation = new AdGroupAdOperation();
-    setAdGroupAdOperation.setOperator(jp.yahooapis.im.v201809.adgroupad.Operator.SET);
+    setAdGroupAdOperation.setOperator(jp.yahooapis.im.v201812.adgroupad.Operator.SET);
     setAdGroupAdOperation.setAccountId(accountId);
 
     TextAd setTextAd = new TextAd();
@@ -348,12 +348,12 @@ public class AdGroupAdServiceSample {
       setAdGroupAdOperand.setAdGroupId(adGroupAdValue.getAdGroupAd().getAdGroupId());
       setAdGroupAdOperand.setAdId(adGroupAdValue.getAdGroupAd().getAdId());
       setAdGroupAdOperand.setAdName("SampleAdGroupAd_UpdateOn_" + SoapUtils.getCurrentTimestamp());
-      setAdGroupAdOperand.setUserStatus(jp.yahooapis.im.v201809.adgroupad.UserStatus.PAUSED);
+      setAdGroupAdOperand.setUserStatus(jp.yahooapis.im.v201812.adgroupad.UserStatus.PAUSED);
       setAdGroupAdOperand.setAd(setTextAd);
 
       ManualCPCAdGroupAdBid setAdBid = new ManualCPCAdGroupAdBid();
       setAdBid.setMaxCpc((long) 60);
-      setAdBid.setType(jp.yahooapis.im.v201809.adgroupad.BiddingStrategyType.MANUAL_CPC);
+      setAdBid.setType(jp.yahooapis.im.v201812.adgroupad.BiddingStrategyType.MANUAL_CPC);
       setAdGroupAdOperand.setBid(setAdBid);
 
       setAdGroupAdOperation.getOperand().add(setAdGroupAdOperand);
@@ -374,7 +374,7 @@ public class AdGroupAdServiceSample {
   public static AdGroupAdOperation createSampleRemoveRequest(long accountId, List<AdGroupAdValues> adGroupAdValues) {
     // Set Operation
     AdGroupAdOperation removeAdGroupAdOperation = new AdGroupAdOperation();
-    removeAdGroupAdOperation.setOperator(jp.yahooapis.im.v201809.adgroupad.Operator.REMOVE);
+    removeAdGroupAdOperation.setOperator(jp.yahooapis.im.v201812.adgroupad.Operator.REMOVE);
     removeAdGroupAdOperation.setAccountId(accountId);
 
     // Set Operand
@@ -403,7 +403,7 @@ public class AdGroupAdServiceSample {
     // Set Selector
     AdGroupAdSelector adGroupAdSelector = new AdGroupAdSelector();
     adGroupAdSelector.setAccountId(accountId);
-    adGroupAdSelector.getUserStatuses().addAll(Arrays.asList(jp.yahooapis.im.v201809.adgroupad.UserStatus.ACTIVE, jp.yahooapis.im.v201809.adgroupad.UserStatus.PAUSED));
+    adGroupAdSelector.getUserStatuses().addAll(Arrays.asList(jp.yahooapis.im.v201812.adgroupad.UserStatus.ACTIVE, jp.yahooapis.im.v201812.adgroupad.UserStatus.PAUSED));
 
     for (AdGroupAdValues adGroupAdValue : adGroupAdValues) {
       adGroupAdSelector.getCampaignIds().add((adGroupAdValue.getAdGroupAd().getCampaignId()));
@@ -411,7 +411,7 @@ public class AdGroupAdServiceSample {
       adGroupAdSelector.getAdIds().add((adGroupAdValue.getAdGroupAd().getAdId()));
     }
 
-    jp.yahooapis.im.v201809.Paging adPaging = new jp.yahooapis.im.v201809.Paging();
+    jp.yahooapis.im.v201812.Paging adPaging = new jp.yahooapis.im.v201812.Paging();
     adPaging.setStartIndex(1);
     adPaging.setNumberResults(20);
     adGroupAdSelector.setPaging(adPaging);

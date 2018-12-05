@@ -2,13 +2,13 @@ package jp.co.yahoo.ad_api_sample.balanceSample;
 
 import jp.co.yahoo.ad_api_sample.error.impl.ErrorEntityFactoryImpl;
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.Error;
-import jp.yahooapis.im.v201809.balance.Balance;
-import jp.yahooapis.im.v201809.balance.BalancePage;
-import jp.yahooapis.im.v201809.balance.BalanceSelector;
-import jp.yahooapis.im.v201809.balance.BalanceServiceInterface;
-import jp.yahooapis.im.v201809.balance.BalanceServiceService;
-import jp.yahooapis.im.v201809.balance.BalanceValues;
+import jp.yahooapis.im.v201812.Error;
+import jp.yahooapis.im.v201812.balance.Balance;
+import jp.yahooapis.im.v201812.balance.BalancePage;
+import jp.yahooapis.im.v201812.balance.BalanceSelector;
+import jp.yahooapis.im.v201812.balance.BalanceServiceInterface;
+import jp.yahooapis.im.v201812.balance.BalanceServiceService;
+import jp.yahooapis.im.v201812.balance.BalanceValues;
 
 import java.util.List;
 

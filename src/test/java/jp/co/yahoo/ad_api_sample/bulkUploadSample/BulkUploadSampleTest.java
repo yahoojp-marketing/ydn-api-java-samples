@@ -1,11 +1,11 @@
 package jp.co.yahoo.ad_api_sample.bulkUploadSample;
 
 import jp.co.yahoo.ad_api_sample.util.SoapUtils;
-import jp.yahooapis.im.v201809.Paging;
-import jp.yahooapis.im.v201809.bulk.BulkOutput;
-import jp.yahooapis.im.v201809.bulk.BulkUploadStatusSelector;
-import jp.yahooapis.im.v201809.bulk.BulkUploadValues;
-import jp.yahooapis.im.v201809.bulk.UploadUrlValue;
+import jp.yahooapis.im.v201812.Paging;
+import jp.yahooapis.im.v201812.bulk.BulkOutput;
+import jp.yahooapis.im.v201812.bulk.BulkUploadStatusSelector;
+import jp.yahooapis.im.v201812.bulk.BulkUploadValues;
+import jp.yahooapis.im.v201812.bulk.UploadUrlValue;
 
 import org.junit.Before;
 import org.junit.Test;
