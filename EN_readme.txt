@@ -14,6 +14,8 @@ Ver.201812
 
 [Update history]
 -----------
+2019/02/13:
+- Correspond to Dynamic Ads for Display
 
 2018/12/05:
 - V201812 video tracking conversion is available.
@@ -132,7 +134,9 @@ The following programs are stored.
 - bulkDownloadSample/BulkDownloadSample.java           : Sample of download process via BulkService.
 - bulkUploadSample/BulkUploadSample.java               : Sample of upload process via BulkService.
 - conversionTrackerSample/ConversionTrackerSample.java : Sample of Get and Mutate operation for conversion information via ConversionTrackerService.
-- dictionarySample.DictionarySample.java               : Sample of Get operation for LOCATION data, rejected reasons, target setting data, OS version data, image format data for ads via DictionaryService.
+- dictionarySample/DictionarySample.java               : Sample of Get operation for LOCATION data, rejected reasons, target setting data, OS version data, image format data for ads via DictionaryService.
+- feedDataSample/FeedDataSample.java                   : Sample of upload process via FeedDataService.
+- feedDataSample/FeedHolderSample.java                 : Sample of Get and Mutate operation for via FeedDataService
 - MediaSample/MediaSample.java                         : Sample of ad creation of Image ads, which MediaService Added to AdSample.java
 - placementUrlSample/PlacementUrlSample.java           : Sample of Placement Targeting via PlacementUrlIdeaService and PlacementUrlListService.
 - ReportDownloadSample/ReportDownloadSample.java       : Sample of Report download via ReportDefinitionService and ReportService.
@@ -168,6 +172,8 @@ The following programs are stored.
 - bulkUploadSample/BulkUploadSampleTest.java               : Test case of upload process via BulkService.
 - conversionTrackerSample/ConversionTrackerSampleTest.java : Test case of Get and Mutate operation for conversion information via ConversionTrackerService.
 - dictionarySample.DictionarySampleTest.java               : Test case of Get operation for LOCATION data, rejected reasons, target setting data, OS version data, image format data for ads via DictionaryService.
+- feedDataSample/FeedDataSampleTest.java                   : Test case of upload process via FeedDataSampleTest.
+- feedDataSample/FeedHolderSampleTest.java                 : Test case of Get and Mutate operation for FeedHolderService.
 - MediaSample/MediaSampleTest.java                         : Test case of ad creation of Image ads, which MediaService Added to AdSample.java.
 - placementUrlSample/PlacementUrlSampleTest.java           : Test case of Placement Targeting via PlacementUrlIdeaService and PlacementUrlListService.
 - ReportDownloadSample/ReportDownloadSampleTest.java       : Test case of Report download via ReportDefinitionService and ReportService.
@@ -177,10 +183,10 @@ The following programs are stored.
 - statsSample/StatsSampleTest.java                         : Test case of ad creation of Video ads, which VideoService Added to AdSample.java.
 
 [download directory]
-It stores the downloded file when you execute ReportDownloadSample, BulkDownloadSample, BulkUploadSample or AuditLogDownloadSample.
+It stores the downloded file when you execute FeedDataSample, ReportDownloadSample, BulkDownloadSample, BulkUploadSample or AuditLogDownloadSample.
 
 [upload directory]
-It stores the upload file when you execute MediaSample, BulkUploadSample or VideoSample.
+It stores the upload file when you execute FeedDataSample, MediaSample, BulkUploadSample or VideoSample.
 
 
 --------------------------------
@@ -235,7 +241,9 @@ java -classpath %CLASS_PATH% %PACKAGE_NAME%.balanceSample/BalanceSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.bulkDownloadSample/BulkDownloadSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.bulkUploadSample/BulkUploadSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.conversionTrackerSample/ConversionTrackerSample
-java -classpath %CLASS_PATH% %PACKAGE_NAME%.dictionarySample.DictionarySample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.dictionarySample/DictionarySample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.feedDataSample/FeedDataSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.feedDataSample/FeedHolderSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.mediaSample/MediaSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.placementUrlSample/PlacementUrlSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.reportDownloadSample/ReportDownloadSample
@@ -250,6 +258,7 @@ When data download is executed, the file will be stored to the download director
 When uploading the data is executed, please store the file you want to upload under the upload directory.
 File name is fixed in each sample program.
 
- - In case of MediaSample       : SampleMedia.jpg
- - In case of BulkUploadSample  : SampleBulkUpload.csv
- - In case of VideoSample       : SampleVideoUpload.mp4
+ - In case of MediaSample          : SampleMedia.jpg
+ - In case of BulkUploadSample     : SampleBulkUpload.csv
+ - In case of FeedDataSample       : SampleFeedUpload.zip
+ - In case of VideoSample          : SampleVideoUpload.mp4

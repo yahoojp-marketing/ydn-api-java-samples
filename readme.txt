@@ -13,6 +13,9 @@ Ver.201812
 
 ■変更履歴
 -----------
+2019/02/13:
+- 動的ディスプレイ広告に対応しました。
+
 2018/12/05:
 - V201812 動画視聴コンバージョンの測定に対応しました。
 - V201812 サーチターゲティングの機能変更に対応しました。
@@ -130,7 +133,9 @@ JAX-WSを使用してAPIを呼び出す形になっています。
 - bulkDownloadSample/BulkDownloadSample.java           ：BulkServiceによるダウンロード処理のサンプルです。
 - bulkUploadSample/BulkUploadSample.java               ：BulkServiceによるアップロード処理のサンプルです。
 - conversionTrackerSample/ConversionTrackerSample.java ：ConversionTrackerServiceによるコンバージョン情報の登録、更新処理のサンプルです。
-- dictionarySample.DictionarySample.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ、OSバージョン、入稿用画像形式参照処理のサンプルです。
+- dictionarySample/DictionarySample.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ、OSバージョン、入稿用画像形式参照処理のサンプルです。
+- feedDataSample/FeedDataSample.java                   ：FeedDataServiceによるアップロード処理のサンプルです。
+- feedDataSample/FeedHolderSample.java                 ：FeedHolderServiceによるFeedHolderの登録、参照、更新、削除処理のサンプルです。
 - mediaSample/MediaSample.java                         ：AdSample.javaにMediaServiceを加えた画像広告の入稿処理のサンプルです。
 - placementUrlSample/PlacementUrlSample.java           ：PlacementUrlIdeaService,PlacementUrlListServiceを使用したプレイスメントターゲティング処理のサンプルです。
 - reportDownloadSample/ReportDownloadSample.java       ：ReportDefinitionService, ReportServiceを使用したレポートダウンロード処理のサンプルです。
@@ -141,8 +146,8 @@ JAX-WSを使用してAPIを呼び出す形になっています。
 
 ・以下は各サンプルプログラムから利用されるクラスです。
 
-- SoapUtils.java                 ：LocationServiceを使用したリクエスト先の取得処理のサンプル及びその他共通処理です。
-- jp/yahooapis/im/V6配下         ：JAX-WSを使用してWSDLから生成したスタブ、スケルトンクラス群です。
+- SoapUtils.java                     ：LocationServiceを使用したリクエスト先の取得処理のサンプル及びその他共通処理です。
+- jp/yahooapis/im/v201812配下         ：JAX-WSを使用してWSDLから生成したスタブ、スケルトンクラス群です。
 
 ■src/main/resourceディレクトリ
 以下の内容物が格納されています。
@@ -165,7 +170,9 @@ JAX-WSを使用してAPIを呼び出す形になっています。
 - bulkDownloadSample/BulkDownloadSampleTest.java           ：BulkServiceによるダウンロード処理のテストケースです。
 - bulkUploadSample/BulkUploadSampleTest.java               ：BulkServiceによるアップロード処理のテストケースです。
 - conversionTrackerSample/ConversionTrackerSampleTest.java ：ConversionTrackerServiceによるコンバージョン情報の登録、更新処理のテストケースです。
-- dictionarySample.DictionarySampleTest.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ、OSバージョン、入稿用画像形式、参照処理のテストケースです。
+- dictionarySample/DictionarySampleTest.java               ：DictionaryServiceによる地域データ、審査否認理由、ターゲット設定用マスタデータ、OSバージョン、入稿用画像形式、参照処理のテストケースです。
+- feedDataSample/FeedDataSampleTest.java                   ：FeedDataServiceによるアップロード処理のテストケースです。
+- feedDataSample/FeedHolderSampleTest.java                 ：FeedHolderServiceによるアップロード処理のテストケースです。
 - mediaSample/MediaSampleTest.java                         ：AdSampleTest.javaにMediaServiceを加えた画像広告の入稿処理のテストケースです。
 - placementUrlSample/PlacementUrlSampleTest.java           ：PlacementUrlIdeaService,PlacementUrlListServiceを使用したプレイスメントターゲティング処理のテストケースです。
 - reportDownloadSample/ReportDownloadSampleTest.java       ：ReportDefinitionService, ReportServiceを使用したレポートダウンロード処理のテストケースです。
@@ -175,10 +182,10 @@ JAX-WSを使用してAPIを呼び出す形になっています。
 - videoSample/VideoSampleTest.java                         ：AdSample.javaにVideoServiceを加えた画像広告の入稿処理のサンプルです。
 
 ■downloadディレクトリ
-ReportDownloadSample、BulkDownloadSample、BulkUploadSample、AuditLogDownloadSampleを実行した際に、ダウンロードしたデータがファイルとして格納されるディレクトリです。
+FeedDataSample、ReportDownloadSample、BulkDownloadSample、BulkUploadSample、AuditLogDownloadSampleを実行した際に、ダウンロードしたデータがファイルとして格納されるディレクトリです。
 
 ■uploadディレクトリ
-MediaSample, BulkUploadSample, VideoSampleでアップロードするファイルをあらかじめ格納しておくディレクトリです。
+FeedDataSample、MediaSample, BulkUploadSample, VideoSampleでアップロードするファイルをあらかじめ格納しておくディレクトリです。
 
 
 --------------------------------
@@ -233,7 +240,9 @@ java -classpath %CLASS_PATH% %PACKAGE_NAME%.balanceSample/BalanceSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.bulkDownloadSample/BulkDownloadSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.bulkUploadSample/BulkUploadSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.conversionTrackerSample/ConversionTrackerSample
-java -classpath %CLASS_PATH% %PACKAGE_NAME%.dictionarySample.DictionarySample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.dictionarySample/DictionarySample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.feedDataSample/FeedDataSample
+java -classpath %CLASS_PATH% %PACKAGE_NAME%.feedDataSample/FeedHolderSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.mediaSample/MediaSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.placementUrlSample/PlacementUrlSample
 java -classpath %CLASS_PATH% %PACKAGE_NAME%.reportDownloadSample/ReportDownloadSample
@@ -248,6 +257,7 @@ java -classpath %CLASS_PATH% %PACKAGE_NAME%.videoSample/VideoSample
 データをアップロードする処理を実行する場合には、あらかじめuploadディレクトリ配下にアップロードしたいファイルを格納しておく必要があります。
 サンプルプログラムごとにファイル名は固定です。
 
-・MediaSampleの場合　　　　：SampleMedia.jpg
-・BulkUploadSampleの場合　 ：SampleBulkUpload.csv
-・VideoSampleの場合　　　　：SampleVideoUpload.mp4
+・MediaSampleの場合         ：SampleMedia.jpg
+・BulkUploadSampleの場合    ：SampleBulkUpload.csv
+・FeedDataServiceの場合     ：SampleFeedUpload.zip
+・VideoSampleの場合         ：SampleVideoUpload.mp4
