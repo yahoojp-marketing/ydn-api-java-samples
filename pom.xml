@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>jp.co.yahoo</groupId>
-  <artifactId>ad-api-sample</artifactId>
-  <version>IM-API-V201812</version>
+  <artifactId>adapisample</artifactId>
+  <version>YDN-API-V201903</version>
   <packaging>jar</packaging>
 
   <name>ad-api-sample</name>
@@ -12,20 +12,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.test.skip>true</maven.test.skip>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-all</artifactId>
-      <version>1.3</version>
-    </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
@@ -48,10 +38,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>2.6</version>
         <configuration>
           <excludes>
             <exclude>**/*.properties</exclude>
-            <exclude>**/.gitkeep</exclude>
           </excludes>
         </configuration>
       </plugin>
