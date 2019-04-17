@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "PromotionalAccountServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.promotionalaccount.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface PromotionalAccountServiceInterface {
 
@@ -36,13 +36,9 @@ public interface PromotionalAccountServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", className = "jp.yahooapis.im.v201903.promotionalaccount.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", className = "jp.yahooapis.im.v201903.promotionalaccount.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount")
-        AccountSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", mode = WebParam.Mode.OUT)
-        Holder<PromotionalAccountPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount") AccountSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", mode = WebParam.Mode.OUT) Holder<PromotionalAccountPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface PromotionalAccountServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", className = "jp.yahooapis.im.v201903.promotionalaccount.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", className = "jp.yahooapis.im.v201903.promotionalaccount.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount")
-        AccountOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", mode = WebParam.Mode.OUT)
-        Holder<PromotionalAccountReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount") AccountOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", mode = WebParam.Mode.OUT) Holder<PromotionalAccountReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PromotionalAccount", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

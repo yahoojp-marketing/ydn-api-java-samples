@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "AccountAdProductServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.accountadproduct.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface AccountAdProductServiceInterface {
 
@@ -36,13 +36,9 @@ public interface AccountAdProductServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct", className = "jp.yahooapis.im.v201903.accountadproduct.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct", className = "jp.yahooapis.im.v201903.accountadproduct.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct")
-        AccountAdProductSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct", mode = WebParam.Mode.OUT)
-        Holder<AccountAdProductPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct") AccountAdProductSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct", mode = WebParam.Mode.OUT) Holder<AccountAdProductPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AccountAdProduct", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

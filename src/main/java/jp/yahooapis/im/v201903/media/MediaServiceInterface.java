@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "MediaServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/Media")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.media.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface MediaServiceInterface {
 
@@ -36,13 +36,9 @@ public interface MediaServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/Media", className = "jp.yahooapis.im.v201903.media.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Media", className = "jp.yahooapis.im.v201903.media.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Media")
-        MediaSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Media", mode = WebParam.Mode.OUT)
-        Holder<MediaPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Media", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Media") MediaSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Media", mode = WebParam.Mode.OUT) Holder<MediaPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Media", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface MediaServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/Media", className = "jp.yahooapis.im.v201903.media.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Media", className = "jp.yahooapis.im.v201903.media.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/Media")
-        MediaOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Media", mode = WebParam.Mode.OUT)
-        Holder<MediaReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Media", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/Media") MediaOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Media", mode = WebParam.Mode.OUT) Holder<MediaReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Media", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

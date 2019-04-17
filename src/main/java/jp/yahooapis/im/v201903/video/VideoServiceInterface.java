@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "VideoServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/Video")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.video.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface VideoServiceInterface {
 
@@ -36,13 +36,9 @@ public interface VideoServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/Video", className = "jp.yahooapis.im.v201903.video.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Video", className = "jp.yahooapis.im.v201903.video.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Video")
-        VideoSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT)
-        Holder<VideoPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Video") VideoSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT) Holder<VideoPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface VideoServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/Video", className = "jp.yahooapis.im.v201903.video.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Video", className = "jp.yahooapis.im.v201903.video.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/Video")
-        VideoOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT)
-        Holder<VideoReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/Video") VideoOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT) Holder<VideoReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -77,15 +69,10 @@ public interface VideoServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getUploadUrl", targetNamespace = "http://im.yahooapis.jp/V201903/Video", className = "jp.yahooapis.im.v201903.video.GetUploadUrl")
     @ResponseWrapper(localName = "getUploadUrlResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Video", className = "jp.yahooapis.im.v201903.video.GetUploadUrlResponse")
-    public void getUploadUrl(
-        @WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V201903/Video")
-        long accountId,
-        @WebParam(name = "uploadVideo", targetNamespace = "http://im.yahooapis.jp/V201903/Video")
-        List<UploadVideo> uploadVideo,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT)
-        Holder<UploadUrlPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getUploadUrl(@WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V201903/Video") long accountId,
+        @WebParam(name = "uploadVideo", targetNamespace = "http://im.yahooapis.jp/V201903/Video") List<UploadVideo> uploadVideo,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT) Holder<UploadUrlPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Video", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

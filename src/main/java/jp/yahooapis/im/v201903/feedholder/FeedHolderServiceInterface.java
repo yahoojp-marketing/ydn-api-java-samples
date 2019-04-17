@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "FeedHolderServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.feedholder.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface FeedHolderServiceInterface {
 
@@ -36,13 +36,9 @@ public interface FeedHolderServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", className = "jp.yahooapis.im.v201903.feedholder.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", className = "jp.yahooapis.im.v201903.feedholder.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder")
-        FeedHolderSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", mode = WebParam.Mode.OUT)
-        Holder<FeedHolderPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder") FeedHolderSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", mode = WebParam.Mode.OUT) Holder<FeedHolderPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface FeedHolderServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", className = "jp.yahooapis.im.v201903.feedholder.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", className = "jp.yahooapis.im.v201903.feedholder.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder")
-        FeedHolderOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", mode = WebParam.Mode.OUT)
-        Holder<FeedHolderReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder") FeedHolderOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", mode = WebParam.Mode.OUT) Holder<FeedHolderReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/FeedHolder", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

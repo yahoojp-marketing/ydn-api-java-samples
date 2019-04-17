@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "SearchKeywordIdeaServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.searchkeywordidea.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface SearchKeywordIdeaServiceInterface {
 
@@ -36,13 +36,9 @@ public interface SearchKeywordIdeaServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea", className = "jp.yahooapis.im.v201903.searchkeywordidea.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea", className = "jp.yahooapis.im.v201903.searchkeywordidea.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea")
-        SearchKeywordIdeaSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea", mode = WebParam.Mode.OUT)
-        Holder<SearchKeywordIdeaPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea") SearchKeywordIdeaSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea", mode = WebParam.Mode.OUT) Holder<SearchKeywordIdeaPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordIdea", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

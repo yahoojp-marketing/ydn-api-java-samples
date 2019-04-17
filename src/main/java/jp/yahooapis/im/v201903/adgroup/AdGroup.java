@@ -34,6 +34,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="deviceOsVersion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="dynamicImageExtensions" type="{http://im.yahooapis.jp/V201903/AdGroup}DynamicImageExtensions" minOccurs="0"/>
  *         &lt;element name="labels" type="{http://im.yahooapis.jp/V201903/AdGroup}Label" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="feedSetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="isRemoveFeedSetId" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -58,7 +60,9 @@ import javax.xml.bind.annotation.XmlType;
     "smartDeviceCarriers",
     "deviceOsVersion",
     "dynamicImageExtensions",
-    "labels"
+    "labels",
+    "feedSetId",
+    "isRemoveFeedSetId"
 })
 public class AdGroup {
 
@@ -83,6 +87,8 @@ public class AdGroup {
     @XmlSchemaType(name = "string")
     protected DynamicImageExtensions dynamicImageExtensions;
     protected List<Label> labels;
+    protected Long feedSetId;
+    protected Boolean isRemoveFeedSetId;
 
     /**
      * Gets the value of the accountId property.
@@ -451,6 +457,54 @@ public class AdGroup {
             labels = new ArrayList<Label>();
         }
         return this.labels;
+    }
+
+    /**
+     * Gets the value of the feedSetId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getFeedSetId() {
+        return feedSetId;
+    }
+
+    /**
+     * Sets the value of the feedSetId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setFeedSetId(Long value) {
+        this.feedSetId = value;
+    }
+
+    /**
+     * Gets the value of the isRemoveFeedSetId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIsRemoveFeedSetId() {
+        return isRemoveFeedSetId;
+    }
+
+    /**
+     * Sets the value of the isRemoveFeedSetId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsRemoveFeedSetId(Boolean value) {
+        this.isRemoveFeedSetId = value;
     }
 
 }

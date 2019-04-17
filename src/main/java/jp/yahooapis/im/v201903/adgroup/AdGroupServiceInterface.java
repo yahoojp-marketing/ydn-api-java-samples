@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "AdGroupServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.adgroup.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface AdGroupServiceInterface {
 
@@ -36,13 +36,9 @@ public interface AdGroupServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", className = "jp.yahooapis.im.v201903.adgroup.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", className = "jp.yahooapis.im.v201903.adgroup.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup")
-        AdGroupSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", mode = WebParam.Mode.OUT)
-        Holder<AdGroupPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup") AdGroupSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", mode = WebParam.Mode.OUT) Holder<AdGroupPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface AdGroupServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", className = "jp.yahooapis.im.v201903.adgroup.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", className = "jp.yahooapis.im.v201903.adgroup.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup")
-        AdGroupOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", mode = WebParam.Mode.OUT)
-        Holder<AdGroupReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup") AdGroupOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", mode = WebParam.Mode.OUT) Holder<AdGroupReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroup", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

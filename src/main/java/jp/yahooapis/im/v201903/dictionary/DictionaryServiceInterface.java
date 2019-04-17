@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "DictionaryServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.dictionary.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface DictionaryServiceInterface {
 
@@ -36,13 +36,9 @@ public interface DictionaryServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getDisapprovalReason", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetDisapprovalReason")
     @ResponseWrapper(localName = "getDisapprovalReasonResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetDisapprovalReasonResponse")
-    public void getDisapprovalReason(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary")
-        DisapprovalReasonSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<DisapprovalReasonPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getDisapprovalReason(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary") DisapprovalReasonSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<DisapprovalReasonPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface DictionaryServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getGeographicLocation", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetGeographicLocation")
     @ResponseWrapper(localName = "getGeographicLocationResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetGeographicLocationResponse")
-    public void getGeographicLocation(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary")
-        GeographicLocationSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<GeographicLocationPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getGeographicLocation(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary") GeographicLocationSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<GeographicLocationPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -76,13 +68,9 @@ public interface DictionaryServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getInterestCategory", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetInterestCategory")
     @ResponseWrapper(localName = "getInterestCategoryResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetInterestCategoryResponse")
-    public void getInterestCategory(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary")
-        CategorySelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<CategoryPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getInterestCategory(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary") CategorySelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<CategoryPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -96,13 +84,9 @@ public interface DictionaryServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getSiteCategory", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetSiteCategory")
     @ResponseWrapper(localName = "getSiteCategoryResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetSiteCategoryResponse")
-    public void getSiteCategory(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary")
-        CategorySelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<CategoryPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getSiteCategory(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary") CategorySelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<CategoryPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -116,13 +100,9 @@ public interface DictionaryServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getColorSet", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetColorSet")
     @ResponseWrapper(localName = "getColorSetResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetColorSetResponse")
-    public void getColorSet(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary")
-        ColorSetSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<ColorSetPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getColorSet(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary") ColorSetSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<ColorSetPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -136,13 +116,9 @@ public interface DictionaryServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getOsVersion", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetOsVersion")
     @ResponseWrapper(localName = "getOsVersionResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetOsVersionResponse")
-    public void getOsVersion(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary")
-        OsVersionSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<OsVersionPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getOsVersion(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary") OsVersionSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<OsVersionPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -155,11 +131,8 @@ public interface DictionaryServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getMediaAdFormat", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetMediaAdFormat")
     @ResponseWrapper(localName = "getMediaAdFormatResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", className = "jp.yahooapis.im.v201903.dictionary.GetMediaAdFormatResponse")
-    public void getMediaAdFormat(
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<MediaAdFormatPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getMediaAdFormat(@WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<MediaAdFormatPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Dictionary", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

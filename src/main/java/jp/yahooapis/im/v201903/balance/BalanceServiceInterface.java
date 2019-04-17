@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "BalanceServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/Balance")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.balance.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface BalanceServiceInterface {
 
@@ -36,13 +36,9 @@ public interface BalanceServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/Balance", className = "jp.yahooapis.im.v201903.balance.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Balance", className = "jp.yahooapis.im.v201903.balance.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Balance")
-        BalanceSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Balance", mode = WebParam.Mode.OUT)
-        Holder<BalancePage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Balance", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Balance") BalanceSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Balance", mode = WebParam.Mode.OUT) Holder<BalancePage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Balance", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

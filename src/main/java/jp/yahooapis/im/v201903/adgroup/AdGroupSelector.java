@@ -27,6 +27,7 @@ import jp.yahooapis.im.v201903.Paging;
  *         &lt;element name="labelIds" type="{http://www.w3.org/2001/XMLSchema}long" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="containsLabelIdFlg" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="userStatuses" type="{http://im.yahooapis.jp/V201903/AdGroup}UserStatus" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="feedSetIds" type="{http://www.w3.org/2001/XMLSchema}long" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="paging" type="{http://im.yahooapis.jp/V201903}Paging" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -44,6 +45,7 @@ import jp.yahooapis.im.v201903.Paging;
     "labelIds",
     "containsLabelIdFlg",
     "userStatuses",
+    "feedSetIds",
     "paging"
 })
 public class AdGroupSelector {
@@ -58,6 +60,8 @@ public class AdGroupSelector {
     protected Boolean containsLabelIdFlg;
     @XmlSchemaType(name = "string")
     protected List<UserStatus> userStatuses;
+    @XmlElement(type = Long.class)
+    protected List<Long> feedSetIds;
     protected Paging paging;
 
     /**
@@ -214,6 +218,35 @@ public class AdGroupSelector {
             userStatuses = new ArrayList<UserStatus>();
         }
         return this.userStatuses;
+    }
+
+    /**
+     * Gets the value of the feedSetIds property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the feedSetIds property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFeedSetIds().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Long }
+     * 
+     * 
+     */
+    public List<Long> getFeedSetIds() {
+        if (feedSetIds == null) {
+            feedSetIds = new ArrayList<Long>();
+        }
+        return this.feedSetIds;
     }
 
     /**

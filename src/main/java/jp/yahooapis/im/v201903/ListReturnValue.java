@@ -4,7 +4,9 @@ package jp.yahooapis.im.v201903;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import jp.yahooapis.im.v201903.feedset.FeedSetReturnValue;
 
 
 /**
@@ -31,6 +33,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ListReturnValue", propOrder = {
     "listReturnValueType",
     "operationType"
+})
+@XmlSeeAlso({
+    FeedSetReturnValue.class
 })
 public abstract class ListReturnValue {
 

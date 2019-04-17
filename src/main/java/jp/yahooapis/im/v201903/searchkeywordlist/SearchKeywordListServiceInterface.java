@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "SearchKeywordListServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.searchkeywordlist.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface SearchKeywordListServiceInterface {
 
@@ -36,13 +36,9 @@ public interface SearchKeywordListServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", className = "jp.yahooapis.im.v201903.searchkeywordlist.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", className = "jp.yahooapis.im.v201903.searchkeywordlist.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList")
-        SearchKeywordListSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", mode = WebParam.Mode.OUT)
-        Holder<SearchKeywordListPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList") SearchKeywordListSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", mode = WebParam.Mode.OUT) Holder<SearchKeywordListPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface SearchKeywordListServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", className = "jp.yahooapis.im.v201903.searchkeywordlist.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", className = "jp.yahooapis.im.v201903.searchkeywordlist.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList")
-        SearchKeywordListOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", mode = WebParam.Mode.OUT)
-        Holder<SearchKeywordListReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList") SearchKeywordListOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", mode = WebParam.Mode.OUT) Holder<SearchKeywordListReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/SearchKeywordList", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

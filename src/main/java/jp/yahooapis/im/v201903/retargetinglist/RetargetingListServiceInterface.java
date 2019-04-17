@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "RetargetingListServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.retargetinglist.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface RetargetingListServiceInterface {
 
@@ -36,13 +36,9 @@ public interface RetargetingListServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", className = "jp.yahooapis.im.v201903.retargetinglist.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", className = "jp.yahooapis.im.v201903.retargetinglist.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList")
-        RetargetingListSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", mode = WebParam.Mode.OUT)
-        Holder<RetargetingListPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList") RetargetingListSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", mode = WebParam.Mode.OUT) Holder<RetargetingListPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface RetargetingListServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", className = "jp.yahooapis.im.v201903.retargetinglist.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", className = "jp.yahooapis.im.v201903.retargetinglist.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList")
-        RetargetingListOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", mode = WebParam.Mode.OUT)
-        Holder<RetargetingListReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList") RetargetingListOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", mode = WebParam.Mode.OUT) Holder<RetargetingListReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/RetargetingList", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

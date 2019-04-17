@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "StatsServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/Stats")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.stats.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface StatsServiceInterface {
 
@@ -36,13 +36,9 @@ public interface StatsServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/Stats", className = "jp.yahooapis.im.v201903.stats.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Stats", className = "jp.yahooapis.im.v201903.stats.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Stats")
-        StatsSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Stats", mode = WebParam.Mode.OUT)
-        Holder<StatsPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Stats", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Stats") StatsSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Stats", mode = WebParam.Mode.OUT) Holder<StatsPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Stats", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

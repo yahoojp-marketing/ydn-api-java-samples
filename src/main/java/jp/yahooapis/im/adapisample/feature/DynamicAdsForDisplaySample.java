@@ -8,6 +8,7 @@ import jp.yahooapis.im.adapisample.basic.adgroupad.AdGroupAdServiceSample;
 import jp.yahooapis.im.adapisample.basic.campaign.CampaignServiceSample;
 import jp.yahooapis.im.adapisample.basic.feeddata.FeedDataServiceSample;
 import jp.yahooapis.im.adapisample.basic.feedholder.FeedHolderServiceSample;
+import jp.yahooapis.im.adapisample.basic.feedset.FeedSetServiceSample;
 import jp.yahooapis.im.adapisample.basic.media.MediaServiceSample;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
@@ -22,6 +23,8 @@ import jp.yahooapis.im.v201903.campaign.CampaignValues;
 import jp.yahooapis.im.v201903.feeddata.UploadUrlValue;
 import jp.yahooapis.im.v201903.feedholder.FeedHolderOperation;
 import jp.yahooapis.im.v201903.feedholder.FeedHolderValues;
+import jp.yahooapis.im.v201903.feedset.FeedSetOperation;
+import jp.yahooapis.im.v201903.feedset.FeedSetValues;
 import jp.yahooapis.im.v201903.media.LogoFlg;
 import jp.yahooapis.im.v201903.media.MediaOperation;
 import jp.yahooapis.im.v201903.media.MediaValues;
@@ -66,7 +69,10 @@ public class DynamicAdsForDisplaySample {
       // FeedHolderService
       // =================================================================
       // ADD
-      FeedHolderOperation addRequestFeedHolder = FeedHolderServiceSample.buildExampleMutateRequest(jp.yahooapis.im.v201903.feedholder.Operator.ADD, accountId, Collections.singletonList(FeedHolderServiceSample.createExampleFeedHolderRecordRequest(accountId)));
+      FeedHolderOperation addRequestFeedHolder = FeedHolderServiceSample.buildExampleMutateRequest( //
+          jp.yahooapis.im.v201903.feedholder.Operator.ADD, accountId, //
+          Collections.singletonList(FeedHolderServiceSample.createExampleFeedHolderRecordRequest(accountId)) //
+      );
       List<FeedHolderValues> addResponseFeedHolder = FeedHolderServiceSample.mutate(addRequestFeedHolder);
       valuesHolder.setFeedHolderValuesList(addResponseFeedHolder);
       Long feedHolderId = valuesRepositoryFacade.getFeedHolderValuesRepository().getFeedHolderIds().get(0);
@@ -93,30 +99,44 @@ public class DynamicAdsForDisplaySample {
       FeedDataServiceSample.checkUploadStatus(Collections.singletonList(feedHolderId), Collections.singletonList(itemListUploadId));
 
       // =================================================================
+      // FeedSetService
+      // =================================================================
+      // ADD
+      FeedSetOperation addRequest = FeedSetServiceSample.buildExampleMutateRequest( //
+          jp.yahooapis.im.v201903.feedset.Operator.ADD, accountId, //
+          Collections.singletonList(FeedSetServiceSample.createExampleFeedSet(feedHolderId)) //
+      );
+      List<FeedSetValues> addResponse = FeedSetServiceSample.mutate(addRequest);
+      Long feedSetId = addResponse.get(0).getFeedSet().getFeedSetId();
+
+      // =================================================================
       // MediaService
       // =================================================================
       List<Long> mediaIds = new ArrayList<>();
 
       // ADD(Logo1)
-      MediaOperation addRequestMedia1 = MediaServiceSample.buildExampleMutateRequest(Operator.ADD, accountId, Arrays.asList(
-          MediaServiceSample.createExampleMedia(accountId, "LogoMedia1.jpg", LogoFlg.TRUE)
-      ));
+      MediaOperation addRequestMedia1 = MediaServiceSample.buildExampleMutateRequest( //
+          Operator.ADD, accountId, //
+          Collections.singletonList(MediaServiceSample.createExampleMedia(accountId, "LogoMedia1.jpg", LogoFlg.TRUE)) //
+      );
       List<MediaValues> addResponseMedia1 = MediaServiceSample.mutate(addRequestMedia1);
       valuesHolder.setMediaValuesList(addResponseMedia1);
       mediaIds.add(addResponseMedia1.get(0).getMediaRecord().getMediaId());
 
       // ADD(Logo2)
-      MediaOperation addRequestMedia2 = MediaServiceSample.buildExampleMutateRequest(Operator.ADD, accountId, Arrays.asList(
-          MediaServiceSample.createExampleMedia(accountId, "LogoMedia2.jpg", LogoFlg.TRUE)
-      ));
+      MediaOperation addRequestMedia2 = MediaServiceSample.buildExampleMutateRequest( //
+          Operator.ADD, accountId, //
+          Collections.singletonList(MediaServiceSample.createExampleMedia(accountId, "LogoMedia2.jpg", LogoFlg.TRUE)) //
+      );
       List<MediaValues> addResponseMedia2 = MediaServiceSample.mutate(addRequestMedia2);
       valuesHolder.setMediaValuesList(addResponseMedia2);
       mediaIds.add(addResponseMedia2.get(0).getMediaRecord().getMediaId());
 
       // ADD(Logo3)
-      MediaOperation addRequestMedia3 = MediaServiceSample.buildExampleMutateRequest(Operator.ADD, accountId, Arrays.asList(
-          MediaServiceSample.createExampleMedia(accountId, "LogoMedia3.jpg", LogoFlg.TRUE)
-      ));
+      MediaOperation addRequestMedia3 = MediaServiceSample.buildExampleMutateRequest( //
+          Operator.ADD, accountId, //
+          Collections.singletonList(MediaServiceSample.createExampleMedia(accountId, "LogoMedia3.jpg", LogoFlg.TRUE)) //
+      );
       List<MediaValues> addResponseMedia3 = MediaServiceSample.mutate(addRequestMedia3);
       valuesHolder.setMediaValuesList(addResponseMedia3);
       mediaIds.add(addResponseMedia3.get(0).getMediaRecord().getMediaId());
@@ -129,10 +149,9 @@ public class DynamicAdsForDisplaySample {
       // CampaignService
       // =================================================================
       // ADD
-      CampaignOperation addRequestCampaign = CampaignServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201903.campaign.Operator.ADD,
-          accountId,
-          Arrays.asList(CampaignServiceSample.createExampleDynamicAdsForDisplayCampaign(feedHolderId))
+      CampaignOperation addRequestCampaign = CampaignServiceSample.buildExampleMutateRequest( //
+          jp.yahooapis.im.v201903.campaign.Operator.ADD, accountId, //
+          Collections.singletonList(CampaignServiceSample.createExampleDynamicAdsForDisplayCampaign(feedHolderId)) //
       );
       List<CampaignValues> addResponseCampaign = CampaignServiceSample.mutate(addRequestCampaign);
       valuesRepositoryFacade.getValuesHolder().setCampaignValuesList(addResponseCampaign);
@@ -142,11 +161,11 @@ public class DynamicAdsForDisplaySample {
       // AdGroupService
       // =================================================================
       // ADD
-      AdGroupOperation addRequestAdGroup = AdGroupServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201903.adgroup.Operator.ADD,
-          accountId,
-          Arrays.asList(AdGroupServiceSample.createExampleStandardAdGroup(campaignId))
+      AdGroupOperation addRequestAdGroup = AdGroupServiceSample.buildExampleMutateRequest( //
+          jp.yahooapis.im.v201903.adgroup.Operator.ADD, accountId, //
+          Collections.singletonList(AdGroupServiceSample.createExampleStandardAdGroup(campaignId)) //
       );
+      addRequestAdGroup.getOperand().get(0).setFeedSetId(feedSetId);
       List<AdGroupValues> addResponseAdGroup = AdGroupServiceSample.mutate(addRequestAdGroup);
       valuesRepositoryFacade.getValuesHolder().setAdGroupValuesList(addResponseAdGroup);
       Long adGroupId = valuesRepositoryFacade.getAdGroupValuesRepository().findAdGroupId(campaignId);
@@ -155,10 +174,9 @@ public class DynamicAdsForDisplaySample {
       // AdGroupAdService
       // =================================================================
       // ADD
-      AdGroupAdOperation addRequestAdGroupAd = AdGroupAdServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201903.adgroupad.Operator.ADD,
-          accountId,
-          Arrays.asList(AdGroupAdServiceSample.createExampleDynamicAd(campaignId, adGroupId, mediaIds))
+      AdGroupAdOperation addRequestAdGroupAd = AdGroupAdServiceSample.buildExampleMutateRequest( //
+          jp.yahooapis.im.v201903.adgroupad.Operator.ADD, accountId, //
+          Collections.singletonList(AdGroupAdServiceSample.createExampleDynamicAd(campaignId, adGroupId, mediaIds)) //
       );
       List<AdGroupAdValues> addResponseAdGroupAd = AdGroupAdServiceSample.mutate(addRequestAdGroupAd);
       valuesRepositoryFacade.getValuesHolder().setAdGroupAdValuesList(addResponseAdGroupAd);
@@ -169,7 +187,7 @@ public class DynamicAdsForDisplaySample {
 
     } finally {
       MediaServiceSample.cleanup(valuesHolder);
-      AdGroupAdServiceSample.cleanup(valuesHolder);
+      CampaignServiceSample.cleanup(valuesHolder);
       FeedHolderServiceSample.cleanup(valuesHolder);
     }
   }

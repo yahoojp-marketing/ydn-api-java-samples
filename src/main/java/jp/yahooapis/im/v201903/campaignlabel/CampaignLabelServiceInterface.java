@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "CampaignLabelServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.campaignlabel.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface CampaignLabelServiceInterface {
 
@@ -36,13 +36,9 @@ public interface CampaignLabelServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel", className = "jp.yahooapis.im.v201903.campaignlabel.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel", className = "jp.yahooapis.im.v201903.campaignlabel.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel")
-        CampaignLabelOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel", mode = WebParam.Mode.OUT)
-        Holder<CampaignLabelReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel") CampaignLabelOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel", mode = WebParam.Mode.OUT) Holder<CampaignLabelReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/CampaignLabel", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

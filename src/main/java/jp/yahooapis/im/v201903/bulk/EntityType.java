@@ -22,6 +22,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="SEARCH_KW_LIST"/>
  *     &lt;enumeration value="PLACEMENT_URL_LIST"/>
  *     &lt;enumeration value="VIDEO"/>
+ *     &lt;enumeration value="CAMPAIGN_LABEL"/>
+ *     &lt;enumeration value="AD_GROUP_LABEL"/>
+ *     &lt;enumeration value="AD_LABEL"/>
  *     &lt;enumeration value="ALL"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
@@ -41,6 +44,9 @@ public enum EntityType {
     SEARCH_KW_LIST,
     PLACEMENT_URL_LIST,
     VIDEO,
+    CAMPAIGN_LABEL,
+    AD_GROUP_LABEL,
+    AD_LABEL,
     ALL;
 
     public String value() {

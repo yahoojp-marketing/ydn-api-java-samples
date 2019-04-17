@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "ConversionTrackerServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.conversiontracker.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface ConversionTrackerServiceInterface {
 
@@ -36,13 +36,9 @@ public interface ConversionTrackerServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", className = "jp.yahooapis.im.v201903.conversiontracker.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", className = "jp.yahooapis.im.v201903.conversiontracker.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker")
-        ConversionTrackerSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", mode = WebParam.Mode.OUT)
-        Holder<ConversionTrackerPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker") ConversionTrackerSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", mode = WebParam.Mode.OUT) Holder<ConversionTrackerPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface ConversionTrackerServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", className = "jp.yahooapis.im.v201903.conversiontracker.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", className = "jp.yahooapis.im.v201903.conversiontracker.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker")
-        ConversionTrackerOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", mode = WebParam.Mode.OUT)
-        Holder<ConversionTrackerReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker") ConversionTrackerOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", mode = WebParam.Mode.OUT) Holder<ConversionTrackerReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ConversionTracker", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

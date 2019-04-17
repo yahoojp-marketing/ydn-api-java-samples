@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "AuditLogServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.auditlog.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface AuditLogServiceInterface {
 
@@ -36,13 +36,9 @@ public interface AuditLogServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getDownload", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", className = "jp.yahooapis.im.v201903.auditlog.GetDownload")
     @ResponseWrapper(localName = "getDownloadResponse", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", className = "jp.yahooapis.im.v201903.auditlog.GetDownloadResponse")
-    public void getDownload(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog")
-        AuditLogDownloadSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", mode = WebParam.Mode.OUT)
-        Holder<AuditLogDownloadReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getDownload(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog") AuditLogDownloadSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", mode = WebParam.Mode.OUT) Holder<AuditLogDownloadReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface AuditLogServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getDownloadStatus", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", className = "jp.yahooapis.im.v201903.auditlog.GetDownloadStatus")
     @ResponseWrapper(localName = "getDownloadStatusResponse", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", className = "jp.yahooapis.im.v201903.auditlog.GetDownloadStatusResponse")
-    public void getDownloadStatus(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog")
-        AuditLogDownloadStatusSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", mode = WebParam.Mode.OUT)
-        Holder<AuditLogDownloadStatusPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getDownloadStatus(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog") AuditLogDownloadStatusSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", mode = WebParam.Mode.OUT) Holder<AuditLogDownloadStatusPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AuditLog", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

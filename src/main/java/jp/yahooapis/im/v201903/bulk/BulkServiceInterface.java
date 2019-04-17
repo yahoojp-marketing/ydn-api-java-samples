@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "BulkServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.bulk.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface BulkServiceInterface {
 
@@ -36,13 +36,9 @@ public interface BulkServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getBulkDownload", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", className = "jp.yahooapis.im.v201903.bulk.GetBulkDownload")
     @ResponseWrapper(localName = "getBulkDownloadResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", className = "jp.yahooapis.im.v201903.bulk.GetBulkDownloadResponse")
-    public void getBulkDownload(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk")
-        BulkDownloadSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT)
-        Holder<BulkDownloadReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getBulkDownload(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk") BulkDownloadSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT) Holder<BulkDownloadReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface BulkServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getBulkDownloadStatus", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", className = "jp.yahooapis.im.v201903.bulk.GetBulkDownloadStatus")
     @ResponseWrapper(localName = "getBulkDownloadStatusResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", className = "jp.yahooapis.im.v201903.bulk.GetBulkDownloadStatusResponse")
-    public void getBulkDownloadStatus(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk")
-        BulkDownloadStatusSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT)
-        Holder<BulkDownloadStatusPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getBulkDownloadStatus(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk") BulkDownloadStatusSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT) Holder<BulkDownloadStatusPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -77,15 +69,10 @@ public interface BulkServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getUploadUrl", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", className = "jp.yahooapis.im.v201903.bulk.GetUploadUrl")
     @ResponseWrapper(localName = "getUploadUrlResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", className = "jp.yahooapis.im.v201903.bulk.GetUploadUrlResponse")
-    public void getUploadUrl(
-        @WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk")
-        long accountId,
-        @WebParam(name = "uploadBulkJobName", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk")
-        String uploadBulkJobName,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT)
-        Holder<UploadUrlValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getUploadUrl(@WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk") long accountId,
+        @WebParam(name = "uploadBulkJobName", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk") String uploadBulkJobName,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT) Holder<UploadUrlValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -99,13 +86,9 @@ public interface BulkServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getBulkUploadStatus", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", className = "jp.yahooapis.im.v201903.bulk.GetBulkUploadStatus")
     @ResponseWrapper(localName = "getBulkUploadStatusResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", className = "jp.yahooapis.im.v201903.bulk.GetBulkUploadStatusResponse")
-    public void getBulkUploadStatus(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk")
-        BulkUploadStatusSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT)
-        Holder<BulkUploadStatusPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getBulkUploadStatus(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk") BulkUploadStatusSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT) Holder<BulkUploadStatusPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Bulk", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "LocationServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/Location")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.location.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface LocationServiceInterface {
 
@@ -36,13 +36,9 @@ public interface LocationServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/Location", className = "jp.yahooapis.im.v201903.location.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Location", className = "jp.yahooapis.im.v201903.location.GetResponse")
-    public void get(
-        @WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V201903/Location")
-        long accountId,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Location", mode = WebParam.Mode.OUT)
-        Holder<LocationReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Location", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V201903/Location") long accountId,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Location", mode = WebParam.Mode.OUT) Holder<LocationReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Location", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

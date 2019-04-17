@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "PlacementUrlListServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.placementurllist.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface PlacementUrlListServiceInterface {
 
@@ -36,13 +36,9 @@ public interface PlacementUrlListServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", className = "jp.yahooapis.im.v201903.placementurllist.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", className = "jp.yahooapis.im.v201903.placementurllist.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList")
-        PlacementUrlListSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", mode = WebParam.Mode.OUT)
-        Holder<PlacementUrlListPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList") PlacementUrlListSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", mode = WebParam.Mode.OUT) Holder<PlacementUrlListPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface PlacementUrlListServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", className = "jp.yahooapis.im.v201903.placementurllist.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", className = "jp.yahooapis.im.v201903.placementurllist.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList")
-        PlacementUrlListOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", mode = WebParam.Mode.OUT)
-        Holder<PlacementUrlListReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList") PlacementUrlListOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", mode = WebParam.Mode.OUT) Holder<PlacementUrlListReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlList", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

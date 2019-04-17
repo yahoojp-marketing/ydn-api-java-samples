@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "ReportDefinitionServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.reportdefinition.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface ReportDefinitionServiceInterface {
 
@@ -36,13 +36,9 @@ public interface ReportDefinitionServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", className = "jp.yahooapis.im.v201903.reportdefinition.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", className = "jp.yahooapis.im.v201903.reportdefinition.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition")
-        ReportDefinitionSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT)
-        Holder<ReportDefinitionPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition") ReportDefinitionSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT) Holder<ReportDefinitionPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface ReportDefinitionServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", className = "jp.yahooapis.im.v201903.reportdefinition.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", className = "jp.yahooapis.im.v201903.reportdefinition.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition")
-        ReportDefinitionOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT)
-        Holder<ReportDefinitionReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition") ReportDefinitionOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT) Holder<ReportDefinitionReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -76,13 +68,9 @@ public interface ReportDefinitionServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getReportFields", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", className = "jp.yahooapis.im.v201903.reportdefinition.GetReportFields")
     @ResponseWrapper(localName = "getReportFieldsResponse", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", className = "jp.yahooapis.im.v201903.reportdefinition.GetReportFieldsResponse")
-    public void getReportFields(
-        @WebParam(name = "reportCategory", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition")
-        ReportCategory reportCategory,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT)
-        Holder<ReportDefinitionFieldValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getReportFields(@WebParam(name = "reportCategory", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition") ReportCategory reportCategory,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT) Holder<ReportDefinitionFieldValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/ReportDefinition", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

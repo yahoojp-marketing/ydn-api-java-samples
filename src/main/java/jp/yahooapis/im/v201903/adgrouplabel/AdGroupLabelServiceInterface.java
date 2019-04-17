@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "AdGroupLabelServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.adgrouplabel.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface AdGroupLabelServiceInterface {
 
@@ -36,13 +36,9 @@ public interface AdGroupLabelServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel", className = "jp.yahooapis.im.v201903.adgrouplabel.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel", className = "jp.yahooapis.im.v201903.adgrouplabel.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel")
-        AdGroupLabelOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel", mode = WebParam.Mode.OUT)
-        Holder<AdGroupLabelReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel") AdGroupLabelOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel", mode = WebParam.Mode.OUT) Holder<AdGroupLabelReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/AdGroupLabel", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

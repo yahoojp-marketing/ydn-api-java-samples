@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "FeedDataServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.feeddata.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface FeedDataServiceInterface {
 
@@ -38,17 +38,11 @@ public interface FeedDataServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getUploadUrl", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", className = "jp.yahooapis.im.v201903.feeddata.GetUploadUrl")
     @ResponseWrapper(localName = "getUploadUrlResponse", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", className = "jp.yahooapis.im.v201903.feeddata.GetUploadUrlResponse")
-    public void getUploadUrl(
-        @WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData")
-        long accountId,
-        @WebParam(name = "itemListUploadType", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData")
-        ItemListUploadType itemListUploadType,
-        @WebParam(name = "feedHolderId", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData")
-        long feedHolderId,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", mode = WebParam.Mode.OUT)
-        Holder<UploadUrlValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getUploadUrl(@WebParam(name = "accountId", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData") long accountId,
+        @WebParam(name = "itemListUploadType", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData") ItemListUploadType itemListUploadType,
+        @WebParam(name = "feedHolderId", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData") long feedHolderId,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", mode = WebParam.Mode.OUT) Holder<UploadUrlValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -62,13 +56,9 @@ public interface FeedDataServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getUploadStatus", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", className = "jp.yahooapis.im.v201903.feeddata.GetUploadStatus")
     @ResponseWrapper(localName = "getUploadStatusResponse", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", className = "jp.yahooapis.im.v201903.feeddata.GetUploadStatusResponse")
-    public void getUploadStatus(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData")
-        FeedDataSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", mode = WebParam.Mode.OUT)
-        Holder<FeedDataPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getUploadStatus(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData") FeedDataSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", mode = WebParam.Mode.OUT) Holder<FeedDataPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/FeedData", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

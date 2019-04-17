@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
-import jp.yahooapis.im.v201903.feedholder.FeedHolderPage;
+import jp.yahooapis.im.v201903.feedset.FeedSetPage;
 
 
 /**
@@ -35,7 +35,7 @@ import jp.yahooapis.im.v201903.feedholder.FeedHolderPage;
     "pageType"
 })
 @XmlSeeAlso({
-    FeedHolderPage.class
+    FeedSetPage.class
 })
 public abstract class Page {
 

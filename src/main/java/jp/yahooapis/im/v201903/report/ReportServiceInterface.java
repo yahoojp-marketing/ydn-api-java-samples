@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "ReportServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/Report")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.report.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface ReportServiceInterface {
 
@@ -36,13 +36,9 @@ public interface ReportServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/Report", className = "jp.yahooapis.im.v201903.report.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Report", className = "jp.yahooapis.im.v201903.report.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Report")
-        ReportSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT)
-        Holder<ReportPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Report") ReportSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT) Holder<ReportPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -56,13 +52,9 @@ public interface ReportServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "getClosedDate", targetNamespace = "http://im.yahooapis.jp/V201903/Report", className = "jp.yahooapis.im.v201903.report.GetClosedDate")
     @ResponseWrapper(localName = "getClosedDateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Report", className = "jp.yahooapis.im.v201903.report.GetClosedDateResponse")
-    public void getClosedDate(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Report")
-        ReportClosedDateSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT)
-        Holder<ReportClosedDateValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void getClosedDate(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/Report") ReportClosedDateSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT) Holder<ReportClosedDateValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
@@ -76,13 +68,9 @@ public interface ReportServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "mutate", targetNamespace = "http://im.yahooapis.jp/V201903/Report", className = "jp.yahooapis.im.v201903.report.Mutate")
     @ResponseWrapper(localName = "mutateResponse", targetNamespace = "http://im.yahooapis.jp/V201903/Report", className = "jp.yahooapis.im.v201903.report.MutateResponse")
-    public void mutate(
-        @WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/Report")
-        ReportJobOperation operations,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT)
-        Holder<ReportReturnValue> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void mutate(@WebParam(name = "operations", targetNamespace = "http://im.yahooapis.jp/V201903/Report") ReportJobOperation operations,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT) Holder<ReportReturnValue> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/Report", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 

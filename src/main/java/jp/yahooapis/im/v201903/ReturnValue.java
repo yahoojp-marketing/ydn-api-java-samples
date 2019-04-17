@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
-import jp.yahooapis.im.v201903.feedholder.FeedHolderValues;
+import jp.yahooapis.im.v201903.feedset.FeedSetValues;
 
 
 /**
@@ -36,7 +36,7 @@ import jp.yahooapis.im.v201903.feedholder.FeedHolderValues;
     "error"
 })
 @XmlSeeAlso({
-    FeedHolderValues.class
+    FeedSetValues.class
 })
 public abstract class ReturnValue {
 

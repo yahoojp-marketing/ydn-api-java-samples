@@ -21,7 +21,7 @@ import jp.yahooapis.im.v201903.Error;
 @WebService(name = "PlacementUrlIdeaServiceInterface", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea")
 @XmlSeeAlso({
     jp.yahooapis.im.v201903.ObjectFactory.class,
-    jp.yahooapis.im.v201903.placementurlidea.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface PlacementUrlIdeaServiceInterface {
 
@@ -36,13 +36,9 @@ public interface PlacementUrlIdeaServiceInterface {
     @WebMethod
     @RequestWrapper(localName = "get", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea", className = "jp.yahooapis.im.v201903.placementurlidea.Get")
     @ResponseWrapper(localName = "getResponse", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea", className = "jp.yahooapis.im.v201903.placementurlidea.GetResponse")
-    public void get(
-        @WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea")
-        PlacementUrlIdeaSelector selector,
-        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea", mode = WebParam.Mode.OUT)
-        Holder<PlacementUrlIdeaPage> rval,
-        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea", mode = WebParam.Mode.OUT)
-        Holder<List<Error>> error)
+    public void get(@WebParam(name = "selector", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea") PlacementUrlIdeaSelector selector,
+        @WebParam(name = "rval", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea", mode = WebParam.Mode.OUT) Holder<PlacementUrlIdeaPage> rval,
+        @WebParam(name = "error", targetNamespace = "http://im.yahooapis.jp/V201903/PlacementUrlIdea", mode = WebParam.Mode.OUT) Holder<List<Error>> error)
         throws ApiException
     ;
 
