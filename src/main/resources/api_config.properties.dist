@@ -10,7 +10,7 @@ API_NS = http://im.yahooapis.jp/V201903
 #for sandbox
 LOCATION = sandbox.im.yahooapis.jp
 #for production
-#LOCATION = im.yahooapis.jp
+#LOCATION = location.im.yahooapis.jp
 
 #-----------------------------------------------------------------
 # API Account
