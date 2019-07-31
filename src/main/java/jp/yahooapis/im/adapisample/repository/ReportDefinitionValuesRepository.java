@@ -4,8 +4,8 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinition;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionValues;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinition;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionValues;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,14 +43,14 @@ public class ReportDefinitionValuesRepository {
   /**
    * @return ReportIds
    */
-  public List<Long> getReportIds() {
-    List<Long> reportIds = new ArrayList<>();
+  public List<Long> getReportJobIds() {
+    List<Long> reportJobIds = new ArrayList<>();
     if (this.valuesHolder.getReportDefinitionValuesList().size() == 0) {
-      return reportIds;
+      return reportJobIds;
     }
     for (ReportDefinitionValues reportDefinitionValues : this.valuesHolder.getReportDefinitionValuesList()) {
-      reportIds.add(reportDefinitionValues.getReportDefinition().getReportId());
+      reportJobIds.add(reportDefinitionValues.getReportDefinition().getReportJobId());
     }
-    return reportIds;
+    return reportJobIds;
   }
 }

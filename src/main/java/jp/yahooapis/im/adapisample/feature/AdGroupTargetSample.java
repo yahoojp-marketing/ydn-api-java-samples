@@ -13,21 +13,21 @@ import jp.yahooapis.im.adapisample.basic.placementurllist.PlacementUrlListServic
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201903.adgroup.AdGroupOperation;
-import jp.yahooapis.im.v201903.adgroup.AdGroupValues;
-import jp.yahooapis.im.v201903.adgroupad.AdGroupAdOperation;
-import jp.yahooapis.im.v201903.adgrouptarget.AdGroupTargetMutateOperation;
-import jp.yahooapis.im.v201903.campaign.CampaignOperation;
-import jp.yahooapis.im.v201903.campaign.CampaignType;
-import jp.yahooapis.im.v201903.campaign.CampaignValues;
-import jp.yahooapis.im.v201903.campaign.Operator;
-import jp.yahooapis.im.v201903.dictionary.CategorySelector;
-import jp.yahooapis.im.v201903.dictionary.CategoryValues;
-import jp.yahooapis.im.v201903.placementurlidea.PlacementUrlIdeaSelector;
-import jp.yahooapis.im.v201903.placementurlidea.PlacementUrlIdeaValues;
-import jp.yahooapis.im.v201903.placementurllist.PlacementUrlListOperation;
-import jp.yahooapis.im.v201903.placementurllist.PlacementUrlListValues;
-import jp.yahooapis.im.v201903.placementurllist.UrlList;
+import jp.yahooapis.im.v201907.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201907.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201907.adgroupad.AdGroupAdOperation;
+import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetMutateOperation;
+import jp.yahooapis.im.v201907.campaign.CampaignOperation;
+import jp.yahooapis.im.v201907.campaign.CampaignType;
+import jp.yahooapis.im.v201907.campaign.CampaignValues;
+import jp.yahooapis.im.v201907.campaign.Operator;
+import jp.yahooapis.im.v201907.dictionary.CategorySelector;
+import jp.yahooapis.im.v201907.dictionary.CategoryValues;
+import jp.yahooapis.im.v201907.placementurlidea.PlacementUrlIdeaSelector;
+import jp.yahooapis.im.v201907.placementurlidea.PlacementUrlIdeaValues;
+import jp.yahooapis.im.v201907.placementurllist.PlacementUrlListOperation;
+import jp.yahooapis.im.v201907.placementurllist.PlacementUrlListValues;
+import jp.yahooapis.im.v201907.placementurllist.UrlList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -69,7 +69,7 @@ public class AdGroupTargetSample {
       // =================================================================
       // ADD
       AdGroupOperation addRequestAdGroup = AdGroupServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201903.adgroup.Operator.ADD, accountId, Arrays.asList(AdGroupServiceSample.createExampleStandardAdGroup(campaignId))
+          jp.yahooapis.im.v201907.adgroup.Operator.ADD, accountId, Arrays.asList(AdGroupServiceSample.createExampleStandardAdGroup(campaignId))
       );
       List<AdGroupValues> addResponseAdGroup = AdGroupServiceSample.mutate(addRequestAdGroup);
 
@@ -91,7 +91,7 @@ public class AdGroupTargetSample {
       // =================================================================
       // ADD
       PlacementUrlListOperation addRequestPlacementUrlList = PlacementUrlListServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201903.placementurllist.Operator.ADD, accountId, Arrays.asList(PlacementUrlListServiceSample.createExamplePlacementUrlList(urlList))
+          jp.yahooapis.im.v201907.placementurllist.Operator.ADD, accountId, Arrays.asList(PlacementUrlListServiceSample.createExamplePlacementUrlList(urlList))
       );
       List<PlacementUrlListValues> addResponsePlacementUrlList = PlacementUrlListServiceSample.mutate(addRequestPlacementUrlList);
 
@@ -108,7 +108,7 @@ public class AdGroupTargetSample {
       // AdGroupTargetService
       // =================================================================
       // ADD
-      AdGroupTargetMutateOperation addRequestAdGroupTarget = AdGroupTargetServiceSample.buildExampleMutateRequest(jp.yahooapis.im.v201903.adgrouptarget.Operator.ADD, accountId,
+      AdGroupTargetMutateOperation addRequestAdGroupTarget = AdGroupTargetServiceSample.buildExampleMutateRequest(jp.yahooapis.im.v201907.adgrouptarget.Operator.ADD, accountId,
           Arrays.asList(
               AdGroupTargetServiceSample.createExamplePlacementTarget(campaignId, adGroupId, valuesRepositoryFacade.getPlacementUrlListValuesRepository().getPlacementUrlIdLists().get(0)),
               AdGroupTargetServiceSample.createExampleInterestCategoryTarget(campaignId, adGroupId, getResponseDictionary.get(0).getCategory().getChild().get(0).getCode()),
@@ -121,7 +121,7 @@ public class AdGroupTargetSample {
       // AdGroupAdService
       // =================================================================
       // ADD
-      AdGroupAdOperation addRequestAdGroupAd = AdGroupAdServiceSample.buildExampleMutateRequest(jp.yahooapis.im.v201903.adgroupad.Operator.ADD, accountId, Arrays.asList(
+      AdGroupAdOperation addRequestAdGroupAd = AdGroupAdServiceSample.buildExampleMutateRequest(jp.yahooapis.im.v201907.adgroupad.Operator.ADD, accountId, Arrays.asList(
           AdGroupAdServiceSample.createExampleExtendedTextAd(campaignId, adGroupId)
       ));
       AdGroupAdServiceSample.mutate(addRequestAdGroupAd);

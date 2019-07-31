@@ -7,17 +7,17 @@ import jp.yahooapis.im.adapisample.basic.feedholder.FeedHolderServiceSample;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201903.Error;
-import jp.yahooapis.im.v201903.Paging;
-import jp.yahooapis.im.v201903.feeddata.FeedDataPage;
-import jp.yahooapis.im.v201903.feeddata.FeedDataSelector;
-import jp.yahooapis.im.v201903.feeddata.FeedDataService;
-import jp.yahooapis.im.v201903.feeddata.FeedDataServiceInterface;
-import jp.yahooapis.im.v201903.feeddata.FeedDataValues;
-import jp.yahooapis.im.v201903.feeddata.FileUploadDateRange;
-import jp.yahooapis.im.v201903.feeddata.FileUploadStatus;
-import jp.yahooapis.im.v201903.feeddata.ItemListUploadType;
-import jp.yahooapis.im.v201903.feeddata.UploadUrlValue;
+import jp.yahooapis.im.v201907.Error;
+import jp.yahooapis.im.v201907.Paging;
+import jp.yahooapis.im.v201907.feeddata.FeedDataPage;
+import jp.yahooapis.im.v201907.feeddata.FeedDataSelector;
+import jp.yahooapis.im.v201907.feeddata.FeedDataService;
+import jp.yahooapis.im.v201907.feeddata.FeedDataServiceInterface;
+import jp.yahooapis.im.v201907.feeddata.FeedDataValues;
+import jp.yahooapis.im.v201907.feeddata.FileUploadDateRange;
+import jp.yahooapis.im.v201907.feeddata.FileUploadStatus;
+import jp.yahooapis.im.v201907.feeddata.ItemListUploadType;
+import jp.yahooapis.im.v201907.feeddata.UploadUrlValue;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -122,7 +122,7 @@ public class FeedDataServiceSample {
     Holder<UploadUrlValue> getUploadUrlValueHolder = new Holder<UploadUrlValue>();
     Holder<List<Error>> errorHolder = new Holder<List<Error>>();
     FeedDataServiceInterface feedDataService = SoapUtils.createServiceInterface(FeedDataServiceInterface.class, FeedDataService.class);
-    feedDataService.getUploadUrl(accountId, ItemListUploadType.UPDATE_ALL, feedHolderId, getUploadUrlValueHolder, errorHolder);
+    feedDataService.getUploadUrl(accountId, ItemListUploadType.UPDATE_ALL, feedHolderId, false, getUploadUrlValueHolder, errorHolder);
 
     SoapUtils.checkSoapError(errorHolder);
 

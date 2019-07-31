@@ -1,12 +1,14 @@
 --------------------------------
 [Version]
 --------------------------------
-Version 201903
+Version 201907
 
 - Change logs
 -----------
 2019/03/11:
 - 201903 is now available.
+2019/08/01:
+- 201907 is now available.
 
 --------------------------------
 [Overview]
@@ -21,7 +23,7 @@ src/main/
   - resources/
     - api_config.properties.dist    : Config files to specify Ids. Rename this file to "api_config.properties"
   - java/jp/yahooapis/im/
-    - v201903/                      : Java Entity classes for written versions(V201903).
+    - v201907/                      : Java Entity classes for written versions(V201903).
     - adapisample/
       - basic/                      : Examples of each services of Yahoo! JAPAN Promotional Ads (YDN).
       - feature/                    : Examples of how to create ads, set targeting on Yahoo! JAPAN Promotional Ads (YDN).

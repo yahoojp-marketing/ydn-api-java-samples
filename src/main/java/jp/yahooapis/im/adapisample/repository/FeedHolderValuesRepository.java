@@ -4,8 +4,8 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201903.feedholder.FeedHolderRecord;
-import jp.yahooapis.im.v201903.feedholder.FeedHolderValues;
+import jp.yahooapis.im.v201907.feedholder.FeedHolderRecord;
+import jp.yahooapis.im.v201907.feedholder.FeedHolderValues;
 
 import java.util.ArrayList;
 import java.util.List;

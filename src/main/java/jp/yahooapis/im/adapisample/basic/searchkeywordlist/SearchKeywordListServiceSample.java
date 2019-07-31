@@ -7,19 +7,19 @@ import jp.yahooapis.im.adapisample.basic.searchkeywordidea.SearchKeywordIdeaServ
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201903.Error;
-import jp.yahooapis.im.v201903.Paging;
-import jp.yahooapis.im.v201903.searchkeywordidea.SearchKeywordIdeaValues;
-import jp.yahooapis.im.v201903.searchkeywordlist.Operator;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeyword;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeywordList;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeywordListOperation;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeywordListPage;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeywordListReturnValue;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeywordListSelector;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeywordListService;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeywordListServiceInterface;
-import jp.yahooapis.im.v201903.searchkeywordlist.SearchKeywordListValues;
+import jp.yahooapis.im.v201907.Error;
+import jp.yahooapis.im.v201907.Paging;
+import jp.yahooapis.im.v201907.searchkeywordidea.SearchKeywordIdeaValues;
+import jp.yahooapis.im.v201907.searchkeywordlist.Operator;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeyword;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordList;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListOperation;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListPage;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListReturnValue;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListSelector;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListService;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListServiceInterface;
+import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListValues;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,7 +42,6 @@ public class SearchKeywordListServiceSample {
     // Setting
     // =================================================================
     ValuesHolder valuesHolder = new ValuesHolder();
-    ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
     long accountId = SoapUtils.getAccountId();
 
     try {
@@ -63,6 +62,7 @@ public class SearchKeywordListServiceSample {
       // run
       List<SearchKeywordListValues> addResponse = mutate(addRequest);
       valuesHolder.setSearchKeywordListValuesList(addResponse);
+      ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
 
       // =================================================================
       // SearchKeywordListService GET

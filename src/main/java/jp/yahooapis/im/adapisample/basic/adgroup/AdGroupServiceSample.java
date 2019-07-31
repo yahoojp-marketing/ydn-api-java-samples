@@ -7,28 +7,28 @@ import jp.yahooapis.im.adapisample.basic.campaign.CampaignServiceSample;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201903.Error;
-import jp.yahooapis.im.v201903.Paging;
-import jp.yahooapis.im.v201903.adgroup.AdGroupConversionOptimizerType;
-import jp.yahooapis.im.v201903.adgroup.BiddingStrategyType;
-import jp.yahooapis.im.v201903.adgroup.AdGroup;
-import jp.yahooapis.im.v201903.adgroup.AdGroupOperation;
-import jp.yahooapis.im.v201903.adgroup.AdGroupPage;
-import jp.yahooapis.im.v201903.adgroup.AdGroupReturnValue;
-import jp.yahooapis.im.v201903.adgroup.AdGroupSelector;
-import jp.yahooapis.im.v201903.adgroup.AdGroupService;
-import jp.yahooapis.im.v201903.adgroup.AdGroupServiceInterface;
-import jp.yahooapis.im.v201903.adgroup.AdGroupValues;
-import jp.yahooapis.im.v201903.adgroup.DeviceAppType;
-import jp.yahooapis.im.v201903.adgroup.DeviceOsType;
-import jp.yahooapis.im.v201903.adgroup.DeviceType;
-import jp.yahooapis.im.v201903.adgroup.DynamicImageExtensions;
-import jp.yahooapis.im.v201903.adgroup.ManualCPCAdGroupBid;
-import jp.yahooapis.im.v201903.adgroup.NoneAdGroupConversionOptimizer;
-import jp.yahooapis.im.v201903.adgroup.Operator;
-import jp.yahooapis.im.v201903.adgroup.SmartDeviceCarrier;
-import jp.yahooapis.im.v201903.adgroup.UserStatus;
-import jp.yahooapis.im.v201903.campaign.CampaignType;
+import jp.yahooapis.im.v201907.Error;
+import jp.yahooapis.im.v201907.Paging;
+import jp.yahooapis.im.v201907.adgroup.AdGroupConversionOptimizerType;
+import jp.yahooapis.im.v201907.adgroup.BiddingStrategyType;
+import jp.yahooapis.im.v201907.adgroup.AdGroup;
+import jp.yahooapis.im.v201907.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201907.adgroup.AdGroupPage;
+import jp.yahooapis.im.v201907.adgroup.AdGroupReturnValue;
+import jp.yahooapis.im.v201907.adgroup.AdGroupSelector;
+import jp.yahooapis.im.v201907.adgroup.AdGroupService;
+import jp.yahooapis.im.v201907.adgroup.AdGroupServiceInterface;
+import jp.yahooapis.im.v201907.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201907.adgroup.DeviceAppType;
+import jp.yahooapis.im.v201907.adgroup.DeviceOsType;
+import jp.yahooapis.im.v201907.adgroup.DeviceType;
+import jp.yahooapis.im.v201907.adgroup.DynamicImageExtensions;
+import jp.yahooapis.im.v201907.adgroup.ManualCPCAdGroupBid;
+import jp.yahooapis.im.v201907.adgroup.NoneAdGroupConversionOptimizer;
+import jp.yahooapis.im.v201907.adgroup.Operator;
+import jp.yahooapis.im.v201907.adgroup.SmartDeviceCarrier;
+import jp.yahooapis.im.v201907.adgroup.UserStatus;
+import jp.yahooapis.im.v201907.campaign.CampaignType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,7 +60,7 @@ public class AdGroupServiceSample {
       // =================================================================
       valuesHolder = setup();
       ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
-      Long campaignId = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201903.campaign.DeviceOsType.IOS);
+      Long campaignId = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201907.campaign.DeviceOsType.IOS);
 
       // =================================================================
       // AdGroupService ADD
@@ -375,8 +375,8 @@ public class AdGroupServiceSample {
 
     long accountId = SoapUtils.getAccountId();
     Long campaignIdStandard = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignType.STANDARD);
-    Long campaignIdAppIOS = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201903.campaign.DeviceOsType.IOS);
-    Long campaignIdAppANDROID = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201903.campaign.DeviceOsType.ANDROID);
+    Long campaignIdAppIOS = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201907.campaign.DeviceOsType.IOS);
+    Long campaignIdAppANDROID = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201907.campaign.DeviceOsType.ANDROID);
 
     AdGroupOperation request = buildExampleMutateRequest(Operator.ADD, accountId, new ArrayList<AdGroup>() {{
       add(createExampleStandardAdGroup(campaignIdStandard));

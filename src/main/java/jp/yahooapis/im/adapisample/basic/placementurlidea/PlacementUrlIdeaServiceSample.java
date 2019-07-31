@@ -5,14 +5,14 @@ package jp.yahooapis.im.adapisample.basic.placementurlidea;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201903.Error;
-import jp.yahooapis.im.v201903.Paging;
-import jp.yahooapis.im.v201903.placementurlidea.AdFormatConditions;
-import jp.yahooapis.im.v201903.placementurlidea.PlacementUrlIdeaPage;
-import jp.yahooapis.im.v201903.placementurlidea.PlacementUrlIdeaSelector;
-import jp.yahooapis.im.v201903.placementurlidea.PlacementUrlIdeaService;
-import jp.yahooapis.im.v201903.placementurlidea.PlacementUrlIdeaServiceInterface;
-import jp.yahooapis.im.v201903.placementurlidea.PlacementUrlIdeaValues;
+import jp.yahooapis.im.v201907.Error;
+import jp.yahooapis.im.v201907.Paging;
+import jp.yahooapis.im.v201907.placementurlidea.AdFormatConditions;
+import jp.yahooapis.im.v201907.placementurlidea.PlacementUrlIdeaPage;
+import jp.yahooapis.im.v201907.placementurlidea.PlacementUrlIdeaSelector;
+import jp.yahooapis.im.v201907.placementurlidea.PlacementUrlIdeaService;
+import jp.yahooapis.im.v201907.placementurlidea.PlacementUrlIdeaServiceInterface;
+import jp.yahooapis.im.v201907.placementurlidea.PlacementUrlIdeaValues;
 
 import java.util.List;
 

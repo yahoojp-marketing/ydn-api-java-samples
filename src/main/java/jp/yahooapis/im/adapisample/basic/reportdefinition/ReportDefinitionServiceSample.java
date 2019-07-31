@@ -3,29 +3,32 @@
  */
 package jp.yahooapis.im.adapisample.basic.reportdefinition;
 
+import jp.yahooapis.im.v201907.Error;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201903.Error;
-import jp.yahooapis.im.v201903.Paging;
-import jp.yahooapis.im.v201903.reportdefinition.Operator;
-import jp.yahooapis.im.v201903.reportdefinition.ReportAddTemplate;
-import jp.yahooapis.im.v201903.reportdefinition.ReportCategory;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDateRangeType;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinition;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionField;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionFieldValue;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionOperation;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionPage;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionReturnValue;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionSelector;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionService;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionServiceInterface;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDefinitionValues;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDownloadEncode;
-import jp.yahooapis.im.v201903.reportdefinition.ReportDownloadFormat;
-import jp.yahooapis.im.v201903.reportdefinition.ReportFrequencyRange;
-import jp.yahooapis.im.v201903.reportdefinition.ReportLang;
+import jp.yahooapis.im.v201907.Paging;
+import jp.yahooapis.im.v201907.reportdefinition.Operator;
+import jp.yahooapis.im.v201907.reportdefinition.ReportClosedDateRecord;
+import jp.yahooapis.im.v201907.reportdefinition.ReportClosedDateSelector;
+import jp.yahooapis.im.v201907.reportdefinition.ReportClosedDateValue;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDateRangeType;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinition;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionFieldValue;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionOperation;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionPage;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionReturnValue;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionSelector;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionService;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionServiceInterface;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionValues;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDownloadEncode;
+import jp.yahooapis.im.v201907.reportdefinition.ReportDownloadFormat;
+import jp.yahooapis.im.v201907.reportdefinition.ReportFieldAttribute;
+import jp.yahooapis.im.v201907.reportdefinition.ReportFrequencyRange;
+import jp.yahooapis.im.v201907.reportdefinition.ReportJobStatus;
+import jp.yahooapis.im.v201907.reportdefinition.ReportLang;
+import jp.yahooapis.im.v201907.reportdefinition.ReportType;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -56,7 +59,16 @@ public class ReportDefinitionServiceSample {
       // ReportDefinitionService getReportFields
       // =================================================================
       // run
-      getReportFields(ReportCategory.AD);
+      getReportFields(ReportType.AD);
+
+      // =================================================================
+      // ReportService getClosedDate
+      // =================================================================
+      // create request.
+      ReportClosedDateSelector getClosedDateRequest = buildExampleGetClosedDateRequest(accountId);
+
+      // run
+      getClosedDate(getClosedDateRequest);
 
       // =================================================================
       // ReportDefinitionService ADD
@@ -71,11 +83,24 @@ public class ReportDefinitionServiceSample {
       // =================================================================
       // ReportDefinitionService GET
       // =================================================================
+      // check job status
+      checkStatus(valuesRepositoryFacade.getReportDefinitionValuesRepository().getReportJobIds());
+
       // create request.
-      ReportDefinitionSelector getRequest = buildExampleGetRequest(accountId, valuesRepositoryFacade.getReportDefinitionValuesRepository().getReportIds());
+      ReportDefinitionSelector getRequest = buildExampleGetRequest(accountId, valuesRepositoryFacade.getReportDefinitionValuesRepository().getReportJobIds());
 
       // run
-      get(getRequest);
+      List<ReportDefinitionValues> getResponse = get(getRequest);
+
+      String downloadUrl = null;
+      for (ReportDefinitionValues reportValues : getResponse) {
+        downloadUrl = reportValues.getReportDefinition().getReportDownloadUrl();
+      }
+
+      // =================================================================
+      // ReportService download (http request)
+      // =================================================================
+      SoapUtils.download(downloadUrl, "reportDownloadSample.csv");
 
       // =================================================================
       // ReportDefinitionService REMOVE
@@ -119,10 +144,10 @@ public class ReportDefinitionServiceSample {
   /**
    * example getReportFields ReportDefinitions.
    *
-   * @param reportCategory ReportCategory
-   * @return ReportDefinitionField
+   * @param reportType ReportType
+   * @return ReportFieldAttribute
    */
-  public static List<ReportDefinitionField> getReportFields(ReportCategory reportCategory) throws Exception {
+  public static List<ReportFieldAttribute> getReportFields(ReportType reportType) throws Exception {
 
     // call API
     System.out.println("############################################");
@@ -132,10 +157,35 @@ public class ReportDefinitionServiceSample {
     Holder<ReportDefinitionFieldValue> reportDefinitionFieldValueHolder = new Holder<ReportDefinitionFieldValue>();
     Holder<List<Error>> errorHolder = new Holder<List<Error>>();
     ReportDefinitionServiceInterface reportDefinitionService = SoapUtils.createServiceInterface(ReportDefinitionServiceInterface.class, ReportDefinitionService.class);
-    reportDefinitionService.getReportFields(reportCategory, reportDefinitionFieldValueHolder, errorHolder);
+
+    reportDefinitionService.getReportFields(reportType, reportDefinitionFieldValueHolder, errorHolder);
 
     // Response
     return reportDefinitionFieldValueHolder.value.getFields();
+  }
+
+  /**
+   * example get ReportDefinitions.
+   *
+   * @param selector ReportClosedDateSelector
+   * @return ReportClosedDateRecord
+   */
+  public static List<ReportClosedDateRecord> getClosedDate(ReportClosedDateSelector selector) throws Exception {
+
+    // call API
+    System.out.println("############################################");
+    System.out.println("ReportDefinitionService::getClosedDate");
+    System.out.println("############################################");
+
+    Holder<ReportClosedDateValue> reportClosedDateValueHolder = new Holder<ReportClosedDateValue>();
+    Holder<List<Error>> errorHolder = new Holder<List<Error>>();
+    ReportDefinitionServiceInterface reportService = SoapUtils.createServiceInterface(ReportDefinitionServiceInterface.class, ReportDefinitionService.class);
+    reportService.getClosedDate(selector, reportClosedDateValueHolder, errorHolder);
+
+    SoapUtils.checkSoapError(errorHolder, reportClosedDateValueHolder.value.getValues());
+
+    // Response
+    return reportClosedDateValueHolder.value.getValues();
   }
 
   /**
@@ -163,16 +213,28 @@ public class ReportDefinitionServiceSample {
   }
 
   /**
+   * example getClosedDate request.
+   *
+   * @param accountId long
+   * @return ReportClosedDateSelector
+   */
+  public static ReportClosedDateSelector buildExampleGetClosedDateRequest(long accountId) {
+    ReportClosedDateSelector selector = new ReportClosedDateSelector();
+    selector.setAccountId(accountId);
+    return selector;
+  }
+
+  /**
    * example get request.
    *
    * @param accountId long
-   * @param reportIds List<Long>
+   * @param reportJobIds List<Long>
    * @return ReportDefinitionSelector
    */
-  public static ReportDefinitionSelector buildExampleGetRequest(long accountId, List<Long> reportIds) {
+  public static ReportDefinitionSelector buildExampleGetRequest(long accountId, List<Long> reportJobIds) {
     ReportDefinitionSelector selector = new ReportDefinitionSelector();
     selector.setAccountId(accountId);
-    selector.getReportIds().addAll(reportIds);
+    selector.getReportJobIds().addAll(reportJobIds);
     Paging paging = new Paging();
     paging.setStartIndex(1);
     paging.setNumberResults(20);
@@ -219,34 +281,55 @@ public class ReportDefinitionServiceSample {
     operand.setFrequencyRange(ReportFrequencyRange.DAILY);
     operand.setFormat(ReportDownloadFormat.CSV);
     operand.setEncode(ReportDownloadEncode.UTF_8);
-    operand.setLang(ReportLang.EN);
-    operand.setAddTemplate(ReportAddTemplate.YES);
+    operand.setLanguage(ReportLang.EN);
     return operand;
   }
 
   /**
-   * create basic ReportDefinition.
+   * example check Report job status.
    *
-   * @return ValuesHolder
+   * @param jobIds List<Long>
    */
-  public static ValuesHolder create() throws Exception {
-    ValuesHolder valuesHolder = new ValuesHolder();
-    ReportDefinitionOperation addRequest = buildExampleMutateRequest(Operator.ADD, SoapUtils.getAccountId(), Collections.singletonList(createExampleReportDefinition()));
-    List<ReportDefinitionValues> addResponse = mutate(addRequest);
-    valuesHolder.setReportDefinitionValuesList(addResponse);
-    return valuesHolder;
-  }
+  public static void checkStatus(List<Long> jobIds) throws Exception {
 
-  /**
-   * cleanup service object.
-   *
-   * @param valuesHolder ValuesHolder
-   */
-  public static void cleanup(ValuesHolder valuesHolder) throws Exception {
-    if (valuesHolder.getReportDefinitionValuesList().size() == 0) {
-      return;
+    // call 30sec sleep * 30 = 15minute
+    for (int i = 0; i < 30; i++) {
+
+      // sleep 30 second.
+      System.out.println("\n***** sleep 30 seconds for Report Download Job *****\n");
+      Thread.sleep(30000);
+
+      // get
+      ReportDefinitionSelector getRequest = buildExampleGetRequest(SoapUtils.getAccountId(), jobIds);
+      List<ReportDefinitionValues> getResponse = get(getRequest);
+
+      int completedCount = 0;
+
+      // check status
+      for (ReportDefinitionValues reportValues : getResponse) {
+        ReportJobStatus status = reportValues.getReportDefinition().getReportJobStatus();
+        if (status == null) {
+          throw new Exception("Fail to get Report.");
+        }
+        switch (status) {
+          default:
+          case ACCEPTED:
+          case IN_PROGRESS:
+            continue;
+          case CANCELED:
+          case FAILED:
+            throw new Exception("Report Job Status failed.");
+          case COMPLETED:
+            completedCount++;
+            continue;
+        }
+      }
+
+      if (getResponse.size() == completedCount) {
+        return;
+      }
     }
-    ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
-    mutate(buildExampleMutateRequest(Operator.REMOVE, SoapUtils.getAccountId(), valuesRepositoryFacade.getReportDefinitionValuesRepository().getReportDefinitions()));
+
+    throw new Exception("Fail to get Report.");
   }
 }
