@@ -7,34 +7,35 @@ import jp.yahooapis.im.adapisample.basic.adgroup.AdGroupServiceSample;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetMutateOperation;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetOperation;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetPage;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetReturnValue;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetSelector;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetService;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetServiceInterface;
-import jp.yahooapis.im.v201907.adgrouptarget.AdGroupTargetValue;
-import jp.yahooapis.im.v201907.adgrouptarget.AdScheduleTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.Age;
-import jp.yahooapis.im.v201907.adgrouptarget.AgeTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.CarrierTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.DayOfWeek;
-import jp.yahooapis.im.v201907.adgrouptarget.DeviceTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.EstimateFlg;
-import jp.yahooapis.im.v201907.adgrouptarget.Gender;
-import jp.yahooapis.im.v201907.adgrouptarget.GenderTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.GeoTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.InterestCategoryTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.Operator;
-import jp.yahooapis.im.v201907.adgrouptarget.PlacementTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.PlacementUrlListType;
-import jp.yahooapis.im.v201907.adgrouptarget.SiteCategoryTarget;
-import jp.yahooapis.im.v201907.adgrouptarget.TargetType;
-import jp.yahooapis.im.v201907.campaign.CampaignType;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTargetMutateOperation;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTargetOperation;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTargetPage;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTargetReturnValue;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTargetSelector;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTargetService;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTargetServiceInterface;
+import jp.yahooapis.im.v201911.adgrouptarget.AdGroupTargetValue;
+import jp.yahooapis.im.v201911.adgrouptarget.AdScheduleTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.Age;
+import jp.yahooapis.im.v201911.adgrouptarget.AgeTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.AudienceCategoryTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.CarrierTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.DayOfWeek;
+import jp.yahooapis.im.v201911.adgrouptarget.DeviceTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.EstimateFlg;
+import jp.yahooapis.im.v201911.adgrouptarget.Gender;
+import jp.yahooapis.im.v201911.adgrouptarget.GenderTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.GeoTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.InterestCategoryTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.Operator;
+import jp.yahooapis.im.v201911.adgrouptarget.PlacementTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.PlacementUrlListType;
+import jp.yahooapis.im.v201911.adgrouptarget.SiteCategoryTarget;
+import jp.yahooapis.im.v201911.adgrouptarget.TargetType;
+import jp.yahooapis.im.v201911.campaign.CampaignType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -299,7 +300,8 @@ public class AdGroupTargetServiceSample {
         TargetType.CARRIER_TARGET,
         TargetType.APP_TARGET,
         TargetType.OS_TARGET,
-        TargetType.OS_VERSION_TARGET
+        TargetType.OS_VERSION_TARGET,
+        TargetType.AUDIENCE_CATEGORY_TARGET
     ));
 
     Paging paging = new Paging();
@@ -376,6 +378,12 @@ public class AdGroupTargetServiceSample {
           carrierTarget.setType(TargetType.CARRIER_TARGET);
           carrierTarget.setTargetId(adGroupTarget.getTarget().getTargetId());
           operand.setTarget(carrierTarget);
+          break;
+        case AUDIENCE_CATEGORY_TARGET:
+          AudienceCategoryTarget audienceCategoryTarget = new AudienceCategoryTarget();
+          audienceCategoryTarget.setType(TargetType.AUDIENCE_CATEGORY_TARGET);
+          audienceCategoryTarget.setTargetId(adGroupTarget.getTarget().getTargetId());
+          operand.setTarget(audienceCategoryTarget);
           break;
         default:
           break;
@@ -514,6 +522,32 @@ public class AdGroupTargetServiceSample {
 
     return adGroupTarget;
   }
+
+  /**
+   * example Audience Category Target request.
+   *
+   * @param campaignId
+   * @param adGroupId
+   * @param categoryCode
+   * @return AdGroupTarget
+   */
+  public static AdGroupTarget createExampleAudienceCategoryTarget(Long campaignId, Long adGroupId, String categoryCode)
+  {
+    // target
+    AudienceCategoryTarget target = new AudienceCategoryTarget();
+    target.setType(TargetType.AUDIENCE_CATEGORY_TARGET);
+    target.setTargetId(categoryCode);
+
+    // adGroupTarget
+    AdGroupTarget adGroupTarget = new AdGroupTarget();
+    adGroupTarget.setAccountId(SoapUtils.getAccountId());
+    adGroupTarget.setCampaignId(campaignId);
+    adGroupTarget.setAdGroupId(adGroupId);
+    adGroupTarget.setTarget(target);
+
+    return adGroupTarget;
+  }
+
 
   /**
    * example Schedule Target replace request.

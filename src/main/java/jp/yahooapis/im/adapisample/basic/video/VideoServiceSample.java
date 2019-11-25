@@ -7,21 +7,21 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.video.ApprovalStatus;
-import jp.yahooapis.im.v201907.video.Operator;
-import jp.yahooapis.im.v201907.video.UploadUrlPage;
-import jp.yahooapis.im.v201907.video.UploadVideo;
-import jp.yahooapis.im.v201907.video.UserStatus;
-import jp.yahooapis.im.v201907.video.Video;
-import jp.yahooapis.im.v201907.video.VideoOperation;
-import jp.yahooapis.im.v201907.video.VideoPage;
-import jp.yahooapis.im.v201907.video.VideoReturnValue;
-import jp.yahooapis.im.v201907.video.VideoSelector;
-import jp.yahooapis.im.v201907.video.VideoService;
-import jp.yahooapis.im.v201907.video.VideoServiceInterface;
-import jp.yahooapis.im.v201907.video.VideoValues;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.video.ApprovalStatus;
+import jp.yahooapis.im.v201911.video.Operator;
+import jp.yahooapis.im.v201911.video.UploadUrlPage;
+import jp.yahooapis.im.v201911.video.UploadVideo;
+import jp.yahooapis.im.v201911.video.UserStatus;
+import jp.yahooapis.im.v201911.video.Video;
+import jp.yahooapis.im.v201911.video.VideoOperation;
+import jp.yahooapis.im.v201911.video.VideoPage;
+import jp.yahooapis.im.v201911.video.VideoReturnValue;
+import jp.yahooapis.im.v201911.video.VideoSelector;
+import jp.yahooapis.im.v201911.video.VideoService;
+import jp.yahooapis.im.v201911.video.VideoServiceInterface;
+import jp.yahooapis.im.v201911.video.VideoValues;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,15 +51,7 @@ public class VideoServiceSample {
       // =================================================================
       // getUploadUrl
       String fileName = "videoUploadSample.mp4";
-      List<UploadVideo> uploadVideo = new ArrayList<>();
-      UploadVideo uploadVideoValue = new UploadVideo();
-      uploadVideoValue.setVideoName("SampleName_CreatedOn_" + SoapUtils.getCurrentTimestamp());
-      uploadVideoValue.setVideoTitle("SampleTitle_CreatedOn_" + SoapUtils.getCurrentTimestamp());
-      uploadVideoValue.setUserStatus(UserStatus.ACTIVE);
-      uploadVideo.add(uploadVideoValue);
-
-      UploadUrlPage getUploadUrlResponse = getUploadUrl(accountId, uploadVideo);
-
+      UploadUrlPage getUploadUrlResponse = getUploadUrl(accountId, buildExampleUploadVideoList());
       String uploadUrl = getUploadUrlResponse.getValues().get(0).getUploadUrlValue().getUploadUrl();
 
       // upload
@@ -168,6 +160,22 @@ public class VideoServiceSample {
 
     // Response
     return getUploadUrlHolder.value;
+  }
+
+  /**
+   * example upload request
+   *
+   * @return
+   */
+  public static List<UploadVideo> buildExampleUploadVideoList() {
+    List<UploadVideo> uploadVideo = new ArrayList<>();
+    UploadVideo uploadVideoValue = new UploadVideo();
+    uploadVideoValue.setVideoName("SampleName_CreatedOn_" + SoapUtils.getCurrentTimestamp());
+    uploadVideoValue.setVideoTitle("SampleTitle_CreatedOn_" + SoapUtils.getCurrentTimestamp());
+    uploadVideoValue.setUserStatus(UserStatus.ACTIVE);
+    uploadVideo.add(uploadVideoValue);
+
+    return uploadVideo;
   }
 
   /**

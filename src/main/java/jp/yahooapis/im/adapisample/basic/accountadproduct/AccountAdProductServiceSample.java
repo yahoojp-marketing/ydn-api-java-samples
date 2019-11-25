@@ -4,12 +4,12 @@
 package jp.yahooapis.im.adapisample.basic.accountadproduct;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.accountadproduct.AccountAdProductPage;
-import jp.yahooapis.im.v201907.accountadproduct.AccountAdProductSelector;
-import jp.yahooapis.im.v201907.accountadproduct.AccountAdProductService;
-import jp.yahooapis.im.v201907.accountadproduct.AccountAdProductServiceInterface;
-import jp.yahooapis.im.v201907.accountadproduct.AccountAdProductValues;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.accountadproduct.AccountAdProductPage;
+import jp.yahooapis.im.v201911.accountadproduct.AccountAdProductSelector;
+import jp.yahooapis.im.v201911.accountadproduct.AccountAdProductService;
+import jp.yahooapis.im.v201911.accountadproduct.AccountAdProductServiceInterface;
+import jp.yahooapis.im.v201911.accountadproduct.AccountAdProductValues;
 
 import java.util.List;
 

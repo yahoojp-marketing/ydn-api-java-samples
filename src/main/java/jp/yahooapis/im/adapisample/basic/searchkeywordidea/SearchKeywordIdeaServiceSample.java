@@ -5,18 +5,18 @@ package jp.yahooapis.im.adapisample.basic.searchkeywordidea;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.searchkeywordidea.KeywordFrequency;
-import jp.yahooapis.im.v201907.searchkeywordidea.KeywordRecency;
-import jp.yahooapis.im.v201907.searchkeywordidea.MatchType;
-import jp.yahooapis.im.v201907.searchkeywordidea.SearchKeywordIdeaPage;
-import jp.yahooapis.im.v201907.searchkeywordidea.SearchKeywordIdeaSelector;
-import jp.yahooapis.im.v201907.searchkeywordidea.SearchKeywordIdeaService;
-import jp.yahooapis.im.v201907.searchkeywordidea.SearchKeywordIdeaServiceInterface;
-import jp.yahooapis.im.v201907.searchkeywordidea.SearchKeywordIdeaValues;
-import jp.yahooapis.im.v201907.searchkeywordidea.SortField;
-import jp.yahooapis.im.v201907.searchkeywordidea.SortType;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.searchkeywordidea.KeywordFrequency;
+import jp.yahooapis.im.v201911.searchkeywordidea.KeywordRecency;
+import jp.yahooapis.im.v201911.searchkeywordidea.MatchType;
+import jp.yahooapis.im.v201911.searchkeywordidea.SearchKeywordIdeaPage;
+import jp.yahooapis.im.v201911.searchkeywordidea.SearchKeywordIdeaSelector;
+import jp.yahooapis.im.v201911.searchkeywordidea.SearchKeywordIdeaService;
+import jp.yahooapis.im.v201911.searchkeywordidea.SearchKeywordIdeaServiceInterface;
+import jp.yahooapis.im.v201911.searchkeywordidea.SearchKeywordIdeaValues;
+import jp.yahooapis.im.v201911.searchkeywordidea.SortField;
+import jp.yahooapis.im.v201911.searchkeywordidea.SortType;
 
 import java.util.List;
 

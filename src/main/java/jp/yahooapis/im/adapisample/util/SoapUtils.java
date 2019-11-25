@@ -3,8 +3,8 @@
  */
 package jp.yahooapis.im.adapisample.util;
 
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.ReturnValue;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.ReturnValue;
 
 import java.io.BufferedInputStream;
 import java.io.DataOutputStream;

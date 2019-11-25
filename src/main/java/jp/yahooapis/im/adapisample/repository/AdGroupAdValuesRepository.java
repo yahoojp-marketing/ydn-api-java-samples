@@ -4,9 +4,9 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAd;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdValues;
-import jp.yahooapis.im.v201907.adgroupad.AdType;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAd;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdValues;
+import jp.yahooapis.im.v201911.adgroupad.AdType;
 
 import java.util.ArrayList;
 import java.util.List;

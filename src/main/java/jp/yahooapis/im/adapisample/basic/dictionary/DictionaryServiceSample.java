@@ -4,28 +4,32 @@
 package jp.yahooapis.im.adapisample.basic.dictionary;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.dictionary.CategoryPage;
-import jp.yahooapis.im.v201907.dictionary.CategorySelector;
-import jp.yahooapis.im.v201907.dictionary.CategoryValues;
-import jp.yahooapis.im.v201907.dictionary.ColorSetPage;
-import jp.yahooapis.im.v201907.dictionary.ColorSetSelector;
-import jp.yahooapis.im.v201907.dictionary.ColorSetValues;
-import jp.yahooapis.im.v201907.dictionary.DeviceOsType;
-import jp.yahooapis.im.v201907.dictionary.DictionaryLang;
-import jp.yahooapis.im.v201907.dictionary.DictionaryService;
-import jp.yahooapis.im.v201907.dictionary.DictionaryServiceInterface;
-import jp.yahooapis.im.v201907.dictionary.DisapprovalReasonPage;
-import jp.yahooapis.im.v201907.dictionary.DisapprovalReasonSelector;
-import jp.yahooapis.im.v201907.dictionary.DisapprovalReasonValues;
-import jp.yahooapis.im.v201907.dictionary.GeographicLocationPage;
-import jp.yahooapis.im.v201907.dictionary.GeographicLocationSelector;
-import jp.yahooapis.im.v201907.dictionary.GeographicLocationValues;
-import jp.yahooapis.im.v201907.dictionary.MediaAdFormatPage;
-import jp.yahooapis.im.v201907.dictionary.MediaAdFormatValues;
-import jp.yahooapis.im.v201907.dictionary.OsVersionPage;
-import jp.yahooapis.im.v201907.dictionary.OsVersionSelector;
-import jp.yahooapis.im.v201907.dictionary.OsVersionValues;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.dictionary.AudienceCategoryPage;
+import jp.yahooapis.im.v201911.dictionary.AudienceCategoryValues;
+import jp.yahooapis.im.v201911.dictionary.CategoryPage;
+import jp.yahooapis.im.v201911.dictionary.CategorySelector;
+import jp.yahooapis.im.v201911.dictionary.CategoryValues;
+import jp.yahooapis.im.v201911.dictionary.DeviceOsType;
+import jp.yahooapis.im.v201911.dictionary.DictionaryLang;
+import jp.yahooapis.im.v201911.dictionary.DictionaryService;
+import jp.yahooapis.im.v201911.dictionary.DictionaryServiceInterface;
+import jp.yahooapis.im.v201911.dictionary.DisapprovalReasonPage;
+import jp.yahooapis.im.v201911.dictionary.DisapprovalReasonSelector;
+import jp.yahooapis.im.v201911.dictionary.DisapprovalReasonValues;
+import jp.yahooapis.im.v201911.dictionary.FeedItemGoogleProductCategoryPage;
+import jp.yahooapis.im.v201911.dictionary.FeedItemGoogleProductCategorySelector;
+import jp.yahooapis.im.v201911.dictionary.FeedItemGoogleProductCategoryValues;
+import jp.yahooapis.im.v201911.dictionary.GeographicLocationPage;
+import jp.yahooapis.im.v201911.dictionary.GeographicLocationSelector;
+import jp.yahooapis.im.v201911.dictionary.GeographicLocationValues;
+import jp.yahooapis.im.v201911.dictionary.MediaAdFormatPage;
+import jp.yahooapis.im.v201911.dictionary.MediaAdFormatValues;
+import jp.yahooapis.im.v201911.dictionary.OsVersionPage;
+import jp.yahooapis.im.v201911.dictionary.OsVersionSelector;
+import jp.yahooapis.im.v201911.dictionary.OsVersionValues;
+import jp.yahooapis.im.v201911.dictionary.ThirdPartyTrackingDomainPage;
+import jp.yahooapis.im.v201911.dictionary.ThirdPartyTrackingDomainValues;
 
 import java.util.List;
 
@@ -80,15 +84,6 @@ public class DictionaryServiceSample {
       getSiteCategory(getSiteCategoryRequest);
 
       // =================================================================
-      // DictionaryService getColorSet
-      // =================================================================
-      // create request.
-      ColorSetSelector getColorSetRequest = buildExampleGetColorSetRequest();
-
-      // run
-      getColorSet(getColorSetRequest);
-
-      // =================================================================
       // DictionaryService getOsVersion
       // =================================================================
       // create request.
@@ -103,6 +98,30 @@ public class DictionaryServiceSample {
       // run
       getMediaAdFormat();
 
+      // =================================================================
+      // DictionaryService getAudienceCategory
+      // =================================================================
+      // create request.
+      CategorySelector getAudienceCategoryRequest = buildExampleGetAudienceCategoryRequest();
+
+      // run
+      getAudienceCategory(getAudienceCategoryRequest);
+
+      // =================================================================
+      // DictionaryService getThirdPartyTrackingDomain
+      // =================================================================
+      // run
+      getThirdPartyTrackingDomain();
+
+      // =================================================================
+      // DictionaryService getFeedItemGoogleProductCategory
+      // =================================================================
+      // create request.
+      FeedItemGoogleProductCategorySelector getFeedItemGoogleProductCategoryRequest = buildExampleGetFeedItemGoogleProductCategoryRequest();
+
+      // run
+      getFeedItemGoogleProductCategory(getFeedItemGoogleProductCategoryRequest);
+
     } catch (Exception e) {
       e.printStackTrace();
       throw e;
@@ -114,7 +133,7 @@ public class DictionaryServiceSample {
    *
    * @return DisapprovalReasonSelector
    */
-  public static DisapprovalReasonSelector buildExampleGetDisapprovalReasonRequest()  {
+  public static DisapprovalReasonSelector buildExampleGetDisapprovalReasonRequest() {
     DisapprovalReasonSelector selector = new DisapprovalReasonSelector();
     selector.setLang(DictionaryLang.EN);
     return selector;
@@ -125,7 +144,7 @@ public class DictionaryServiceSample {
    *
    * @return GeographicLocationSelector
    */
-  public static GeographicLocationSelector buildExampleGetGeographicLocationRequest()  {
+  public static GeographicLocationSelector buildExampleGetGeographicLocationRequest() {
     GeographicLocationSelector selector = new GeographicLocationSelector();
     selector.setLang(DictionaryLang.EN);
     return selector;
@@ -136,7 +155,7 @@ public class DictionaryServiceSample {
    *
    * @return CategorySelector
    */
-  public static CategorySelector buildExampleGetInterestCategoryRequest()  {
+  public static CategorySelector buildExampleGetInterestCategoryRequest() {
     CategorySelector selector = new CategorySelector();
     selector.setLang(DictionaryLang.EN);
     return selector;
@@ -147,19 +166,8 @@ public class DictionaryServiceSample {
    *
    * @return CategorySelector
    */
-  public static CategorySelector buildExampleGetSiteCategoryRequest()  {
+  public static CategorySelector buildExampleGetSiteCategoryRequest() {
     CategorySelector selector = new CategorySelector();
-    selector.setLang(DictionaryLang.EN);
-    return selector;
-  }
-
-  /**
-   * example ColorSetSelector request.
-   *
-   * @return getColorSet
-   */
-  public static ColorSetSelector buildExampleGetColorSetRequest()  {
-    ColorSetSelector selector=new ColorSetSelector();
     selector.setLang(DictionaryLang.EN);
     return selector;
   }
@@ -169,9 +177,31 @@ public class DictionaryServiceSample {
    *
    * @return OsVersionSelector
    */
-  public static OsVersionSelector buildExampleGetOsVersionRequest()  {
-    OsVersionSelector selector=new OsVersionSelector();
+  public static OsVersionSelector buildExampleGetOsVersionRequest() {
+    OsVersionSelector selector = new OsVersionSelector();
     selector.setOsType(DeviceOsType.ANDROID);
+    return selector;
+  }
+
+  /**
+   * example getAudienceCategory request.
+   *
+   * @return CategorySelector
+   */
+  public static CategorySelector buildExampleGetAudienceCategoryRequest() {
+    CategorySelector selector = new CategorySelector();
+    selector.setLang(DictionaryLang.EN);
+    return selector;
+  }
+
+  /**
+   * example getFeedItemGoogleProductCategory request.
+   *
+   * @return FeedItemGoogleProductCategorySelector
+   */
+  public static FeedItemGoogleProductCategorySelector buildExampleGetFeedItemGoogleProductCategoryRequest() {
+    FeedItemGoogleProductCategorySelector selector = new FeedItemGoogleProductCategorySelector();
+    selector.setLang(DictionaryLang.EN);
     return selector;
   }
 
@@ -272,30 +302,6 @@ public class DictionaryServiceSample {
   }
 
   /**
-   * example get ColorSet.
-   *
-   * @param selector ColorSetSelector
-   * @return ColorSetValues
-   */
-  public static List<ColorSetValues> getColorSet(ColorSetSelector selector) throws Exception {
-
-    // call API
-    System.out.println("############################################");
-    System.out.println("DictionaryService::getColorSet");
-    System.out.println("############################################");
-
-    Holder<ColorSetPage> colorSetPageHolder = new Holder<ColorSetPage>();
-    Holder<List<Error>> errorHolder = new Holder<List<Error>>();
-    DictionaryServiceInterface dictionaryService = SoapUtils.createServiceInterface(DictionaryServiceInterface.class, DictionaryService.class);
-    dictionaryService.getColorSet(selector, colorSetPageHolder, errorHolder);
-
-    SoapUtils.checkSoapError(errorHolder, colorSetPageHolder.value.getValues());
-
-    // Response
-    return colorSetPageHolder.value.getValues();
-  }
-
-  /**
    * example get OsVersion.
    *
    * @return OsVersionValues
@@ -339,5 +345,74 @@ public class DictionaryServiceSample {
 
     // Response
     return mediaAdFormatPageHolder.value.getValues();
+  }
+
+  /**
+   * example get GetAudienceCategory.
+   *
+   * @return AudienceCategoryValues
+   */
+  public static List<AudienceCategoryValues> getAudienceCategory(CategorySelector selector) throws Exception {
+
+    // call API
+    System.out.println("############################################");
+    System.out.println("DictionaryService::getAudienceCategory");
+    System.out.println("############################################");
+
+    Holder<AudienceCategoryPage> audienceCategoryPageHolder = new Holder<AudienceCategoryPage>();
+    Holder<List<Error>> errorHolder = new Holder<List<Error>>();
+    DictionaryServiceInterface dictionaryService = SoapUtils.createServiceInterface(DictionaryServiceInterface.class, DictionaryService.class);
+    dictionaryService.getAudienceCategory(selector, audienceCategoryPageHolder, errorHolder);
+
+    SoapUtils.checkSoapError(errorHolder, audienceCategoryPageHolder.value.getValues());
+
+    // Response
+    return audienceCategoryPageHolder.value.getValues();
+  }
+
+  /**
+   * example get GetThirdPartyTrackingDomain.
+   *
+   * @return ThirdPartyTrackingDomainValues
+   */
+  public static List<ThirdPartyTrackingDomainValues> getThirdPartyTrackingDomain() throws Exception {
+
+    // call API
+    System.out.println("############################################");
+    System.out.println("DictionaryService::getGetThirdPartyTrackingDomain");
+    System.out.println("############################################");
+
+    Holder<ThirdPartyTrackingDomainPage> thirdPartyTrackingDomainPageHolder = new Holder<ThirdPartyTrackingDomainPage>();
+    Holder<List<Error>> errorHolder = new Holder<List<Error>>();
+    DictionaryServiceInterface dictionaryService = SoapUtils.createServiceInterface(DictionaryServiceInterface.class, DictionaryService.class);
+    dictionaryService.getThirdPartyTrackingDomain(thirdPartyTrackingDomainPageHolder, errorHolder);
+
+    SoapUtils.checkSoapError(errorHolder, thirdPartyTrackingDomainPageHolder.value.getValues());
+
+    // Response
+    return thirdPartyTrackingDomainPageHolder.value.getValues();
+  }
+
+  /**
+   * example get GetFeedItemGoogleProductCategory.
+   *
+   * @return FeedItemGoogleProductCategoryValues
+   */
+  public static List<FeedItemGoogleProductCategoryValues> getFeedItemGoogleProductCategory(FeedItemGoogleProductCategorySelector selector) throws Exception {
+
+    // call API
+    System.out.println("############################################");
+    System.out.println("DictionaryService::getFeedItemGoogleProductCategory");
+    System.out.println("############################################");
+
+    Holder<FeedItemGoogleProductCategoryPage> feedItemGoogleProductCategoryPageHolder = new Holder<FeedItemGoogleProductCategoryPage>();
+    Holder<List<Error>> errorHolder = new Holder<List<Error>>();
+    DictionaryServiceInterface dictionaryService = SoapUtils.createServiceInterface(DictionaryServiceInterface.class, DictionaryService.class);
+    dictionaryService.getFeedItemGoogleProductCategory(selector, feedItemGoogleProductCategoryPageHolder, errorHolder);
+
+    SoapUtils.checkSoapError(errorHolder, feedItemGoogleProductCategoryPageHolder.value.getValues());
+
+    // Response
+    return feedItemGoogleProductCategoryPageHolder.value.getValues();
   }
 }

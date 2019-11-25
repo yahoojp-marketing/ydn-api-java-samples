@@ -6,20 +6,21 @@ package jp.yahooapis.im.adapisample.basic.media;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.media.ImageMedia;
-import jp.yahooapis.im.v201907.media.LogoFlg;
-import jp.yahooapis.im.v201907.media.MediaOperation;
-import jp.yahooapis.im.v201907.media.MediaPage;
-import jp.yahooapis.im.v201907.media.MediaRecord;
-import jp.yahooapis.im.v201907.media.MediaReturnValue;
-import jp.yahooapis.im.v201907.media.MediaSelector;
-import jp.yahooapis.im.v201907.media.MediaService;
-import jp.yahooapis.im.v201907.media.MediaServiceInterface;
-import jp.yahooapis.im.v201907.media.MediaValues;
-import jp.yahooapis.im.v201907.media.Operator;
-import jp.yahooapis.im.v201907.media.UserStatus;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.media.ImageMedia;
+import jp.yahooapis.im.v201911.media.LogoFlg;
+import jp.yahooapis.im.v201911.media.MediaOperation;
+import jp.yahooapis.im.v201911.media.MediaPage;
+import jp.yahooapis.im.v201911.media.MediaRecord;
+import jp.yahooapis.im.v201911.media.MediaReturnValue;
+import jp.yahooapis.im.v201911.media.MediaSelector;
+import jp.yahooapis.im.v201911.media.MediaService;
+import jp.yahooapis.im.v201911.media.MediaServiceInterface;
+import jp.yahooapis.im.v201911.media.MediaValues;
+import jp.yahooapis.im.v201911.media.Operator;
+import jp.yahooapis.im.v201911.media.ThumbnailFlg;
+import jp.yahooapis.im.v201911.media.UserStatus;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -56,7 +57,7 @@ public class MediaServiceSample {
       // MediaService ADD
       // =================================================================
       // create request.
-      MediaOperation addRequest = buildExampleMutateRequest(Operator.ADD, accountId, Collections.singletonList(createExampleMedia(accountId, "SampleMedia.jpg", LogoFlg.FALSE)));
+      MediaOperation addRequest = buildExampleMutateRequest(Operator.ADD, accountId, Collections.singletonList(createExampleMedia(accountId, "SampleMedia.jpg", LogoFlg.FALSE, ThumbnailFlg.FALSE)));
 
       // run
       List<MediaValues> addResponse = mutate(addRequest);
@@ -184,7 +185,7 @@ public class MediaServiceSample {
    * @param accountId long
    * @return MediaRecord
    */
-  public static MediaRecord createExampleMedia(long accountId, String imageFile, LogoFlg logoFlg) throws Exception {
+  public static MediaRecord createExampleMedia(long accountId, String imageFile, LogoFlg logoFlg, ThumbnailFlg thumbnailFlg) throws Exception {
     // imageMedia
     ImageMedia imageMedia = new ImageMedia();
     imageMedia.setData(getMediaData(imageFile));
@@ -197,6 +198,7 @@ public class MediaServiceSample {
     media.setUserStatus(UserStatus.ACTIVE);
     media.setMedia(imageMedia);
     media.setLogoFlg(logoFlg);
+    media.setThumbnailFlg(thumbnailFlg);
 
     return media;
   }

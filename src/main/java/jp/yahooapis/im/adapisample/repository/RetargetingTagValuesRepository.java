@@ -4,8 +4,8 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTag;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagValues;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTag;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagValues;
 
 import java.util.ArrayList;
 import java.util.List;

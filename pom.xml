@@ -4,7 +4,7 @@
 
   <groupId>jp.co.yahoo</groupId>
   <artifactId>adapisample</artifactId>
-  <version>YDN-API-V201903</version>
+  <version>YDN-API-V201911</version>
   <packaging>jar</packaging>
 
   <name>ad-api-sample</name>

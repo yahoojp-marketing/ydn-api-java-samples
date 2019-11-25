@@ -4,8 +4,8 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.media.MediaRecord;
-import jp.yahooapis.im.v201907.media.MediaValues;
+import jp.yahooapis.im.v201911.media.MediaRecord;
+import jp.yahooapis.im.v201911.media.MediaValues;
 
 import java.util.ArrayList;
 import java.util.List;

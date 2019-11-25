@@ -6,27 +6,34 @@ package jp.yahooapis.im.adapisample.basic.campaign;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.campaign.BiddingStrategyType;
-import jp.yahooapis.im.v201907.campaign.Budget;
-import jp.yahooapis.im.v201907.campaign.BudgetDeliveryMethod;
-import jp.yahooapis.im.v201907.campaign.Campaign;
-import jp.yahooapis.im.v201907.campaign.CampaignOperation;
-import jp.yahooapis.im.v201907.campaign.CampaignPage;
-import jp.yahooapis.im.v201907.campaign.CampaignReturnValue;
-import jp.yahooapis.im.v201907.campaign.CampaignSelector;
-import jp.yahooapis.im.v201907.campaign.CampaignService;
-import jp.yahooapis.im.v201907.campaign.CampaignServiceInterface;
-import jp.yahooapis.im.v201907.campaign.CampaignType;
-import jp.yahooapis.im.v201907.campaign.CampaignValues;
-import jp.yahooapis.im.v201907.campaign.DeviceOsType;
-import jp.yahooapis.im.v201907.campaign.FrequencyCap;
-import jp.yahooapis.im.v201907.campaign.FrequencyLevel;
-import jp.yahooapis.im.v201907.campaign.FrequencyTimeUnit;
-import jp.yahooapis.im.v201907.campaign.ManualCPC;
-import jp.yahooapis.im.v201907.campaign.Operator;
-import jp.yahooapis.im.v201907.campaign.UserStatus;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.campaign.BiddingStrategyType;
+import jp.yahooapis.im.v201911.campaign.Budget;
+import jp.yahooapis.im.v201911.campaign.BudgetDeliveryMethod;
+import jp.yahooapis.im.v201911.campaign.Campaign;
+import jp.yahooapis.im.v201911.campaign.CampaignBiddingStrategy;
+import jp.yahooapis.im.v201911.campaign.CampaignBiddingStrategyType;
+import jp.yahooapis.im.v201911.campaign.CampaignConversionOptimizerType;
+import jp.yahooapis.im.v201911.campaign.CampaignOperation;
+import jp.yahooapis.im.v201911.campaign.CampaignPage;
+import jp.yahooapis.im.v201911.campaign.CampaignReturnValue;
+import jp.yahooapis.im.v201911.campaign.CampaignSelector;
+import jp.yahooapis.im.v201911.campaign.CampaignService;
+import jp.yahooapis.im.v201911.campaign.CampaignServiceInterface;
+import jp.yahooapis.im.v201911.campaign.CampaignType;
+import jp.yahooapis.im.v201911.campaign.CampaignValues;
+import jp.yahooapis.im.v201911.campaign.ConversionOptimizerEligibilityFlg;
+import jp.yahooapis.im.v201911.campaign.DeviceOsType;
+import jp.yahooapis.im.v201911.campaign.FrequencyCap;
+import jp.yahooapis.im.v201911.campaign.FrequencyLevel;
+import jp.yahooapis.im.v201911.campaign.FrequencyTimeUnit;
+import jp.yahooapis.im.v201911.campaign.ManualCPC;
+import jp.yahooapis.im.v201911.campaign.ManualCPV;
+import jp.yahooapis.im.v201911.campaign.ManualCampaignConversionOptimizer;
+import jp.yahooapis.im.v201911.campaign.Operator;
+import jp.yahooapis.im.v201911.campaign.UserStatus;
+import jp.yahooapis.im.v201911.campaign.ViewableFrequencyCap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,6 +73,7 @@ public class CampaignServiceSample {
         add(createExampleStandardCampaign());
         add(createExampleAppCampaignANDROID());
         add(createExampleAppCampaignIOS());
+        add(createExampleCampaignByCampaignGoal());
       }});
 
       // run
@@ -86,7 +94,7 @@ public class CampaignServiceSample {
       // =================================================================
       // create request.
       CampaignOperation setRequest = buildExampleMutateRequest(Operator.SET, accountId,
-          createExampleSetRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns())
+          createExampleSetRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns(), valuesRepositoryFacade.getCampaignValuesRepository().findCampaignIdByCampaignGoal())
       );
 
       // run
@@ -239,6 +247,85 @@ public class CampaignServiceSample {
   }
 
   /**
+   * example Campaign By CampaignGoal request.
+   *
+   * @return Campaign
+   */
+  public static Campaign createExampleCampaignByCampaignGoal()
+  {
+    // budget
+    Budget budget = new Budget();
+    budget.setAmount((long)1000);
+
+    // manualCPC
+    ManualCPC manualCPC = new ManualCPC();
+    manualCPC.setType(BiddingStrategyType.MANUAL_CPV);
+
+    ViewableFrequencyCap viewableFrequencyCap = new ViewableFrequencyCap();
+    viewableFrequencyCap.setLevel(FrequencyLevel.CAMPAIGN);
+    viewableFrequencyCap.setTimeUnit(FrequencyTimeUnit.DAY);
+    viewableFrequencyCap.setVImps((long)10);
+
+    CampaignBiddingStrategy campaignBiddingStrategy = new CampaignBiddingStrategy();
+    campaignBiddingStrategy.setType(CampaignBiddingStrategyType.MAX_CPC);
+    campaignBiddingStrategy.setMaxCpcBidValue((long)10);
+
+    // campaign
+    Campaign campaign = new Campaign();
+    campaign.setAccountId(SoapUtils.getAccountId());
+    campaign.setCampaignName("SampleCampaignByCampaignGoal_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    campaign.setUserStatus(UserStatus.ACTIVE);
+    campaign.setBudget(budget);
+    campaign.setBiddingStrategy(manualCPC);
+    campaign.setCampaignType(CampaignType.STANDARD);
+    campaign.setCampaignGoal("WEBSITE_TRAFFIC");
+    campaign.setCampaignBiddingStrategy(campaignBiddingStrategy);
+    campaign.setViewableFrequencyCap(viewableFrequencyCap);
+
+    return campaign;
+  }
+
+  /**
+   * example Campaign Video Ad request.
+   *
+   * @return Campaign
+   */
+  public static Campaign createExampleCampaignVideoAd()
+  {
+    // budget
+    Budget budget = new Budget();
+    budget.setDeliveryMethod(BudgetDeliveryMethod.ACCELERATED);
+
+    // manualCPV
+    ManualCPV manualCPV = new ManualCPV();
+    manualCPV.setType(BiddingStrategyType.MANUAL_CPV);
+
+    // frequencyCap
+    FrequencyCap frequencyCap = new FrequencyCap();
+    frequencyCap.setLevel(FrequencyLevel.CAMPAIGN);
+    frequencyCap.setTimeUnit(FrequencyTimeUnit.DAY);
+    frequencyCap.setImpression((long)15);
+
+    // conversionOptimizer
+    ManualCampaignConversionOptimizer conversionOptimizer = new ManualCampaignConversionOptimizer();
+    conversionOptimizer.setOptimizerType(CampaignConversionOptimizerType.MANUAL);
+
+    // campaign
+    Campaign campaign = new Campaign();
+    campaign.setAccountId(SoapUtils.getAccountId());
+    campaign.setCampaignName("SampleCampaignPcBrandPanelVideo_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    campaign.setUserStatus(UserStatus.ACTIVE);
+    campaign.setBudget(budget);
+    campaign.setBiddingStrategy(manualCPV);
+    campaign.setAdProductType("VIDEO_AD");
+    campaign.setFrequencyCap(frequencyCap);
+    campaign.setConversionOptimizer(conversionOptimizer);
+    campaign.setCampaignType(CampaignType.STANDARD);
+
+    return campaign;
+  }
+
+  /**
    * example App Campaign ANDROID request.
    *
    * @return Campaign
@@ -378,14 +465,18 @@ public class CampaignServiceSample {
    *
    * @param accountId long
    * @param campaigns List<Campaign>
+   * @param campaignIdByCampaignGoal long
    * @return List<Campaign>
    */
-  public static List<Campaign> createExampleSetRequest(long accountId, List<Campaign> campaigns)
+  public static List<Campaign> createExampleSetRequest(long accountId, List<Campaign> campaigns, long campaignIdByCampaignGoal)
   {
     // create operands
     List<Campaign> operands = new ArrayList<>();
 
     for (Campaign campaign : campaigns) {
+      if (campaign.getCampaignId().equals(campaignIdByCampaignGoal)) {
+        continue;
+      }
       Budget budget = new Budget();
       budget.setAmount((long)12000);
       budget.setDeliveryMethod(BudgetDeliveryMethod.STANDARD);
@@ -414,6 +505,24 @@ public class CampaignServiceSample {
       operands.add(operand);
     }
 
+    // campaign by campaignGoal
+    CampaignBiddingStrategy campaignBiddingStrategy = new CampaignBiddingStrategy();
+    campaignBiddingStrategy.setType(CampaignBiddingStrategyType.MAX_CPC);
+    campaignBiddingStrategy.setMaxCpcBidValue((long)5);
+
+    ViewableFrequencyCap viewableFrequencyCap = new ViewableFrequencyCap();
+    viewableFrequencyCap.setLevel(FrequencyLevel.AD_GROUP);
+    viewableFrequencyCap.setTimeUnit(FrequencyTimeUnit.WEEK);
+    viewableFrequencyCap.setVImps((long)5);
+
+    Campaign operandByCampaignGoal = new Campaign();
+    operandByCampaignGoal.setAccountId(accountId);
+    operandByCampaignGoal.setCampaignId(campaignIdByCampaignGoal);
+    operandByCampaignGoal.setUserStatus(UserStatus.PAUSED);
+    operandByCampaignGoal.setCampaignBiddingStrategy(campaignBiddingStrategy);
+    operandByCampaignGoal.setViewableFrequencyCap(viewableFrequencyCap);
+    operands.add(operandByCampaignGoal);
+
     return operands;
   }
 
@@ -431,6 +540,8 @@ public class CampaignServiceSample {
       add(createExampleStandardCampaign());
       add(createExampleAppCampaignANDROID());
       add(createExampleAppCampaignIOS());
+      add(createExampleCampaignByCampaignGoal());
+      add(createExampleCampaignVideoAd());
     }});
 
     List<CampaignValues> addCampaignValues = mutate(addCampaignOperation);

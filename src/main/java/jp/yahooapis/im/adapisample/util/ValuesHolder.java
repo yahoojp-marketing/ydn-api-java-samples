@@ -4,18 +4,18 @@
 package jp.yahooapis.im.adapisample.util;
 
 
-import jp.yahooapis.im.v201907.adgroup.AdGroupValues;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdValues;
-import jp.yahooapis.im.v201907.campaign.CampaignValues;
-import jp.yahooapis.im.v201907.feedholder.FeedHolderValues;
-import jp.yahooapis.im.v201907.label.LabelValues;
-import jp.yahooapis.im.v201907.media.MediaValues;
-import jp.yahooapis.im.v201907.placementurlidea.PlacementUrlIdeaValues;
-import jp.yahooapis.im.v201907.placementurllist.PlacementUrlListValues;
-import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionValues;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagValues;
-import jp.yahooapis.im.v201907.searchkeywordidea.SearchKeywordIdeaValues;
-import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListValues;
+import jp.yahooapis.im.v201911.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdValues;
+import jp.yahooapis.im.v201911.campaign.CampaignValues;
+import jp.yahooapis.im.v201911.feedholder.FeedHolderValues;
+import jp.yahooapis.im.v201911.label.LabelValues;
+import jp.yahooapis.im.v201911.media.MediaValues;
+import jp.yahooapis.im.v201911.placementurlidea.PlacementUrlIdeaValues;
+import jp.yahooapis.im.v201911.placementurllist.PlacementUrlListValues;
+import jp.yahooapis.im.v201911.reportdefinition.ReportDefinitionValues;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagValues;
+import jp.yahooapis.im.v201911.searchkeywordidea.SearchKeywordIdeaValues;
+import jp.yahooapis.im.v201911.searchkeywordlist.SearchKeywordListValues;
 
 import java.util.ArrayList;
 import java.util.List;

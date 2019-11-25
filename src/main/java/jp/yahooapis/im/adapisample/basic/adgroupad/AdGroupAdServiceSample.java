@@ -3,32 +3,48 @@
  */
 package jp.yahooapis.im.adapisample.basic.adgroupad;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jp.yahooapis.im.adapisample.basic.adgroup.AdGroupServiceSample;
+import jp.yahooapis.im.adapisample.basic.media.MediaServiceSample;
+import jp.yahooapis.im.adapisample.basic.video.VideoServiceSample;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAd;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdOperation;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdPage;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdReturnValue;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdSelector;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdService;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdServiceInterface;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdValues;
-import jp.yahooapis.im.v201907.adgroupad.AdStyle;
-import jp.yahooapis.im.v201907.adgroupad.AdType;
-import jp.yahooapis.im.v201907.adgroupad.BiddingStrategyType;
-import jp.yahooapis.im.v201907.adgroupad.DynamicAd;
-import jp.yahooapis.im.v201907.adgroupad.ManualCPCAdGroupAdBid;
-import jp.yahooapis.im.v201907.adgroupad.Operator;
-import jp.yahooapis.im.v201907.adgroupad.TextAd;
-import jp.yahooapis.im.v201907.adgroupad.UserStatus;
-import jp.yahooapis.im.v201907.campaign.CampaignType;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAd;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdOperation;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdPage;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdReturnValue;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdSelector;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdService;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdServiceInterface;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdValues;
+import jp.yahooapis.im.v201911.adgroupad.AdStyle;
+import jp.yahooapis.im.v201911.adgroupad.AdType;
+import jp.yahooapis.im.v201911.adgroupad.BiddingStrategyType;
+import jp.yahooapis.im.v201911.adgroupad.ButtonText;
+import jp.yahooapis.im.v201911.adgroupad.DynamicAd;
+import jp.yahooapis.im.v201911.adgroupad.ManualCPCAdGroupAdBid;
+import jp.yahooapis.im.v201911.adgroupad.ManualCPVAdGroupAdBid;
+import jp.yahooapis.im.v201911.adgroupad.Operator;
+import jp.yahooapis.im.v201911.adgroupad.ResponsiveVideoAd;
+import jp.yahooapis.im.v201911.adgroupad.TextAd;
+import jp.yahooapis.im.v201911.adgroupad.UserStatus;
+import jp.yahooapis.im.v201911.campaign.CampaignType;
+import jp.yahooapis.im.v201911.media.LogoFlg;
+import jp.yahooapis.im.v201911.media.MediaOperation;
+import jp.yahooapis.im.v201911.media.MediaValues;
+import jp.yahooapis.im.v201911.media.ThumbnailFlg;
+import jp.yahooapis.im.v201911.video.UploadUrlPage;
+import jp.yahooapis.im.v201911.video.Video;
+import jp.yahooapis.im.v201911.video.VideoOperation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.ws.Holder;
@@ -50,7 +66,10 @@ public class AdGroupAdServiceSample {
     // =================================================================
     ValuesHolder valuesHolder = new ValuesHolder();
     long accountId = SoapUtils.getAccountId();
-    
+    long thumbnailId;
+    long logoId;
+    long videoId;
+
     try {
       // =================================================================
       // check & create upper service object.
@@ -60,7 +79,49 @@ public class AdGroupAdServiceSample {
       Long campaignIdStandard = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(
           CampaignType.STANDARD
       );
+      Long campaignIdVideoAd = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignIdAdProductType(
+          "VIDEO_AD"
+      );
       Long adGroupIdStandard = valuesRepositoryFacade.getAdGroupValuesRepository().findAdGroupId(campaignIdStandard);
+      Long adGroupIdVideoAd = valuesRepositoryFacade.getAdGroupValuesRepository().findAdGroupId(campaignIdVideoAd);
+
+      // =================================================================
+      // VideoService Upload
+      // =================================================================
+      String videoFileName = "videoUploadSample2.mp4";
+      UploadUrlPage getUploadUrlResponse = VideoServiceSample.getUploadUrl(accountId, VideoServiceSample.buildExampleUploadVideoList());
+      String uploadUrl = getUploadUrlResponse.getValues().get(0).getUploadUrlValue().getUploadUrl();
+
+      // upload
+      String uploadResponse = SoapUtils.upload(uploadUrl, videoFileName, "video/mp4");
+      ObjectMapper mapper = new ObjectMapper();
+      JsonNode objectMap = mapper.readTree(uploadResponse);
+      videoId = Long.valueOf(objectMap.get("ResultSet").get("Result").get(0).get("uploadVideoData").get("mediaId").toString());
+
+      // =================================================================
+      // MediaService ADD
+      // =================================================================
+      // thumbnail
+      MediaOperation addMediaRequest1 = MediaServiceSample.buildExampleMutateRequest(
+          jp.yahooapis.im.v201911.media.Operator.ADD,
+          accountId,
+          Collections.singletonList(MediaServiceSample.createExampleMedia(accountId, "ThumbnailMedia1.jpg", LogoFlg.FALSE, ThumbnailFlg.TRUE))
+      );
+      // run
+      List<MediaValues> addMediaResponse1 = MediaServiceSample.mutate(addMediaRequest1);
+      valuesHolder.setMediaValuesList(addMediaResponse1);
+      thumbnailId = addMediaResponse1.get(0).getMediaRecord().getMediaId();
+
+      // logo
+      MediaOperation addMediaRequest2 = MediaServiceSample.buildExampleMutateRequest(
+          jp.yahooapis.im.v201911.media.Operator.ADD,
+          accountId,
+          Collections.singletonList(MediaServiceSample.createExampleMedia(accountId, "LogoMedia1.jpg", LogoFlg.TRUE, ThumbnailFlg.FALSE))
+      );
+      // run
+      List<MediaValues> addMediaResponse2 = MediaServiceSample.mutate(addMediaRequest2);
+      valuesHolder.setMediaValuesList(addMediaResponse2);
+      logoId = addMediaResponse2.get(0).getMediaRecord().getMediaId();
 
       // =================================================================
       // AdGroupAdService ADD
@@ -68,6 +129,7 @@ public class AdGroupAdServiceSample {
       // create request.
       AdGroupAdOperation addRequest = buildExampleMutateRequest(Operator.ADD, accountId, new ArrayList<AdGroupAd>() {{
         add(createExampleExtendedTextAd(campaignIdStandard, adGroupIdStandard));
+        add(createExampleResponsiveVideoAd(campaignIdVideoAd, adGroupIdVideoAd, thumbnailId, videoId, logoId));
       }});
 
       // run
@@ -86,9 +148,10 @@ public class AdGroupAdServiceSample {
       // =================================================================
       // AdGroupAdService SET
       // =================================================================
+      Long adIdResponsiveVideoAd =  valuesRepositoryFacade.getAdGroupAdValuesRepository().findAdId(campaignIdVideoAd, adGroupIdVideoAd, AdType.RESPONSIVE_VIDEO_AD);
       // create request.
       AdGroupAdOperation setRequest = buildExampleMutateRequest(Operator.SET, accountId,
-          createExampleSetRequest(valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds())
+          createExampleSetRequest(valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds(), adIdResponsiveVideoAd)
       );
 
       // run
@@ -102,6 +165,20 @@ public class AdGroupAdServiceSample {
 
       // run
       mutate(removeRequest);
+
+      // =================================================================
+      // VideoService REMOVE
+      // =================================================================
+      VideoOperation removeRequestVideo = VideoServiceSample.buildExampleMutateRequest(jp.yahooapis.im.v201911.video.Operator.REMOVE, accountId,new ArrayList<Video>() {{
+        add(VideoServiceSample.createExampleRemoveRequest(accountId, videoId));
+      }});
+      VideoServiceSample.mutate(removeRequestVideo);
+
+      // =================================================================
+      // MediaService REMOVE
+      // =================================================================
+      MediaOperation removeRequestMedia = MediaServiceSample.buildExampleMutateRequest(jp.yahooapis.im.v201911.media.Operator.REMOVE, accountId, valuesRepositoryFacade.getMediaValuesRepository().getMediaRecord());
+      MediaServiceSample.mutate(removeRequestMedia);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -235,7 +312,7 @@ public class AdGroupAdServiceSample {
    * @param AdGroupAds
    * @return List<AdGroupAd>
    */
-  public static List<AdGroupAd> createExampleSetRequest(List<AdGroupAd> AdGroupAds)
+  public static List<AdGroupAd> createExampleSetRequest(List<AdGroupAd> AdGroupAds, Long adIdResponsiveVideoAd)
   {
     // create operands
     List<AdGroupAd> operands = new ArrayList<>();
@@ -246,6 +323,9 @@ public class AdGroupAdServiceSample {
     bid.setType(BiddingStrategyType.MANUAL_CPC);
 
     for (AdGroupAd adGroupAd : AdGroupAds) {
+      if (adGroupAd.getAdId().equals(adIdResponsiveVideoAd)) {
+        continue;
+      }
       AdGroupAd operand = new AdGroupAd();
       operand.setAccountId(SoapUtils.getAccountId());
       operand.setCampaignId(adGroupAd.getCampaignId());
@@ -323,6 +403,49 @@ public class AdGroupAdServiceSample {
     adGroupAd.setAdStyle(AdStyle.TEXT);
     adGroupAd.setAdName("SampleDynamicAd_CreateOn_" + SoapUtils.getCurrentTimestamp());
     adGroupAd.setUserStatus(UserStatus.ACTIVE);
+    adGroupAd.setAd(ad);
+
+    return adGroupAd;
+  }
+
+  /**
+   * example Banner Video Ad request.
+   *
+   * @param campaignId
+   * @param adGroupId
+   * @param thumbnailId
+   * @param videoId
+   * @param logoId
+   * @return AdGroupAd
+   */
+  public static AdGroupAd createExampleResponsiveVideoAd(long campaignId, long adGroupId, long thumbnailId, long videoId, long logoId)
+  {
+    // ad
+    ResponsiveVideoAd ad = new ResponsiveVideoAd();
+    ad.setType(AdType.RESPONSIVE_VIDEO_AD);
+    ad.setThumbnailMediaId(thumbnailId);
+    ad.setHeadline("headline");
+    ad.setDescription("description");
+    ad.setDisplayUrl("www.yahoo.co.jp");
+    ad.setUrl("http://www.yahoo.co.jp/");
+    ad.setButtonText(ButtonText.APPLY_NOW);
+    ad.setPrincipal("principal");
+    ad.setLogoMediaId(logoId);
+
+    // bid
+    ManualCPVAdGroupAdBid bid = new ManualCPVAdGroupAdBid();
+    bid.setType(BiddingStrategyType.MANUAL_CPV);
+    bid.setMaxCpv((long)10000);
+
+    // adGroupAd
+    AdGroupAd adGroupAd = new AdGroupAd();
+    adGroupAd.setAccountId(SoapUtils.getAccountId());
+    adGroupAd.setCampaignId(campaignId);
+    adGroupAd.setAdGroupId(adGroupId);
+    adGroupAd.setAdName("SampleDynamicAd_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    adGroupAd.setUserStatus(UserStatus.ACTIVE);
+    adGroupAd.setMediaId(videoId);
+    adGroupAd.setBid(bid);
     adGroupAd.setAd(ad);
 
     return adGroupAd;

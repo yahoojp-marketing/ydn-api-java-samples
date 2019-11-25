@@ -7,28 +7,30 @@ import jp.yahooapis.im.adapisample.basic.campaign.CampaignServiceSample;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.adgroup.AdGroupConversionOptimizerType;
-import jp.yahooapis.im.v201907.adgroup.BiddingStrategyType;
-import jp.yahooapis.im.v201907.adgroup.AdGroup;
-import jp.yahooapis.im.v201907.adgroup.AdGroupOperation;
-import jp.yahooapis.im.v201907.adgroup.AdGroupPage;
-import jp.yahooapis.im.v201907.adgroup.AdGroupReturnValue;
-import jp.yahooapis.im.v201907.adgroup.AdGroupSelector;
-import jp.yahooapis.im.v201907.adgroup.AdGroupService;
-import jp.yahooapis.im.v201907.adgroup.AdGroupServiceInterface;
-import jp.yahooapis.im.v201907.adgroup.AdGroupValues;
-import jp.yahooapis.im.v201907.adgroup.DeviceAppType;
-import jp.yahooapis.im.v201907.adgroup.DeviceOsType;
-import jp.yahooapis.im.v201907.adgroup.DeviceType;
-import jp.yahooapis.im.v201907.adgroup.DynamicImageExtensions;
-import jp.yahooapis.im.v201907.adgroup.ManualCPCAdGroupBid;
-import jp.yahooapis.im.v201907.adgroup.NoneAdGroupConversionOptimizer;
-import jp.yahooapis.im.v201907.adgroup.Operator;
-import jp.yahooapis.im.v201907.adgroup.SmartDeviceCarrier;
-import jp.yahooapis.im.v201907.adgroup.UserStatus;
-import jp.yahooapis.im.v201907.campaign.CampaignType;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.adgroup.AdGroupBiddingStrategy;
+import jp.yahooapis.im.v201911.adgroup.AdGroupConversionOptimizerType;
+import jp.yahooapis.im.v201911.adgroup.BiddingStrategyType;
+import jp.yahooapis.im.v201911.adgroup.AdGroup;
+import jp.yahooapis.im.v201911.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201911.adgroup.AdGroupPage;
+import jp.yahooapis.im.v201911.adgroup.AdGroupReturnValue;
+import jp.yahooapis.im.v201911.adgroup.AdGroupSelector;
+import jp.yahooapis.im.v201911.adgroup.AdGroupService;
+import jp.yahooapis.im.v201911.adgroup.AdGroupServiceInterface;
+import jp.yahooapis.im.v201911.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201911.adgroup.DeviceAppType;
+import jp.yahooapis.im.v201911.adgroup.DeviceOsType;
+import jp.yahooapis.im.v201911.adgroup.DeviceType;
+import jp.yahooapis.im.v201911.adgroup.DynamicImageExtensions;
+import jp.yahooapis.im.v201911.adgroup.ManualCPCAdGroupBid;
+import jp.yahooapis.im.v201911.adgroup.ManualCPVAdGroupBid;
+import jp.yahooapis.im.v201911.adgroup.NoneAdGroupConversionOptimizer;
+import jp.yahooapis.im.v201911.adgroup.Operator;
+import jp.yahooapis.im.v201911.adgroup.SmartDeviceCarrier;
+import jp.yahooapis.im.v201911.adgroup.UserStatus;
+import jp.yahooapis.im.v201911.campaign.CampaignType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,7 +62,8 @@ public class AdGroupServiceSample {
       // =================================================================
       valuesHolder = setup();
       ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
-      Long campaignId = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201907.campaign.DeviceOsType.IOS);
+      Long campaignId = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201911.campaign.DeviceOsType.IOS);
+      Long campaignIdByCampaignGoal = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignIdByCampaignGoal();
 
       // =================================================================
       // AdGroupService ADD
@@ -68,6 +71,7 @@ public class AdGroupServiceSample {
       // create request.
       AdGroupOperation addRequest = buildExampleMutateRequest(Operator.ADD, accountId, new ArrayList<AdGroup>() {{
         add(createExampleAppIOSAdGroup(campaignId));
+        add(createExampleAdGroupByCampaignGoal(campaignIdByCampaignGoal));
       }});
 
       // run
@@ -87,7 +91,13 @@ public class AdGroupServiceSample {
       // AdGroupService SET
       // =================================================================
       // create request.
-      AdGroupOperation setRequest = buildExampleMutateRequest(Operator.SET, accountId, createExampleSetRequest(valuesRepositoryFacade.getAdGroupValuesRepository().getAdGroups()));
+      AdGroupOperation setRequest = buildExampleMutateRequest(Operator.SET, accountId,
+          createExampleSetRequest(
+              valuesRepositoryFacade.getAdGroupValuesRepository().getAdGroups(),
+              valuesRepositoryFacade.getCampaignValuesRepository().findCampaignIdByCampaignGoal(),
+              valuesRepositoryFacade.getAdGroupValuesRepository().findAdGroupIdByCampaignGoal()
+          )
+      );
 
       // run
       mutate(setRequest);
@@ -232,6 +242,58 @@ public class AdGroupServiceSample {
   }
 
   /**
+   * example Standard AdGroup request.
+   *
+   * @param campaignId
+   * @return AdGroup
+   */
+  public static AdGroup createExampleStandardAdGroupManualCpv(long campaignId)
+  {
+    // bid
+    ManualCPVAdGroupBid bid = new ManualCPVAdGroupBid();
+    bid.setType(BiddingStrategyType.MANUAL_CPV);
+    bid.setMaxCpv((long)10000);
+
+    // conversionOptimizer
+    NoneAdGroupConversionOptimizer conversionOptimizer = new NoneAdGroupConversionOptimizer();
+    conversionOptimizer.setOptimizerType(AdGroupConversionOptimizerType.NONE);
+
+    // adGroup
+    AdGroup adGroup = new AdGroup();
+    adGroup.setAccountId(SoapUtils.getAccountId());
+    adGroup.setCampaignId(campaignId);
+    adGroup.setAdGroupName("SampleStandardAdGroupManualCpv_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    adGroup.setUserStatus(UserStatus.PAUSED);
+    adGroup.setBid(bid);
+    adGroup.getDevice().add(DeviceType.DESKTOP);
+
+    return adGroup;
+  }
+
+  /**
+   * example Standard AdGroup request.
+   *
+   * @param campaignId
+   * @return AdGroup
+   */
+  public static AdGroup createExampleAdGroupByCampaignGoal(long campaignId)
+  {
+    AdGroupBiddingStrategy adGroupBiddingStrategy = new AdGroupBiddingStrategy();
+    adGroupBiddingStrategy.setMaxVcpmBidValue((long)5);
+
+    // adGroup
+    AdGroup adGroup = new AdGroup();
+    adGroup.setAccountId(SoapUtils.getAccountId());
+    adGroup.setCampaignId(campaignId);
+    adGroup.setAdGroupName("SampleAdGroupByCampaignGoal_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    adGroup.setUserStatus(UserStatus.ACTIVE);
+    adGroup.getDevice().add(DeviceType.DESKTOP);
+    adGroup.setAdGroupBiddingStrategy(adGroupBiddingStrategy);
+
+    return adGroup;
+  }
+
+  /**
    * example App IOS AdGroup request.
    *
    * @param campaignId
@@ -264,7 +326,7 @@ public class AdGroupServiceSample {
 
     return adGroup;
   }
-  
+
   /**
    * example App ANDROID AdGroup request.
    *
@@ -295,6 +357,34 @@ public class AdGroupServiceSample {
     adGroup.getDeviceApp().add(DeviceAppType.APP);
     adGroup.setDynamicImageExtensions(DynamicImageExtensions.ACTIVE);
     adGroup.getSmartDeviceCarriers().add(SmartDeviceCarrier.SOFTBANK);
+
+    return adGroup;
+  }
+
+  /**
+   * example App ANDROID AdGroup request.
+   *
+   * @param campaignId
+   * @return AdGroup
+   */
+  public static AdGroup createExampleAppANDROIDAdGroup2(long campaignId)
+  {
+    // bid
+    ManualCPVAdGroupBid bid = new ManualCPVAdGroupBid();
+    bid.setType(BiddingStrategyType.MANUAL_CPV);
+    bid.setMaxCpv((long)10000);
+
+    // adGroup
+    AdGroup adGroup = new AdGroup();
+    adGroup.setAccountId(SoapUtils.getAccountId());
+    adGroup.setCampaignId(campaignId);
+    adGroup.setAdGroupName("SampleAppANDROIDAdGroup_CreateOn_" + SoapUtils.getCurrentTimestamp());
+    adGroup.setUserStatus(UserStatus.ACTIVE);
+    adGroup.setBid(bid);
+    adGroup.getDevice().add(DeviceType.SMARTPHONE);
+    adGroup.getDeviceOs().add(DeviceOsType.ANDROID);
+    adGroup.getDeviceApp().add(DeviceAppType.APP);
+    adGroup.getSmartDeviceCarriers().add(SmartDeviceCarrier.NONE);
 
     return adGroup;
   }
@@ -332,13 +422,16 @@ public class AdGroupServiceSample {
    * @param AdGroups List<AdGroup>
    * @return List<AdGroup>
    */
-  public static List<AdGroup> createExampleSetRequest(List<AdGroup> AdGroups)
+  public static List<AdGroup> createExampleSetRequest(List<AdGroup> AdGroups, long campaignIdByCampaignGoal, long adGroupIdByCampaignGoal)
   {
     // create operands
     List<AdGroup> operands = new ArrayList<>();
 
     long i = 0;
     for (AdGroup adGroup : AdGroups) {
+      if (adGroup.getAdGroupId().equals(adGroupIdByCampaignGoal)) {
+        continue;
+      }
       // bid
       ManualCPCAdGroupBid bid = new ManualCPCAdGroupBid();
       bid.setMaxCpc((long)120);
@@ -359,6 +452,19 @@ public class AdGroupServiceSample {
       operands.add(operand);
       i++;
     }
+
+    // adGroup by campaignGoal
+    AdGroupBiddingStrategy adGroupBiddingStrategy = new AdGroupBiddingStrategy();
+    adGroupBiddingStrategy.setMaxVcpmBidValue((long)10);
+
+    // adGroup
+    AdGroup operandByCampaignGoal = new AdGroup();
+    operandByCampaignGoal.setAccountId(SoapUtils.getAccountId());
+    operandByCampaignGoal.setCampaignId(campaignIdByCampaignGoal);
+    operandByCampaignGoal.setAdGroupId(adGroupIdByCampaignGoal);
+    operandByCampaignGoal.setAdGroupBiddingStrategy(adGroupBiddingStrategy);
+    operands.add(operandByCampaignGoal);
+
     return operands;
   }
   
@@ -375,13 +481,15 @@ public class AdGroupServiceSample {
 
     long accountId = SoapUtils.getAccountId();
     Long campaignIdStandard = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignType.STANDARD);
-    Long campaignIdAppIOS = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201907.campaign.DeviceOsType.IOS);
-    Long campaignIdAppANDROID = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201907.campaign.DeviceOsType.ANDROID);
+    Long campaignIdAppIOS = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201911.campaign.DeviceOsType.IOS);
+    Long campaignIdAppANDROID = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(jp.yahooapis.im.v201911.campaign.DeviceOsType.ANDROID);
+    Long campaignIdVideoAd = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignIdAdProductType("VIDEO_AD");
 
     AdGroupOperation request = buildExampleMutateRequest(Operator.ADD, accountId, new ArrayList<AdGroup>() {{
       add(createExampleStandardAdGroup(campaignIdStandard));
       add(createExampleAppIOSAdGroup(campaignIdAppIOS));
       add(createExampleAppANDROIDAdGroup(campaignIdAppANDROID));
+      add(createExampleAppANDROIDAdGroup2(campaignIdVideoAd));
     }});
 
     List<AdGroupValues> response = mutate(request);

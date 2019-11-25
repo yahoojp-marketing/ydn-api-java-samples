@@ -4,10 +4,10 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.campaign.Campaign;
-import jp.yahooapis.im.v201907.campaign.CampaignType;
-import jp.yahooapis.im.v201907.campaign.CampaignValues;
-import jp.yahooapis.im.v201907.campaign.DeviceOsType;
+import jp.yahooapis.im.v201911.campaign.Campaign;
+import jp.yahooapis.im.v201911.campaign.CampaignType;
+import jp.yahooapis.im.v201911.campaign.CampaignValues;
+import jp.yahooapis.im.v201911.campaign.DeviceOsType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +82,38 @@ public class CampaignValuesRepository {
     }
     for (CampaignValues campaignValues : this.valuesHolder.getCampaignValuesList()) {
       if (campaignValues.getCampaign().getCampaignType().equals(CampaignType.APP) && campaignValues.getCampaign().getAppOs().equals(osType)) {
+        return campaignValues.getCampaign().getCampaignId();
+      }
+    }
+    return null;
+  }
+
+  /**
+   * @param
+   * @return Long|null
+   */
+  public Long findCampaignIdByCampaignGoal() {
+    if (this.valuesHolder.getCampaignValuesList().size() == 0) {
+      return null;
+    }
+    for (CampaignValues campaignValues : this.valuesHolder.getCampaignValuesList()) {
+      if (!campaignValues.getCampaign().getCampaignGoal().equals("NONE")) {
+        return campaignValues.getCampaign().getCampaignId();
+      }
+    }
+    return null;
+  }
+
+  /**
+   * @param adProductType String
+   * @return Long|null
+   */
+  public Long findCampaignIdAdProductType(String adProductType) {
+    if (this.valuesHolder.getCampaignValuesList().size() == 0) {
+      return null;
+    }
+    for (CampaignValues campaignValues : this.valuesHolder.getCampaignValuesList()) {
+      if (adProductType.equals(campaignValues.getCampaign().getAdProductType())) {
         return campaignValues.getCampaign().getCampaignId();
       }
     }

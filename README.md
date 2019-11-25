@@ -1,6 +1,6 @@
 # Yahoo!プロモーション広告API（YDN） Javaサンプルプログラム
 
-Yahoo!プロモーション広告API（YDN）のVer.201903向けのJavaサンプルプログラムです。
+Yahoo!プロモーション広告API（YDN）のVer.201911向けのJavaサンプルプログラムです。
 
 ご利用前に、以下のReadMeをご確認ください。
 

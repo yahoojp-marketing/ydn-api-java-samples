@@ -4,8 +4,8 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordList;
-import jp.yahooapis.im.v201907.searchkeywordlist.SearchKeywordListValues;
+import jp.yahooapis.im.v201911.searchkeywordlist.SearchKeywordList;
+import jp.yahooapis.im.v201911.searchkeywordlist.SearchKeywordListValues;
 
 import java.util.ArrayList;
 import java.util.List;

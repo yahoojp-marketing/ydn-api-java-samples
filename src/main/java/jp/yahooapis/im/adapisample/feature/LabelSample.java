@@ -13,24 +13,24 @@ import jp.yahooapis.im.adapisample.basic.label.LabelServiceSample;
 import jp.yahooapis.im.adapisample.repository.ValuesRepositoryFacade;
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.adgroup.AdGroupOperation;
-import jp.yahooapis.im.v201907.adgroup.AdGroupSelector;
-import jp.yahooapis.im.v201907.adgroup.AdGroupValues;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdOperation;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdSelector;
-import jp.yahooapis.im.v201907.adgroupad.AdGroupAdValues;
-import jp.yahooapis.im.v201907.adgroupad.AdType;
-import jp.yahooapis.im.v201907.adgroupadlabel.AdGroupAdLabelOperation;
-import jp.yahooapis.im.v201907.adgrouplabel.AdGroupLabelOperation;
-import jp.yahooapis.im.v201907.campaign.CampaignOperation;
-import jp.yahooapis.im.v201907.campaign.CampaignSelector;
-import jp.yahooapis.im.v201907.campaign.CampaignType;
-import jp.yahooapis.im.v201907.campaign.CampaignValues;
-import jp.yahooapis.im.v201907.campaignlabel.CampaignLabelOperation;
-import jp.yahooapis.im.v201907.label.LabelOperation;
-import jp.yahooapis.im.v201907.label.LabelSelector;
-import jp.yahooapis.im.v201907.label.LabelValues;
-import jp.yahooapis.im.v201907.label.Operator;
+import jp.yahooapis.im.v201911.adgroup.AdGroupOperation;
+import jp.yahooapis.im.v201911.adgroup.AdGroupSelector;
+import jp.yahooapis.im.v201911.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdOperation;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdSelector;
+import jp.yahooapis.im.v201911.adgroupad.AdGroupAdValues;
+import jp.yahooapis.im.v201911.adgroupad.AdType;
+import jp.yahooapis.im.v201911.adgroupadlabel.AdGroupAdLabelOperation;
+import jp.yahooapis.im.v201911.adgrouplabel.AdGroupLabelOperation;
+import jp.yahooapis.im.v201911.campaign.CampaignOperation;
+import jp.yahooapis.im.v201911.campaign.CampaignSelector;
+import jp.yahooapis.im.v201911.campaign.CampaignType;
+import jp.yahooapis.im.v201911.campaign.CampaignValues;
+import jp.yahooapis.im.v201911.campaignlabel.CampaignLabelOperation;
+import jp.yahooapis.im.v201911.label.LabelOperation;
+import jp.yahooapis.im.v201911.label.LabelSelector;
+import jp.yahooapis.im.v201911.label.LabelValues;
+import jp.yahooapis.im.v201911.label.Operator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,7 +60,7 @@ public class LabelSample {
       // =================================================================
       // ADD
       CampaignOperation addRequestCampaign = CampaignServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201907.campaign.Operator.ADD,
+          jp.yahooapis.im.v201911.campaign.Operator.ADD,
           accountId,
           Arrays.asList(CampaignServiceSample.createExampleStandardCampaign())
       );
@@ -78,7 +78,7 @@ public class LabelSample {
       // =================================================================
       // ADD
       AdGroupOperation addRequestAdGroup = AdGroupServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201907.adgroup.Operator.ADD,
+          jp.yahooapis.im.v201911.adgroup.Operator.ADD,
           accountId,
           Arrays.asList(AdGroupServiceSample.createExampleStandardAdGroup(campaignId))
       );
@@ -96,7 +96,7 @@ public class LabelSample {
       // =================================================================
       // ADD
       AdGroupAdOperation addRequestAdGroupAd = AdGroupAdServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201907.adgroupad.Operator.ADD,
+          jp.yahooapis.im.v201911.adgroupad.Operator.ADD,
           accountId,
           Arrays.asList(AdGroupAdServiceSample.createExampleExtendedTextAd(campaignId, adGroupId))
       );
@@ -139,7 +139,7 @@ public class LabelSample {
       // =================================================================
       // ADD
       CampaignLabelOperation addRequestCampaignLabel = CampaignLabelServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201907.campaignlabel.Operator.ADD,
+          jp.yahooapis.im.v201911.campaignlabel.Operator.ADD,
           accountId,
           Arrays.asList(CampaignLabelServiceSample.createExampleCampaignLabel(campaignId, labelId))
       );
@@ -156,7 +156,7 @@ public class LabelSample {
       // =================================================================
       // ADD
       AdGroupLabelOperation addRequestAdGroupLabel = AdGroupLabelServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201907.adgrouplabel.Operator.ADD,
+          jp.yahooapis.im.v201911.adgrouplabel.Operator.ADD,
           accountId,
           Arrays.asList(AdGroupLabelServiceSample.createExampleAdGroupLabel(campaignId, adGroupId, labelId))
       );
@@ -173,7 +173,7 @@ public class LabelSample {
       // =================================================================
       // ADD
       AdGroupAdLabelOperation addRequestAdGroupAdLabel = AdGroupAdLabelServiceSample.buildExampleMutateRequest(
-          jp.yahooapis.im.v201907.adgroupadlabel.Operator.ADD,
+          jp.yahooapis.im.v201911.adgroupadlabel.Operator.ADD,
           accountId,
           Arrays.asList(AdGroupAdLabelServiceSample.createExampleAdGroupAdLabel(campaignId, adGroupId, adId, labelId))
       );

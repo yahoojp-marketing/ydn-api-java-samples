@@ -5,15 +5,15 @@ package jp.yahooapis.im.adapisample.basic.retargetingtag;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.retargetingtag.Operator;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagOperation;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagPage;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagReturnValue;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagSelector;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagService;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagServiceInterface;
-import jp.yahooapis.im.v201907.retargetingtag.RetargetingTagValues;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.retargetingtag.Operator;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagOperation;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagPage;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagReturnValue;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagSelector;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagService;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagServiceInterface;
+import jp.yahooapis.im.v201911.retargetingtag.RetargetingTagValues;
 
 import java.util.List;
 

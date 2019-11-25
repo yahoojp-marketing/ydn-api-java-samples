@@ -4,21 +4,21 @@
 package jp.yahooapis.im.adapisample.basic.account;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.account.Account;
-import jp.yahooapis.im.v201907.account.AccountOperation;
-import jp.yahooapis.im.v201907.account.AccountPage;
-import jp.yahooapis.im.v201907.account.AccountReturnValue;
-import jp.yahooapis.im.v201907.account.AccountSelector;
-import jp.yahooapis.im.v201907.account.AccountService;
-import jp.yahooapis.im.v201907.account.AccountServiceInterface;
-import jp.yahooapis.im.v201907.account.AccountStatus;
-import jp.yahooapis.im.v201907.account.AccountType;
-import jp.yahooapis.im.v201907.account.AccountValues;
-import jp.yahooapis.im.v201907.account.AutoTaggingEnabled;
-import jp.yahooapis.im.v201907.account.DeliveryStatus;
-import jp.yahooapis.im.v201907.account.Operator;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.account.Account;
+import jp.yahooapis.im.v201911.account.AccountOperation;
+import jp.yahooapis.im.v201911.account.AccountPage;
+import jp.yahooapis.im.v201911.account.AccountReturnValue;
+import jp.yahooapis.im.v201911.account.AccountSelector;
+import jp.yahooapis.im.v201911.account.AccountService;
+import jp.yahooapis.im.v201911.account.AccountServiceInterface;
+import jp.yahooapis.im.v201911.account.AccountStatus;
+import jp.yahooapis.im.v201911.account.AccountType;
+import jp.yahooapis.im.v201911.account.AccountValues;
+import jp.yahooapis.im.v201911.account.AutoTaggingEnabled;
+import jp.yahooapis.im.v201911.account.DeliveryStatus;
+import jp.yahooapis.im.v201911.account.Operator;
 
 import java.util.Arrays;
 import java.util.Collections;

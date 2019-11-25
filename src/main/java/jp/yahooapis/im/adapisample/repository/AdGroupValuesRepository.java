@@ -4,8 +4,10 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.adgroup.AdGroup;
-import jp.yahooapis.im.v201907.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201911.adgroup.AdGroup;
+import jp.yahooapis.im.v201911.adgroup.AdGroupValues;
+import jp.yahooapis.im.v201911.adgroup.CampaignBiddingStrategyType;
+import jp.yahooapis.im.v201911.adgroupad.AdType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +66,22 @@ public class AdGroupValuesRepository {
     }
     for (AdGroupValues adGroupValues : this.valuesHolder.getAdGroupValuesList()) {
       if (adGroupValues.getAdGroup().getCampaignId() == campaignId) {
+        return adGroupValues.getAdGroup().getAdGroupId();
+      }
+    }
+    return null;
+  }
+
+  /**
+   * @param
+   * @return Long|null
+   */
+  public Long findAdGroupIdByCampaignGoal() {
+    if (this.valuesHolder.getAdGroupValuesList().size() == 0) {
+      return null;
+    }
+    for (AdGroupValues adGroupValues : this.valuesHolder.getAdGroupValuesList()) {
+      if (!CampaignBiddingStrategyType.NONE.equals(adGroupValues.getAdGroup().getAdGroupBiddingStrategy().getCampaignBiddingStrategyType())) {
         return adGroupValues.getAdGroup().getAdGroupId();
       }
     }

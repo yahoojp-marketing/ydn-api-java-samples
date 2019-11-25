@@ -4,18 +4,18 @@
 package jp.yahooapis.im.adapisample.basic.auditlog;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.auditlog.AuditLogDateRange;
-import jp.yahooapis.im.v201907.auditlog.AuditLogDownloadJobStatus;
-import jp.yahooapis.im.v201907.auditlog.AuditLogDownloadReturnValue;
-import jp.yahooapis.im.v201907.auditlog.AuditLogDownloadSelector;
-import jp.yahooapis.im.v201907.auditlog.AuditLogDownloadStatusPage;
-import jp.yahooapis.im.v201907.auditlog.AuditLogDownloadStatusSelector;
-import jp.yahooapis.im.v201907.auditlog.AuditLogDownloadValues;
-import jp.yahooapis.im.v201907.auditlog.AuditLogJob;
-import jp.yahooapis.im.v201907.auditlog.AuditLogLang;
-import jp.yahooapis.im.v201907.auditlog.AuditLogService;
-import jp.yahooapis.im.v201907.auditlog.AuditLogServiceInterface;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.auditlog.AuditLogDateRange;
+import jp.yahooapis.im.v201911.auditlog.AuditLogDownloadJobStatus;
+import jp.yahooapis.im.v201911.auditlog.AuditLogDownloadReturnValue;
+import jp.yahooapis.im.v201911.auditlog.AuditLogDownloadSelector;
+import jp.yahooapis.im.v201911.auditlog.AuditLogDownloadStatusPage;
+import jp.yahooapis.im.v201911.auditlog.AuditLogDownloadStatusSelector;
+import jp.yahooapis.im.v201911.auditlog.AuditLogDownloadValues;
+import jp.yahooapis.im.v201911.auditlog.AuditLogJob;
+import jp.yahooapis.im.v201911.auditlog.AuditLogLang;
+import jp.yahooapis.im.v201911.auditlog.AuditLogService;
+import jp.yahooapis.im.v201911.auditlog.AuditLogServiceInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

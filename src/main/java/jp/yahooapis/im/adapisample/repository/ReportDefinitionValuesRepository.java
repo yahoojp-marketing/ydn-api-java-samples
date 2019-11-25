@@ -4,8 +4,8 @@
 package jp.yahooapis.im.adapisample.repository;
 
 import jp.yahooapis.im.adapisample.util.ValuesHolder;
-import jp.yahooapis.im.v201907.reportdefinition.ReportDefinition;
-import jp.yahooapis.im.v201907.reportdefinition.ReportDefinitionValues;
+import jp.yahooapis.im.v201911.reportdefinition.ReportDefinition;
+import jp.yahooapis.im.v201911.reportdefinition.ReportDefinitionValues;
 
 import java.util.ArrayList;
 import java.util.List;

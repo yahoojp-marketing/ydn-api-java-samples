@@ -4,17 +4,17 @@
 package jp.yahooapis.im.adapisample.basic.stats;
 
 import jp.yahooapis.im.adapisample.util.SoapUtils;
-import jp.yahooapis.im.v201907.Error;
-import jp.yahooapis.im.v201907.Paging;
-import jp.yahooapis.im.v201907.stats.StatsPage;
-import jp.yahooapis.im.v201907.stats.StatsPeriod;
-import jp.yahooapis.im.v201907.stats.StatsPeriodCustomDate;
-import jp.yahooapis.im.v201907.stats.StatsSelector;
-import jp.yahooapis.im.v201907.stats.StatsService;
-import jp.yahooapis.im.v201907.stats.StatsServiceInterface;
-import jp.yahooapis.im.v201907.stats.StatsType;
-import jp.yahooapis.im.v201907.stats.StatsValues;
-import jp.yahooapis.im.v201907.stats.TargetType;
+import jp.yahooapis.im.v201911.Error;
+import jp.yahooapis.im.v201911.Paging;
+import jp.yahooapis.im.v201911.stats.StatsPage;
+import jp.yahooapis.im.v201911.stats.StatsPeriod;
+import jp.yahooapis.im.v201911.stats.StatsPeriodCustomDate;
+import jp.yahooapis.im.v201911.stats.StatsSelector;
+import jp.yahooapis.im.v201911.stats.StatsService;
+import jp.yahooapis.im.v201911.stats.StatsServiceInterface;
+import jp.yahooapis.im.v201911.stats.StatsType;
+import jp.yahooapis.im.v201911.stats.StatsValues;
+import jp.yahooapis.im.v201911.stats.TargetType;
 
 import java.util.List;
 
